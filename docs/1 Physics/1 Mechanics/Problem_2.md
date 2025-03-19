@@ -1,1 +1,2 @@
-# Problem 2MG
+# Problem 2
+There are additional features
