@@ -1,3 +1,3 @@
 # Problem 1
 
-by MG
+by MG let's try to understand this further
