@@ -8,8 +8,7 @@ I am a B.S. Computer Science in the Philippines and I've been a programmer since
   c) Web developer (Macromededia ColdFusion, Classic ASP and .Net (vba/c#))
   d) Data specialist (SQL Integration Services, and Reporting Services)
 
-I am currently a Power Apps Developer working remotely for a US company.
-
+I am currently working as a Power Apps Developer processing remote tasks for a US company.
 
 ## Technical setup
 
