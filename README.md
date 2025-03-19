@@ -15,7 +15,7 @@ I am currently working as a Power Apps Developer processing remote tasks for a U
 
 * Install Visual Studio Code from [here](https://code.visualstudio.com/)
 * Install folowing extensions in Visual Studio Code:
-    * Github Repositories (GitHub, Inc.)
+    * Github Repositories (GitHub, Inc.) c
     * GitHub Copilot (GitHub Copilot)
     * GitHub Actions (GitHub, Inc.)
     * Python (Microsoft)
