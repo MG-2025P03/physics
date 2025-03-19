@@ -1,3 +1,3 @@
-# Problem 1
+# Problem 1 MG
 
-by MG let's try to understand this further
+Clean up time.. here are changes for viewing
