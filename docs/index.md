@@ -8,6 +8,7 @@ I am a B.S. Computer Science in the Philippines and I've been a programmer since
     *  Help authoring specialists (InstallShield)
     *  Web developer (Macromededia ColdFusion, Classic ASP and .Net (vba/c#))
     *  Data specialist (SQL Integration Services, and Reporting Services)
+    *  Business Intelligence Developer using Microsoft Power Plastform (Power Apps, Power Automate and Power BI)
 
 I am currently working as a Power Apps Developer processing remote tasks for a US client.
 
