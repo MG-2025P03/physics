@@ -2,7 +2,7 @@
 
 This is the website for Meynard Gilhang's Physics activities.  This is my first time to use GitHub and i'm still grasping trying to adapt and learn the new scripting languages that are being presented as part of this solution.
 
-I am a B.S. Computer Science in the Philippines and I've been a programmer since graduating.  I am your typical IT specialist with the following background:
+I am a B.S. Computer Science in the Philippines and I've been a programmer since.  I am your typical IT specialist (jack-of-all trades) with the following background:
 
     *  Multimedia developer (technology no longer available)
     *  Help authoring specialists (InstallShield)
