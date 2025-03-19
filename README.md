@@ -11,8 +11,6 @@ I am a B.S. Computer Science in the Philippines and I've been a programmer since
 I am currently a Power Apps Developer working remotely for a US company.
 
 
-
-
 ## Technical setup
 
 * Install Visual Studio Code from [here](https://code.visualstudio.com/)
