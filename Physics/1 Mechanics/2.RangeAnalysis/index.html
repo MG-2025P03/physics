@@ -126,51 +126,22 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="range-analysis">Range Analysis</h1>
-<p>Derive the range formula: <span class="arithmatex">\(<span class="arithmatex">\(R = \frac{v^2 \sin(2\theta)}{g}\)</span>\)</span>.</p>
-<p>Analyze the dependence on 𝜃:</p>
-<p>Identify the optimal angle (45∘) for maximum range in ideal conditions.</p>
-<p>Investigate how the range changes with variations in 𝑣 and 𝑔, observing proportional relationships.</p>
-<p>Discuss edge cases, such as when 𝜃 = 0∘ (horizontal projection) or 90∘ (vertical projection).</p>
-<p><button onclick="playHarmoniousOscillator()">Play Harmonious Oscillator</button>
-<button onclick="stopOscillator()">Stop</button>
-<br/>
-<script>
-      let audioContext;
-      let oscillator;
-      let gainNode;
-
-      function createOscillator(frequency) {
-          oscillator = audioContext.createOscillator();
-          oscillator.type = 'sine';
-          oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
-          return oscillator;
-      }
-
-      function playHarmoniousOscillator() {
-          audioContext = new (window.AudioContext || window.webkitAudioContext)();
-          gainNode = audioContext.createGain();
-          gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);  // Volume control
-
-          // Frequencies for a harmonious chord (C major chord for example)
-          const frequencies = [261.63, 329.63, 392.00]; // C4, E4, G4
-
-          frequencies.forEach(frequency => {
-              let osc = createOscillator(frequency);
-              osc.connect(gainNode);
-              gainNode.connect(audioContext.destination);
-              osc.start();
-          });
-      }
-
-      function stopOscillator() {
-          if (audioContext) {
-              audioContext.close().then(() => {
-                  audioContext = null;
-              });
-          }
-      }
-  </script>
-</p>
+<p>Optimal Angle for Maximum Range:</p>
+<p>Theory: For a projectile launched on a flat surface (i.e., launch height = landing height), the optimal angle for maximum range is 45 degrees. This is because the horizontal and vertical components of the initial velocity are equal, maximizing the distance.
+With Launch Height: If the launch height is above the landing height, the angle for maximum range is slightly less than 45 degrees, as the projectile benefits from additional time in the air.</p>
+<p>Symmetric Trajectories:</p>
+<p>Description: When launched from and landing on the same height, the projectile's path is symmetric around the peak.
+Angles: Two angles will yield the same range: (\theta) and (90^\circ - \theta). For example, angles of 30 degrees and 60 degrees will result in the same range, but different times of flight and maximum heights.</p>
+<p>Time of Flight:</p>
+<p>Dependency: Depends on the vertical component of the initial velocity and the height difference between launch and landing.
+Calculation: For non-zero launch height, the time of flight can be found using kinematic equations that incorporate both the initial vertical velocity component and the effect of gravity.</p>
+<p>Maximum Height:</p>
+<p>Calculation: Depends on the vertical component of the initial velocity and gravitational acceleration. For launch height (h), the maximum height (H) is given by:
+[
+H = h + \frac{(v₀ \sin \theta)^2}{2g}
+]</p>
+<p>Effect of Air Resistance:</p>
+<p>Real-World Consideration: Although not accounted for in basic projectile motion equations, air resistance can significantly affect the trajectory, reducing both range and height, and altering the optimal angle of projection.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
