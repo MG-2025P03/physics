@@ -126,37 +126,12 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="theoretical-foundation">Theoretical Foundation</h1>
-<p>The governing equations of motion can be expressed as differential equations, such as <span class="arithmatex">\( m \frac{d^2x}{dt^2} = F(x, t) \)</span> for one dimension. Variations in initial conditions lead to different solutions representing various trajectories. The example of a simple harmonic oscillator is given by <span class="arithmatex">\( x(t) = A \cos(\omega t + \phi) \)</span>.</p>
-<p>Overview of Projectile Motion
-Projectile motion refers to the motion of an object that is projected into the air and is subject to the force of gravity. The analysis of projectile motion involves understanding how various parameters affect its trajectory, such as the angle of projection, initial velocity, and gravitational acceleration.
-Governing Equations of Motion
-The motion of a projectile can be analyzed using the following equations derived from Newton's laws and kinematics.</p>
-<p>Equations of Motion:
-The projectile is influenced by gravitational acceleration ( g ), which acts downward. The two-dimensional motion can be broken down into horizontal and vertical components.</p>
-<p>Horizontal Motion:
-[
-x(t) = v_0 \cdot \cos(\theta) \cdot t
-]
-Vertical Motion:
-[
-y(t) = h + v_0 \cdot \sin(\theta) \cdot t - \frac{1}{2} g t^2
-]</p>
-<p>Here, ( v_0 ) is the initial velocity, ( \theta ) is the angle of projection, ( h ) is the initial height from which the projectile is launched, and ( g ) is the acceleration due to gravity (approximately ( 9.81 , \text{m/s}^2 )).</p>
-<p>Range of the Projectile:
-The range ( R ) of the projectile (the horizontal distance it travels before landing) can be derived from the above equations. For a launch from ground level (( h = 0 )), the range is given by:
-[
-R = \frac{v_0^2 \cdot \sin(2\theta)}{g}
-]</p>
-<p>Family of Solutions
-The range ( R ) varies based on the launch angle ( \theta ) and initial velocity ( v_0 ). By varying these parameters, we obtain a family of solutions, each representing a different trajectory.
-Graphical Representation
-To illustrate the dependence of the range on the angle of projection, we can plot the range for various angles of projection for a given initial velocity.</p>
 <div class="container">
 <h1>Projectile Motion Analysis2</h1>
 <label for="initialVelocity">Initial Velocity (m/s):</label>
 <input id="initialVelocity" type="number" value="50"/>
 <button onclick="plotProjectileMotion()">Plot Range</button>
-<canvas height="400" id="motionCanvas" width="800"></canvas>
+<canvas height="400" id="motionCanvas" width="500"></canvas>
 </div>
 <script>
 function calculateRange(v0, angle) {
@@ -200,6 +175,31 @@ function plotProjectileMotion() {
     ctx.fillText("Range (m)", 10, 20);
 }
 </script>
+<p>The governing equations of motion can be expressed as differential equations, such as <span class="arithmatex">\( m \frac{d^2x}{dt^2} = F(x, t) \)</span> for one dimension. Variations in initial conditions lead to different solutions representing various trajectories. The example of a simple harmonic oscillator is given by <span class="arithmatex">\( x(t) = A \cos(\omega t + \phi) \)</span>.</p>
+<p>Overview of Projectile Motion
+Projectile motion refers to the motion of an object that is projected into the air and is subject to the force of gravity. The analysis of projectile motion involves understanding how various parameters affect its trajectory, such as the angle of projection, initial velocity, and gravitational acceleration.
+Governing Equations of Motion
+The motion of a projectile can be analyzed using the following equations derived from Newton's laws and kinematics.</p>
+<p>Equations of Motion:
+The projectile is influenced by gravitational acceleration ( g ), which acts downward. The two-dimensional motion can be broken down into horizontal and vertical components.</p>
+<p>Horizontal Motion:
+[
+x(t) = v_0 \cdot \cos(\theta) \cdot t
+]
+Vertical Motion:
+[
+y(t) = h + v_0 \cdot \sin(\theta) \cdot t - \frac{1}{2} g t^2
+]</p>
+<p>Here, ( v_0 ) is the initial velocity, ( \theta ) is the angle of projection, ( h ) is the initial height from which the projectile is launched, and ( g ) is the acceleration due to gravity (approximately ( 9.81 , \text{m/s}^2 )).</p>
+<p>Range of the Projectile:
+The range ( R ) of the projectile (the horizontal distance it travels before landing) can be derived from the above equations. For a launch from ground level (( h = 0 )), the range is given by:
+[
+R = \frac{v_0^2 \cdot \sin(2\theta)}{g}
+]</p>
+<p>Family of Solutions
+The range ( R ) varies based on the launch angle ( \theta ) and initial velocity ( v_0 ). By varying these parameters, we obtain a family of solutions, each representing a different trajectory.
+Graphical Representation
+To illustrate the dependence of the range on the angle of projection, we can plot the range for various angles of projection for a given initial velocity.</p>
 <p>Conclusion
 Projectile motion is a fascinating topic that elegantly combines physics and mathematics. By manipulating the initial conditions, such as the angle of projection and initial velocity, one can observe a wide variety of trajectories, each providing insights into the principles governing motion. The graphical representations help to visualize these relationships, enhancing our understanding of projectile dynamics.</p>
 </div>
