@@ -131,7 +131,7 @@
 <label for="initialVelocity">Initial Velocity (m/s):</label>
 <input id="initialVelocity" type="number" value="30"/>
 <button onclick="plotProjectileMotion()">Plot Range</button>
-<canvas height="200" id="motionCanvas" width="500"></canvas>
+<canvas height="300" id="motionCanvas" width="500"></canvas>
 </div>
 <script>
 function calculateRange(v0, angle) {
@@ -164,9 +164,9 @@ function plotProjectileMotion() {
 
     // Axes
     ctx.beginPath();
-    ctx.moveTo(50, 350);
+    ctx.moveTo(50, 300);
     ctx.lineTo(50, 50);
-    ctx.lineTo(750, 350);
+    ctx.lineTo(500, 300);
     ctx.stroke();
 
     // Labels
