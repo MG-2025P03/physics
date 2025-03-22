@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Forced Damped Pendulum</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .controls { margin-bottom: 20px; }
+        .control-group { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <div class="control-group">
+            <label for="g">Gravitational Constant (g):</label>
+            <input type="number" id="g" step="0.1" value="9.81">
+        </div>
+        <div class="control-group">
+            <label for="L">Pendulum Length (L):</label>
+            <input type="number" id="L" step="0.1" value="1.0">
+        </div>
+        <div class="control-group">
+            <label for="beta">Damping Coefficient (β):</label>
+            <input type="number" id="beta" step="0.01" value="0.1">
+        </div>
+        <div class="control-group">
+            <label for="F0">Driving Amplitude (F_0):</label>
+            <input type="number" id="F0" step="0.1" value="1.5">
+        </div>
+        <div class="control-group">
+            <label for="omegaDrive">Driving Frequency (ω):</label>
+            <input type="number" id="omegaDrive" step="0.1" value="2.0">
+        </div>
+        <div class="control-group">
+            <label for="dt">Time Step (dt):</label>
+            <input type="number" id="dt" step="0.001" value="0.01">
+        </div>
+        <div class="control-group">
+            <label for="totalTime">Total Simulation Time:</label>
+            <input type="number" id="totalTime" step="1" value="100">
+        </div>
+        <button onclick="simulate()">Simulate</button>
+    </div>
+
+    <div id="phaseDiagram" style="width: 600px; height: 400px;"></div>
+    <div id="poincareSection" style="width: 600px; height: 400px;"></div>
+
+    <script src="pendulum2.js"></script>
+</body>
+</html>
