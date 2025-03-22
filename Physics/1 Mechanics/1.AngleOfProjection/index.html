@@ -127,44 +127,53 @@
 <div class="section" itemprop="articleBody">
 <h1 id="range-as-a-function-of-the-angle-of-projection">Range as a Function of the Angle of Projection</h1>
 <p><a href="../">Range vs. Angle of Projection</a></p>
-<div id="plot" source="index.html">
+<p>div {
+  height: 400px;
+  width: 200px;
+  background-color: powderblue;
+}</p>
+<div w3-include-html="index.html"></div>
 <script>
-        // Constants
-        const g = 9.81; // acceleration due to gravity in m/s^2
-        const v0 = 20; // initial velocity in m/s
+w3IncludeHTML();
+</script>
+<pre><code>&lt;script&gt;
+    // Constants
+    const g = 9.81; // acceleration due to gravity in m/s^2
+    const v0 = 20; // initial velocity in m/s
 
-        // Generate angles from 0 to 90 degrees
-        const angles = [];
-        for (let i = 0; i <= 90; i++) {
-            angles.push(i);
-        }
+    // Generate angles from 0 to 90 degrees
+    const angles = [];
+    for (let i = 0; i &lt;= 90; i++) {
+        angles.push(i);
+    }
 
-        // Calculate ranges for each angle
-        const ranges = angles.map(angle => {
-            const radians = angle * Math.PI / 180;
-            return (Math.pow(v0, 2) * Math.sin(2 * radians)) / g;
-        });
+    // Calculate ranges for each angle
+    const ranges = angles.map(angle =&gt; {
+        const radians = angle * Math.PI / 180;
+        return (Math.pow(v0, 2) * Math.sin(2 * radians)) / g;
+    });
 
-        // Plot data
-        const trace = {
-            x: angles,
-            y: ranges,
-            type: 'scatter',
-            mode: 'lines+markers',
-            name: 'Range'
-        };
+    // Plot data
+    const trace = {
+        x: angles,
+        y: ranges,
+        type: 'scatter',
+        mode: 'lines+markers',
+        name: 'Range'
+    };
 
-        const layout = {
-            title: 'Projectile Range vs. Angle of Projection',
-            xaxis: { title: 'Angle of Projection (degrees)' },
-            yaxis: { title: 'Range (meters)' }
-        };
+    const layout = {
+        title: 'Projectile Range vs. Angle of Projection',
+        xaxis: { title: 'Angle of Projection (degrees)' },
+        yaxis: { title: 'Range (meters)' }
+    };
 
-        Plotly.newPlot('plot', [trace], layout);
-    </script>
-</div>
-<p>The range of a projectile is a fundamental concept in physics, particularly in the study of projectile motion. It is influenced by the angle of projection, initial velocity, and the acceleration due to gravity. Here’s a detailed analysis:
-Basic Physics of Projectile Motion</p>
+    Plotly.newPlot('plot', [trace], layout);
+&lt;/script&gt;
+</code></pre>
+<p></p></div>
+The range of a projectile is a fundamental concept in physics, particularly in the study of projectile motion. It is influenced by the angle of projection, initial velocity, and the acceleration due to gravity. Here’s a detailed analysis:
+Basic Physics of Projectile Motion
 <p>Equations of Motion: When a projectile is launched with an initial velocity ( v_0 ) at an angle ( \theta ) from the horizontal, its motion can be described using the following equations:</p>
 <p>Horizontal Range: ( R = \frac{v_0^2 \sin(2\theta)}{g} )
 Maximum Height: ( H = \frac{v_0^2 \sin^2(\theta)}{2g} )
@@ -185,9 +194,9 @@ Time of Flight: ( T = \frac{2v_0 \sin(\theta)}{g} )</p>
   Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
 </div>
-</div>
-</section>
-</div>
+</section></div>
+
+
 <div aria-label="Versions" class="rst-versions" role="note">
 <span class="rst-current-version" data-toggle="rst-current-version">
 <span><a href="../../.." style="color: #fcfcfc">« Previous</a></span>
