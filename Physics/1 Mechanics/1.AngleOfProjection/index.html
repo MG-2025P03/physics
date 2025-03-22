@@ -6,14 +6,14 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../../../img/favicon.ico" rel="shortcut icon"/>
-<title>Theoretical Foundation - Physics and Mathematics</title>
+<title>Range as a Function of the Angle of Projection - Physics and Mathematics</title>
 <link href="../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <script>
         // Current page data
-        var mkdocs_page_name = "Theoretical Foundation";
-        var mkdocs_page_input_path = "Physics/1 Mechanics/1.TheoreticalFoundation.md";
+        var mkdocs_page_name = "Range as a Function of the Angle of Projection";
+        var mkdocs_page_input_path = "Physics/1 Mechanics/1.AngleOfProjection.md";
         var mkdocs_page_url = null;
       </script>
 <!--[if lt IE 9]>
@@ -46,7 +46,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal current">1 Mechanics</a>
 <ul class="current">
-<li class="toctree-l2 current"><a class="reference internal current" href="#">Theoretical Foundation</a>
+<li class="toctree-l2 current"><a class="reference internal current" href="#">Range as a Function of the Angle of Projection</a>
 <ul class="current">
 </ul>
 </li>
@@ -117,7 +117,7 @@
 <li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
 <li class="breadcrumb-item">Physics</li>
 <li class="breadcrumb-item">1 Mechanics</li>
-<li class="breadcrumb-item active">Theoretical Foundation</li>
+<li class="breadcrumb-item active">Range as a Function of the Angle of Projection</li>
 <li class="wy-breadcrumbs-aside">
 </li>
 </ul>
@@ -125,8 +125,26 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="theoretical-foundation">Theoretical Foundation</h1>
+<h1 id="range-as-a-function-of-the-angle-of-projection">Range as a Function of the Angle of Projection</h1>
 <p><a href="../jsharmonics.html">Harmonics</a></p>
+<p>The range of a projectile is a fundamental concept in physics, particularly in the study of projectile motion. It is influenced by the angle of projection, initial velocity, and the acceleration due to gravity. Here’s a detailed analysis:
+Basic Physics of Projectile Motion</p>
+<p>Equations of Motion: When a projectile is launched with an initial velocity ( v_0 ) at an angle ( \theta ) from the horizontal, its motion can be described using the following equations:</p>
+<p>Horizontal Range: ( R = \frac{v_0^2 \sin(2\theta)}{g} )
+Maximum Height: ( H = \frac{v_0^2 \sin^2(\theta)}{2g} )
+Time of Flight: ( T = \frac{2v_0 \sin(\theta)}{g} )</p>
+<p>Here, ( g ) is the acceleration due to gravity (approximately ( 9.81 , \text{m/s}^2 ) on Earth).</p>
+<p>Range and Angle of Projection: The range ( R ) is maximized when the angle of projection ( \theta ) is ( 45^\circ ), assuming no air resistance. This is because the function ( \sin(2\theta) ) is maximized at ( 2\theta = 90^\circ ).</p>
+<p>Plotting with Plotly.js
+To visualize how the range depends on the angle of projection, we can use Plotly.js to create interactive plots. Below are examples of JavaScript code using Plotly.js to plot the range of a projectile as a function of the angle of projection.
+Example Plot: Range vs. Angle of Projection</p>
+<p>Explanation of the Code</p>
+<p>Constants: We define constants such as gravitational acceleration ( g ) and initial velocity ( v_0 ).
+Angle Generation: We generate angles from 0 to 90 degrees, as these are the typical ranges for projectile angles.
+Range Calculation: For each angle, we calculate the range using the formula ( R = \frac{v_0^2 \sin(2\theta)}{g} ).
+Plotly Plot: We create a scatter plot with lines and markers to visualize how the range changes with the angle. The x-axis represents the angle of projection, while the y-axis represents the range.</p>
+<p>Conclusion
+This plot helps illustrate the theoretical prediction that the range of a projectile is maximized at a ( 45^\circ ) angle of projection and decreases symmetrically as the angle moves away from ( 45^\circ ). The use of Plotly.js allows for an interactive exploration of how varying the angle of projection impacts the projectile's range.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
