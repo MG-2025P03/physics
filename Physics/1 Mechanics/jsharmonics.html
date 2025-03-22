@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive SHM Plot</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        .slider {
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="plot"></div>
+
+<div>
+    <label for="amplitude">Amplitude (A): <span id="amplitude-value">1</span></label>
+    <input type="range" min="0.5" max="2.5" step="0.1" value="1" class="slider" id="amplitude">
+</div>
+
+<div>
+    <label for="frequency">Angular Frequency (ω): <span id="frequency-value">6.28</span></label>
+    <input type="range" min="3.14" max="12.56" step="0.1" value="6.28" class="slider" id="frequency">
+</div>
+
+<div>
+    <label for="phase">Phase (φ): <span id="phase-value">0</span></label>
+    <input type="range" min="0" max="6.28" step="0.1" value="0" class="slider" id="phase">
+</div>
+
+<script>
+    // Time range
+    let t = Array.from({length: 1000}, (_, i) => i * 0.01);
+
+    // Initial parameters
+    let A = 1;
+    let omega = 2 * Math.PI;
+    let phi = 0;
+
+    // Function for SHM
+    function shm(t, A, omega, phi) {
+        return t.map(time => A * Math.cos(omega * time + phi));
+    }
+
+    // Initial plot
+    let trace = {
+        x: t,
+        y: shm(t, A, omega, phi),
+        mode: 'lines',
+        name: 'SHM'
+    };
+
+    let layout = {
+        title: 'Interactive Simple Harmonic Motion',
+        xaxis: {title: 'Time (t)'},
+        yaxis: {title: 'Displacement (x)'}
+    };
+
+    Plotly.newPlot('plot', [trace], layout);
+
+    // Update plot on slider change
+    document.getElementById('amplitude').addEventListener('input', function() {
+        A = parseFloat(this.value);
+        document.getElementById('amplitude-value').innerText = A;
+        updatePlot();
+    });
+
+    document.getElementById('frequency').addEventListener('input', function() {
+        omega = parseFloat(this.value);
+        document.getElementById('frequency-value').innerText = omega.toFixed(2);
+        updatePlot();
+    });
+
+    document.getElementById('phase').addEventListener('input', function() {
+        phi = parseFloat(this.value);
+        document.getElementById('phase-value').innerText = phi.toFixed(2);
+        updatePlot();
+    });
+
+    function updatePlot() {
+        Plotly.restyle('plot', 'y', [shm(t, A, omega, phi)]);
+    }
+</script>
+
+</body>
+</html>
