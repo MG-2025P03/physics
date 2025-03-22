@@ -128,6 +128,44 @@
 <h1 id="range-as-a-function-of-the-angle-of-projection">Range as a Function of the Angle of Projection</h1>
 <p><a href="../">Range vs. Angle of Projection</a></p>
 <iframe src="index.html" style="width:100%; height:300px;"></iframe>
+<p>'''html</p>
+<div id="plot"></div>
+<pre><code>&lt;script&gt;
+    // Constants
+    const g = 9.81; // acceleration due to gravity in m/s^2
+    const v0 = 20; // initial velocity in m/s
+
+    // Generate angles from 0 to 90 degrees
+    const angles = [];
+    for (let i = 0; i &lt;= 90; i++) {
+        angles.push(i);
+    }
+
+    // Calculate ranges for each angle
+    const ranges = angles.map(angle =&gt; {
+        const radians = angle * Math.PI / 180;
+        return (Math.pow(v0, 2) * Math.sin(2 * radians)) / g;
+    });
+
+    // Plot data
+    const trace = {
+        x: angles,
+        y: ranges,
+        type: 'scatter',
+        mode: 'lines+markers',
+        name: 'Range'
+    };
+
+    const layout = {
+        title: 'Projectile Range vs. Angle of Projection',
+        xaxis: { title: 'Angle of Projection (degrees)' },
+        yaxis: { title: 'Range (meters)' }
+    };
+
+    Plotly.newPlot('plot', [trace], layout);
+&lt;/script&gt;
+</code></pre>
+<p>'''</p>
 <p>The range of a projectile is a fundamental concept in physics, particularly in the study of projectile motion. It is influenced by the angle of projection, initial velocity, and the acceleration due to gravity. Here’s a detailed analysis:
 Basic Physics of Projectile Motion</p>
 <p>Equations of Motion: When a projectile is launched with an initial velocity ( v_0 ) at an angle ( \theta ) from the horizontal, its motion can be described using the following equations:</p>
