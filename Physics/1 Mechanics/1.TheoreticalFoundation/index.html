@@ -126,69 +126,7 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="theoretical-foundation">Theoretical Foundation</h1>
-<script src="https://cdn.plot.ly/plotly-latest.min.js">
-    <style>
-        .plot-container {
-            width: 600px;
-            height: 400px;
-            margin: 20px auto;
-            border: 1px solid #ccc;
-            padding: 10px;
-            box-shadow: 2px 2px 12px #aaa;
-        }
-    </style>
-</script>
-<pre><code>&lt;div id="plotDiv" class="plot-container"&gt;
-    // Using Plotly.js
-    &lt;script&gt;
-    var trace1 = {
-      x: [0], // x-coordinates
-      y: [0], // y-coordinates
-      mode: 'lines',
-      type: 'scatter'
-    };
-
-    var layout = {
-      title: 'Projectile Motion',
-      xaxis: {
-        title: 'Distance (m)'
-      },
-      yaxis: {
-        title: 'Height (m)'
-      }
-    };
-
-    Plotly.newPlot('plotDiv', [trace1], layout);
-
-    // Assuming a function to calculate the trajectory
-    function calculateTrajectory(v0, angle) {
-      const g = 9.81;
-      let x = [];
-      let y = [];
-      let time = 0;
-      const dt = 0.1; // time step
-      const v0x = v0 * Math.cos(angle * Math.PI / 180);
-      const v0y = v0 * Math.sin(angle * Math.PI / 180);
-
-      while (true) {
-        let xPos = v0x * time;
-        let yPos = v0y * time - 0.5 * g * time * time;
-        if (yPos &lt; 0) break;
-        x.push(xPos);
-        y.push(yPos);
-        time += dt;
-      }
-
-      return { x, y };
-    }
-
-    let data = calculateTrajectory(20, 30);
-    trace1.x = data.x;
-    trace1.y = data.y;
-    Plotly.redraw('plotDiv');
-    &lt;/script&gt;
-&lt;/div&gt;
-</code></pre>
+<p><img alt="Sample Chart" src="../chart.png"/></p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
