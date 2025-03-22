@@ -127,21 +127,20 @@
 <div class="section" itemprop="articleBody">
 <h1 id="range-as-a-function-of-the-angle-of-projection">Range as a Function of the Angle of Projection</h1>
 <p><a href="../">Range vs. Angle of Projection</a></p>
-<p>div {
-  height: 400px;
-  width: 200px;
-  background-color: powderblue;
-}</p>
-<div w3-include-html="index.html"></div>
-<script>
-w3IncludeHTML();
-</script>
-<pre><code>&lt;script&gt;
-    // Constants
-    const g = 9.81; // acceleration due to gravity in m/s^2
-    const v0 = 20; // initial velocity in m/s
-
-    // Generate angles from 0 to 90 degrees
+<p>The range of a projectile is a fundamental concept in physics, particularly in the study of projectile motion. It is influenced by the angle of projection, initial velocity, and the acceleration due to gravity. Here’s a detailed analysis:
+Basic Physics of Projectile Motion</p>
+<p>Equations of Motion: When a projectile is launched with an initial velocity ( v_0 ) at an angle ( \theta ) from the horizontal, its motion can be described using the following equations:</p>
+<p>Horizontal Range: ( R = \frac{v_0^2 \sin(2\theta)}{g} )
+Maximum Height: ( H = \frac{v_0^2 \sin^2(\theta)}{2g} )
+Time of Flight: ( T = \frac{2v_0 \sin(\theta)}{g} )</p>
+<p>Here, ( g ) is the acceleration due to gravity (approximately ( 9.81 , \text{m/s}^2 ) on Earth).</p>
+<p>Range and Angle of Projection: The range ( R ) is maximized when the angle of projection ( \theta ) is ( 45^\circ ), assuming no air resistance. This is because the function ( \sin(2\theta) ) is maximized at ( 2\theta = 90^\circ ).</p>
+<p>Scripts/Codes
+    <script>
+        // Constants
+        const g = 9.81; // acceleration due to gravity in m/s^2
+        const v0 = 20; // initial velocity in m/s</p>
+<pre><code>    // Generate angles from 0 to 90 degrees
     const angles = [];
     for (let i = 0; i &lt;= 90; i++) {
         angles.push(i);
@@ -171,39 +170,42 @@ w3IncludeHTML();
     Plotly.newPlot('plot', [trace], layout);
 &lt;/script&gt;
 </code></pre>
-<p></p></div>
-The range of a projectile is a fundamental concept in physics, particularly in the study of projectile motion. It is influenced by the angle of projection, initial velocity, and the acceleration due to gravity. Here’s a detailed analysis:
-Basic Physics of Projectile Motion
-<p>Equations of Motion: When a projectile is launched with an initial velocity ( v_0 ) at an angle ( \theta ) from the horizontal, its motion can be described using the following equations:</p>
-<p>Horizontal Range: ( R = \frac{v_0^2 \sin(2\theta)}{g} )
-Maximum Height: ( H = \frac{v_0^2 \sin^2(\theta)}{2g} )
-Time of Flight: ( T = \frac{2v_0 \sin(\theta)}{g} )</p>
-<p>Here, ( g ) is the acceleration due to gravity (approximately ( 9.81 , \text{m/s}^2 ) on Earth).</p>
-<p>Range and Angle of Projection: The range ( R ) is maximized when the angle of projection ( \theta ) is ( 45^\circ ), assuming no air resistance. This is because the function ( \sin(2\theta) ) is maximized at ( 2\theta = 90^\circ ).</p>
-</div>
-</div><footer>
-<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
-<a class="btn btn-neutral float-left" href="../../.." title="Introduction"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-<a class="btn btn-neutral float-right" href="../2.RangeAnalysis/" title="Range Analysis">Next <span class="icon icon-circle-arrow-right"></span></a>
-</div>
-<hr/>
-<div role="contentinfo">
-<!-- Copyright etc -->
-</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../.." class="btn btn-neutral float-left" title="Introduction"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../2.RangeAnalysis/" class="btn btn-neutral float-right" title="Range Analysis">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
 
   Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-</div>
-</section></div>
+          
+        </div>
+      </div>
 
+    </section>
 
-<div aria-label="Versions" class="rst-versions" role="note">
-<span class="rst-current-version" data-toggle="rst-current-version">
-<span><a href="../../.." style="color: #fcfcfc">« Previous</a></span>
-<span><a href="../2.RangeAnalysis/" style="color: #fcfcfc">Next »</a></span>
-</span>
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../.." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../2.RangeAnalysis/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
 </div>
-<script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
 <script>var base_url = "../../..";</script>
 <script src="../../../js/theme_extra.js"></script>
 <script src="../../../js/theme.js"></script>
@@ -215,5 +217,5 @@ Time of Flight: ( T = \frac{2v_0 \sin(\theta)}{g} )</p>
             SphinxRtdTheme.Navigation.enable(true);
         });
     </script>
-</body>
+</p></div></div></div></div></section></div></body>
 </html>
