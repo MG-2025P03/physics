@@ -123,11 +123,11 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<p>'''text
+<p><block>
 function calculateRange(velocity, angle, gravity, height) {
     const angleRad = (Math.PI / 180) * angle;
     const vX = velocity * Math.cos(angleRad);
-    const vY = velocity * Math.sin(angleRad);</p>
+    const vY = velocity * Math.sin(angleRad);</block></p>
 <pre><code>// Time to reach the highest point
 const tUp = vY / gravity;
 const tDown = Math.sqrt((vY ** 2 + 2 * gravity * height) / gravity ** 2);
@@ -171,7 +171,7 @@ const layout = {
 Plotly.newPlot('plot', [trace], layout);
 </code></pre>
 <p>}
-'''</p>
+</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
