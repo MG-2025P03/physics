@@ -127,18 +127,22 @@
 <div class="section" itemprop="articleBody">
 <h1 id="theoretical-foundation">Theoretical Foundation</h1>
 <p>The graph presented in the projectile motion analysis illustrates the relationship between the angle of projection and the range of a projectile, given a fixed initial velocity. As the angle of projection varies from 0 to 90 degrees, the range first increases, reaching a maximum, and then decreases. </p>
+<p>Angles Array: The angles array [15, 30, 45, 60, 75, 90] defines the angles at which the trajectories will be plotted.
+Trajectory Plotting: For each angle, the plotTrajectory function calculates the path and renders it on the canvas.
+Color Differentiation: Each trajectory is drawn in a different color using the getRandomColor function to easily distinguish between different angles.</p>
 <div class="container">
-<label for="angle">Angle of Projection (degrees):</label><input id="angle" type="number" value="45"/>
-<label for="range">Range of Projectile (m):</label><input id="range" type="number" value="200"/>
-<label for="initialVelocity">Initial Velocity (m/s):</label><input id="initialVelocity" type="number" value="50"/>
-<button onclick="plotProjectileMotion()">Plot Graph</button>
-<canvas height="300" id="motionCanvas" width="500"></canvas>
+<label for="range">Range of Projectile (m):</label>
+<input id="range" type="number" value="200"/>
+<label for="initialVelocity">Initial Velocity (m/s):</label>
+<input id="initialVelocity" type="number" value="50"/>
+<button onclick="plotMultipleTrajectories()">Plot Graphs</button>
+<canvas height="400" id="motionCanvas" width="800"></canvas>
 </div>
 <script>
-    function plotProjectileMotion() {
-    const angle = parseFloat(document.getElementById("angle").value);
+    function plotMultipleTrajectories() {
     const range = parseFloat(document.getElementById("range").value);
     const initialVelocity = parseFloat(document.getElementById("initialVelocity").value);
+    const angles = [15, 30, 45, 60, 75, 90];
 
     const canvas = document.getElementById("motionCanvas");
     const ctx = canvas.getContext("2d");
@@ -147,28 +151,9 @@
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.beginPath();
 
-    // Calculate time of flight using the range and initial velocity
-    const g = 9.81; // acceleration due to gravity (m/s^2)
-    const timeOfFlight = range / (initialVelocity * Math.cos(angle * Math.PI / 180));
-
-    // Plot the trajectory
-    for (let t = 0; t <= timeOfFlight; t += 0.1) {
-        const x = initialVelocity * Math.cos(angle * Math.PI / 180) * t;
-        const y = (initialVelocity * Math.sin(angle * Math.PI / 180) * t) - (0.5 * g * t * t);
-
-        const canvasX = (x / range) * (canvas.width - 100) + 50;
-        const canvasY = canvas.height - ((y / (range / 2)) * (canvas.height - 100) + 50);
-
-        if (t === 0) {
-            ctx.moveTo(canvasX, canvasY);
-        } else {
-            ctx.lineTo(canvasX, canvasY);
-        }
-        delay(1000);
-    }
-
-    ctx.strokeStyle = "blue";
-    ctx.stroke();
+    angles.forEach((angle) => {
+        plotTrajectory(ctx, angle, range, initialVelocity);
+    });
 
     // Draw Axes
     ctx.beginPath();
@@ -181,6 +166,39 @@
     ctx.fillStyle = "black";
     ctx.fillText("Range (m)", canvas.width / 2, canvas.height - 10);
     ctx.fillText("Height (m)", 10, canvas.height / 2);
+}
+
+function plotTrajectory(ctx, angle, range, initialVelocity) {
+    const g = 9.81; // acceleration due to gravity (m/s^2)
+    const timeOfFlight = range / (initialVelocity * Math.cos(angle * Math.PI / 180));
+
+    ctx.beginPath();
+    for (let t = 0; t <= timeOfFlight; t += 0.1) {
+        const x = initialVelocity * Math.cos(angle * Math.PI / 180) * t;
+        const y = (initialVelocity * Math.sin(angle * Math.PI / 180) * t) - (0.5 * g * t * t);
+
+        const canvasX = (x / range) * (canvas.width - 100) + 50;
+        const canvasY = canvas.height - ((y / (range / 2)) * (canvas.height - 100) + 50);
+
+        if (t === 0) {
+            ctx.moveTo(canvasX, canvasY);
+        } else {
+            ctx.lineTo(canvasX, canvasY);
+        }
+    }
+
+    ctx.strokeStyle = getRandomColor();
+    ctx.stroke();
+}
+
+function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
 </script>
 <p>The governing equations of motion can be expressed as differential equations, such as <span class="arithmatex">\( m \frac{d^2x}{dt^2} = F(x, t) \)</span> for one dimension. Variations in initial conditions lead to different solutions representing various trajectories. The example of a simple harmonic oscillator is given by <span class="arithmatex">\( x(t) = A \cos(\omega t + \phi) \)</span>.</p>
 <p>Overview of Projectile Motion
