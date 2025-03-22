@@ -48,6 +48,18 @@
 <ul class="current">
 <li class="toctree-l2 current"><a class="reference internal current" href="#">Theoretical Foundation</a>
 <ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#step-1-introduction-to-equations-of-motion">Step 1: Introduction to Equations of Motion</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#step-2-fundamental-principles">Step 2: Fundamental Principles</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#step-3-differential-equations-of-motion">Step 3: Differential Equations of Motion</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#step-4-initial-conditions-and-family-of-solutions">Step 4: Initial Conditions and Family of Solutions</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#step-5-example-of-a-simple-harmonic-oscillator">Step 5: Example of a Simple Harmonic Oscillator</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#step-6-python-code-for-visualization">Step 6: Python Code for Visualization</a>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../2.RangeAnalysis/">Range Analysis</a>
@@ -126,19 +138,67 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="theoretical-foundation">Theoretical Foundation</h1>
-<p>Derive the equations of motion starting with Newton's second law: F = MA, accounting for gravitational force acting downward.</p>
-<p>Use kinematic equations to find expressions for horizontal (𝑥) and vertical (𝑦) positions as functions of time.</p>
-<p>Establish the general trajectory equation: y = x \tan(\theta) - frac{g x^2}{2(v \cos(\theta))^2}$$, 
-  where 𝑔 is gravitational acceleration, 
-      𝑣 is initial velocity, and 
-      𝜃 is the angle of projection.</p>
-<ol>
-<li>Fundamental Principles
-Projectile motion occurs under constant acceleration due to gravity (𝑔) and is governed by
-Newton's second law of motion: F = MA For a projectile, we can break its motion into two components:</li>
-</ol>
-<p>Horizontal motion: Constant velocity since there is no horizontal acceleration (neglecting air resistance).</p>
-<p>Vertical motion: Accelerated motion due to gravitational force acting downward.</p>
+<h3 id="step-1-introduction-to-equations-of-motion">Step 1: Introduction to Equations of Motion</h3>
+<ul>
+<li>The equations of motion describe the behavior of a physical system in terms of its motion as a function of time.</li>
+<li>Derived from Newton's Second Law, <span class="arithmatex">\( F = ma \)</span>, where <span class="arithmatex">\( F \)</span> is the force applied, <span class="arithmatex">\( m \)</span> is the mass, and <span class="arithmatex">\( a \)</span> is the acceleration.</li>
+</ul>
+<h3 id="step-2-fundamental-principles">Step 2: Fundamental Principles</h3>
+<ul>
+<li><strong>Newton's Laws of Motion</strong>: These laws form the basis for classical mechanics.</li>
+<li>First Law: An object remains at rest or in uniform motion unless acted upon by a force.</li>
+<li>Second Law: The acceleration of an object is directly proportional to the net force acting on it and inversely proportional to its mass.</li>
+<li>Third Law: For every action, there is an equal and opposite reaction.</li>
+</ul>
+<h3 id="step-3-differential-equations-of-motion">Step 3: Differential Equations of Motion</h3>
+<ul>
+<li>The general form of the equations of motion can be expressed as differential equations:</li>
+<li>For a single particle in one dimension: <span class="arithmatex">\( m \frac{d^2x}{dt^2} = F(x, t) \)</span></li>
+<li>In vector form for three dimensions: <span class="arithmatex">\( \mathbf{F} = m \mathbf{a} = m \frac{d^2\mathbf{r}}{dt^2} \)</span></li>
+<li>These equations can be solved given initial conditions to determine the trajectory of the particle.</li>
+</ul>
+<h3 id="step-4-initial-conditions-and-family-of-solutions">Step 4: Initial Conditions and Family of Solutions</h3>
+<ul>
+<li>Initial conditions specify the state of the system at <span class="arithmatex">\( t = 0 \)</span>, such as initial position <span class="arithmatex">\( x_0 \)</span> and initial velocity <span class="arithmatex">\( v_0 \)</span>.</li>
+<li>Variations in initial conditions lead to different solutions, representing different possible trajectories or motions of the system.</li>
+</ul>
+<h3 id="step-5-example-of-a-simple-harmonic-oscillator">Step 5: Example of a Simple Harmonic Oscillator</h3>
+<ul>
+<li>Consider a mass-spring system where the force is given by Hooke's Law: <span class="arithmatex">\( F = -kx \)</span>.</li>
+<li>The equation of motion becomes: <span class="arithmatex">\( m \frac{d^2x}{dt^2} = -kx \)</span>.</li>
+<li>Solving this differential equation gives: <span class="arithmatex">\( x(t) = A \cos(\omega t + \phi) \)</span>, where <span class="arithmatex">\( \omega = \sqrt{\frac{k}{m}} \)</span>.</li>
+</ul>
+<h3 id="step-6-python-code-for-visualization">Step 6: Python Code for Visualization</h3>
+<p>python
+import numpy as np
+import matplotlib.pyplot as plt</p>
+<p>def simple_harmonic_motion(A, omega, phi, t):
+    return A * np.cos(omega * t + phi)</p>
+<h1 id="parameters">Parameters</h1>
+<p>A = 1.0  # Amplitude
+omega = 2.0  # Angular frequency
+phi = 0.0  # Phase angle
+t = np.linspace(0, 10, 1000)  # Time array</p>
+<h1 id="calculate-motion">Calculate motion</h1>
+<p>x = simple_harmonic_motion(A, omega, phi, t)</p>
+<h1 id="plot">Plot</h1>
+<p>plt.figure(figsize=(10, 6))
+plt.plot(t, x, label=f'A={A}, ω={omega}, φ={phi}')
+plt.title('Simple Harmonic Motion')
+plt.xlabel('Time (s)')
+plt.ylabel('Displacement (m)')
+plt.legend()
+plt.grid(True)
+plt.show()
+```</p>
+<h3 id="step-7-conclusion">Step 7: Conclusion</h3>
+<ul>
+<li>The equations of motion are fundamental to understanding the dynamics of physical systems.</li>
+<li>By solving these equations with different initial conditions, we can explore a variety of possible motions.</li>
+<li>Visualization through programming can aid in comprehending these concepts.</li>
+</ul>
+<h3 id="final-answer">Final Answer</h3>
+<p>The governing equations of motion can be expressed as differential equations, such as <span class="arithmatex">\( m \frac{d^2x}{dt^2} = F(x, t) \)</span> for one dimension. Variations in initial conditions lead to different solutions representing various trajectories. The example of a simple harmonic oscillator is given by <span class="arithmatex">\( x(t) = A \cos(\omega t + \phi) \)</span>.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
