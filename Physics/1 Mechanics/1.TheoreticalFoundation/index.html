@@ -167,6 +167,50 @@ function calculateTrajectory(v0, angle) {
   }
 
   return { x, y };
+
+  // Plotly.js example for range and height vs angle
+var angles = [];
+var ranges = [];
+var heights = [];
+const v0 = 20; // initial velocity
+
+function calculateRangeAndHeight(v0, angle) {
+  const g = 9.81;
+  const v0x = v0 * Math.cos(angle * Math.PI / 180);
+  const v0y = v0 * Math.sin(angle * Math.PI / 180);
+  const time = (2 * v0y) / g;
+  const range = v0x * time;
+  const height = (v0y * v0y) / (2 * g);
+  return { range, height };
+}
+
+for (let angle = 0; angle <= 90; angle += 5) {
+  angles.push(angle);
+  let { range, height } = calculateRangeAndHeight(v0, angle);
+  ranges.push(range);
+  heights.push(height);
+}
+
+var trace2 = {
+  x: angles,
+  y: ranges,
+  mode: 'lines',
+  name: 'Range'
+};
+
+var trace3 = {
+  x: angles,
+  y: heights,
+  mode: 'lines',
+  name: 'Height'
+};
+
+Plotly.newPlot('anglePlotDiv', [trace2, trace3], {
+  title: 'Range and Height vs Angle',
+  xaxis: { title: 'Angle (degrees)' },
+  yaxis: { title: 'Distance (m)' }
+});
+
 }
 
 let data = calculateTrajectory(20, 30);
