@@ -1,4 +1,4 @@
-<block>
+```
 function calculateRange(velocity, angle, gravity, height) {
     const angleRad = (Math.PI / 180) * angle;
     const vX = velocity * Math.cos(angleRad);
@@ -47,4 +47,4 @@ function plotProjectile() {
 
     Plotly.newPlot('plot', [trace], layout);
 }
-</block>
+```
