@@ -6,13 +6,13 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../../../img/favicon.ico" rel="shortcut icon"/>
-<title>Range as a Function of the Angle of Projection - Physics and Mathematics</title>
+<title>A brief summary regarding Angle of Projection - Physics and Mathematics</title>
 <link href="../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <script>
         // Current page data
-        var mkdocs_page_name = "Range as a Function of the Angle of Projection";
+        var mkdocs_page_name = "A brief summary regarding Angle of Projection";
         var mkdocs_page_input_path = "Physics/1 Mechanics/1.AngleOfProjection.md";
         var mkdocs_page_url = null;
       </script>
@@ -46,7 +46,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal current">1 Mechanics</a>
 <ul class="current">
-<li class="toctree-l2 current"><a class="reference internal current" href="#">Range as a Function of the Angle of Projection</a>
+<li class="toctree-l2 current"><a class="reference internal current" href="#">A brief summary regarding Angle of Projection</a>
 <ul class="current">
 </ul>
 </li>
@@ -117,7 +117,7 @@
 <li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
 <li class="breadcrumb-item">Physics</li>
 <li class="breadcrumb-item">1 Mechanics</li>
-<li class="breadcrumb-item active">Range as a Function of the Angle of Projection</li>
+<li class="breadcrumb-item active">A brief summary regarding Angle of Projection</li>
 <li class="wy-breadcrumbs-aside">
 </li>
 </ul>
@@ -125,8 +125,7 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="range-as-a-function-of-the-angle-of-projection">Range as a Function of the Angle of Projection</h1>
-<p><a href="../">Range vs. Angle of Projection</a></p>
+<h1 id="a-brief-summary-regarding-angle-of-projection">A brief summary regarding Angle of Projection</h1>
 <p>The angle of projection in projectile motion is a critical parameter that affects the trajectory, range, time of flight, and maximum height of a projectile. The angle of projection, combined with initial velocity, gravitational acceleration, and launch height, determines the path followed by the projectile. Let's break down how these parameters interact and the different sets of solutions that can arise:
 1. Initial Velocity (v₀):</p>
 <p>Definition: The speed at which the projectile is launched.
@@ -141,77 +140,30 @@ Impact: Acts downward, affecting the time of flight and the shape of the traject
 </ol>
 <p>Definition: The height from which the projectile is launched relative to the landing point.
 Impact: Influences the time the projectile stays in the air and the range. A higher launch point allows for a longer flight time and potentially greater range, depending on the angle of projection.</p>
-<p>Scripts/Codes
-    <script>
-        // Constants
-        const g = 9.81; // acceleration due to gravity in m/s^2
-        const v0 = 20; // initial velocity in m/s</p>
-<pre><code>    // Generate angles from 0 to 90 degrees
-    const angles = [];
-    for (let i = 0; i &lt;= 90; i++) {
-        angles.push(i);
-    }
-
-    // Calculate ranges for each angle
-    const ranges = angles.map(angle =&gt; {
-        const radians = angle * Math.PI / 180;
-        return (Math.pow(v0, 2) * Math.sin(2 * radians)) / g;
-    });
-
-    // Plot data
-    const trace = {
-        x: angles,
-        y: ranges,
-        type: 'scatter',
-        mode: 'lines+markers',
-        name: 'Range'
-    };
-
-    const layout = {
-        title: 'Projectile Range vs. Angle of Projection',
-        xaxis: { title: 'Angle of Projection (degrees)' },
-        yaxis: { title: 'Range (meters)' }
-    };
-
-    Plotly.newPlot('plot', [trace], layout);
-&lt;/script&gt;
-</code></pre>
-              
-            </div>
-          </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../../.." class="btn btn-neutral float-left" title="Introduction"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../2.RangeAnalysis/" class="btn btn-neutral float-right" title="Range Analysis">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <!-- Copyright etc -->
-  </div>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../../.." title="Introduction"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../2.RangeAnalysis/" title="Range Analysis">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
 
   Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-          
-        </div>
-      </div>
-
-    </section>
-
-  </div>
-
-  <div class="rst-versions" role="note" aria-label="Versions">
-  <span class="rst-current-version" data-toggle="rst-current-version">
-    
-    
-      <span><a href="../../.." style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../2.RangeAnalysis/" style="color: #fcfcfc">Next &raquo;</a></span>
-    
-  </span>
 </div>
-    <script src="../../../js/jquery-3.6.0.min.js"></script>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../../.." style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../2.RangeAnalysis/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script src="../../../js/jquery-3.6.0.min.js"></script>
 <script>var base_url = "../../..";</script>
 <script src="../../../js/theme_extra.js"></script>
 <script src="../../../js/theme.js"></script>
@@ -223,5 +175,5 @@ Impact: Influences the time the projectile stays in the air and the range. A hig
             SphinxRtdTheme.Navigation.enable(true);
         });
     </script>
-</p></div></div></div></div></section></div></body>
+</body>
 </html>
