@@ -128,9 +128,13 @@
 <h1 id="theoretical-foundation">Theoretical Foundation</h1>
 <p>The graph presented in the projectile motion analysis illustrates the relationship between the angle of projection and the range of a projectile, given a fixed initial velocity. As the angle of projection varies from 0 to 90 degrees, the range first increases, reaching a maximum, and then decreases. </p>
 <div class="container">
+<label for="angle">Angle of Projection (degrees):</label>
+<input id="angle" type="number" value="45"/>
+<label for="range">Range of Projectile (m):</label>
+<input id="range" type="number" value="200"/>
 <label for="initialVelocity">Initial Velocity (m/s):</label>
-<input id="initialVelocity" type="number" value="30"/>
-<button onclick="plotProjectileMotion()">Plot Range</button>
+<input id="initialVelocity" type="number" value="50"/>
+<button onclick="plotProjectileMotion()">Plot Graph</button>
 <canvas height="300" id="motionCanvas" width="500"></canvas>
 </div>
 <script>
