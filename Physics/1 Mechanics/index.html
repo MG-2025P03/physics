@@ -2,12 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Chart</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Projectile Range vs Angle</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
-    <canvas id="myChart" width="400" height="200"></canvas>
-    <script src="script.js"></script>
+    <div id="plot"></div>
+
+    <script>
+        // Constants
+        const g = 9.81; // acceleration due to gravity in m/s^2
+        const v0 = 20; // initial velocity in m/s
+
+        // Generate angles from 0 to 90 degrees
+        const angles = [];
+        for (let i = 0; i <= 90; i++) {
+            angles.push(i);
+        }
+
+        // Calculate ranges for each angle
+        const ranges = angles.map(angle => {
+            const radians = angle * Math.PI / 180;
+            return (Math.pow(v0, 2) * Math.sin(2 * radians)) / g;
+        });
+
+        // Plot data
+        const trace = {
+            x: angles,
+            y: ranges,
+            type: 'scatter',
+            mode: 'lines+markers',
+            name: 'Range'
+        };
+
+        const layout = {
+            title: 'Projectile Range vs. Angle of Projection',
+            xaxis: { title: 'Angle of Projection (degrees)' },
+            yaxis: { title: 'Range (meters)' }
+        };
+
+        Plotly.newPlot('plot', [trace], layout);
+    </script>
 </body>
 </html>
