@@ -191,25 +191,6 @@ plt.legend()
 plt.grid(True)
 plt.show()
 ```</p>
-<p><py-script>
-  import numpy as np
-import matplotlib.pyplot as plt</py-script></p>
-<p>def simple_harmonic_motion(A, omega, phi, t):
-    return A * np.cos(omega * t + phi)</p>
-<p>A = 1.0  # Amplitude
-omega = 2.0  # Angular frequency
-phi = 0.0  # Phase angle
-t = np.linspace(0, 10, 1000)  # Time array</p>
-<p>x = simple_harmonic_motion(A, omega, phi, t)</p>
-<p>plt.figure(figsize=(10, 6))
-plt.plot(t, x, label=f'A={A}, ω={omega}, φ={phi}')
-plt.title('Simple Harmonic Motion')
-plt.xlabel('Time (s)')
-plt.ylabel('Displacement (m)')
-plt.legend()
-plt.grid(True)
-plt.show()
-</p>
 <h3 id="step-7-conclusion">Step 7: Conclusion</h3>
 <ul>
 <li>The equations of motion are fundamental to understanding the dynamics of physical systems.</li>
