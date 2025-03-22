@@ -126,123 +126,203 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="theoretical-foundation">Theoretical Foundation</h1>
-<script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<pre><code>&lt;style&gt;
+    .plot-container {
+        width: 600px;
+        height: 400px;
+        margin: 20px auto;
+        border: 1px solid #ccc;
+        padding: 10px;
+        box-shadow: 2px 2px 12px #aaa;
+    }
+&lt;/style&gt;
+</code></pre>
+<p>
+<div class="plot-container" id="plotDiv">
         // Using Plotly.js
-var trace1 = {
-  x: [0], // x-coordinates
-  y: [0], // y-coordinates
-  mode: 'lines',
-  type: 'scatter'
-};
+        <script>
+        var trace1 = {
+          x: [0], // x-coordinates
+          y: [0], // y-coordinates
+          mode: 'lines',
+          type: 'scatter'
+        };</p>
+<pre><code>    var layout = {
+      title: 'Projectile Motion',
+      xaxis: {
+        title: 'Distance (m)'
+      },
+      yaxis: {
+        title: 'Height (m)'
+      }
+    };
 
-var layout = {
-  title: 'Projectile Motion',
-  xaxis: {
-    title: 'Distance (m)'
-  },
-  yaxis: {
-    title: 'Height (m)'
-  }
-};
+    Plotly.newPlot('plotDiv', [trace1], layout);
 
-Plotly.newPlot('plotDiv', [trace1], layout);
+    // Assuming a function to calculate the trajectory
+    function calculateTrajectory(v0, angle) {
+      const g = 9.81;
+      let x = [];
+      let y = [];
+      let time = 0;
+      const dt = 0.1; // time step
+      const v0x = v0 * Math.cos(angle * Math.PI / 180);
+      const v0y = v0 * Math.sin(angle * Math.PI / 180);
 
-// Assuming a function to calculate the trajectory
-function calculateTrajectory(v0, angle) {
-  const g = 9.81;
-  let x = [];
-  let y = [];
-  let time = 0;
-  const dt = 0.1; // time step
-  const v0x = v0 * Math.cos(angle * Math.PI / 180);
-  const v0y = v0 * Math.sin(angle * Math.PI / 180);
+      while (true) {
+        let xPos = v0x * time;
+        let yPos = v0y * time - 0.5 * g * time * time;
+        if (yPos &lt; 0) break;
+        x.push(xPos);
+        y.push(yPos);
+        time += dt;
+      }
 
-  while (true) {
-    let xPos = v0x * time;
-    let yPos = v0y * time - 0.5 * g * time * time;
-    if (yPos < 0) break;
-    x.push(xPos);
-    y.push(yPos);
-    time += dt;
-  }
+      return { x, y };
+    }
 
-  return { x, y };
+    let data = calculateTrajectory(20, 30);
+    trace1.x = data.x;
+    trace1.y = data.y;
+    Plotly.redraw('plotDiv');
+    &lt;/script&gt;
+&lt;/div&gt;
 
-  // Plotly.js example for range and height vs angle
-var angles = [];
-var ranges = [];
-var heights = [];
-const v0 = 20; // initial velocity
+&lt;div id="anglePlotDiv" class="plot-container"&gt;
+    &lt;!-- Range and Height Graph will be rendered here --&gt;
+&lt;/div&gt;
 
-function calculateRangeAndHeight(v0, angle) {
-  const g = 9.81;
-  const v0x = v0 * Math.cos(angle * Math.PI / 180);
-  const v0y = v0 * Math.sin(angle * Math.PI / 180);
-  const time = (2 * v0y) / g;
-  const range = v0x * time;
-  const height = (v0y * v0y) / (2 * g);
-  return { range, height };
-}
+&lt;script&gt;
+    // Trajectory Graph
+    var trace1 = {
+        x: [0], // x-coordinates
+        y: [0], // y-coordinates
+        mode: 'lines',
+        type: 'scatter'
+    };
 
-for (let angle = 0; angle <= 90; angle += 5) {
-  angles.push(angle);
-  let { range, height } = calculateRangeAndHeight(v0, angle);
-  ranges.push(range);
-  heights.push(height);
-}
+    var layout1 = {
+        title: 'Projectile Motion',
+        xaxis: {
+            title: 'Distance (m)'
+        },
+        yaxis: {
+            title: 'Height (m)'
+        }
+    };
 
-var trace2 = {
-  x: angles,
-  y: ranges,
-  mode: 'lines',
-  name: 'Range'
-};
+    Plotly.newPlot('plotDiv', [trace1], layout1);
 
-var trace3 = {
-  x: angles,
-  y: heights,
-  mode: 'lines',
-  name: 'Height'
-};
+    function calculateTrajectory(v0, angle) {
+        const g = 9.81;
+        let x = [];
+        let y = [];
+        let time = 0;
+        const dt = 0.1; // time step
+        const v0x = v0 * Math.cos(angle * Math.PI / 180);
+        const v0y = v0 * Math.sin(angle * Math.PI / 180);
 
-Plotly.newPlot('anglePlotDiv', [trace2, trace3], {
-  title: 'Range and Height vs Angle',
-  xaxis: { title: 'Angle (degrees)' },
-  yaxis: { title: 'Distance (m)' }
-});
+        while (true) {
+            let xPos = v0x * time;
+            let yPos = v0y * time - 0.5 * g * time * time;
+            if (yPos &lt; 0) break;
+            x.push(xPos);
+            y.push(yPos);
+            time += dt;
+        }
 
-}
+        return { x, y };
+    }
 
-let data = calculateTrajectory(20, 30);
-trace1.x = data.x;
-trace1.y = data.y;
-Plotly.redraw('plotDiv');
+    let data = calculateTrajectory(20, 30);
+    trace1.x = data.x;
+    trace1.y = data.y;
+    Plotly.redraw('plotDiv');
 
-</script>
-</div>
-</div><footer>
-<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
-<a class="btn btn-neutral float-left" href="../../.." title="Introduction"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-<a class="btn btn-neutral float-right" href="../2.RangeAnalysis/" title="Range Analysis">Next <span class="icon icon-circle-arrow-right"></span></a>
-</div>
-<hr/>
-<div role="contentinfo">
-<!-- Copyright etc -->
-</div>
+    // Range and Height vs Angle Graph
+    var angles = [];
+    var ranges = [];
+    var heights = [];
+    const v0 = 20; // initial velocity
+
+    function calculateRangeAndHeight(v0, angle) {
+        const g = 9.81;
+        const v0x = v0 * Math.cos(angle * Math.PI / 180);
+        const v0y = v0 * Math.sin(angle * Math.PI / 180);
+        const time = (2 * v0y) / g;
+        const range = v0x * time;
+        const height = (v0y * v0y) / (2 * g);
+        return { range, height };
+    }
+
+    for (let angle = 0; angle &lt;= 90; angle += 5) {
+        angles.push(angle);
+        let { range, height } = calculateRangeAndHeight(v0, angle);
+        ranges.push(range);
+        heights.push(height);
+    }
+
+    var trace2 = {
+        x: angles,
+        y: ranges,
+        mode: 'lines',
+        name: 'Range'
+    };
+
+    var trace3 = {
+        x: angles,
+        y: heights,
+        mode: 'lines',
+        name: 'Height'
+    };
+
+    var layout2 = {
+        title: 'Range and Height vs Angle',
+        xaxis: { title: 'Angle (degrees)' },
+        yaxis: { title: 'Distance (m)' }
+    };
+
+    Plotly.newPlot('anglePlotDiv', [trace2, trace3], layout2);
+
+&lt;/script&gt;
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../.." class="btn btn-neutral float-left" title="Introduction"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../2.RangeAnalysis/" class="btn btn-neutral float-right" title="Range Analysis">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
 
   Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../.." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../2.RangeAnalysis/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
 </div>
-</div>
-</section>
-</div>
-<div aria-label="Versions" class="rst-versions" role="note">
-<span class="rst-current-version" data-toggle="rst-current-version">
-<span><a href="../../.." style="color: #fcfcfc">« Previous</a></span>
-<span><a href="../2.RangeAnalysis/" style="color: #fcfcfc">Next »</a></span>
-</span>
-</div>
-<script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
 <script>var base_url = "../../..";</script>
 <script src="../../../js/theme_extra.js"></script>
 <script src="../../../js/theme.js"></script>
@@ -254,5 +334,5 @@ Plotly.redraw('plotDiv');
             SphinxRtdTheme.Navigation.enable(true);
         });
     </script>
-</body>
+</div></p></div></div></div></div></section></div></body>
 </html>
