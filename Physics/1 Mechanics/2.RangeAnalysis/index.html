@@ -131,6 +131,46 @@
 <p>Identify the optimal angle (45∘) for maximum range in ideal conditions.</p>
 <p>Investigate how the range changes with variations in 𝑣 and 𝑔, observing proportional relationships.</p>
 <p>Discuss edge cases, such as when 𝜃 = 0∘ (horizontal projection) or 90∘ (vertical projection).</p>
+<p><button onclick="playHarmoniousOscillator()">Play Harmonious Oscillator</button>
+<button onclick="stopOscillator()">Stop</button>
+<br/>
+<script>
+      let audioContext;
+      let oscillator;
+      let gainNode;
+
+      function createOscillator(frequency) {
+          oscillator = audioContext.createOscillator();
+          oscillator.type = 'sine';
+          oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
+          return oscillator;
+      }
+
+      function playHarmoniousOscillator() {
+          audioContext = new (window.AudioContext || window.webkitAudioContext)();
+          gainNode = audioContext.createGain();
+          gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);  // Volume control
+
+          // Frequencies for a harmonious chord (C major chord for example)
+          const frequencies = [261.63, 329.63, 392.00]; // C4, E4, G4
+
+          frequencies.forEach(frequency => {
+              let osc = createOscillator(frequency);
+              osc.connect(gainNode);
+              gainNode.connect(audioContext.destination);
+              osc.start();
+          });
+      }
+
+      function stopOscillator() {
+          if (audioContext) {
+              audioContext.close().then(() => {
+                  audioContext = null;
+              });
+          }
+      }
+  </script>
+</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
