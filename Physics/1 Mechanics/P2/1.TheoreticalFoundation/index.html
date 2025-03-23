@@ -64,6 +64,14 @@
 <ul class="current">
 <li class="toctree-l3 current"><a class="reference internal current" href="#">Theoretical Foundations</a>
 <ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="#small-angle-approximation">Small-Angle Approximation</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#solution-of-the-homogeneous-equation">Solution of the Homogeneous Equation</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#particular-solution-for-the-forced-system">Particular Solution for the Forced System</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#resonance-conditions">Resonance Conditions</a>
+</li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../2.AnalysisOfDynamics/">Dynamics of Forced Pendulum</a>
@@ -156,12 +164,12 @@
 <p><span class="arithmatex">\((L)\)</span> is the length of the pendulum,</p>
 <p><span class="arithmatex">\((\omega)\)</span> is the driving frequency,</p>
 <p><span class="arithmatex">\((t)\)</span> is time.</p>
-<p>Small-Angle Approximation</p>
+<h3 id="small-angle-approximation">Small-Angle Approximation</h3>
 <p>For small-angle oscillations, we can use the approximation <span class="arithmatex">\((\sin(\theta) \approx \theta)\)</span>. This simplifies the equation to:</p>
 <p><span class="arithmatex">\([\frac{d^2\theta}{dt^2} + 2\beta \frac{d\theta}{dt} + \omega_0^2 \theta = \frac{F_0}{mL} \cos(\omega t)]\)</span></p>
 <p>This is a second-order linear non-homogeneous differential equation with constant coefficients.</p>
-<p>Solution of the Homogeneous Equation
-The homogeneous part of the equation is:</p>
+<h3 id="solution-of-the-homogeneous-equation">Solution of the Homogeneous Equation</h3>
+<p>The homogeneous part of the equation is:</p>
 <p><span class="arithmatex">\([\frac{d^2\theta}{dt^2} + 2\beta \frac{d\theta}{dt} + \omega_0^2 \theta = 0\)</span>]</p>
 <p>The characteristic equation is:</p>
 <p><span class="arithmatex">\([r^2 + 2\beta r + \omega_0^2 = 0]\)</span></p>
@@ -175,16 +183,16 @@ The homogeneous part of the equation is:</p>
 <p>The solution is:</p>
 <p><span class="arithmatex">\([\theta_h(t) = e^{-\beta t}(A \cos(\omega_d t) + B \sin(\omega_d t))]\)</span></p>
 <p>where <span class="arithmatex">\((\omega_d = \sqrt{\omega_0^2 - \beta^2})\)</span> is the damped natural frequency.</p>
-<p>Particular Solution for the Forced System
-To find a particular solution <span class="arithmatex">\((\theta_p(t))\)</span>, we assume a solution of the form:</p>
+<h3 id="particular-solution-for-the-forced-system">Particular Solution for the Forced System</h3>
+<p>To find a particular solution <span class="arithmatex">\((\theta_p(t))\)</span>, we assume a solution of the form:</p>
 <p><span class="arithmatex">\([\theta_p(t) = C \cos(\omega t) + D \sin(\omega t)]\)</span></p>
 <p>Substituting into the non-homogeneous equation and solving for constants <span class="arithmatex">\((C)\)</span> and <span class="arithmatex">\((D)\)</span>, we obtain:</p>
 <p><span class="arithmatex">\([C = \frac{F_0/mL}{\sqrt{(\omega_0^2 - \omega^2)^2 + (2\beta \omega)^2}}]\)</span></p>
 <p><span class="arithmatex">\([D = -\frac{2\beta \omega C}{\omega_0^2 - \omega^2}]\)</span></p>
 <p>The general solution is:</p>
 <p><span class="arithmatex">\([\theta(t) = \theta_h(t) + \theta_p(t)]\)</span></p>
-<p>Resonance Conditions
-Resonance occurs when the driving frequency <span class="arithmatex">\((\omega)\)</span> is close to the natural frequency of the system <span class="arithmatex">\((\omega_0)\)</span>. At resonance <span class="arithmatex">\(((\omega \approx \omega_0))\)</span>, the amplitude of oscillations becomes significantly large because the system absorbs energy most efficiently from the driving force.
+<h3 id="resonance-conditions">Resonance Conditions</h3>
+<p>Resonance occurs when the driving frequency <span class="arithmatex">\((\omega)\)</span> is close to the natural frequency of the system <span class="arithmatex">\((\omega_0)\)</span>. At resonance <span class="arithmatex">\(((\omega \approx \omega_0))\)</span>, the amplitude of oscillations becomes significantly large because the system absorbs energy most efficiently from the driving force.
 The implications for the system's energy are profound:</p>
 <p align="justify">
 Increased Amplitude: The displacement amplitude increases, which means more energy is stored in the system as potential and kinetic energy.
