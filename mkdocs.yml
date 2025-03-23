@@ -1,6 +1,7 @@
 site_name: MG on 2025
 theme:
   name: readthedocs
+  skin: dark
   highlightjs: true
   hljs_languages:
     - yaml
