@@ -156,70 +156,37 @@
 <p><span class="arithmatex">\((L)\)</span> is the length of the pendulum,</p>
 <p><span class="arithmatex">\((\omega)\)</span> is the driving frequency,</p>
 <p><span class="arithmatex">\((t)\)</span> is time.</p>
-<p align="justify">
-Small-Angle Approximation
-For small-angle oscillations, we can use the approximation (\sin(\theta) \approx \theta). This simplifies the equation to:<br/>
-[
-\frac{d^2\theta}{dt^2} + 2\beta \frac{d\theta}{dt} + \omega_0^2 \theta = \frac{F_0}{mL} \cos(\omega t)
-]
-</p>
-<p align="justify">
-This is a second-order linear non-homogeneous differential equation with constant coefficients.
+<p>Small-Angle Approximation
+For small-angle oscillations, we can use the approximation <span class="arithmatex">\((\sin(\theta) \approx \theta)\)</span>. This simplifies the equation to:</p>
+<p><span class="arithmatex">\([\frac{d^2\theta}{dt^2} + 2\beta \frac{d\theta}{dt} + \omega_0^2 \theta = \frac{F_0}{mL} \cos(\omega t)]\)</span></p>
+<p>This is a second-order linear non-homogeneous differential equation with constant coefficients.
 Solution of the Homogeneous Equation
-The homogeneous part of the equation is:<br/>
-[
-\frac{d^2\theta}{dt^2} + 2\beta \frac{d\theta}{dt} + \omega_0^2 \theta = 0
-]<br/>
-The characteristic equation is:<br/>
-[
-r^2 + 2\beta r + \omega_0^2 = 0
-]<br/>
-Solving for (r), we find:<br/>
-[
-r = -\beta \pm \sqrt{\beta^2 - \omega_0^2}
-]<br/>
-</p>
+The homogeneous part of the equation is:</p>
+<p><span class="arithmatex">\([\frac{d^2\theta}{dt^2} + 2\beta \frac{d\theta}{dt} + \omega_0^2 \theta = 0\)</span>]</p>
+<p>The characteristic equation is:</p>
+<p><span class="arithmatex">\([r^2 + 2\beta r + \omega_0^2 = 0]\)</span></p>
+<p>Solving for <span class="arithmatex">\((r)\)</span>, we find:</p>
+<p><span class="arithmatex">\([r = -\beta \pm \sqrt{\beta^2 - \omega_0^2}]\)</span></p>
+<p>Depending on the discriminant <span class="arithmatex">\((\beta^2 - \omega_0^2)\)</span>, the system can be:</p>
+<p>Overdamped <span class="arithmatex">\(((\beta^2 &gt; \omega_0^2))\)</span>: Two distinct real roots leading to an exponential decay without oscillations.</p>
+<p>Critically damped <span class="arithmatex">\(((\beta^2 = \omega_0^2))\)</span>: A repeated real root leading to the fastest decay without oscillations.</p>
+<p>Underdamped <span class="arithmatex">\(((\beta^2 &lt; \omega_0^2))\)</span>: Complex roots leading to oscillatory decay:</p>
+<p><span class="arithmatex">\([r = -\beta \pm i\sqrt{\omega_0^2 - \beta^2}]\)</span></p>
+<p>The solution is:</p>
+<p><span class="arithmatex">\([\theta_h(t) = e^{-\beta t}(A \cos(\omega_d t) + B \sin(\omega_d t))]\)</span></p>
+<p>where <span class="arithmatex">\((\omega_d = \sqrt{\omega_0^2 - \beta^2})\)</span> is the damped natural frequency.</p>
+<p>Particular Solution for the Forced System
+To find a particular solution <span class="arithmatex">\((\theta_p(t))\)</span>, we assume a solution of the form:</p>
+<p><span class="arithmatex">\([\theta_p(t) = C \cos(\omega t) + D \sin(\omega t)]\)</span></p>
+<p>Substituting into the non-homogeneous equation and solving for constants <span class="arithmatex">\((C)\)</span> and <span class="arithmatex">\((D)\)</span>, we obtain:</p>
+<p><span class="arithmatex">\([C = \frac{F_0/mL}{\sqrt{(\omega_0^2 - \omega^2)^2 + (2\beta \omega)^2}}]\)</span></p>
+<p><span class="arithmatex">\([D = -\frac{2\beta \omega C}{\omega_0^2 - \omega^2}]\)</span></p>
+<p>The general solution is:</p>
+<p><span class="arithmatex">\([\theta(t) = \theta_h(t) + \theta_p(t)]\)</span></p>
+<p>Resonance Conditions
+Resonance occurs when the driving frequency <span class="arithmatex">\((\omega)\)</span> is close to the natural frequency of the system <span class="arithmatex">\((\omega_0)\)</span>. At resonance <span class="arithmatex">\(((\omega \approx \omega_0))\)</span>, the amplitude of oscillations becomes significantly large because the system absorbs energy most efficiently from the driving force.
+The implications for the system's energy are profound:</p>
 <p align="justify">
-Depending on the discriminant (\beta^2 - \omega_0^2), the system can be:
-
-Overdamped ((\beta^2 &gt; \omega_0^2)): Two distinct real roots leading to an exponential decay without oscillations.
-
-Critically damped ((\beta^2 = \omega_0^2)): A repeated real root leading to the fastest decay without oscillations.
-
-Underdamped ((\beta^2 &lt; \omega_0^2)): Complex roots leading to oscillatory decay:<br/>
-[
-r = -\beta \pm i\sqrt{\omega_0^2 - \beta^2}
-]<br/>
-
-The solution is:<br/>
-[
-\theta_h(t) = e^{-\beta t}(A \cos(\omega_d t) + B \sin(\omega_d t))
-]<br/><br/>
-where (\omega_d = \sqrt{\omega_0^2 - \beta^2}) is the damped natural frequency.
-
-Particular Solution for the Forced System
-To find a particular solution (\theta_p(t)), we assume a solution of the form:<br/>
-[
-\theta_p(t) = C \cos(\omega t) + D \sin(\omega t)
-]<br/><br/>
-
-Substituting into the non-homogeneous equation and solving for constants (C) and (D), we obtain:<br/>
-[
-C = \frac{F_0/mL}{\sqrt{(\omega_0^2 - \omega^2)^2 + (2\beta \omega)^2}}
-]<br/><br/>
-
-[
-D = -\frac{2\beta \omega C}{\omega_0^2 - \omega^2}
-]<br/><br/>
-
-The general solution is:<br/>
-[
-\theta(t) = \theta_h(t) + \theta_p(t)
-]<br/><br/>
-Resonance Conditions
-Resonance occurs when the driving frequency (\omega) is close to the natural frequency of the system (\omega_0). At resonance ((\omega \approx \omega_0)), the amplitude of oscillations becomes significantly large because the system absorbs energy most efficiently from the driving force.
-The implications for the system's energy are profound:
-
 Increased Amplitude: The displacement amplitude increases, which means more energy is stored in the system as potential and kinetic energy.
 Energy Transfer: The system can absorb more energy from the driving force, leading to increased oscillations.
 Potential for Damage: In practical systems, excessive amplitudes due to resonance can lead to mechanical failure or structural damage.
