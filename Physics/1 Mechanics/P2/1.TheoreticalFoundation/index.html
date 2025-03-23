@@ -145,7 +145,8 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="theoretical-foundations">Theoretical Foundations</h1>
-<p>The motion of a forced damped pendulum can be described by the differential equation:<br/>
+<p align="justify">
+The motion of a forced damped pendulum can be described by the differential equation:<br/>
 [
 \frac{d^2\theta}{dt^2} + 2\beta \frac{d\theta}{dt} + \omega_0^2 \sin(\theta) = \frac{F_0}{mL} \cos(\omega t)
 ]<br/><br/>
@@ -158,8 +159,9 @@ where:
 (m) is the mass of the pendulum bob,<br/>
 (L) is the length of the pendulum,<br/>
 (\omega) is the driving frequency,<br/>
-(t) is time.</p>
-<p>Small-Angle Approximation
+(t) is time.
+
+Small-Angle Approximation
 For small-angle oscillations, we can use the approximation (\sin(\theta) \approx \theta). This simplifies the equation to:<br/>
 [
 \frac{d^2\theta}{dt^2} + 2\beta \frac{d\theta}{dt} + \omega_0^2 \theta = \frac{F_0}{mL} \cos(\omega t)
@@ -178,10 +180,13 @@ Solving for (r), we find:<br/>
 [
 r = -\beta \pm \sqrt{\beta^2 - \omega_0^2}
 ]<br/>
-Depending on the discriminant (\beta^2 - \omega_0^2), the system can be:</p>
-<p>Overdamped ((\beta^2 &gt; \omega_0^2)): Two distinct real roots leading to an exponential decay without oscillations.</p>
-<p>Critically damped ((\beta^2 = \omega_0^2)): A repeated real root leading to the fastest decay without oscillations.</p>
-<p>Underdamped ((\beta^2 &lt; \omega_0^2)): Complex roots leading to oscillatory decay:<br/>
+Depending on the discriminant (\beta^2 - \omega_0^2), the system can be:
+
+Overdamped ((\beta^2 &gt; \omega_0^2)): Two distinct real roots leading to an exponential decay without oscillations.
+
+Critically damped ((\beta^2 = \omega_0^2)): A repeated real root leading to the fastest decay without oscillations.
+
+Underdamped ((\beta^2 &lt; \omega_0^2)): Complex roots leading to oscillatory decay:<br/>
 [
 r = -\beta \pm i\sqrt{\omega_0^2 - \beta^2}
 ]<br/>
@@ -189,8 +194,10 @@ The solution is:<br/>
 [
 \theta_h(t) = e^{-\beta t}(A \cos(\omega_d t) + B \sin(\omega_d t))
 ]<br/>
-where (\omega_d = \sqrt{\omega_0^2 - \beta^2}) is the damped natural frequency.</p>
-<p>Particular Solution for the Forced System
+where (\omega_d = \sqrt{\omega_0^2 - \beta^2}) is the damped natural frequency.
+
+
+Particular Solution for the Forced System
 To find a particular solution (\theta_p(t)), we assume a solution of the form:<br/>
 [
 \theta_p(t) = C \cos(\omega t) + D \sin(\omega t)
@@ -208,10 +215,12 @@ The general solution is:<br/>
 ]<br/><br/>
 Resonance Conditions
 Resonance occurs when the driving frequency (\omega) is close to the natural frequency of the system (\omega_0). At resonance ((\omega \approx \omega_0)), the amplitude of oscillations becomes significantly large because the system absorbs energy most efficiently from the driving force.
-The implications for the system's energy are profound:</p>
-<p>Increased Amplitude: The displacement amplitude increases, which means more energy is stored in the system as potential and kinetic energy.
+The implications for the system's energy are profound:
+
+Increased Amplitude: The displacement amplitude increases, which means more energy is stored in the system as potential and kinetic energy.
 Energy Transfer: The system can absorb more energy from the driving force, leading to increased oscillations.
-Potential for Damage: In practical systems, excessive amplitudes due to resonance can lead to mechanical failure or structural damage.</p>
+Potential for Damage: In practical systems, excessive amplitudes due to resonance can lead to mechanical failure or structural damage.
+</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
