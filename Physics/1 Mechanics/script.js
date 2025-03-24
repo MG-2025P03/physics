@@ -1,5 +1,5 @@
 function calculateRange(velocity, angle, gravity, height) {
-    const angleRad = (Math.PI / 180) * angle * 2;
+    const angleRad = (Math.PI / 180) * angle;
     const vX = velocity * Math.cos(angleRad);
     const vY = velocity * Math.sin(angleRad);
 
