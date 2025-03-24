@@ -1,6 +1,6 @@
 function calculateNewRange(velocity, angle, gravity, height) {
     const angleRad = (Math.PI / 180) * angle;
-    const vX = velocity * Math.cos(angleRad);
+    const vX = velocity * Math.sin(angleRad);
     const vY = velocity * Math.sin(angleRad);
 
     // Time to reach the highest point
