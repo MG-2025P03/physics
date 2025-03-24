@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projectile Motion: Range vs Angle</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.4.4/math.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        #input-container {
+            margin-bottom: 20px;
+        }
+        .input-box {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Projectile Motion: Range vs Angle of Projection</h1>
+
+    <div id="input-container">
+        <label for="initial-velocity">Initial Velocity (m/s):</label>
+        <input type="number" id="initial-velocity" class="input-box" value="20" min="0"><br>
+        
+        <label for="initial-height">Initial Height (m):</label>
+        <input type="number" id="initial-height" class="input-box" value="0" min="0"><br>
+        
+        <label for="gravity">Gravity (m/s²):</label>
+        <input type="number" id="gravity" class="input-box" value="9.81" min="0"><br>
+        
+        <label for="angle-range">Angle Range (degrees):</label>
+        <input type="number" id="angle-range" class="input-box" value="90" min="0" max="90"><br>
+
+        <button id="update-btn">Update Graph</button>
+    </div>
+
+    <div id="graph"></div>
+
+    <script>
+        document.getElementById("update-btn").addEventListener("click", function() {
+            const v0 = parseFloat(document.getElementById("initial-velocity").value);
+            const h0 = parseFloat(document.getElementById("initial-height").value);
+            const g = parseFloat(document.getElementById("gravity").value);
+            const angleRange = parseFloat(document.getElementById("angle-range").value);
+
+            // Arrays to hold the range and angles
+            let angles = [];
+            let ranges = [];
+
+            // Calculate range for each angle from 0 to the input angle range
+            for (let theta = 0; theta <= angleRange; theta++) {
+                const thetaRad = math.unit(theta, 'deg').toNumber('rad'); // Convert angle to radians
+                const range = calculateRange(v0, h0, g, thetaRad);
+
+                angles.push(range);  // Storing range in the X-axis
+                ranges.push(theta);   // Storing angle in the Y-axis
+            }
+
+            // Plotting the graph using Plotly
+            const data = [
+                {
+                    x: angles,  // Range on X-axis
+                    y: ranges,  // Angle on Y-axis
+                    type: 'scatter',
+                    mode: 'lines+markers',
+                    name: 'Range vs Angle',
+                    marker: { color: 'blue' }
+                }
+            ];
+
+            const layout = {
+                title: 'Projectile Motion: Range vs Angle of Projection',
+                xaxis: { title: 'Range (m)' },
+                yaxis: { title: 'Angle of Projection (degrees)' },
+                showlegend: true
+            };
+
+            Plotly.newPlot('graph', data, layout);
+        });
+
+        // Function to calculate range
+        function calculateRange(v0, h0, g, theta) {
+            const term1 = v0 * Math.cos(theta);
+            const term2 = v0 * Math.sin(theta);
+            const sqrtTerm = Math.sqrt(Math.pow(v0 * Math.sin(theta), 2) + 2 * g * h0);
+            return (term1 / g) * (term2 + sqrtTerm);
+        }
+    </script>
+</body>
+</html>
