@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projectile Motion Range vs Angle</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #rangePlot {
+            width: 80%;
+            height: 400px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Projectile Motion: Range vs Angle of Projection</h1>
+    <label for="velocity">Initial Velocity (m/s): </label>
+    <input type="number" id="velocity" value="20" step="1"><br>
+    
+    <label for="height">Initial Height (m): </label>
+    <input type="number" id="height" value="0" step="1"><br>
+    
+    <label for="angle">Launch Angle (degrees): </label>
+    <input type="number" id="angle" value="45" step="1" min="0" max="90"><br>
+    
+    <button onclick="plot()">Plot Range</button>
+    
+    <div id="rangePlot"></div>
+
+    <script>
+        function calculateRange(v0, h, angle) {
+            const g = 9.81; // Acceleration due to gravity (m/s^2)
+            const rad = angle * (Math.PI / 180); // Convert degrees to radians
+            // Using the formula for projectile motion range with initial height: 
+            const range = (v0 * Math.cos(rad) / g) * (v0 * Math.sin(rad) + Math.sqrt((v0 * Math.sin(rad))**2 + 2 * g * h));
+            return range;
+        }
+
+        function plot() {
+            const v0 = parseFloat(document.getElementById('velocity').value);
+            const h = parseFloat(document.getElementById('height').value);
+            const angles = Array.from({length: 91}, (_, i) => i); // Angles from 0 to 90 degrees
+            const ranges = angles.map(angle => calculateRange(v0, h, angle));
+
+            const trace = {
+                x: angles,
+                y: ranges,
+                mode: 'lines',
+                type: 'scatter',
+                name: 'Range',
+                line: {color: 'blue'}
+            };
+
+            const data = [trace];
+
+            const layout = {
+                title: 'Range of Projectile vs. Angle of Projection',
+                xaxis: { title: 'Angle (degrees)' },
+                yaxis: { title: 'Range (meters)' },
+                showlegend: true
+            };
+
+            Plotly.newPlot('rangePlot', data, layout);
+        }
+    </script>
+</body>
+</html>
