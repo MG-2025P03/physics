@@ -23,7 +23,6 @@ function plotProjectile() {
     const angles = [];
 
     for (let a = 0; a <= 90; a += 1) {
-        //alert(a);
         angles.push(a);
         ranges.push(calculateRange(velocity, a, gravity, height));
     }
