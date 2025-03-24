@@ -9,7 +9,8 @@ function calculateRange(velocity, angle, gravity, height) {
     const totalTime = tUp + tDown;
 
     // Calculate range
-    return vX * totalTime;
+    //return vX * totalTime;
+    return (Math.pow(vX, 2) * Math.sin(2 * angleRad)) / gravity;
 }
 
 function plotProjectile() {
@@ -21,7 +22,7 @@ function plotProjectile() {
     const ranges = [];
     const angles = [];
 
-    for (let a = angle; a <= 90; a += 1) {
+    for (let a = 0; a <= 90; a += 1) {
         alert(a);
         angles.push(a);
         ranges.push(calculateRange(velocity, a, gravity, height));
