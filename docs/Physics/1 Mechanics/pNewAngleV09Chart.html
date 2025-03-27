@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projectile Motion: Range vs Angle</title>
+    <script src="https://cdn.jsdelivr.net/npm/@plotdb/plot@0.5.2/plot.min.js"></script>
+</head>
+<body>
+    <canvas id="plot" width="800" height="600"></canvas>
+
+    <script>
+        // Constants
+        const initialVelocity = 20;  // m/s
+        const gravity = 9.81;       // m/s^2
+
+        // Angles in degrees
+        const angles = [15, 30, 45, 60, 75];
+        
+        // Function to calculate range based on angle of projection
+        function calculateRange(angle) {
+            let radian = angle * Math.PI / 180;
+            return (Math.pow(initialVelocity, 2) * Math.sin(2 * radian) / gravity);
+        }
+
+        // Generate data series for each angle of projection
+        const datasets = angles.map((angle, index) => {
+            const range = calculateRange(angle);
+
+            return {
+                data: [
+                    { x: 0, y: 0 },  // Starting point
+                    { x: range, y: 0 }  // Horizontal range point
+                ],
+                style: {
+                    stroke: ['red', 'green', 'blue', 'orange', 'purple'][index % 5],
+                    'stroke-width': 2
+                },
+                label: `Angle: ${angle}°`
+            };
+        });
+
+        // Calculate maximum range and height for setting axis limits
+        const maxRange = Math.max(...angles.map(calculateRange));
+
+        // Plotting configuration
+        const plot = plotjs.plot({
+            target: "#plot",
+            style: {
+                height: 600,
+                width: 800
+            },
+            meta: {
+                xlabel: "Range (m)",
+                ylabel: "Height (m)",
+                xlim: [0, maxRange + 5],  // Set limits for range
+                ylim: [0, 5]  // Set limits for height, assuming trajectories start and end at ground level
+            },
+            data: datasets
+        });
+    </script>
+</body>
+</html>
