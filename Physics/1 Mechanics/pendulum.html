@@ -166,7 +166,7 @@
                 margin: { l: 40, r: 10, t: 0, b: 35 }
             };
 
-            const titleLayout = { title: { standoff: 15 } };
+            const titleLayout = { title: { standoff: 5 } };
 
             Plotly.newPlot('phaseDiagram', plotData.phase, { ...layout, ...titleLayout, xaxis: { title: 'Phase Diagram (θ vs ω)' } });
             Plotly.newPlot('energyPlot', plotData.energy, { ...layout, ...titleLayout, xaxis: { title: 'Energy vs Time' } });
