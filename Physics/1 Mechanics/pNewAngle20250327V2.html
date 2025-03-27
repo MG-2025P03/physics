@@ -28,13 +28,13 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
-            margin-top: 20px;
+            margin-top: 5px;
             margin-left: 20px;
         }
         .plot {
-            width: 500px;
-            height: 500px;
-            margin-bottom: 20px;
+            width: 450px;
+            height: 340px;
+            margin-bottom: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
@@ -48,14 +48,14 @@
         <div id="pendulumComparison" class="plot"></div>
     </div>
     <div id="controls">
-        <h4>Fixed Parameterst</h4>
+        <h4>Fixed Parameters</h4>
         <div id="set" class="parameter-set">
             <label>L: <input type="range" id="L1" min="0.5" max="5" value="1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="L1_value">1.00</span></label><br>
             <label>dt: <input type="range" id="dt1" min="0.01" max="0.1" value="0.02" step="0.01" onchange="updateParamsAndSimulate()"> <span id="dt1_value">0.02</span></label><br>
         </div>
         <h4>Parameters for Each Data Set</h4>
         <div id="set1" class="parameter-set">
-            <h3>Set 1</h3>
+            <h5>Set 1</h5>
             <label>g: <input type="range" id="g1" min="1" max="20" value="9.81" step="0.01" onchange="updateParamsAndSimulate()"> <span id="g1_value">9.81</span></label><br>
             <label>beta: <input type="range" id="beta1" min="0" max="2" value="0.1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="beta1_value">0.10</span></label><br>
             <label>F0: <input type="range" id="F01" min="0" max="1" value="0.2" step="0.01" onchange="updateParamsAndSimulate()"> <span id="F01_value">0.20</span></label><br>
@@ -63,21 +63,21 @@
             
         </div>
         <div id="set2" class="parameter-set">
-            <h3>Set 2</h3>
+            <h5>Set 2</h5>
             <label>g: <input type="range" id="g2" min="1" max="20" value="9.81" step="0.01" onchange="updateParamsAndSimulate()"> <span id="g2_value">9.81</span></label><br>
             <label>beta: <input type="range" id="beta2" min="0" max="2" value="0.1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="beta2_value">0.10</span></label><br>
             <label>F0: <input type="range" id="F02" min="0" max="1" value="0.2" step="0.01" onchange="updateParamsAndSimulate()"> <span id="F02_value">0.20</span></label><br>
             <label>omegaDrive: <input type="range" id="omegaDrive2" min="0" max="2" value="0.67" step="0.01" onchange="updateParamsAndSimulate()"> <span id="omegaDrive2_value">0.67</span></label><br>
         </div>
         <div id="set3" class="parameter-set">
-            <h3>Set 3</h3>
+            <h5>Set 3</h5>
             <label>g: <input type="range" id="g3" min="1" max="20" value="9.81" step="0.01" onchange="updateParamsAndSimulate()"> <span id="g3_value">9.81</span></label><br>
             <label>beta: <input type="range" id="beta3" min="0" max="2" value="0.1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="beta3_value">0.10</span></label><br>
             <label>F0: <input type="range" id="F03" min="0" max="1" value="0.2" step="0.01" onchange="updateParamsAndSimulate()"> <span id="F03_value">0.20</span></label><br>
             <label>omegaDrive: <input type="range" id="omegaDrive3" min="0" max="2" value="0.67" step="0.01" onchange="updateParamsAndSimulate()"> <span id="omegaDrive3_value">0.67</span></label><br>
         </div>
         <div id="set4" class="parameter-set">
-            <h3>Set 4</h3>
+            <h5>Set 4</h5>
             <label>g: <input type="range" id="g4" min="1" max="20" value="9.81" step="0.01" onchange="updateParamsAndSimulate()"> <span id="g4_value">9.81</span></label><br>
             <label>beta: <input type="range" id="beta4" min="0" max="2" value="0.1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="beta4_value">0.10</span></label><br>
             <label>F0: <input type="range" id="F04" min="0" max="1" value="0.2" step="0.01" onchange="updateParamsAndSimulate()"> <span id="F04_value">0.20</span></label><br>
@@ -86,7 +86,7 @@
     </div>
 
     <script>
-        const colors = ['orange', 'blue', 'green', 'red'];
+        const colors = ['orange', 'yellow', 'gray', 'lightred'];
 
         function updateParamsAndSimulate() {
             const datasets = [
@@ -151,9 +151,9 @@
 
         function plotCharts(plotData) {
             const layout = { 
-                width: 500, 
-                height: 470,
-                margin: { l: 0, r: 0, t: 0, b: 20 }
+                width: 450, 
+                height: 340,
+                margin: { l: 0, r: 0, t: 0, b: 10 }
             };
 
             Plotly.newPlot('phaseDiagram', plotData.phase, { ...layout, xaxis: { title: 'Phase Diagram (θ vs ω)' } });
