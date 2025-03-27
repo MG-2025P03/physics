@@ -2,87 +2,93 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Projectile Motion Graph</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projectile Motion</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        #container {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
 </head>
 <body>
+    <div id="container">
+        <div id="graph"></div>
+        <div>
+            <label for="angleSlider">Initial Angle:</label>
+            <input type="range" id="angleSlider" min="15" max="75" step="15" value="45" oninput="updateGraph()">
+        </div>
+        <div>
+            <label for="heightSlider">Initial Height:</label>
+            <input type="range" id="heightSlider" min="0" max="25" step="5" value="0" oninput="updateGraph()">
+        </div>
+        <div>
+            <label for="gravitySlider">Gravity:</label>
+            <select id="gravitySlider" onchange="updateGraph()">
+                <option value="9.81">Earth</option>
+                <option value="3.71">Mars</option>
+                <option value="8.87">Venus</option>
+                <option value="24.79">Jupiter</option>
+                <option value="10.44">Saturn</option>
+                <option value="8.69">Uranus</option>
+                <option value="11.15">Neptune</option>
+                <option value="1.62">Moon</option>
+                <option value="3.7">Mercury</option>
+            </select>
+        </div>
+    </div>
 
-<div id="plot" style="width: 100%; height: 100%;"></div>
+    <script>
+        function calculateRangeAndMaxHeight(angle, initialHeight, initialVelocity, gravity) {
+            const angleInRadians = angle * Math.PI / 180;
+            let x = [];
+            let y = [];
+            
+            for(let i = 0; i <= initialVelocity; i++){
+                const t = (i - initialVelocity * Math.sin(angleInRadians)) / (-gravity);
+                const range = initialVelocity * Math.cos(angleInRadians) * t;
+                const maxHeight = initialHeight + initialVelocity * Math.sin(angleInRadians) * t - 0.5 * gravity * t * t;
+                if (maxHeight < 0 || range < 0) break;
+                x.push(range);
+                y.push(maxHeight);
+            }
 
-<input type="range" min="0" max="4" value="0" id="heightSlider">
-<label for="heightSlider">Initial Height: <span id="heightValue">10</span> m</label>
-<br>
-
-<input type="range" min="0" max="4" value="2" id="angleSlider">
-<label for="angleSlider">Initial Angle: <span id="angleValue">45</span> degrees</label>
-<br>
-
-<input type="range" min="0" max="4" value="2" id="velocitySlider">
-<label for="velocitySlider">Initial Velocity: <span id="velocityValue">30</span> m/s</label>
-<br>
-
-<script>
-    const g_values = { Earth: 9.81, Moon: 1.62, Mars: 3.71 }; // Gravitational acceleration for different planets
-
-    const heightOptions = [0, 10, 20, 30, 40];
-    const angleOptions = [15, 30, 45, 60, 75];
-    const velocityOptions = [10, 20, 30, 40, 50];
-
-    const heightSlider = document.getElementById('heightSlider');
-    const angleSlider = document.getElementById('angleSlider');
-    const velocitySlider = document.getElementById('velocitySlider');
-
-    const heightLabel = document.getElementById('heightValue');
-    const angleLabel = document.getElementById('angleValue');
-    const velocityLabel = document.getElementById('velocityValue');
-
-    function calculateRange(velocity, angle, height, gravity) {
-        const radAngle = angle * (Math.PI / 180);
-        const sin2Angle = Math.sin(2 * radAngle);
-        const sinAngle = Math.sin(radAngle);
-        return (velocity * sin2Angle) / gravity + (velocity * sinAngle) / gravity * Math.sqrt((2 * gravity * height / velocity / sinAngle) + 1);
-    }
-
-    function updateChart() {
-        const initialHeight = heightOptions[heightSlider.value];
-        const initialAngle = angleOptions[angleSlider.value];
-        const initialVelocity = velocityOptions[velocitySlider.value];
-        
-        heightLabel.innerHTML = initialHeight;
-        angleLabel.innerHTML = initialAngle;
-        velocityLabel.innerHTML = initialVelocity;
-
-        const trace = {
-            x: [],
-            y: [],
-            type: 'scatter',
-            mode: 'lines',
-            name: 'Projectile Path'
-        };
-
-        const gravity = g_values['Earth']; // You can change to other planets here
-        
-        const range = calculateRange(initialVelocity, initialAngle, initialHeight, gravity);
-        for (let i = 0; i <= range; i+=0.1) {
-            let y = initialHeight + i * Math.tan(initialAngle * Math.PI / 180) - (gravity * i * i) / (2 * initialVelocity * initialVelocity * Math.cos(initialAngle * Math.PI / 180) * Math.cos(initialAngle * Math.PI / 180));
-            if (y < 0) break;  // Stop if projectile touches the ground
-            trace.x.push(i);
-            trace.y.push(y);
+            return {x, y};
         }
 
-        Plotly.newPlot('plot', [trace], {
-            title: `Projectile Motion`,
-            xaxis: { title: 'Range (m)', range: [0, 60] }, // Adjust the x-axis range accordingly
-            yaxis: { title: 'Height (m)', range: [0, 50] } // Adjust the y-axis range accordingly
-        });
-    }
+        function updateGraph() {
+            const angle = document.getElementById("angleSlider").value;
+            const initialHeight = document.getElementById("heightSlider").value;
+            const gravity = parseFloat(document.getElementById("gravitySlider").value);
 
-    heightSlider.addEventListener('input', updateChart);
-    angleSlider.addEventListener('input', updateChart);
-    velocitySlider.addEventListener('input', updateChart);
+            // Initial conditions
+            const initialVelocity = 50; // Change this value as needed
 
-    updateChart(); // Initial plot
-</script>
+            const data = calculateRangeAndMaxHeight(parseFloat(angle), parseFloat(initialHeight), initialVelocity, gravity);
 
+            const trace1 = {
+                x: data.x,
+                y: data.y,
+                mode: 'lines+markers',
+                name: 'Trajectory',
+            };
+
+            const layout = {
+                title: 'Projectile Motion',
+                xaxis: { title: 'Range'},
+                yaxis: { title: 'Height', range: [0, Math.max(...data.y, 10)] }, // Adjust max value as needed
+                height: 600,
+                width: 600
+            };
+
+            Plotly.newPlot('graph', [trace1], layout);
+        }
+
+        updateGraph();
+    </script>
 </body>
 </html>
