@@ -8,7 +8,6 @@
         body {
             display: flex;
             justify-content: flex-start;
-            /* Using flex direction row to arrange items horizontally */
             font-family: Arial, sans-serif;
             overflow-x: hidden;
         }
@@ -23,17 +22,19 @@
             border-radius: 5px;
         }
         #plots {
-            margin-right: 300px; /* Ensures space for the fixed controls */
+            margin-right: 300px; /* Ensures there's space for the fixed controls */
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
             margin-top: 0px;
-            margin-left: 5px;
+            margin-left: 20px;
         }
         .plot {
-            width: 450px;
-            height: 400px;
+            width: 500px;
+            height: 450px;
             margin-bottom: 0px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
         }
     </style>
 </head>
@@ -45,8 +46,7 @@
         <div id="pendulumComparison" class="plot"></div>
     </div>
     <div id="controls">
-        <h2>Interactive Forced Damped Pendulum</h2>
-        <h3>Parameters</h3>
+        <h2>Parameters</h2>
         <label>g (gravity): <input type="range" id="gravity" min="1" max="20" value="9.81" step="0.01" onchange="updateParamsAndSimulate()"> <span id="gravityValue">9.81</span></label><br>
         <label>L (length): <input type="range" id="length" min="0.5" max="5" value="1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="lengthValue">1.00</span></label><br>
         <label>beta (damping): <input type="range" id="damping" min="0" max="2" value="0.1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="dampingValue">0.10</span></label><br>
@@ -133,7 +133,11 @@
         }
 
         function plotGraphs(data) {
-            const layout = { width: 450, height: 400 };
+            const layout = { 
+                width: 500, 
+                height: 470, // Ajusted for space between chart and the title
+                margin: { t: 20 } // Adjust the top margin to free space for the bottom title
+            };
 
             const phaseTrace = {
                 x: data.thetaData,
@@ -141,7 +145,10 @@
                 mode: 'lines',
                 name: 'Phase Diagram'
             };
-            Plotly.newPlot('phaseDiagram', [phaseTrace], { ...layout, title: 'Phase Diagram (θ vs ω)' });
+            Plotly.newPlot('phaseDiagram', [phaseTrace], { 
+                ...layout, 
+                xaxis: { title: 'Phase Diagram (θ vs ω)' }
+            });
 
             const energyTimeTrace = {
                 x: data.timeData,
@@ -149,7 +156,10 @@
                 mode: 'lines',
                 name: 'Total Energy'
             };
-            Plotly.newPlot('energyPlot', [energyTimeTrace], { ...layout, title: 'Energy vs Time' });
+            Plotly.newPlot('energyPlot', [energyTimeTrace], { 
+                ...layout, 
+                xaxis: { title: 'Energy vs Time' }
+            });
 
             const harmonicTrace = {
                 x: data.timeData,
@@ -157,7 +167,10 @@
                 mode: 'lines',
                 name: 'Harmonic Motion'
             };
-            Plotly.newPlot('harmonicMotion', [harmonicTrace], { ...layout, title: 'Harmonic Motion in 1D' });
+            Plotly.newPlot('harmonicMotion', [harmonicTrace], { 
+                ...layout, 
+                xaxis: { title: 'Harmonic Motion in 1D' }
+            });
 
             const fullTrace = {
                 x: data.timeData,
@@ -171,7 +184,10 @@
                 mode: 'lines',
                 name: 'θ (approximation)'
             };
-            Plotly.newPlot('pendulumComparison', [fullTrace, approxTrace], { ...layout, title: 'Pendulum Motion' });
+            Plotly.newPlot('pendulumComparison', [fullTrace, approxTrace], { 
+                ...layout, 
+                xaxis: { title: 'Pendulum Motion' }
+            });
         }
 
         // Initial simulation and plot
