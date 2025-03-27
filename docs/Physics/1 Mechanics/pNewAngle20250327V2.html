@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Interactive Forced Damped Pendulum Simulation with Multiple Data Sets</title>
+    <script src="https://cdn.plot.ly/plotly-2.11.1.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: flex-start;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
+        #controls {
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            width: 250px;
+            background-color: #f7f7f7;
+            padding: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow-y: auto;
+            max-height: 95vh;
+        }
+        #plots {
+            margin-right: 300px; /* Ensures there's space for the fixed controls */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+        .plot {
+            width: 500px;
+            height: 500px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="plots">
+        <div id="phaseDiagram" class="plot"></div>
+        <div id="energyPlot" class="plot"></div>
+        <div id="harmonicMotion" class="plot"></div>
+        <div id="pendulumComparison" class="plot"></div>
+    </div>
+    <div id="controls">
+        <h2>Parameters for Each Data Set</h2>
+        <div id="set1" class="parameter-set">
+            <h3>Set 1</h3>
+            <label>g: <input type="range" id="g1" min="1" max="20" value="9.81" step="0.01" onchange="updateParamsAndSimulate()"> <span id="g1_value">9.81</span></label><br>
+            <label>L: <input type="range" id="L1" min="0.5" max="5" value="1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="L1_value">1.00</span></label><br>
+            <label>beta: <input type="range" id="beta1" min="0" max="2" value="0.1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="beta1_value">0.10</span></label><br>
+            <label>F0: <input type="range" id="F01" min="0" max="1" value="0.2" step="0.01" onchange="updateParamsAndSimulate()"> <span id="F01_value">0.20</span></label><br>
+            <label>omegaDrive: <input type="range" id="omegaDrive1" min="0" max="2" value="0.67" step="0.01" onchange="updateParamsAndSimulate()"> <span id="omegaDrive1_value">0.67</span></label><br>
+            <label>dt: <input type="range" id="dt1" min="0.01" max="0.1" value="0.02" step="0.01" onchange="updateParamsAndSimulate()"> <span id="dt1_value">0.02</span></label><br>
+        </div>
+        <div id="set2" class="parameter-set">
+            <h3>Set 2</h3>
+            <label>g: <input type="range" id="g2" min="1" max="20" value="9.81" step="0.01" onchange="updateParamsAndSimulate()"> <span id="g2_value">9.81</span></label><br>
+            <label>L: <input type="range" id="L2" min="0.5" max="5" value="1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="L2_value">1.00</span></label><br>
+            <label>beta: <input type="range" id="beta2" min="0" max="2" value="0.1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="beta2_value">0.10</span></label><br>
+            <label>F0: <input type="range" id="F02" min="0" max="1" value="0.2" step="0.01" onchange="updateParamsAndSimulate()"> <span id="F02_value">0.20</span></label><br>
+            <label>omegaDrive: <input type="range" id="omegaDrive2" min="0" max="2" value="0.67" step="0.01" onchange="updateParamsAndSimulate()"> <span id="omegaDrive2_value">0.67</span></label><br>
+            <label>dt: <input type="range" id="dt2" min="0.01" max="0.1" value="0.02" step="0.01" onchange="updateParamsAndSimulate()"> <span id="dt2_value">0.02</span></label><br>
+        </div>
+        <div id="set3" class="parameter-set">
+            <h3>Set 3</h3>
+            <label>g: <input type="range" id="g3" min="1" max="20" value="9.81" step="0.01" onchange="updateParamsAndSimulate()"> <span id="g3_value">9.81</span></label><br>
+            <label>L: <input type="range" id="L3" min="0.5" max="5" value="1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="L3_value">1.00</span></label><br>
+            <label>beta: <input type="range" id="beta3" min="0" max="2" value="0.1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="beta3_value">0.10</span></label><br>
+            <label>F0: <input type="range" id="F03" min="0" max="1" value="0.2" step="0.01" onchange="updateParamsAndSimulate()"> <span id="F03_value">0.20</span></label><br>
+            <label>omegaDrive: <input type="range" id="omegaDrive3" min="0" max="2" value="0.67" step="0.01" onchange="updateParamsAndSimulate()"> <span id="omegaDrive3_value">0.67</span></label><br>
+            <label>dt: <input type="range" id="dt3" min="0.01" max="0.1" value="0.02" step="0.01" onchange="updateParamsAndSimulate()"> <span id="dt3_value">0.02</span></label><br>
+        </div>
+        <div id="set4" class="parameter-set">
+            <h3>Set 4</h3>
+            <label>g: <input type="range" id="g4" min="1" max="20" value="9.81" step="0.01" onchange="updateParamsAndSimulate()"> <span id="g4_value">9.81</span></label><br>
+            <label>L: <input type="range" id="L4" min="0.5" max="5" value="1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="L4_value">1.00</span></label><br>
+            <label>beta: <input type="range" id="beta4" min="0" max="2" value="0.1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="beta4_value">0.10</span></label><br>
+            <label>F0: <input type="range" id="F04" min="0" max="1" value="0.2" step="0.01" onchange="updateParamsAndSimulate()"> <span id="F04_value">0.20</span></label><br>
+            <label>omegaDrive: <input type="range" id="omegaDrive4" min="0" max="2" value="0.67" step="0.01" onchange="updateParamsAndSimulate()"> <span id="omegaDrive4_value">0.67</span></label><br>
+            <label>dt: <input type="range" id="dt4" min="0.01" max="0.1" value="0.02" step="0.01" onchange="updateParamsAndSimulate()"> <span id="dt4_value">0.02</span></label><br>
+        </div>
+    </div>
+
+    <script>
+        const colors = ['orange', 'blue', 'green', 'red'];
+
+        function updateParamsAndSimulate() {
+            const datasets = [
+                { g: parseFloat(document.getElementById('g1').value), L: parseFloat(document.getElementById('L1').value), beta: parseFloat(document.getElementById('beta1').value), F0: parseFloat(document.getElementById('F01').value), omegaDrive: parseFloat(document.getElementById('omegaDrive1').value), dt: parseFloat(document.getElementById('dt1').value)},
+                { g: parseFloat(document.getElementById('g2').value), L: parseFloat(document.getElementById('L2').value), beta: parseFloat(document.getElementById('beta2').value), F0: parseFloat(document.getElementById('F02').value), omegaDrive: parseFloat(document.getElementById('omegaDrive2').value), dt: parseFloat(document.getElementById('dt2').value)},
+                { g: parseFloat(document.getElementById('g3').value), L: parseFloat(document.getElementById('L3').value), beta: parseFloat(document.getElementById('beta3').value), F0: parseFloat(document.getElementById('F03').value), omegaDrive: parseFloat(document.getElementById('omegaDrive3').value), dt: parseFloat(document.getElementById('dt3').value)},
+                { g: parseFloat(document.getElementById('g4').value), L: parseFloat(document.getElementById('L4').value), beta: parseFloat(document.getElementById('beta4').value), F0: parseFloat(document.getElementById('F04').value), omegaDrive: parseFloat(document.getElementById('omegaDrive4').value), dt: parseFloat(document.getElementById('dt4').value)}
+            ];
+
+            displayValues();
+
+            simulateAndPlot(datasets);
+        }
+
+        function displayValues() {
+            for (let i = 1; i <= 4; i++) {
+                document.getElementById(`g${i}_value`).textContent = parseFloat(document.getElementById(`g${i}`).value).toFixed(2);
+                document.getElementById(`L${i}_value`).textContent = parseFloat(document.getElementById(`L${i}`).value).toFixed(2);
+                document.getElementById(`beta${i}_value`).textContent = parseFloat(document.getElementById(`beta${i}`).value).toFixed(2);
+                document.getElementById(`F0${i}_value`).textContent = parseFloat(document.getElementById(`F0${i}`).value).toFixed(2);
+                document.getElementById(`omegaDrive${i}_value`).textContent = parseFloat(document.getElementById(`omegaDrive${i}`).value).toFixed(2);
+                document.getElementById(`dt${i}_value`).textContent = parseFloat(document.getElementById(`dt${i}`).value).toFixed(2);
+            }
+        }
+
+        function simulateAndPlot(datasets) {
+            const plotData = { phase: [], energy: [], harmonic: [], pendulum: [] };
+
+            datasets.forEach((params, index) => {
+                let theta = 0.5;
+                let omega = 0;
+                let timeData = [];
+                let thetaData = [];
+                let omegaData = [];
+                let energyData = [];
+
+                for (let t = 0; t < 60; t += params.dt) {
+                    timeData.push(t);
+                    const thetaDoubleDot = (-params.g / params.L) * Math.sin(theta) - params.beta * omega + params.F0 * Math.cos(params.omegaDrive * t);
+                    omega += thetaDoubleDot * params.dt;
+                    theta += omega * params.dt;
+
+                    thetaData.push(theta);
+                    omegaData.push(omega);
+
+                    const KE = 0.5 * params.L * params.L * omega * omega;
+                    const PE = params.g * params.L * (1 - Math.cos(theta));
+                    energyData.push({ time: t, kinetic: KE, potential: PE });
+                }
+
+                plotData.phase.push({ x: thetaData, y: omegaData, mode: 'lines', line: { color: colors[index] }, name: `Set ${index + 1}` });
+                plotData.energy.push({ x: timeData, y: energyData.map(e => e.kinetic + e.potential), mode: 'lines', line: { color: colors[index] }, name: `Set ${index + 1}` });
+                plotData.harmonic.push({ x: timeData, y: thetaData, mode: 'lines', line: { color: colors[index] }, name: `Set ${index + 1}` });
+                plotData.pendulum.push(
+                    { x: timeData, y: thetaData.map(theta => Math.sin(theta)), mode: 'lines', line: { color: colors[index] }, name: `sin(θ) Set ${index + 1}` },
+                    { x: timeData, y: thetaData.map(theta => theta), mode: 'lines', line: { dash: 'dash', color: colors[index] }, name: `θ approx Set ${index + 1}` }
+                );
+            });
+
+            plotCharts(plotData);
+        }
+
+        function plotCharts(plotData) {
+            const layout = { 
+                width: 500, 
+                height: 470,
+                margin: { l: 0, r: 0, t: 0, b: 20 }
+            };
+
+            Plotly.newPlot('phaseDiagram', plotData.phase, { ...layout, xaxis: { title: 'Phase Diagram (θ vs ω)' } });
+            Plotly.newPlot('energyPlot', plotData.energy, { ...layout, xaxis: { title: 'Energy vs Time' } });
+            Plotly.newPlot('harmonicMotion', plotData.harmonic, { ...layout, xaxis: { title: 'Harmonic Motion in 1D' } });
+            Plotly.newPlot('pendulumComparison', plotData.pendulum, { ...layout, xaxis: { title: 'Pendulum Motion' } });
+        }
+
+        // Initial simulation and plot
+        updateParamsAndSimulate();
+    </script>
+</body>
+</html>
