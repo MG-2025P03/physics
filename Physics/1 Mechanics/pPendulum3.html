@@ -21,13 +21,14 @@
 <body>
     <h1>Interactive Forced Damped Pendulum Simulation</h1>
     <div id="controls">
-        <label>g (gravity): <input type="range" id="gravity" min="1" max="20" value="9.81" step="0.01" onchange="updateParamsAndSimulate()"> <span id="gravityValue">9.81</span></label><br>
-        <label>L (length): <input type="range" id="length" min="0.5" max="5" value="1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="lengthValue">1.00</span></label><br>
-        <label>beta (damping): <input type="range" id="damping" min="0" max="2" value="0.1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="dampingValue">0.10</span></label><br>
-        <label>F0 (driving force): <input type="range" id="drivingForce" min="0" max="1" value="0.2" step="0.01" onchange="updateParamsAndSimulate()"> <span id="drivingForceValue">0.20</span></label><br>
-        <label>omegaDrive (frequency): <input type="range" id="drivingFrequency" min="0" max="2" value="0.67" step="0.01" onchange="updateParamsAndSimulate()"> <span id="drivingFrequencyValue">0.67</span></label><br>
-        <label>dt (time step): <input type="range" id="timeStep" min="0.01" max="0.1" value="0.02" step="0.01" onchange="updateParamsAndSimulate()"> <span id="timeStepValue">0.02</span></label><br>
+        <label>g (gravity): <input type="range" id="gravity" min="1" max="20" value="9.81" step="0.01" onchange="updateParamsAndSimulate()"> <span id="gravityValue">9.81</span></label>
+        <label>L (length): <input type="range" id="length" min="0.5" max="5" value="1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="lengthValue">1.00</span></label>
+        <label>dt (time step): <input type="range" id="timeStep" min="0.01" max="0.1" value="0.02" step="0.01" onchange="updateParamsAndSimulate()"> <span id="timeStepValue">0.02</span></label>
         <label>Simulation Time: <input type="range" id="simulationTime" min="10" max="120" value="60" step="1" onchange="updateParamsAndSimulate()"> <span id="simulationTimeValue">60</span></label><br>
+        <label>beta (damping): <input type="range" id="damping" min="0" max="2" value="0.1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="dampingValue">0.10</span></label>
+        <label>F0 (driving force): <input type="range" id="drivingForce" min="0" max="1" value="0.2" step="0.01" onchange="updateParamsAndSimulate()"> <span id="drivingForceValue">0.20</span></label>
+        <label>omegaDrive (frequency): <input type="range" id="drivingFrequency" min="0" max="2" value="0.67" step="0.01" onchange="updateParamsAndSimulate()"> <span id="drivingFrequencyValue">0.67</span></label><br>
+        
     </div>
 
     <div id="plots">
@@ -114,13 +115,15 @@
         }
 
         function plotGraphs(data) {
+            const layout = { height: 300 };
+
             const phaseTrace = {
                 x: data.thetaData,
                 y: data.omegaData,
                 mode: 'lines',
                 name: 'Phase Diagram'
             };
-            Plotly.newPlot('phaseDiagram', [phaseTrace], { title: 'Phase Diagram (θ vs ω)' });
+            Plotly.newPlot('phaseDiagram', [phaseTrace], { ...layout, title: 'Phase Diagram (θ vs ω)' });
 
             const energyTimeTrace = {
                 x: data.timeData,
@@ -128,7 +131,7 @@
                 mode: 'lines',
                 name: 'Total Energy'
             };
-            Plotly.newPlot('energyPlot', [energyTimeTrace], { title: 'Energy vs Time' });
+            Plotly.newPlot('energyPlot', [energyTimeTrace], { ...layout, title: 'Energy vs Time' });
 
             const harmonicTrace = {
                 x: data.timeData,
@@ -136,7 +139,7 @@
                 mode: 'lines',
                 name: 'Harmonic Motion'
             };
-            Plotly.newPlot('harmonicMotion', [harmonicTrace], { title: 'Harmonic Motion in 1D' });
+            Plotly.newPlot('harmonicMotion', [harmonicTrace], { ...layout, title: 'Harmonic Motion in 1D' });
 
             const fullTrace = {
                 x: data.timeData,
@@ -150,7 +153,7 @@
                 mode: 'lines',
                 name: 'θ (approximation)'
             };
-            Plotly.newPlot('pendulumComparison', [fullTrace, approxTrace], { title: 'Pendulum Motion' });
+            Plotly.newPlot('pendulumComparison', [fullTrace, approxTrace], { ...layout, title: 'Pendulum Motion' });
         }
 
         // Initial simulation and plot
