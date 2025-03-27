@@ -6,7 +6,7 @@
     <script src="https://cdn.plot.ly/plotly-2.11.1.min.js"></script>
     <style>
         #controls {
-            margin-bottom: 20px;
+            margin-bottom: 5px;
         }
         #plots {
             display: flex;
@@ -115,7 +115,7 @@
         }
 
         function plotGraphs(data) {
-            const layout = { height: 300 };
+            const layout = { height: 300, width: 400 };
 
             const phaseTrace = {
                 x: data.thetaData,
