@@ -6,59 +6,64 @@
     <title>Projectile Motion</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <style>
-        #container {
+        #controls {
             display: flex;
             justify-content: center;
-            margin-top: 50px;
+            margin-bottom: 15px;
             align-items: center;
-            flex-direction: column;
+        }
+
+        .control-item {
+            margin: 0 10px;
+            text-align: center;
+        }
+
+        #graph {
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <div id="container">
-        <div id="graph"></div>
-        <div>
-            <label for="angleSlider">Initial Angle:</label>
+    <div id="controls">
+        <div class="control-item">
+            <label for="angleSlider">Initial Angle:</label><br>
             <input type="range" id="angleSlider" min="15" max="75" step="15" value="45" oninput="updateGraph()">
+            <span id="angleValue">45°</span>
         </div>
-        <div>
-            <label for="heightSlider">Initial Height:</label>
+        <div class="control-item">
+            <label for="heightSlider">Initial Height:</label><br>
             <input type="range" id="heightSlider" min="0" max="25" step="5" value="0" oninput="updateGraph()">
+            <span id="heightValue">0 m</span>
         </div>
-        <div>
-            <label for="gravitySlider">Gravity:</label>
+        <div class="control-item">
+            <label for="gravitySlider">Gravity:</label><br>
             <select id="gravitySlider" onchange="updateGraph()">
-                <option value="9.81">Earth</option>
-                <option value="3.71">Mars</option>
-                <option value="8.87">Venus</option>
-                <option value="24.79">Jupiter</option>
-                <option value="10.44">Saturn</option>
-                <option value="8.69">Uranus</option>
-                <option value="11.15">Neptune</option>
-                <option value="1.62">Moon</option>
-                <option value="3.7">Mercury</option>
+                <option value="9.81">Earth (9.81 m/s²)</option>
+                <option value="3.71">Mars (3.71 m/s²)</option>
+                <option value="8.87">Venus (8.87 m/s²)</option>
+                <option value="24.79">Jupiter (24.79 m/s²)</option>
+                <option value="10.44">Saturn (10.44 m/s²)</option>
+                <option value="8.69">Uranus (8.69 m/s²)</option>
+                <option value="11.15">Neptune (11.15 m/s²)</option>
+                <option value="1.62">Moon (1.62 m/s²)</option>
+                <option value="3.7">Mercury (3.7 m/s²)</option>
             </select>
         </div>
     </div>
 
+    <div id="graph"></div>
+
     <script>
         function calculateRangeAndMaxHeight(angle, initialHeight, initialVelocity, gravity) {
-            // Convert angle to radians
             const angleInRadians = angle * Math.PI / 180;
-            
-            // Calculate total time of flight
             const timeOfFlight = (initialVelocity * Math.sin(angleInRadians) + Math.sqrt(Math.pow(initialVelocity * Math.sin(angleInRadians), 2) + 2 * gravity * initialHeight)) / gravity;
 
-            // Calculate trajectory points
             let x = [];
             let y = [];
             for (let t = 0; t <= timeOfFlight; t += 0.1) {
                 const range = initialVelocity * Math.cos(angleInRadians) * t;
                 const height = initialHeight + initialVelocity * Math.sin(angleInRadians) * t - 0.5 * gravity * t * t;
-                
-                if (height < 0) break;  // Stop when it hits the ground
-
+                if (height < 0) break;
                 x.push(range);
                 y.push(height);
             }
@@ -71,8 +76,10 @@
             const initialHeight = document.getElementById("heightSlider").value;
             const gravity = parseFloat(document.getElementById("gravitySlider").value);
 
-            // Initial conditions
-            const initialVelocity = 50; // Change this value as needed
+            document.getElementById("angleValue").innerText = angle + '°';
+            document.getElementById("heightValue").innerText = initialHeight + ' m';
+
+            const initialVelocity = 50; // This can be adjusted
 
             const data = calculateRangeAndMaxHeight(parseFloat(angle), parseFloat(initialHeight), initialVelocity, gravity);
 
@@ -84,11 +91,11 @@
             };
 
             const layout = {
-                title: 'Projectile Motion',
-                xaxis: { title: 'Range' },
-                yaxis: { title: 'Height', range: [0, Math.max(...data.y) + 5] }, // Adjusted range
+                title: `Projectile Motion<br>Initial Velocity = ${initialVelocity} m/s, Angle = ${angle}°, Initial Height = ${initialHeight} m, Gravity = ${gravity} m/s²`,
+                xaxis: { title: 'Range (m)' },
+                yaxis: { title: 'Height (m)', range: [0, Math.max(...data.y) + 5] },
                 height: 600,
-                width: 600
+                width: 800
             };
 
             Plotly.newPlot('graph', [trace1], layout);
