@@ -19,7 +19,7 @@
             background-color: #f7f7f7;
             padding: 15px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
+            border-radius: 3px;
         }
         #plots {
             margin-right: 300px; /* Ensures there's space for the fixed controls */
@@ -27,14 +27,14 @@
             flex-wrap: wrap;
             justify-content: space-between;
             margin-top: 0px;
-            margin-left: 20px;
+            margin-left: 10px;
         }
         .plot {
             width: 500px;
             height: 430px;
-            margin-bottom: 0px;
+            margin-bottom: 3px;
             border: 1px solid #ccc;
-            border-radius: 3px;
+            border-radius: 5px;
         }
     </style>
 </head>
@@ -135,8 +135,9 @@
         function plotGraphs(data) {
             const layout = { 
                 width: 500, 
-                height: 430, // Ajusted for space between chart and the title
-                margin: { t: 20 } // Adjust the top margin to free space for the bottom title
+                height: 430,
+                margin: { l: 0, r: 0, t: 0, b: 20 }, // Set all margins to 0 except for bottom where title is placed
+                xaxis: { title: { text: '', standoff: 0 } } // Adjust title to have no extra standoff 
             };
 
             const phaseTrace = {
@@ -147,7 +148,7 @@
             };
             Plotly.newPlot('phaseDiagram', [phaseTrace], { 
                 ...layout, 
-                xaxis: { title: 'Phase Diagram (θ vs ω)' }
+                xaxis: { ...layout.xaxis, title: { text: 'Phase Diagram (θ vs ω)' } }
             });
 
             const energyTimeTrace = {
@@ -158,7 +159,7 @@
             };
             Plotly.newPlot('energyPlot', [energyTimeTrace], { 
                 ...layout, 
-                xaxis: { title: 'Energy vs Time' }
+                xaxis: { ...layout.xaxis, title: { text: 'Energy vs Time' } }
             });
 
             const harmonicTrace = {
@@ -169,7 +170,7 @@
             };
             Plotly.newPlot('harmonicMotion', [harmonicTrace], { 
                 ...layout, 
-                xaxis: { title: 'Harmonic Motion in 1D' }
+                xaxis: { ...layout.xaxis, title: { text: 'Harmonic Motion in 1D' } }
             });
 
             const fullTrace = {
@@ -186,7 +187,7 @@
             };
             Plotly.newPlot('pendulumComparison', [fullTrace, approxTrace], { 
                 ...layout, 
-                xaxis: { title: 'Pendulum Motion' }
+                xaxis: { ...layout.xaxis, title: { text: 'Pendulum Motion' } }
             });
         }
 
