@@ -106,20 +106,7 @@
                 { g: parseFloat(document.getElementById('g1').value), L: parseFloat(document.getElementById('L1').value), beta: parseFloat(document.getElementById('beta1').value), F0: parseFloat(document.getElementById('F01').value), omegaDrive: parseFloat(document.getElementById('omegaDrive1').value), dt: parseFloat(document.getElementById('dt1').value), totalTime: parseFloat(document.getElementById('totalTime1').value) },
                 { g: parseFloat(document.getElementById('g2').value), L: parseFloat(document.getElementById('L1').value), beta: parseFloat(document.getElementById('beta2').value), F0: parseFloat(document.getElementById('F02').value), omegaDrive: parseFloat(document.getElementById('omegaDrive2').value), dt: parseFloat(document.getElementById('dt1').value), totalTime: parseFloat(document.getElementById('totalTime1').value) },
                 { g: parseFloat(document.getElementById('g3').value), L: parseFloat(document.getElementById('L1').value), beta: parseFloat(document.getElementById('beta3').value), F0: parseFloat(document.getElementById('F03').value), omegaDrive: parseFloat(document.getElementById('omegaDrive3').value), dt: parseFloat(document.getElementById('dt1').value), totalTime: parseFloat(document.getElementById('totalTime1').value) },
-                { g: parseFloat(document.getElementById('g4').value), L: parseFloat(document.getElementById('L1').value), beta: parseFloat(document.getElementById('beta4').value), F0: parseFloat(document.getElementById('F04').value), omegaDrive: parseFloat(document.getElementById('omegaDrive4').value), dt: parseFloat(document.getElementById('dt1').value), totalTime: parseFloat(document.getElementById('totalTime1').value) }
-            ];
-
-            displayValues();
-
-            simulateAndPlot(datasets);
-        }
-
-        function updateParamsAndSimulate2() {
-            const datasets = [
-                //{ g: parseFloat(document.getElementById('g1').value), L: parseFloat(document.getElementById('L1').value), beta: parseFloat(document.getElementById('beta1').value), F0: parseFloat(document.getElementById('F01').value), omegaDrive: parseFloat(document.getElementById('omegaDrive1').value), dt: parseFloat(document.getElementById('dt1').value), totalTime: parseFloat(document.getElementById('totalTime1').value) },
-                //{ g: parseFloat(document.getElementById('g2').value), L: parseFloat(document.getElementById('L1').value), beta: parseFloat(document.getElementById('beta2').value), F0: parseFloat(document.getElementById('F02').value), omegaDrive: parseFloat(document.getElementById('omegaDrive2').value), dt: parseFloat(document.getElementById('dt1').value), totalTime: parseFloat(document.getElementById('totalTime1').value) },
-                //{ g: parseFloat(document.getElementById('g3').value), L: parseFloat(document.getElementById('L1').value), beta: parseFloat(document.getElementById('beta3').value), F0: parseFloat(document.getElementById('F03').value), omegaDrive: parseFloat(document.getElementById('omegaDrive3').value), dt: parseFloat(document.getElementById('dt1').value), totalTime: parseFloat(document.getElementById('totalTime1').value) },
-                { g: parseFloat(document.getElementById('g4').value), L: parseFloat(document.getElementById('L1').value), beta: parseFloat(document.getElementById('beta4').value), F0: parseFloat(document.getElementById('F04').value), omegaDrive: parseFloat(document.getElementById('omegaDrive4').value), dt: parseFloat(document.getElementById('dt1').value), totalTime: parseFloat(document.getElementById('totalTime1').value) }
+               // { g: parseFloat(document.getElementById('g4').value), L: parseFloat(document.getElementById('L1').value), beta: parseFloat(document.getElementById('beta4').value), F0: parseFloat(document.getElementById('F04').value), omegaDrive: parseFloat(document.getElementById('omegaDrive4').value), dt: parseFloat(document.getElementById('dt1').value), totalTime: parseFloat(document.getElementById('totalTime1').value) }
             ];
 
             displayValues();
@@ -171,39 +158,7 @@
                 //plotData.amplitude.push({ x: timeData, y: thetaData, mode: 'lines', line: { color: colors[index] }, name: `Set ${index + 1}` });
             });
 
-            function simulateAndPlot2(datasets) {
-            const plotData = { phase: [], energy: [], harmonic: [], amplitude: [] };
-
-            datasets.forEach((params, index) => {
-                let theta = 0.5;
-                let omega = 0;
-                let timeData = [];
-                let thetaData = [];
-                let omegaData = [];
-                let energyData = [];
-
-                // Simulate the pendulum dynamics
-                for (let t = 0; t < params.totalTime; t += params.dt) {
-                    timeData.push(t);
-                    const thetaDoubleDot = (-params.g / params.L) * Math.sin(theta) - params.beta * omega + params.F0 * Math.cos(params.omegaDrive * t);
-                    omega += thetaDoubleDot * params.dt;
-                    theta += omega * params.dt;
-
-                    thetaData.push(theta);
-                    omegaData.push(omega);
-
-                    const KE = 0.5 * params.L * params.L * omega * omega;
-                    const PE = params.g * params.L * (1 - Math.cos(theta));
-                    energyData.push({ time: t, kinetic: KE, potential: PE });
-                }
-
-                //plotData.phase.push({ x: thetaData, y: omegaData, mode: 'lines', line: { color: colors[index] }, name: `Set ${index + 1}` });
-                //plotData.energy.push({ x: timeData, y: energyData.map(e => e.kinetic + e.potential), mode: 'lines', line: { color: colors[index] }, name: `Set ${index + 1}` });
-                plotData.harmonic.push({ x: timeData, y: thetaData, mode: 'lines', line: { color: colors[index] }, name: `Set ${index + 1}` });
-                //plotData.amplitude.push({ x: timeData, y: thetaData, mode: 'lines', line: { color: colors[index] }, name: `Set ${index + 1}` });
-            });
-
-            plotCharts2(plotData);
+            plotCharts(plotData);
         }
 
         function plotCharts(plotData) {
@@ -217,21 +172,6 @@
 
             Plotly.newPlot('phaseDiagram', plotData.phase, { ...layout, ...titleLayout, xaxis: { title: 'Phase Diagram (θ vs ω)' } });
             Plotly.newPlot('energyPlot', plotData.energy, { ...layout, ...titleLayout, xaxis: { title: 'Energy vs Time' } });
-            //Plotly.newPlot('harmonicMotion', plotData.harmonic, { ...layout, ...titleLayout, xaxis: { title: 'Harmonic Motion in 1D' } });
-            //Plotly.newPlot('amplitudePlot', plotData.amplitude, { ...layout, ...titleLayout, xaxis: { title: 'Time' }, yaxis: { title: 'Amplitude (θ)' } });
-        }
-
-        function plotCharts2(plotData) {
-            const layout = { 
-                width: 500, 
-                height: 310,
-                margin: { l: 40, r: 10, t: 0, b: 35 }
-            };
-
-            const titleLayout = { title: { standoff: 0 } };
-
-            //Plotly.newPlot('phaseDiagram', plotData.phase, { ...layout, ...titleLayout, xaxis: { title: 'Phase Diagram (θ vs ω)' } });
-            //Plotly.newPlot('energyPlot', plotData.energy, { ...layout, ...titleLayout, xaxis: { title: 'Energy vs Time' } });
             Plotly.newPlot('harmonicMotion', plotData.harmonic, { ...layout, ...titleLayout, xaxis: { title: 'Harmonic Motion in 1D' } });
             //Plotly.newPlot('amplitudePlot', plotData.amplitude, { ...layout, ...titleLayout, xaxis: { title: 'Time' }, yaxis: { title: 'Amplitude (θ)' } });
         }
