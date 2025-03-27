@@ -55,39 +55,47 @@
     <div id="controls">
         <h3 style="font-size: 12pt;">Interactive Forced Damped Pendulum Simulation</h3>
         <h4 style="font-size: 10pt;">Fixed Parameters</h4>
-        <div id="setAll" class="parameter-set">
-            <label>L: <input type="range" id="L1" min="0.5" max="5" value="1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="L1_value">1.00</span></label><br>
-            <label>dt: <input type="range" id="dt1" min="0.01" max="0.1" value="0.02" step="0.01" onchange="updateParamsAndSimulate()"> <span id="dt1_value">0.02</span></label><br>
-            <label>Total Time: <input type="range" id="totalTime1" min="10" max="120" value="60" step="1" onchange="updateParamsAndSimulate()"> <span id="totalTime1_value">60</span></label><br>
-        </div>
         <h4 style="font-size: 10pt;">Parameters for Each Data Set</h4>
         <div id="set1" class="parameter-set">
             <h3 style="color: orange; font-size: 10pt;">Set 1</h3>
             <label>g: <input type="range" id="g1" min="1" max="20" value="9.81" step="0.01" onchange="updateParamsAndSimulate()"> <span id="g1_value">9.81</span></label><br>
+            <label>L: <input type="range" id="L1" min="0.5" max="5" value="1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="L1_value">1.00</span></label><br>
             <label>beta: <input type="range" id="beta1" min="0" max="2" value="0.1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="beta1_value">0.10</span></label><br>
             <label>F0: <input type="range" id="F01" min="0" max="1" value="0.2" step="0.01" onchange="updateParamsAndSimulate()"> <span id="F01_value">0.20</span></label><br>
             <label>omegaDrive: <input type="range" id="omegaDrive1" min="0" max="2" value="0.67" step="0.01" onchange="updateParamsAndSimulate()"> <span id="omegaDrive1_value">0.67</span></label><br>
+            <label>dt: <input type="range" id="dt1" min="0.01" max="0.1" value="0.02" step="0.01" onchange="updateParamsAndSimulate()"> <span id="dt1_value">0.02</span></label><br>
+            <label>Total Time: <input type="range" id="totalTime1" min="10" max="120" value="60" step="1" onchange="updateParamsAndSimulate()"> <span id="totalTime1_value">60</span></label><br>
         </div>
         <div id="set2" class="parameter-set">
             <h3 style="color: blue; font-size: 10pt;">Set 2</h3>
             <label>g: <input type="range" id="g2" min="1" max="20" value="9.81" step="0.01" onchange="updateParamsAndSimulate()"> <span id="g2_value">9.81</span></label><br>
+            <label>L: <input type="range" id="L2" min="0.5" max="5" value="1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="L2_value">1.00</span></label><br>
             <label>beta: <input type="range" id="beta2" min="0" max="2" value="0.1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="beta2_value">0.10</span></label><br>
             <label>F0: <input type="range" id="F02" min="0" max="1" value="0.2" step="0.01" onchange="updateParamsAndSimulate()"> <span id="F02_value">0.20</span></label><br>
             <label>omegaDrive: <input type="range" id="omegaDrive2" min="0" max="2" value="0.67" step="0.01" onchange="updateParamsAndSimulate()"> <span id="omegaDrive2_value">0.67</span></label><br>
+            <label>dt: <input type="range" id="dt2" min="0.01" max="0.1" value="0.02" step="0.01" onchange="updateParamsAndSimulate()"> <span id="dt2_value">0.02</span></label><br>
+            <label>Total Time: <input type="range" id="totalTime2" min="10" max="120" value="60" step="1" onchange="updateParamsAndSimulate()"> <span id="totalTime2_value">60</span></label><br>
         </div>
         <div id="set3" class="parameter-set">
             <h3 style="color: green; font-size: 10pt;">Set 3</h3>
             <label>g: <input type="range" id="g3" min="1" max="20" value="9.81" step="0.01" onchange="updateParamsAndSimulate()"> <span id="g3_value">9.81</span></label><br>
+            <label>L: <input type="range" id="L3" min="0.5" max="5" value="1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="L3_value">1.00</span></label><br>
             <label>beta: <input type="range" id="beta3" min="0" max="2" value="0.1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="beta3_value">0.10</span></label><br>
             <label>F0: <input type="range" id="F03" min="0" max="1" value="0.2" step="0.01" onchange="updateParamsAndSimulate()"> <span id="F03_value">0.20</span></label><br>
             <label>omegaDrive: <input type="range" id="omegaDrive3" min="0" max="2" value="0.67" step="0.01" onchange="updateParamsAndSimulate()"> <span id="omegaDrive3_value">0.67</span></label><br>
+            <label>dt: <input type="range" id="dt3" min="0.01" max="0.1" value="0.02" step="0.01" onchange="updateParamsAndSimulate()"> <span id="dt3_value">0.02</span></label><br>
+            <label>Total Time: <input type="range" id="totalTime3" min="10" max="120" value="60" step="1" onchange="updateParamsAndSimulate()"> <span id="totalTime3_value">60</span></label><br>
         </div>
         <div id="set4" class="parameter-set">
             <h3 style="color: red; font-size: 10pt;">Set 4</h3>
             <label>g: <input type="range" id="g4" min="1" max="20" value="9.81" step="0.01" onchange="updateParamsAndSimulate()"> <span id="g4_value">9.81</span></label><br>
+            <label>L: <input type="range" id="L4" min="0.5" max="5" value="1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="L4_value">1.00</span></label><br>
             <label>beta: <input type="range" id="beta4" min="0" max="2" value="0.1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="beta4_value">0.10</span></label><br>
             <label>F0: <input type="range" id="F04" min="0" max="1" value="0.2" step="0.01" onchange="updateParamsAndSimulate()"> <span id="F04_value">0.20</span></label><br>
             <label>omegaDrive: <input type="range" id="omegaDrive4" min="0" max="2" value="0.67" step="0.01" onchange="updateParamsAndSimulate()"> <span id="omegaDrive4_value">0.67</span></label><br>
+            <label>dt: <input type="range" id="dt4" min="0.01" max="0.1" value="0.02" step="0.01" onchange="updateParamsAndSimulate()"> <span id="dt4_value">0.02</span></label><br>
+            <label>Total Time: <input type="range" id="totalTime4" min="10" max="120" value="60" step="1" onchange="updateParamsAndSimulate()"> <span id="totalTime4_value">60</span></label><br>
+        </div>
     </div>
 
     <script>
@@ -96,9 +104,9 @@
         function updateParamsAndSimulate() {
             const datasets = [
                 { g: parseFloat(document.getElementById('g1').value), L: parseFloat(document.getElementById('L1').value), beta: parseFloat(document.getElementById('beta1').value), F0: parseFloat(document.getElementById('F01').value), omegaDrive: parseFloat(document.getElementById('omegaDrive1').value), dt: parseFloat(document.getElementById('dt1').value), totalTime: parseFloat(document.getElementById('totalTime1').value) },
-                { g: parseFloat(document.getElementById('g2').value), L: parseFloat(document.getElementById('L1').value), beta: parseFloat(document.getElementById('beta2').value), F0: parseFloat(document.getElementById('F02').value), omegaDrive: parseFloat(document.getElementById('omegaDrive2').value), dt: parseFloat(document.getElementById('dt1').value), totalTime: parseFloat(document.getElementById('totalTime1').value) },
-                { g: parseFloat(document.getElementById('g3').value), L: parseFloat(document.getElementById('L1').value), beta: parseFloat(document.getElementById('beta3').value), F0: parseFloat(document.getElementById('F03').value), omegaDrive: parseFloat(document.getElementById('omegaDrive3').value), dt: parseFloat(document.getElementById('dt1').value), totalTime: parseFloat(document.getElementById('totalTime1').value) },
-                { g: parseFloat(document.getElementById('g4').value), L: parseFloat(document.getElementById('L1').value), beta: parseFloat(document.getElementById('beta4').value), F0: parseFloat(document.getElementById('F04').value), omegaDrive: parseFloat(document.getElementById('omegaDrive4').value), dt: parseFloat(document.getElementById('dt1').value), totalTime: parseFloat(document.getElementById('totalTime1').value) }
+                { g: parseFloat(document.getElementById('g2').value), L: parseFloat(document.getElementById('L2').value), beta: parseFloat(document.getElementById('beta2').value), F0: parseFloat(document.getElementById('F02').value), omegaDrive: parseFloat(document.getElementById('omegaDrive2').value), dt: parseFloat(document.getElementById('dt2').value), totalTime: parseFloat(document.getElementById('totalTime2').value) },
+                { g: parseFloat(document.getElementById('g3').value), L: parseFloat(document.getElementById('L3').value), beta: parseFloat(document.getElementById('beta3').value), F0: parseFloat(document.getElementById('F03').value), omegaDrive: parseFloat(document.getElementById('omegaDrive3').value), dt: parseFloat(document.getElementById('dt3').value), totalTime: parseFloat(document.getElementById('totalTime3').value) },
+                { g: parseFloat(document.getElementById('g4').value), L: parseFloat(document.getElementById('L4').value), beta: parseFloat(document.getElementById('beta4').value), F0: parseFloat(document.getElementById('F04').value), omegaDrive: parseFloat(document.getElementById('omegaDrive4').value), dt: parseFloat(document.getElementById('dt4').value), totalTime: parseFloat(document.getElementById('totalTime4').value) }
             ];
 
             displayValues();
@@ -109,12 +117,12 @@
         function displayValues() {
             for (let i = 1; i <= 4; i++) {
                 document.getElementById(`g${i}_value`).textContent = parseFloat(document.getElementById(`g${i}`).value).toFixed(2);
-                document.getElementById('L1_value').textContent = parseFloat(document.getElementById('L1_value').toFixed(2);
+                document.getElementById(`L${i}_value`).textContent = parseFloat(document.getElementById(`L${i}`).value).toFixed(2);
                 document.getElementById(`beta${i}_value`).textContent = parseFloat(document.getElementById(`beta${i}`).value).toFixed(2);
                 document.getElementById(`F0${i}_value`).textContent = parseFloat(document.getElementById(`F0${i}`).value).toFixed(2);
                 document.getElementById(`omegaDrive${i}_value`).textContent = parseFloat(document.getElementById(`omegaDrive${i}`).value).toFixed(2);
-                document.getElementById('d1_value').textContent = parseFloat(document.getElementById('d1_value').value).toFixed(2);
-                document.getElementById('totalTime1_value').textContent = parseFloat(document.getElementById('totalTime1_value').value).toFixed(0);
+                document.getElementById(`dt${i}_value`).textContent = parseFloat(document.getElementById(`dt${i}`).value).toFixed(2);
+                document.getElementById(`totalTime${i}_value`).textContent = parseFloat(document.getElementById(`totalTime${i}`).value).toFixed(0);
             }
         }
 
