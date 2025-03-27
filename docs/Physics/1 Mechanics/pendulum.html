@@ -15,14 +15,14 @@
             position: fixed;
             right: 20px;
             top: 5px;
-            width: 270px;
+            width: 250px;
             background-color: #f7f7f7;
-            padding: 15px;
+            padding: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 5px;
             overflow-y: auto;
             max-height: 95vh;
-            font-size: 8pt; /* Changed to 8pt */
+            font-size: 8pt;
         }
         #plots {
             margin-right: 300px;
@@ -30,18 +30,18 @@
             flex-wrap: wrap;
             justify-content: space-between;
             margin-top: 5px;
-            margin-left: 10px;
+            margin-left: 20px;
         }
         .plot {
             width: 500px;
             height: 340px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
         .parameter-set h3 {
             margin: 5px 0 5px;
-            font-size: 10pt; /* Changed to 10pt */
+            font-size: 10pt;
         }
     </style>
 </head>
@@ -50,7 +50,7 @@
         <div id="phaseDiagram" class="plot"></div>
         <div id="energyPlot" class="plot"></div>
         <div id="harmonicMotion" class="plot"></div>
-        <div id="psdPlot" class="plot"></div>
+        <div id="amplitudePlot" class="plot"></div>
     </div>
     <div id="controls">
         <h2 style="font-size: 10pt;">Parameters for Each Data Set</h2>
@@ -62,6 +62,7 @@
             <label>F0: <input type="range" id="F01" min="0" max="1" value="0.2" step="0.01" onchange="updateParamsAndSimulate()"> <span id="F01_value">0.20</span></label><br>
             <label>omegaDrive: <input type="range" id="omegaDrive1" min="0" max="2" value="0.67" step="0.01" onchange="updateParamsAndSimulate()"> <span id="omegaDrive1_value">0.67</span></label><br>
             <label>dt: <input type="range" id="dt1" min="0.01" max="0.1" value="0.02" step="0.01" onchange="updateParamsAndSimulate()"> <span id="dt1_value">0.02</span></label><br>
+            <label>Total Time: <input type="range" id="totalTime1" min="10" max="120" value="60" step="1" onchange="updateParamsAndSimulate()"> <span id="totalTime1_value">60</span></label><br>
         </div>
         <div id="set2" class="parameter-set">
             <h3 style="color: blue; font-size: 10pt;">Set 2</h3>
@@ -71,6 +72,7 @@
             <label>F0: <input type="range" id="F02" min="0" max="1" value="0.2" step="0.01" onchange="updateParamsAndSimulate()"> <span id="F02_value">0.20</span></label><br>
             <label>omegaDrive: <input type="range" id="omegaDrive2" min="0" max="2" value="0.67" step="0.01" onchange="updateParamsAndSimulate()"> <span id="omegaDrive2_value">0.67</span></label><br>
             <label>dt: <input type="range" id="dt2" min="0.01" max="0.1" value="0.02" step="0.01" onchange="updateParamsAndSimulate()"> <span id="dt2_value">0.02</span></label><br>
+            <label>Total Time: <input type="range" id="totalTime2" min="10" max="120" value="60" step="1" onchange="updateParamsAndSimulate()"> <span id="totalTime2_value">60</span></label><br>
         </div>
         <div id="set3" class="parameter-set">
             <h3 style="color: green; font-size: 10pt;">Set 3</h3>
@@ -80,6 +82,7 @@
             <label>F0: <input type="range" id="F03" min="0" max="1" value="0.2" step="0.01" onchange="updateParamsAndSimulate()"> <span id="F03_value">0.20</span></label><br>
             <label>omegaDrive: <input type="range" id="omegaDrive3" min="0" max="2" value="0.67" step="0.01" onchange="updateParamsAndSimulate()"> <span id="omegaDrive3_value">0.67</span></label><br>
             <label>dt: <input type="range" id="dt3" min="0.01" max="0.1" value="0.02" step="0.01" onchange="updateParamsAndSimulate()"> <span id="dt3_value">0.02</span></label><br>
+            <label>Total Time: <input type="range" id="totalTime3" min="10" max="120" value="60" step="1" onchange="updateParamsAndSimulate()"> <span id="totalTime3_value">60</span></label><br>
         </div>
         <div id="set4" class="parameter-set">
             <h3 style="color: red; font-size: 10pt;">Set 4</h3>
@@ -89,6 +92,7 @@
             <label>F0: <input type="range" id="F04" min="0" max="1" value="0.2" step="0.01" onchange="updateParamsAndSimulate()"> <span id="F04_value">0.20</span></label><br>
             <label>omegaDrive: <input type="range" id="omegaDrive4" min="0" max="2" value="0.67" step="0.01" onchange="updateParamsAndSimulate()"> <span id="omegaDrive4_value">0.67</span></label><br>
             <label>dt: <input type="range" id="dt4" min="0.01" max="0.1" value="0.02" step="0.01" onchange="updateParamsAndSimulate()"> <span id="dt4_value">0.02</span></label><br>
+            <label>Total Time: <input type="range" id="totalTime4" min="10" max="120" value="60" step="1" onchange="updateParamsAndSimulate()"> <span id="totalTime4_value">60</span></label><br>
         </div>
     </div>
 
@@ -97,10 +101,10 @@
 
         function updateParamsAndSimulate() {
             const datasets = [
-                { g: parseFloat(document.getElementById('g1').value), L: parseFloat(document.getElementById('L1').value), beta: parseFloat(document.getElementById('beta1').value), F0: parseFloat(document.getElementById('F01').value), omegaDrive: parseFloat(document.getElementById('omegaDrive1').value), dt: parseFloat(document.getElementById('dt1').value)},
-                { g: parseFloat(document.getElementById('g2').value), L: parseFloat(document.getElementById('L2').value), beta: parseFloat(document.getElementById('beta2').value), F0: parseFloat(document.getElementById('F02').value), omegaDrive: parseFloat(document.getElementById('omegaDrive2').value), dt: parseFloat(document.getElementById('dt2').value)},
-                { g: parseFloat(document.getElementById('g3').value), L: parseFloat(document.getElementById('L3').value), beta: parseFloat(document.getElementById('beta3').value), F0: parseFloat(document.getElementById('F03').value), omegaDrive: parseFloat(document.getElementById('omegaDrive3').value), dt: parseFloat(document.getElementById('dt3').value)},
-                { g: parseFloat(document.getElementById('g4').value), L: parseFloat(document.getElementById('L4').value), beta: parseFloat(document.getElementById('beta4').value), F0: parseFloat(document.getElementById('F04').value), omegaDrive: parseFloat(document.getElementById('omegaDrive4').value), dt: parseFloat(document.getElementById('dt4').value)}
+                { g: parseFloat(document.getElementById('g1').value), L: parseFloat(document.getElementById('L1').value), beta: parseFloat(document.getElementById('beta1').value), F0: parseFloat(document.getElementById('F01').value), omegaDrive: parseFloat(document.getElementById('omegaDrive1').value), dt: parseFloat(document.getElementById('dt1').value), totalTime: parseFloat(document.getElementById('totalTime1').value) },
+                { g: parseFloat(document.getElementById('g2').value), L: parseFloat(document.getElementById('L2').value), beta: parseFloat(document.getElementById('beta2').value), F0: parseFloat(document.getElementById('F02').value), omegaDrive: parseFloat(document.getElementById('omegaDrive2').value), dt: parseFloat(document.getElementById('dt2').value), totalTime: parseFloat(document.getElementById('totalTime2').value) },
+                { g: parseFloat(document.getElementById('g3').value), L: parseFloat(document.getElementById('L3').value), beta: parseFloat(document.getElementById('beta3').value), F0: parseFloat(document.getElementById('F03').value), omegaDrive: parseFloat(document.getElementById('omegaDrive3').value), dt: parseFloat(document.getElementById('dt3').value), totalTime: parseFloat(document.getElementById('totalTime3').value) },
+                { g: parseFloat(document.getElementById('g4').value), L: parseFloat(document.getElementById('L4').value), beta: parseFloat(document.getElementById('beta4').value), F0: parseFloat(document.getElementById('F04').value), omegaDrive: parseFloat(document.getElementById('omegaDrive4').value), dt: parseFloat(document.getElementById('dt4').value), totalTime: parseFloat(document.getElementById('totalTime4').value) }
             ];
 
             displayValues();
@@ -116,11 +120,12 @@
                 document.getElementById(`F0${i}_value`).textContent = parseFloat(document.getElementById(`F0${i}`).value).toFixed(2);
                 document.getElementById(`omegaDrive${i}_value`).textContent = parseFloat(document.getElementById(`omegaDrive${i}`).value).toFixed(2);
                 document.getElementById(`dt${i}_value`).textContent = parseFloat(document.getElementById(`dt${i}`).value).toFixed(2);
+                document.getElementById(`totalTime${i}_value`).textContent = parseFloat(document.getElementById(`totalTime${i}`).value).toFixed(0);
             }
         }
 
         function simulateAndPlot(datasets) {
-            const plotData = { phase: [], energy: [], harmonic: [], psd: [] };
+            const plotData = { phase: [], energy: [], harmonic: [], amplitude: [] };
 
             datasets.forEach((params, index) => {
                 let theta = 0.5;
@@ -131,7 +136,7 @@
                 let energyData = [];
 
                 // Simulate the pendulum dynamics
-                for (let t = 0; t < 60; t += params.dt) {
+                for (let t = 0; t < params.totalTime; t += params.dt) {
                     timeData.push(t);
                     const thetaDoubleDot = (-params.g / params.L) * Math.sin(theta) - params.beta * omega + params.F0 * Math.cos(params.omegaDrive * t);
                     omega += thetaDoubleDot * params.dt;
@@ -145,34 +150,13 @@
                     energyData.push({ time: t, kinetic: KE, potential: PE });
                 }
 
-                // Compute the Power Spectral Density (PSD) of the thetaData
-                const fftSize = thetaData.length;
-                const fft = computeFFT(thetaData, fftSize);
-                const psd = fft.map(complex => Math.pow(complex[0], 2) + Math.pow(complex[1], 2));
-                const frequencies = Array.from({length: psd.length}, (_, i) => i / (fftSize / params.dt));
-
                 plotData.phase.push({ x: thetaData, y: omegaData, mode: 'lines', line: { color: colors[index] }, name: `Set ${index + 1}` });
                 plotData.energy.push({ x: timeData, y: energyData.map(e => e.kinetic + e.potential), mode: 'lines', line: { color: colors[index] }, name: `Set ${index + 1}` });
                 plotData.harmonic.push({ x: timeData, y: thetaData, mode: 'lines', line: { color: colors[index] }, name: `Set ${index + 1}` });
-                plotData.psd.push({ x: frequencies, y: psd, mode: 'lines', line: { color: colors[index] }, name: `Set ${index + 1}` });
+                plotData.amplitude.push({ x: timeData, y: thetaData, mode: 'lines', line: { color: colors[index] }, name: `Set ${index + 1}` });
             });
 
             plotCharts(plotData);
-        }
-
-        function computeFFT(data, size) {
-            const fft = [];
-            for (let k = 0; k < size; k++) {
-                let real = 0;
-                let imag = 0;
-                for (let n = 0; n < size; n++) {
-                    const angle = (2.0 * Math.PI * k * n) / size;
-                    real += data[n] * Math.cos(angle);
-                    imag -= data[n] * Math.sin(angle);
-                }
-                fft.push([real / size, imag / size]);
-            }
-            return fft;
         }
 
         function plotCharts(plotData) {
@@ -187,7 +171,7 @@
             Plotly.newPlot('phaseDiagram', plotData.phase, { ...layout, ...titleLayout, xaxis: { title: 'Phase Diagram (θ vs ω)' } });
             Plotly.newPlot('energyPlot', plotData.energy, { ...layout, ...titleLayout, xaxis: { title: 'Energy vs Time' } });
             Plotly.newPlot('harmonicMotion', plotData.harmonic, { ...layout, ...titleLayout, xaxis: { title: 'Harmonic Motion in 1D' } });
-            Plotly.newPlot('psdPlot', plotData.psd, { ...layout, ...titleLayout, xaxis: { title: 'Frequency' }, yaxis: { title: 'Power Spectral Density' } });
+            Plotly.newPlot('amplitudePlot', plotData.amplitude, { ...layout, ...titleLayout, xaxis: { title: 'Time' }, yaxis: { title: 'Amplitude (θ)' } });
         }
 
         // Initial simulation and plot
