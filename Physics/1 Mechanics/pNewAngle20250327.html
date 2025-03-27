@@ -44,20 +44,26 @@
 
     <script>
         function calculateRangeAndMaxHeight(angle, initialHeight, initialVelocity, gravity) {
+            // Convert angle to radians
             const angleInRadians = angle * Math.PI / 180;
+            
+            // Calculate total time of flight
+            const timeOfFlight = (initialVelocity * Math.sin(angleInRadians) + Math.sqrt(Math.pow(initialVelocity * Math.sin(angleInRadians), 2) + 2 * gravity * initialHeight)) / gravity;
+
+            // Calculate trajectory points
             let x = [];
             let y = [];
-            
-            for(let i = 0; i <= initialVelocity; i++){
-                const t = (i - initialVelocity * Math.sin(angleInRadians)) / (-gravity);
+            for (let t = 0; t <= timeOfFlight; t += 0.1) {
                 const range = initialVelocity * Math.cos(angleInRadians) * t;
-                const maxHeight = initialHeight + initialVelocity * Math.sin(angleInRadians) * t - 0.5 * gravity * t * t;
-                if (maxHeight < 0 || range < 0) break;
+                const height = initialHeight + initialVelocity * Math.sin(angleInRadians) * t - 0.5 * gravity * t * t;
+                
+                if (height < 0) break;  // Stop when it hits the ground
+
                 x.push(range);
-                y.push(maxHeight);
+                y.push(height);
             }
 
-            return {x, y};
+            return { x, y };
         }
 
         function updateGraph() {
@@ -79,8 +85,8 @@
 
             const layout = {
                 title: 'Projectile Motion',
-                xaxis: { title: 'Range'},
-                yaxis: { title: 'Height', range: [0, Math.max(...data.y, 10)] }, // Adjust max value as needed
+                xaxis: { title: 'Range' },
+                yaxis: { title: 'Height', range: [0, Math.max(...data.y) + 5] }, // Adjusted range
                 height: 600,
                 width: 600
             };
