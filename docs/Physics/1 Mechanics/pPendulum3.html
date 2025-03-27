@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Interactive Forced Damped Pendulum Simulation</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <script src="https://cdn.plot.ly/plotly-2.11.1.min.js"></script>
     <style>
         #controls {
@@ -39,18 +38,16 @@
     </div>
 
     <script>
-        // Initial Parameters
-        let params = {
-            g: 9.81,
-            L: 1.0,
-            beta: 0.1,
-            F0: 0.2,
-            omegaDrive: 0.67,
-            dt: 0.02,
-            totalSimulationTime: 60
+        const params = {
+            g: parseFloat(document.getElementById('gravity').value),
+            L: parseFloat(document.getElementById('length').value),
+            beta: parseFloat(document.getElementById('damping').value),
+            F0: parseFloat(document.getElementById('drivingForce').value),
+            omegaDrive: parseFloat(document.getElementById('drivingFrequency').value),
+            dt: parseFloat(document.getElementById('timeStep').value),
+            totalSimulationTime: parseFloat(document.getElementById('simulationTime').value)
         };
 
-        // DOM Elements for input and display
         const controls = {
             gravity: document.getElementById('gravity'),
             length: document.getElementById('length'),
@@ -71,7 +68,6 @@
             simulationTime: document.getElementById('simulationTimeValue')
         };
 
-        // Function to update parameter values based on user input
         Object.keys(controls).forEach(key => {
             controls[key].addEventListener('input', (event) => {
                 params[key] = parseFloat(event.target.value);
@@ -80,7 +76,6 @@
             });
         });
 
-        // Simulate the pendulum dynamics
         function simulateAndPlot() {
             let theta = 0.5;
             let omega = 0;
@@ -91,7 +86,6 @@
 
             for (let t = 0; t < params.totalSimulationTime; t += params.dt) {
                 timeData.push(t);
-                // Equations of motion
                 const thetaDoubleDot = (-params.g / params.L) * Math.sin(theta) - params.beta * omega + params.F0 * Math.cos(params.omegaDrive * t);
                 omega += thetaDoubleDot * params.dt;
                 theta += omega * params.dt;
@@ -99,18 +93,15 @@
                 thetaData.push(theta);
                 omegaData.push(omega);
 
-                // Energy calculations
                 const KE = 0.5 * params.L * params.L * omega * omega;
                 const PE = params.g * params.L * (1 - Math.cos(theta));
                 energyData.push({ time: t, kinetic: KE, potential: PE });
             }
 
-            plotGraphs({timeData, thetaData, omegaData, energyData});
+            plotGraphs({ timeData, thetaData, omegaData, energyData });
         }
 
-        // Plot the graphs based on simulation data
         function plotGraphs(data) {
-            // Phase Diagram
             const phaseTrace = {
                 x: data.thetaData,
                 y: data.omegaData,
@@ -119,7 +110,6 @@
             };
             Plotly.newPlot('phaseDiagram', [phaseTrace], { title: 'Phase Diagram (θ vs ω)' });
 
-            // Energy vs. Time
             const energyTimeTrace = {
                 x: data.timeData,
                 y: data.energyData.map(e => e.kinetic + e.potential),
@@ -128,7 +118,6 @@
             };
             Plotly.newPlot('energyPlot', [energyTimeTrace], { title: 'Energy vs Time' });
 
-            // Harmonic Motion in 1D
             const harmonicTrace = {
                 x: data.timeData,
                 y: data.thetaData,
@@ -137,7 +126,6 @@
             };
             Plotly.newPlot('harmonicMotion', [harmonicTrace], { title: 'Harmonic Motion in 1D' });
 
-            // Pendulum Approximation Comparison
             const fullTrace = {
                 x: data.timeData,
                 y: data.thetaData.map(theta => Math.sin(theta)),
@@ -146,14 +134,13 @@
             };
             const approxTrace = {
                 x: data.timeData,
-                y: data.thetaData.map(theta => theta), // Small angle approximation
+                y: data.thetaData.map(theta => theta),
                 mode: 'lines',
                 name: 'θ (approximation)'
             };
             Plotly.newPlot('pendulumComparison', [fullTrace, approxTrace], { title: 'Pendulum Motion' });
         }
 
-        // Initial simulation and plot
         simulateAndPlot();
     </script>
 </body>
