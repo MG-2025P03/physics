@@ -67,7 +67,7 @@
             <label>g: <input type="range" id="g2" min="1" max="20" value="9.81" step="0.01" onchange="updateParamsAndSimulate()"> <span id="g2_value">9.81</span></label><br>
             <label>beta: <input type="range" id="beta2" min="0" max="2" value="0.1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="beta2_value">0.10</span></label><br>
             <label>F0: <input type="range" id="F02" min="0" max="1" value="0.2" step="0.01" onchange="updateParamsAndSimulate()"> <span id="F02_value">0.20</span></label><br>
-            <label>omegaDrive: <input type="range" id="omegaDrive2" min="0" max="2" value="0.67" step="0.01" onchange="updateParamsAndSimulate()"> <span id="omegaDrive2_value
+            <label>omegaDrive: <input type="range" id="omegaDrive2" min="0" max="2" value="0.67" step="0.01" onchange="updateParamsAndSimulate()"> <span id="omegaDrive2_value">0.67</span></label><br>
         </div>
         <div id="set3" class="parameter-set">
             <h3>Set 3</h3>
@@ -104,11 +104,11 @@
         function displayValues() {
             for (let i = 1; i <= 4; i++) {
                 document.getElementById(`g${i}_value`).textContent = parseFloat(document.getElementById(`g${i}`).value).toFixed(2);
-                document.getElementById(`L1_value`).textContent = parseFloat(document.getElementById(`L1`).value).toFixed(2);
+                document.getElementById('L1_value').textContent = parseFloat(document.getElementById('L1').value).toFixed(2);
                 document.getElementById(`beta${i}_value`).textContent = parseFloat(document.getElementById(`beta${i}`).value).toFixed(2);
                 document.getElementById(`F0${i}_value`).textContent = parseFloat(document.getElementById(`F0${i}`).value).toFixed(2);
                 document.getElementById(`omegaDrive${i}_value`).textContent = parseFloat(document.getElementById(`omegaDrive${i}`).value).toFixed(2);
-                document.getElementById(`dt1_value`).textContent = parseFloat(document.getElementById(`dt1`).value).toFixed(2);
+                document.getElementById('dt1_value').textContent = parseFloat(document.getElementById('dt1').value).toFixed(2);
             }
         }
 
