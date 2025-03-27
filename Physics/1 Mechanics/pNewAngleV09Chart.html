@@ -55,7 +55,37 @@
             title: 'Height (m)',
             range: [0, maxHeight]
         },
-        showlegend: true
+        legend: {
+            x: 1,
+            y: 1,
+            xanchor: 'left',
+            yanchor: 'top',
+            title: 'Angles of Projection'
+        },
+        margin: {
+            l: 50,
+            r: 50,
+            b: 100,
+            t: 50,
+            pad: 4
+        },
+        annotations: [
+            {
+                xref: 'paper',
+                yref: 'paper',
+                x: -0.1,
+                y: -0.3,
+                xanchor: 'left',
+                yanchor: 'bottom',
+                text: `<b>Parameters:</b><br>
+                       Initial Height: ${initialHeight} m<br>
+                       Initial Velocity: ${initialVelocity} m/s<br>
+                       Gravity: ${gravity} m/s²<br>
+                       Max Distance: ${maxDistance} m<br>
+                       Max Height: ${maxHeight} m`,
+                showarrow: false
+            }
+        ]
     };
 
     // Render the plot
