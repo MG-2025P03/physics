@@ -7,18 +7,28 @@
     <style>
         body {
             display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
+            justify-content: flex-start;
+            /* Using flex direction row to arrange items horizontally */
             font-family: Arial, sans-serif;
+            overflow-x: hidden;
         }
         #controls {
-            margin-left: 20px;
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            width: 250px;
+            background-color: #f7f7f7;
+            padding: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
         }
         #plots {
+            margin-right: 300px; /* Ensures space for the fixed controls */
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
-            width: 80%;
+            margin-top: 20px;
+            margin-left: 20px;
         }
         .plot {
             width: 500px;
@@ -122,7 +132,7 @@
         }
 
         function plotGraphs(data) {
-            const layout = { width: 450, height: 500 };
+            const layout = { width: 500, height: 500 };
 
             const phaseTrace = {
                 x: data.thetaData,
