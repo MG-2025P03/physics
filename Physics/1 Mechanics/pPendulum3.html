@@ -5,37 +5,44 @@
     <title>Interactive Forced Damped Pendulum Simulation</title>
     <script src="https://cdn.plot.ly/plotly-2.11.1.min.js"></script>
     <style>
+        body {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            font-family: Arial, sans-serif;
+        }
         #controls {
-            margin-bottom: 5px;
+            margin-left: 20px;
         }
         #plots {
             display: flex;
             flex-wrap: wrap;
+            justify-content: space-between;
+            width: 70%;
         }
         .plot {
-            width: 48%;
-            margin: 1%;
+            width: 500px;
+            height: 500px;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
-    <h1>Interactive Forced Damped Pendulum Simulation</h1>
-    <div id="controls">
-        <label>g (gravity): <input type="range" id="gravity" min="1" max="20" value="9.81" step="0.01" onchange="updateParamsAndSimulate()"> <span id="gravityValue">9.81</span></label>
-        <label>L (length): <input type="range" id="length" min="0.5" max="5" value="1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="lengthValue">1.00</span></label>
-        <label>dt (time step): <input type="range" id="timeStep" min="0.01" max="0.1" value="0.02" step="0.01" onchange="updateParamsAndSimulate()"> <span id="timeStepValue">0.02</span></label>
-        <label>Simulation Time: <input type="range" id="simulationTime" min="10" max="120" value="60" step="1" onchange="updateParamsAndSimulate()"> <span id="simulationTimeValue">60</span></label><br>
-        <label>beta (damping): <input type="range" id="damping" min="0" max="2" value="0.1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="dampingValue">0.10</span></label>
-        <label>F0 (driving force): <input type="range" id="drivingForce" min="0" max="1" value="0.2" step="0.01" onchange="updateParamsAndSimulate()"> <span id="drivingForceValue">0.20</span></label>
-        <label>omegaDrive (frequency): <input type="range" id="drivingFrequency" min="0" max="2" value="0.67" step="0.01" onchange="updateParamsAndSimulate()"> <span id="drivingFrequencyValue">0.67</span></label><br>
-        
-    </div>
-
     <div id="plots">
         <div id="phaseDiagram" class="plot"></div>
         <div id="energyPlot" class="plot"></div>
         <div id="harmonicMotion" class="plot"></div>
         <div id="pendulumComparison" class="plot"></div>
+    </div>
+    <div id="controls">
+        <h2>Parameters</h2>
+        <label>g (gravity): <input type="range" id="gravity" min="1" max="20" value="9.81" step="0.01" onchange="updateParamsAndSimulate()"> <span id="gravityValue">9.81</span></label><br>
+        <label>L (length): <input type="range" id="length" min="0.5" max="5" value="1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="lengthValue">1.00</span></label><br>
+        <label>beta (damping): <input type="range" id="damping" min="0" max="2" value="0.1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="dampingValue">0.10</span></label><br>
+        <label>F0 (driving force): <input type="range" id="drivingForce" min="0" max="1" value="0.2" step="0.01" onchange="updateParamsAndSimulate()"> <span id="drivingForceValue">0.20</span></label><br>
+        <label>omegaDrive (frequency): <input type="range" id="drivingFrequency" min="0" max="2" value="0.67" step="0.01" onchange="updateParamsAndSimulate()"> <span id="drivingFrequencyValue">0.67</span></label><br>
+        <label>dt (time step): <input type="range" id="timeStep" min="0.01" max="0.1" value="0.02" step="0.01" onchange="updateParamsAndSimulate()"> <span id="timeStepValue">0.02</span></label><br>
+        <label>Simulation Time: <input type="range" id="simulationTime" min="10" max="120" value="60" step="1" onchange="updateParamsAndSimulate()"> <span id="simulationTimeValue">60</span></label><br>
     </div>
 
     <script>
@@ -115,7 +122,7 @@
         }
 
         function plotGraphs(data) {
-            const layout = { height: 300, width: 400 };
+            const layout = { width: 500, height: 500 };
 
             const phaseTrace = {
                 x: data.thetaData,
