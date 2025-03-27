@@ -32,7 +32,7 @@
         }
         .plot {
             width: 450px;
-            height: 450px;
+            height: 400px;
             margin-bottom: 5px;
         }
     </style>
@@ -45,7 +45,8 @@
         <div id="pendulumComparison" class="plot"></div>
     </div>
     <div id="controls">
-        <h2>Parameters</h2>
+        <h2>Interactive Forced Damped Pendulum</h2>
+        <h3>Parameters</h3>
         <label>g (gravity): <input type="range" id="gravity" min="1" max="20" value="9.81" step="0.01" onchange="updateParamsAndSimulate()"> <span id="gravityValue">9.81</span></label><br>
         <label>L (length): <input type="range" id="length" min="0.5" max="5" value="1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="lengthValue">1.00</span></label><br>
         <label>beta (damping): <input type="range" id="damping" min="0" max="2" value="0.1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="dampingValue">0.10</span></label><br>
@@ -132,7 +133,7 @@
         }
 
         function plotGraphs(data) {
-            const layout = { width: 450, height: 450 };
+            const layout = { width: 450, height: 400 };
 
             const phaseTrace = {
                 x: data.thetaData,
