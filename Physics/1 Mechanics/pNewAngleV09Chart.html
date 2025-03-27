@@ -8,15 +8,15 @@
 </head>
 <body>
 
-<div id="plot" style="width:100%;max-width:700px;"></div>
+<div id="plot" style="width:100%;max-width:700px;height:500px;"></div>
 
 <script>
     // Parameters
     const initialHeight = 0; // Initial height (m)
-    const initialVelocity = 50; // Initial velocity (m/s)
+    const initialVelocity = 20; // Initial velocity (m/s)
     const gravity = 9.81; // Gravity (m/s^2)
-    const maxDistance = 300; // x axis maximum distance (m)
-    const maxHeight = 50;  // y axis maximum height (m)
+    const maxDistance = 100; // x axis maximum distance (m)
+    const maxHeight = 20;  // y axis maximum height (m)
     
     const angles = [15, 30, 45, 60, 75]; // Angles of projection
     const radianAngles = angles.map(angle => angle * Math.PI / 180); // Convert to radians
@@ -27,7 +27,7 @@
         let x = [];
         let y = [];
         
-        for (let t = 0; t < maxDistance; t += 0.5) {
+        for (let t = 0; t < 5; t += 0.01) { // Loop through time values
             let xPos = initialVelocity * Math.cos(angle) * t;
             let yPos = initialHeight + initialVelocity * Math.sin(angle) * t - 0.5 * gravity * Math.pow(t, 2);
             if (yPos < 0) break; // Stop if projectile hits the ground
