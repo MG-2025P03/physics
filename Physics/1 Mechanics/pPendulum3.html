@@ -21,13 +21,13 @@
 <body>
     <h1>Interactive Forced Damped Pendulum Simulation</h1>
     <div id="controls">
-        <label>g (gravity): <input type="range" id="gravity" min="1" max="20" value="9.81" step="0.01"> <span id="gravityValue">9.81</span></label><br>
-        <label>L (length): <input type="range" id="length" min="0.5" max="5" value="1" step="0.01"> <span id="lengthValue">1.00</span></label><br>
-        <label>beta (damping): <input type="range" id="damping" min="0" max="2" value="0.1" step="0.01"> <span id="dampingValue">0.10</span></label><br>
-        <label>F0 (driving force): <input type="range" id="drivingForce" min="0" max="1" value="0.2" step="0.01"> <span id="drivingForceValue">0.20</span></label><br>
-        <label>omegaDrive (frequency): <input type="range" id="drivingFrequency" min="0" max="2" value="0.67" step="0.01"> <span id="drivingFrequencyValue">0.67</span></label><br>
-        <label>dt (time step): <input type="range" id="timeStep" min="0.01" max="0.1" value="0.02" step="0.01"> <span id="timeStepValue">0.02</span></label><br>
-        <label>Simulation Time: <input type="range" id="simulationTime" min="10" max="120" value="60" step="1"> <span id="simulationTimeValue">60</span></label><br>
+        <label>g (gravity): <input type="range" id="gravity" min="1" max="20" value="9.81" step="0.01" onchange="updateParamsAndSimulate()"> <span id="gravityValue">9.81</span></label><br>
+        <label>L (length): <input type="range" id="length" min="0.5" max="5" value="1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="lengthValue">1.00</span></label><br>
+        <label>beta (damping): <input type="range" id="damping" min="0" max="2" value="0.1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="dampingValue">0.10</span></label><br>
+        <label>F0 (driving force): <input type="range" id="drivingForce" min="0" max="1" value="0.2" step="0.01" onchange="updateParamsAndSimulate()"> <span id="drivingForceValue">0.20</span></label><br>
+        <label>omegaDrive (frequency): <input type="range" id="drivingFrequency" min="0" max="2" value="0.67" step="0.01" onchange="updateParamsAndSimulate()"> <span id="drivingFrequencyValue">0.67</span></label><br>
+        <label>dt (time step): <input type="range" id="timeStep" min="0.01" max="0.1" value="0.02" step="0.01" onchange="updateParamsAndSimulate()"> <span id="timeStepValue">0.02</span></label><br>
+        <label>Simulation Time: <input type="range" id="simulationTime" min="10" max="120" value="60" step="1" onchange="updateParamsAndSimulate()"> <span id="simulationTimeValue">60</span></label><br>
     </div>
 
     <div id="plots">
@@ -39,13 +39,13 @@
 
     <script>
         const params = {
-            g: parseFloat(document.getElementById('gravity').value),
-            L: parseFloat(document.getElementById('length').value),
-            beta: parseFloat(document.getElementById('damping').value),
-            F0: parseFloat(document.getElementById('drivingForce').value),
-            omegaDrive: parseFloat(document.getElementById('drivingFrequency').value),
-            dt: parseFloat(document.getElementById('timeStep').value),
-            totalSimulationTime: parseFloat(document.getElementById('simulationTime').value)
+            g: 9.81,
+            L: 1.0,
+            beta: 0.1,
+            F0: 0.2,
+            omegaDrive: 0.67,
+            dt: 0.02,
+            totalSimulationTime: 60
         };
 
         const controls = {
@@ -68,13 +68,25 @@
             simulationTime: document.getElementById('simulationTimeValue')
         };
 
-        Object.keys(controls).forEach(key => {
-            controls[key].addEventListener('input', (event) => {
-                params[key] = parseFloat(event.target.value);
-                displayValues[key].textContent = event.target.value;
-                simulateAndPlot();
-            });
-        });
+        function updateParamsAndSimulate() {
+            params.g = parseFloat(controls.gravity.value);
+            params.L = parseFloat(controls.length.value);
+            params.beta = parseFloat(controls.damping.value);
+            params.F0 = parseFloat(controls.drivingForce.value);
+            params.omegaDrive = parseFloat(controls.drivingFrequency.value);
+            params.dt = parseFloat(controls.timeStep.value);
+            params.totalSimulationTime = parseFloat(controls.simulationTime.value);
+
+            displayValues.gravity.textContent = params.g.toFixed(2);
+            displayValues.length.textContent = params.L.toFixed(2);
+            displayValues.damping.textContent = params.beta.toFixed(2);
+            displayValues.drivingForce.textContent = params.F0.toFixed(2);
+            displayValues.drivingFrequency.textContent = params.omegaDrive.toFixed(2);
+            displayValues.timeStep.textContent = params.dt.toFixed(2);
+            displayValues.simulationTime.textContent = params.totalSimulationTime.toFixed(0);
+
+            simulateAndPlot();
+        }
 
         function simulateAndPlot() {
             let theta = 0.5;
@@ -141,6 +153,7 @@
             Plotly.newPlot('pendulumComparison', [fullTrace, approxTrace], { title: 'Pendulum Motion' });
         }
 
+        // Initial simulation and plot
         simulateAndPlot();
     </script>
 </body>
