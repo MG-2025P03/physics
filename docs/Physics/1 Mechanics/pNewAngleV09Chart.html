@@ -3,60 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projectile Motion: Range with Initial Angle</title>
-    <script src="https://cdn.jsdelivr.net/npm/@plotdb/plot@0.5.2/plot.min.js"></script>
+    <title>Projectile Motion Simulation</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
-    <canvas id="plot" width="800" height="600"></canvas>
 
-    <script>
-        // Constants
-        const initialVelocity = 20;  // m/s
-        const gravity = 9.81;       // m/s^2
-        const angle = 15;           // degrees
+<div id="plot" style="width:100%;max-width:700px;"></div>
+
+<script>
+    // Parameters
+    const initialHeight = 0; // Initial height (m)
+    const initialVelocity = 50; // Initial velocity (m/s)
+    const gravity = 9.81; // Gravity (m/s^2)
+    const maxDistance = 300; // x axis maximum distance (m)
+    const maxHeight = 50;  // y axis maximum height (m)
+    
+    const angles = [15, 30, 45, 60, 75]; // Angles of projection
+    const radianAngles = angles.map(angle => angle * Math.PI / 180); // Convert to radians
+
+    let data = [];
+
+    radianAngles.forEach((angle, index) => {
+        let x = [];
+        let y = [];
         
-        // Convert angle from degrees to radians
-        const radian = angle * Math.PI / 180;
-
-        // Calculate Horizontal Range
-        const range = Math.pow(initialVelocity, 2) * Math.sin(2 * radian) / gravity;
-
-        // Calculate Maximum Height
-        const maxHeight = Math.pow(initialVelocity * Math.sin(radian), 2) / (2 * gravity);
-
-        // Generate data points for the projectile motion
-        const numPoints = 100;  // Number of data points
-        const deltaX = range / numPoints;  // Increment in x-axis
-        const data = [];
-
-        for (let i = 0; i <= numPoints; i++) {
-            const x = i * deltaX;
-            const y = x * Math.tan(radian) - (gravity * Math.pow(x, 2)) / (2 * Math.pow(initialVelocity * Math.cos(radian), 2));
-            data.push({ x, y });
+        for (let t = 0; t < maxDistance; t += 0.5) {
+            let xPos = initialVelocity * Math.cos(angle) * t;
+            let yPos = initialHeight + initialVelocity * Math.sin(angle) * t - 0.5 * gravity * Math.pow(t, 2);
+            if (yPos < 0) break; // Stop if projectile hits the ground
+            x.push(xPos);
+            y.push(yPos);
+            if (xPos > maxDistance || yPos > maxHeight) break; // Limit graph by max height and distance
         }
 
-        // Plot configuration
-        const plot = plotjs.plot({
-            target: "#plot",
-            style: {
-                height: 600,
-                width: 800
-            },
-            meta: {
-                xlabel: "Range (m)",
-                ylabel: "Height (m)",
-                xlim: [0, range + 5],  // Limit the graph by maximum range
-                ylim: [0, maxHeight + 5]  // Limit the graph by maximum height
-            },
-            data: [{
-                data,
-                style: {
-                    stroke: 'blue',
-                    'stroke-width': 2
-                },
-                label: `Trajectory at ${angle}°`
-            }]
+        data.push({
+            x: x,
+            y: y,
+            mode: "lines",
+            name: `${angles[index]}°`,
         });
-    </script>
+    });
+
+    // Layout of the plot
+    const layout = {
+        title: 'Projectile Trajectories',
+        xaxis: {
+            title: 'Range (m)',
+            range: [0, maxDistance]
+        },
+        yaxis: {
+            title: 'Height (m)',
+            range: [0, maxHeight]
+        },
+        showlegend: true
+    };
+
+    // Render the plot
+    Plotly.newPlot('plot', data, layout);
+</script>
+
 </body>
 </html>
