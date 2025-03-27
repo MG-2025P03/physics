@@ -22,6 +22,7 @@
             border-radius: 5px;
             overflow-y: auto;
             max-height: 95vh;
+            font-size: 8pt;
         }
         #plots {
             margin-right: 300px; /* Ensures there's space for the fixed controls */
@@ -57,14 +58,12 @@
             <label>L: <input type="range" id="L1" min="0.5" max="5" value="1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="L1_value">1.00</span></label><br>
             <label>dt: <input type="range" id="dt1" min="0.01" max="0.1" value="0.02" step="0.01" onchange="updateParamsAndSimulate()"> <span id="dt1_value">0.02</span></label><br>
         </div>
-        <h4>Parameters for Each Data Set</h4>
         <div id="set1" class="parameter-set">
             <h5>Set 1</h5>
             <label>g: <input type="range" id="g1" min="1" max="20" value="9.81" step="0.01" onchange="updateParamsAndSimulate()"> <span id="g1_value">9.81</span></label><br>
             <label>beta: <input type="range" id="beta1" min="0" max="2" value="0.1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="beta1_value">0.10</span></label><br>
             <label>F0: <input type="range" id="F01" min="0" max="1" value="0.2" step="0.01" onchange="updateParamsAndSimulate()"> <span id="F01_value">0.20</span></label><br>
             <label>omegaDrive: <input type="range" id="omegaDrive1" min="0" max="2" value="0.67" step="0.01" onchange="updateParamsAndSimulate()"> <span id="omegaDrive1_value">0.67</span></label><br>
-            
         </div>
         <div id="set2" class="parameter-set">
             <h5>Set 2</h5>
@@ -157,7 +156,8 @@
             const layout = { 
                 width: 500, 
                 height: 320,
-                margin: { l: 25, r: 10, t: 0, b: 50 }
+                margin: { l: 25, r: 10, t: 0, b: 30 },
+                xaxis: { title: { text: '', standoff: 0 } } 
             };
 
             Plotly.newPlot('phaseDiagram', plotData.phase, { ...layout, xaxis: { title: 'Phase Diagram (θ vs ω)' } });
