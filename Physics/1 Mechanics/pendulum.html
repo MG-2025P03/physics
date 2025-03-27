@@ -14,10 +14,10 @@
         #controls {
             position: fixed;
             right: 20px;
-            top: 5px;
+            top: 20px;
             width: 250px;
             background-color: #f7f7f7;
-            padding: 5px;
+            padding: 15px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 5px;
             overflow-y: auto;
@@ -29,18 +29,18 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
-            margin-top: 5px;
+            margin-top: 20px;
             margin-left: 20px;
         }
         .plot {
             width: 500px;
-            height: 340px;
+            height: 500px;
             margin-bottom: 20px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
         .parameter-set h3 {
-            margin: 5px 0 5px;
+            margin: 10px 0 5px;
             font-size: 10pt;
         }
     </style>
@@ -50,7 +50,7 @@
         <div id="phaseDiagram" class="plot"></div>
         <div id="energyPlot" class="plot"></div>
         <div id="harmonicMotion" class="plot"></div>
-        <div id="amplitudePlot" class="plot"></div>
+        <div id="energyOfPendulumPlot" class="plot"></div>
     </div>
     <div id="controls">
         <h2 style="font-size: 10pt;">Parameters for Each Data Set</h2>
@@ -125,7 +125,7 @@
         }
 
         function simulateAndPlot(datasets) {
-            const plotData = { phase: [], energy: [], harmonic: [], amplitude: [] };
+            const plotData = { phase: [], energy: [], harmonic: [], energyOfPendulum: [] };
 
             datasets.forEach((params, index) => {
                 let theta = 0.5;
@@ -133,7 +133,9 @@
                 let timeData = [];
                 let thetaData = [];
                 let omegaData = [];
-                let energyData = [];
+                let kineticData = [];
+                let potentialData = [];
+                let totalEnergyData = [];
 
                 // Simulate the pendulum dynamics
                 for (let t = 0; t < params.totalTime; t += params.dt) {
@@ -147,13 +149,18 @@
 
                     const KE = 0.5 * params.L * params.L * omega * omega;
                     const PE = params.g * params.L * (1 - Math.cos(theta));
-                    energyData.push({ time: t, kinetic: KE, potential: PE });
+                    kineticData.push(KE);
+                    potentialData.push(PE);
+                    totalEnergyData.push(KE + PE);
                 }
 
                 plotData.phase.push({ x: thetaData, y: omegaData, mode: 'lines', line: { color: colors[index] }, name: `Set ${index + 1}` });
-                plotData.energy.push({ x: timeData, y: energyData.map(e => e.kinetic + e.potential), mode: 'lines', line: { color: colors[index] }, name: `Set ${index + 1}` });
+                plotData.energy.push({ x: timeData, y: totalEnergyData, mode: 'lines', line: { color: colors[index] }, name: `Total Energy Set ${index + 1}` });
                 plotData.harmonic.push({ x: timeData, y: thetaData, mode: 'lines', line: { color: colors[index] }, name: `Set ${index + 1}` });
-                plotData.amplitude.push({ x: timeData, y: thetaData, mode: 'lines', line: { color: colors[index] }, name: `Set ${index + 1}` });
+                plotData.energyOfPendulum.push(
+                    { x: timeData, y: kineticData, mode: 'lines', line: { dash: 'solid', color: colors[index] }, name: `Kinetic Energy Set ${index + 1}` },
+                    { x: timeData, y: potentialData, mode: 'lines', line: { dash: 'dash', color: colors[index] }, name: `Potential Energy Set ${index + 1}` }
+                );
             });
 
             plotCharts(plotData);
@@ -162,8 +169,8 @@
         function plotCharts(plotData) {
             const layout = { 
                 width: 500, 
-                height: 340,
-                margin: { l: 0, r: 0, t: 0, b: 30 }
+                height: 470,
+                margin: { l: 0, r: 0, t: 0, b: 35 }
             };
 
             const titleLayout = { title: { standoff: 15 } };
@@ -171,7 +178,7 @@
             Plotly.newPlot('phaseDiagram', plotData.phase, { ...layout, ...titleLayout, xaxis: { title: 'Phase Diagram (θ vs ω)' } });
             Plotly.newPlot('energyPlot', plotData.energy, { ...layout, ...titleLayout, xaxis: { title: 'Energy vs Time' } });
             Plotly.newPlot('harmonicMotion', plotData.harmonic, { ...layout, ...titleLayout, xaxis: { title: 'Harmonic Motion in 1D' } });
-            Plotly.newPlot('amplitudePlot', plotData.amplitude, { ...layout, ...titleLayout, xaxis: { title: 'Time' }, yaxis: { title: 'Amplitude (θ)' } });
+            Plotly.newPlot('energyOfPendulumPlot', plotData.energyOfPendulum, { ...layout, ...titleLayout, xaxis: { title: 'Time' }, yaxis: { title: 'Energy of Pendulum' } });
         }
 
         // Initial simulation and plot
