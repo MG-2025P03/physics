@@ -33,8 +33,8 @@
             margin-left: 20px;
         }
         .plot {
-            width: 500px;
-            height: 500px;
+            width: 1000px;
+            height: 1000px;
             margin-bottom: 20px;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -50,7 +50,7 @@
         <div id="phaseDiagram" class="plot"></div>
         <div id="energyPlot" class="plot"></div>
         <div id="harmonicMotion" class="plot"></div>
-        <div id="energyOfPendulumPlot" class="plot"></div>
+        <div id="areaMap" class="plot"></div>
     </div>
     <div id="controls">
         <h2 style="font-size: 10pt;">Parameters for Each Data Set</h2>
@@ -125,7 +125,7 @@
         }
 
         function simulateAndPlot(datasets) {
-            const plotData = { phase: [], energy: [], harmonic: [], energyOfPendulum: [] };
+            const plotData = { areaMap: [] };
 
             datasets.forEach((params, index) => {
                 let theta = 0.5;
@@ -133,11 +133,7 @@
                 let timeData = [];
                 let thetaData = [];
                 let omegaData = [];
-                let kineticData = [];
-                let potentialData = [];
-                let totalEnergyData = [];
 
-                // Simulate the pendulum dynamics
                 for (let t = 0; t < params.totalTime; t += params.dt) {
                     timeData.push(t);
                     const thetaDoubleDot = (-params.g / params.L) * Math.sin(theta) - params.beta * omega + params.F0 * Math.cos(params.omegaDrive * t);
@@ -146,39 +142,30 @@
 
                     thetaData.push(theta);
                     omegaData.push(omega);
-
-                    const KE = 0.5 * params.L * params.L * omega * omega;
-                    const PE = params.g * params.L * (1 - Math.cos(theta));
-                    kineticData.push(KE);
-                    potentialData.push(PE);
-                    totalEnergyData.push(KE + PE);
                 }
 
-                plotData.phase.push({ x: thetaData, y: omegaData, mode: 'lines', line: { color: colors[index] }, name: `Set ${index + 1}` });
-                plotData.energy.push({ x: timeData, y: totalEnergyData, mode: 'lines', line: { color: colors[index] }, name: `Total Energy Set ${index + 1}` });
-                plotData.harmonic.push({ x: timeData, y: thetaData, mode: 'lines', line: { color: colors[index] }, name: `Set ${index + 1}` });
-                plotData.energyOfPendulum.push(
-                    { x: timeData, y: kineticData, mode: 'lines', line: { dash: 'solid', color: colors[index] }, name: `Kinetic Energy Set ${index + 1}` },
-                    { x: timeData, y: potentialData, mode: 'lines', line: { dash: 'dash', color: colors[index] }, name: `Potential Energy Set ${index + 1}` }
-                );
+                plotData.areaMap.push({
+                    x: thetaData, y: omegaData,
+                    mode: 'lines',
+                    fill: 'tozerox',
+                    line: { color: colors[index] },
+                    name: `Set ${index + 1}`
+                });
             });
 
-            plotCharts(plotData);
+            plotAreaMap(plotData.areaMap);
         }
 
-        function plotCharts(plotData) {
-            const layout = { 
-                width: 500, 
-                height: 470,
-                margin: { l: 0, r: 0, t: 0, b: 35 }
+        function plotAreaMap(areaData) {
+            const layout = {
+                width: 1000,
+                height: 1000,
+                margin: { l: 0, r: 0, t: 0, b: 0 },
+                grid: { rows: 2, columns: 2, pattern: 'independent' },
+                showlegend: false
             };
 
-            const titleLayout = { title: { standoff: 15 } };
-
-            Plotly.newPlot('phaseDiagram', plotData.phase, { ...layout, ...titleLayout, xaxis: { title: 'Phase Diagram (θ vs ω)' } });
-            Plotly.newPlot('energyPlot', plotData.energy, { ...layout, ...titleLayout, xaxis: { title: 'Energy vs Time' } });
-            Plotly.newPlot('harmonicMotion', plotData.harmonic, { ...layout, ...titleLayout, xaxis: { title: 'Harmonic Motion in 1D' } });
-            Plotly.newPlot('energyOfPendulumPlot', plotData.energyOfPendulum, { ...layout, ...titleLayout, xaxis: { title: 'Time' }, yaxis: { title: 'Energy of Pendulum' } });
+            Plotly.newPlot('areaMap', areaData, { ...layout });
         }
 
         // Initial simulation and plot
