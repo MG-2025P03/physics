@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forced Damped Pendulum Simulation</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.11.1.min.js"></script>
+    <style>
+        #plots {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .plot {
+            width: 48%;
+            margin: 1%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Forced Damped Pendulum Simulation</h1>
+    <div id="plots">
+        <div id="phaseDiagram" class="plot"></div>
+        <div id="energyPlot" class="plot"></div>
+        <div id="harmonicMotion" class="plot"></div>
+        <div id="pendulumComparison" class="plot"></div>
+    </div>
+
+    <script>
+        // Parameters
+        const g = 9.81; // m/s^2
+        const L = 1.0;  // meter
+        const beta = 0.1; // damping coefficient
+        const F0 = 0.2; // driving force amplitude
+        const omegaDrive = 0.67; // driving frequency
+        const dt = 0.02; // time step
+        const totalSimulationTime = 60; // total time in seconds
+
+        // Variables for simulation
+        let theta = 0.5; // initial angle
+        let omega = 0;   // initial angular velocity
+        let time = 0;
+
+        // Data storage for plotting
+        let timeData = [];
+        let thetaData = [];
+        let omegaData = [];
+        let energyData = [];
+
+        function simulate() {
+            timeData = [];
+            thetaData = [];
+            omegaData = [];
+            energyData = [];
+
+            for (let t = 0; t < totalSimulationTime; t += dt) {
+                timeData.push(t);
+
+                // Equations of motion
+                const thetaDoubleDot = (-g / L) * Math.sin(theta) - beta * omega + F0 * Math.cos(omegaDrive * t);
+                omega += thetaDoubleDot * dt;
+                theta += omega * dt;
+                
+                thetaData.push(theta);
+                omegaData.push(omega);
+
+                // Kinetic Energy (KE) = 0.5 * (m * v^2)
+                // Potential Energy (PE) = m * g * h
+                const KE = 0.5 * L * L * omega * omega;
+                const PE = g * L * (1 - Math.cos(theta));
+                energyData.push({ time: t, kinetic: KE, potential: PE });
+            }
+        }
+
+        function plotGraphs() {
+            // Phase Diagram
+            const phaseTrace = {
+                x: thetaData,
+                y: omegaData,
+                mode: 'lines',
+                name: 'Phase Diagram'
+            };
+            Plotly.newPlot('phaseDiagram', [phaseTrace], { title: 'Phase Diagram (θ vs ω)' });
+
+            // Energy vs. Time
+            const energyTimeData = {
+                x: timeData,
+                y: energyData.map(e => e.kinetic + e.potential),
+                mode: 'lines',
+                name: 'Total Energy'
+            };
+            Plotly.newPlot('energyPlot', [energyTimeData], { title: 'Energy vs Time' });
+
+            // Harmonic Motion
+            const harmonicTrace = {
+                x: timeData,
+                y: thetaData,
+                mode: 'lines',
+                name: 'Harmonic Motion'
+            };
+            Plotly.newPlot('harmonicMotion', [harmonicTrace], { title: 'Harmonic Motion in 1D' });
+
+            // Pendulum Approximation Comparison
+            const fullTrace = {
+                x: timeData,
+                y: thetaData.map(theta => Math.sin(theta)),
+                mode: 'lines',
+                name: 'sin(θ)'
+            };
+            const approxTrace = {
+                x: timeData,
+                y: thetaData.map(theta => theta), // Small angle approximation
+                mode: 'lines',
+                name: 'θ (approximation)'
+            };
+            Plotly.newPlot('pendulumComparison', [fullTrace, approxTrace], { title: 'Pendulum Motion' });
+        }
+
+        simulate();
+        plotGraphs();
+    </script>
+</body>
+</html>
