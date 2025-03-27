@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projectile Motion: Range vs Angle</title>
+    <title>Projectile Motion: Range with Initial Angle</title>
     <script src="https://cdn.jsdelivr.net/npm/@plotdb/plot@0.5.2/plot.min.js"></script>
 </head>
 <body>
@@ -13,37 +13,29 @@
         // Constants
         const initialVelocity = 20;  // m/s
         const gravity = 9.81;       // m/s^2
-
-        // Angles in degrees
-        const angles = [15, 30, 45, 60, 75];
+        const angle = 15;           // degrees
         
-        // Function to calculate range based on angle of projection
-        function calculateRange(angle) {
-            let radian = angle * Math.PI / 180;
-            return (Math.pow(initialVelocity, 2) * Math.sin(2 * radian) / gravity);
+        // Convert angle from degrees to radians
+        const radian = angle * Math.PI / 180;
+
+        // Calculate Horizontal Range
+        const range = Math.pow(initialVelocity, 2) * Math.sin(2 * radian) / gravity;
+
+        // Calculate Maximum Height
+        const maxHeight = Math.pow(initialVelocity * Math.sin(radian), 2) / (2 * gravity);
+
+        // Generate data points for the projectile motion
+        const numPoints = 100;  // Number of data points
+        const deltaX = range / numPoints;  // Increment in x-axis
+        const data = [];
+
+        for (let i = 0; i <= numPoints; i++) {
+            const x = i * deltaX;
+            const y = x * Math.tan(radian) - (gravity * Math.pow(x, 2)) / (2 * Math.pow(initialVelocity * Math.cos(radian), 2));
+            data.push({ x, y });
         }
 
-        // Generate data series for each angle of projection
-        const datasets = angles.map((angle, index) => {
-            const range = calculateRange(angle);
-
-            return {
-                data: [
-                    { x: 0, y: 0 },  // Starting point
-                    { x: range, y: 0 }  // Horizontal range point
-                ],
-                style: {
-                    stroke: ['red', 'green', 'blue', 'orange', 'purple'][index % 5],
-                    'stroke-width': 2
-                },
-                label: `Angle: ${angle}°`
-            };
-        });
-
-        // Calculate maximum range and height for setting axis limits
-        const maxRange = Math.max(...angles.map(calculateRange));
-
-        // Plotting configuration
+        // Plot configuration
         const plot = plotjs.plot({
             target: "#plot",
             style: {
@@ -53,10 +45,17 @@
             meta: {
                 xlabel: "Range (m)",
                 ylabel: "Height (m)",
-                xlim: [0, maxRange + 5],  // Set limits for range
-                ylim: [0, 5]  // Set limits for height, assuming trajectories start and end at ground level
+                xlim: [0, range + 5],  // Limit the graph by maximum range
+                ylim: [0, maxHeight + 5]  // Limit the graph by maximum height
             },
-            data: datasets
+            data: [{
+                data,
+                style: {
+                    stroke: 'blue',
+                    'stroke-width': 2
+                },
+                label: `Trajectory at ${angle}°`
+            }]
         });
     </script>
 </body>
