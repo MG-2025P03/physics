@@ -54,7 +54,6 @@
     </div>
     <div id="controls">
         <h3 style="font-size: 12pt;">Interactive Forced Damped Pendulum Simulation</h3>
-
         <h4 style="font-size: 10pt;">Fixed Parameters</h4>
         <div id="setAll" class="parameter-set">
             <label>L: <input type="range" id="L1" min="0.5" max="5" value="1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="L1_value">1.00</span></label><br>
@@ -110,7 +109,7 @@
         function displayValues() {
             for (let i = 1; i <= 4; i++) {
                 document.getElementById(`g${i}_value`).textContent = parseFloat(document.getElementById(`g${i}`).value).toFixed(2);
-                document.getElementById('L1_value').textContent = parseFloat(document.getElementById('L1_.value').toFixed(2);
+                document.getElementById('L1_value').textContent = parseFloat(document.getElementById('L1_value').toFixed(2);
                 document.getElementById(`beta${i}_value`).textContent = parseFloat(document.getElementById(`beta${i}`).value).toFixed(2);
                 document.getElementById(`F0${i}_value`).textContent = parseFloat(document.getElementById(`F0${i}`).value).toFixed(2);
                 document.getElementById(`omegaDrive${i}_value`).textContent = parseFloat(document.getElementById(`omegaDrive${i}`).value).toFixed(2);
