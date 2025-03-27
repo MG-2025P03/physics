@@ -33,8 +33,8 @@
             margin-left: 20px;
         }
         .plot {
-            width: 1000px;
-            height: 1000px;
+            width: 500px;
+            height: 500px;
             margin-bottom: 20px;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -50,7 +50,7 @@
         <div id="phaseDiagram" class="plot"></div>
         <div id="energyPlot" class="plot"></div>
         <div id="harmonicMotion" class="plot"></div>
-        <div id="areaMap" class="plot"></div>
+        <div id="centripetalForcePlot" class="plot"></div>
     </div>
     <div id="controls">
         <h2 style="font-size: 10pt;">Parameters for Each Data Set</h2>
@@ -125,47 +125,53 @@
         }
 
         function simulateAndPlot(datasets) {
-            const plotData = { areaMap: [] };
+            // Data storage for plotting
+            const plotData = { phase: [], energy: [], harmonic: [], centripetalForce: [] };
 
+            // For each data set
             datasets.forEach((params, index) => {
                 let theta = 0.5;
                 let omega = 0;
                 let timeData = [];
-                let thetaData = [];
-                let omegaData = [];
+                let centripetalForceData = [];
 
+                // Simulate the pendulum dynamics
                 for (let t = 0; t < params.totalTime; t += params.dt) {
                     timeData.push(t);
                     const thetaDoubleDot = (-params.g / params.L) * Math.sin(theta) - params.beta * omega + params.F0 * Math.cos(params.omegaDrive * t);
                     omega += thetaDoubleDot * params.dt;
                     theta += omega * params.dt;
 
-                    thetaData.push(theta);
-                    omegaData.push(omega);
+                    // Compute centripetal force; assuming unit mass for simplification: Fc = L * omega^2
+                    let v = params.L * omega; // Velocity
+                    let Fc = params.L * omega * omega;  // Simplified centripetal force assuming mass = 1
+                    centripetalForceData.push(Fc);
                 }
 
-                plotData.areaMap.push({
-                    x: thetaData, y: omegaData,
+                // Prepare data for each plot trace
+                plotData.centripetalForce.push({
+                    x: timeData, 
+                    y: centripetalForceData,
                     mode: 'lines',
-                    fill: 'tozerox',
                     line: { color: colors[index] },
                     name: `Set ${index + 1}`
                 });
             });
 
-            plotAreaMap(plotData.areaMap);
+            // Plot the centripetal force over time
+            plotCentripetalForce(plotData.centripetalForce);
         }
 
-        function plotAreaMap(areaData) {
+        function plotCentripetalForce(forceData) {
             const layout = {
-                width: 1000,
-                height: 1000,
-                margin: { l: 0, r: 0, t: 0, b: 0 },
-                grid: { rows: 2, columns: 2, pattern: 'independent' },
-                showlegend: false
+                width: 500,
+                height: 500,
+                margin: { l: 0, r: 0, t: 0, b: 35 },
+                xaxis: { title: 'Time' },
+                yaxis: { title: 'Centripetal Force' }
             };
 
-            Plotly.newPlot('areaMap', areaData, { ...layout });
+            Plotly.newPlot('centripetalForcePlot', forceData, layout);
         }
 
         // Initial simulation and plot
