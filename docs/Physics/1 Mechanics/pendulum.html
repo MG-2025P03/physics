@@ -165,7 +165,7 @@
         }
 
         function simulateAndPlot(datasets) {
-            const plotData = { phase: [], energy: [], harmonic: [], poincare: [] };
+            const plotData = { phase: [], energy: [], harmonic: [], cumulative: [] };
 
             datasets.forEach((params, index) => {
                 let theta = 0.5;
@@ -174,8 +174,8 @@
                 let thetaData = [];
                 let omegaData = [];
                 let energyData = [];
-                let poincareTheta = [];
-                let poincareOmega = [];
+                let cumulativeTheta = [];
+                let cumulativeAngle = 0; // Initialize cumulative angle
                 
                 // Simulate the pendulum dynamics
                 for (let t = 0; t < params.totalTime; t += params.dt) {
@@ -187,11 +187,8 @@
                     thetaData.push(theta);
                     omegaData.push(omega);
 
-                    // Sample for Poincaré section (e.g., at each drive period)
-                    if (Math.abs((t % (2 * Math.PI / params.omegaDrive)) - params.dt) < params.dt) {
-                        poincareTheta.push(theta);
-                        poincareOmega.push(omega);
-                    }
+                    cumulativeAngle += theta; // Accumulate the angle
+                    cumulativeTheta.push(cumulativeAngle);
 
                     const KE = 0.5 * params.L * params.L * omega * omega;
                     const PE = params.g * params.L * (1 - Math.cos(theta));
@@ -201,7 +198,7 @@
                 plotData.phase.push({ x: thetaData, y: omegaData, mode: 'lines', line: { color: params.color }, name: params.label });
                 plotData.energy.push({ x: timeData, y: energyData.map(e => e.kinetic + e.potential), mode: 'lines', line: { color: params.color }, name: params.label });
                 plotData.harmonic.push({ x: timeData, y: thetaData, mode: 'lines', line: { color: params.color }, name: params.label });
-                plotData.poincare.push({ x: poincareTheta, y: poincareOmega, mode: 'markers', marker: { color: params.color }, name: params.label });
+                plotData.cumulative.push({ x: timeData, y: cumulativeTheta, mode: 'lines', line: { color: params.color }, name: params.label });
             });
 
             plotCharts(plotData);
@@ -211,7 +208,7 @@
             const layout = {
                 width: 500,
                 height: 310,
-                margin: { l: 35, r: 10, t: 0, b: 35 }
+                margin: { l: 35, r: 15, t: 0, b: 30 }
             };
 
             const titleLayout = { title: { standoff: 15 } };
@@ -219,7 +216,7 @@
             Plotly.newPlot('phaseDiagram', plotData.phase, { ...layout, ...titleLayout, xaxis: { title: 'Phase Diagram (θ vs ω)' } });
             Plotly.newPlot('energyPlot', plotData.energy, { ...layout, ...titleLayout, xaxis: { title: 'Energy vs Time' } });
             Plotly.newPlot('harmonicMotion', plotData.harmonic, { ...layout, ...titleLayout, xaxis: { title: 'Harmonic Motion in 1D' } });
-            Plotly.newPlot('poincarePlot', plotData.poincare, { ...layout, ...titleLayout, xaxis: { title: 'Theta' }, yaxis: { title: 'Omega' } });
+            Plotly.newPlot('cumulativeAngularPlot', plotData.cumulative, { ...layout, ...titleLayout, xaxis: { title: 'Time' }, yaxis: { title: 'Cumulative Angular Position' } });
         }
 
         updateParamsAndSimulate();
