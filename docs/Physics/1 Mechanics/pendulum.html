@@ -195,10 +195,10 @@
                     energyData.push({ time: t, kinetic: KE, potential: PE });
                 }
 
-                plotData.phase.push({ x: thetaData, y: omegaData, mode: 'lines', line: { color: params.color }, name: params.label });
-                plotData.energy.push({ x: timeData, y: energyData.map(e => e.kinetic + e.potential), mode: 'lines', line: { color: params.color }, name: params.label });
-                plotData.harmonic.push({ x: timeData, y: thetaData, mode: 'lines', line: { color: params.color }, name: params.label });
-                plotData.cumulative.push({ x: timeData, y: cumulativeTheta, mode: 'lines', line: { color: params.color }, name: params.label });
+                plotData.phase.push({ x: thetaData, y: omegaData, mode: 'lines', line: { color: params.color }});
+                plotData.energy.push({ x: timeData, y: energyData.map(e => e.kinetic + e.potential), mode: 'lines', line: { color: params.color }});
+                plotData.harmonic.push({ x: timeData, y: thetaData, mode: 'lines', line: { color: params.color }});
+                plotData.cumulative.push({ x: timeData, y: cumulativeTheta, mode: 'lines', line: { color: params.color });
             });
 
             plotCharts(plotData);
@@ -211,7 +211,7 @@
                 margin: { l: 40, r: 10, t: 0, b: 30 }
             };
 
-            const titleLayout = { title: { standoff: 15 }, x:10 };
+            const titleLayout = { title: { standoff: 50 }, x:100 };
             
             Plotly.newPlot('phaseDiagram', plotData.phase, { ...layout, ...titleLayout, xaxis: { title: 'Phase Diagram (θ vs ω)' } });
             Plotly.newPlot('energyPlot', plotData.energy, { ...layout, ...titleLayout, xaxis: { title: 'Energy vs Time' } });
