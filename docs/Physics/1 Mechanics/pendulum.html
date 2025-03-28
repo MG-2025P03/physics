@@ -195,10 +195,10 @@
                     energyData.push({ time: t, kinetic: KE, potential: PE });
                 }
 
-                plotData.phase.push({ x: thetaData, y: omegaData, mode: 'lines', line: { color: params.color }});
-                plotData.energy.push({ x: timeData, y: energyData.map(e => e.kinetic + e.potential), mode: 'lines', line: { color: params.color }});
-                plotData.harmonic.push({ x: timeData, y: thetaData, mode: 'lines', line: { color: params.color }});
-                plotData.cumulative.push({ x: timeData, y: cumulativeTheta, mode: 'lines', line: { color: params.color });
+                plotData.phase.push({ x: thetaData, y: omegaData, mode: 'lines', line: { color: params.color }, name: `Set ${index + 1}` });
+                plotData.energy.push({ x: timeData, y: energyData.map(e => e.kinetic + e.potential), mode: 'lines', line: { color: params.color }, name: `Set ${index + 1}` });
+                plotData.harmonic.push({ x: timeData, y: thetaData, mode: 'lines', line: { color: params.color }, name: `Set ${index + 1}` });
+                plotData.cumulative.push({ x: timeData, y: cumulativeTheta, mode: 'lines', line: { color: params.color }, name: `Set ${index + 1}` });
             });
 
             plotCharts(plotData);
