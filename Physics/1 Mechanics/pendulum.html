@@ -117,12 +117,12 @@
         function displayValues() {
             for (let i = 1; i <= 4; i++) {
                 document.getElementById(`g${i}_value`).textContent = parseFloat(document.getElementById(`g${i}`).value).toFixed(2);
-                document.getElementById(`L1_value`).textContent = parseFloat(document.getElementById(`L1`).value).toFixed(2);
+                document.getElementById(`L${i}_value`).textContent = parseFloat(document.getElementById(`L${i}`).value).toFixed(2);
                 document.getElementById(`beta${i}_value`).textContent = parseFloat(document.getElementById(`beta${i}`).value).toFixed(2);
                 document.getElementById(`F0${i}_value`).textContent = parseFloat(document.getElementById(`F0${i}`).value).toFixed(2);
                 document.getElementById(`omegaDrive${i}_value`).textContent = parseFloat(document.getElementById(`omegaDrive${i}`).value).toFixed(2);
-                document.getElementById(`dt1_value`).textContent = parseFloat(document.getElementById(`dt1`).value).toFixed(2);
-                document.getElementById(`totalTime1_value`).textContent = parseFloat(document.getElementById(`totalTime1`).value).toFixed(0);
+                document.getElementById(`dt${i}_value`).textContent = parseFloat(document.getElementById(`dt${i}`).value).toFixed(2);
+                document.getElementById(`totalTime${i}_value`).textContent = parseFloat(document.getElementById(`totalTime${i}`).value).toFixed(0);
             }
         }
 
@@ -166,11 +166,11 @@
         function plotCharts(plotData) {
             const layout = {
                 width: 500,
-                height: 310,
+                height: 470,
                 margin: { l: 35, r: 15, t: 0, b: 35 }
             };
 
-            const titleLayout = { title: { standoff: 30 } };
+            const titleLayout = { title: { standoff: 35 } };
 
             Plotly.newPlot('phaseDiagram', plotData.phase, { ...layout, ...titleLayout, xaxis: { title: 'Phase Diagram (θ vs ω)' } });
             Plotly.newPlot('energyPlot', plotData.energy, { ...layout, ...titleLayout, xaxis: { title: 'Energy vs Time' } });
