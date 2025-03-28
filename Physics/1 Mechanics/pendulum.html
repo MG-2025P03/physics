@@ -54,7 +54,7 @@
         <div id="phaseDiagram" class="plot"></div>
         <div id="energyPlot" class="plot"></div>
         <div id="harmonicMotion" class="plot"></div>
-        <div id="poincarePlot" class="plot"></div>
+        <div id="cumulativeAngularPlot" class="plot"></div>
     </div>
     <div id="controls">
         <h2 style="font-size: 10pt;">Common Parameters</h2>
@@ -155,12 +155,12 @@
                 const { name, gravity } = planetGravities[gravitySelection];
 
                 document.getElementById(`g${i}_value`).textContent = `${gravity} (${name})`;
-                document.getElementById(`L${i}_value`).textContent = parseFloat(document.getElementById(`L${i}`).value).toFixed(2);
+                document.getElementById(`L1_value`).textContent = parseFloat(document.getElementById(`L1`).value).toFixed(2);
                 document.getElementById(`beta${i}_value`).textContent = parseFloat(document.getElementById(`beta${i}`).value).toFixed(2);
                 document.getElementById(`F0${i}_value`).textContent = parseFloat(document.getElementById(`F0${i}`).value).toFixed(2);
                 document.getElementById(`omegaDrive${i}_value`).textContent = parseFloat(document.getElementById(`omegaDrive${i}`).value).toFixed(2);
-                document.getElementById(`dt${i}_value`).textContent = parseFloat(document.getElementById(`dt${i}`).value).toFixed(2);
-                document.getElementById(`totalTime${i}_value`).textContent = parseFloat(document.getElementById(`totalTime${i}`).value).toFixed(0);
+                document.getElementById(`dt1_value`).textContent = parseFloat(document.getElementById(`dt1`).value).toFixed(2);
+                document.getElementById(`totalTime1_value`).textContent = parseFloat(document.getElementById(`totalTime1`).value).toFixed(0);
             }
         }
 
@@ -208,7 +208,7 @@
             const layout = {
                 width: 500,
                 height: 470,
-                margin: { l: 40, r: 10, t: 0, b: 30 },
+                margin: { l: 0, r: 0, t: 0, b: 35 },
                 legend: {
                     x: 1,
                     y: 1,
