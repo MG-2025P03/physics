@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>Interactive Forced Damped Pendulum Simulation with Multiple Data Sets</title>
@@ -12,7 +11,6 @@
             font-family: Arial, sans-serif;
             overflow-x: hidden;
         }
-
         #controls {
             position: fixed;
             right: 20px;
@@ -26,7 +24,6 @@
             max-height: 95vh;
             font-size: 8pt;
         }
-
         #plots {
             margin-right: 300px;
             display: flex;
@@ -35,7 +32,6 @@
             margin-top: 20px;
             margin-left: 20px;
         }
-
         .plot {
             width: 500px;
             height: 500px;
@@ -43,14 +39,12 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-
         .parameter-set h3 {
             margin: 10px 0 5px;
             font-size: 10pt;
         }
     </style>
 </head>
-
 <body>
     <div id="plots">
         <div id="phaseDiagram" class="plot"></div>
@@ -62,71 +56,43 @@
         <h2 style="font-size: 10pt;">Parameters for Each Data Set</h2>
         <div id="set1" class="parameter-set">
             <h3 style="color: orange; font-size: 10pt;">Set 1</h3>
-            <label>g: <input type="range" id="g1" min="1" max="20" value="9.81" step="0.01" onchange="updateParamsAndSimulate()"> <span
-                    id="g1_value">9.81</span></label><br>
-            <label>L: <input type="range" id="L1" min="0.5" max="5" value="1" step="0.01" onchange="updateParamsAndSimulate()"> <span
-                    id="L1_value">1.00</span></label><br>
-            <label>beta: <input type="range" id="beta1" min="0" max="2" value="0.1" step="0.01"
-                    onchange="updateParamsAndSimulate()"> <span id="beta1_value">0.10</span></label><br>
-            <label>F0: <input type="range" id="F01" min="0" max="1" value="0.2" step="0.01"
-                    onchange="updateParamsAndSimulate()"> <span id="F01_value">0.20</span></label><br>
-            <label>omegaDrive: <input type="range" id="omegaDrive1" min="0" max="2" value="0.67" step="0.01"
-                    onchange="updateParamsAndSimulate()"> <span id="omegaDrive1_value">0.67</span></label><br>
-            <label>dt: <input type="range" id="dt1" min="0.01" max="0.1" value="0.02" step="0.01"
-                    onchange="updateParamsAndSimulate()"> <span id="dt1_value">0.02</span></label><br>
-            <label>Total Time: <input type="range" id="totalTime1" min="10" max="120" value="60" step="1"
-                    onchange="updateParamsAndSimulate()"> <span id="totalTime1_value">60</span></label><br>
+            <label>g: <input type="range" id="g1" min="1" max="20" value="9.81" step="0.01" onchange="updateParamsAndSimulate()"> <span id="g1_value">9.81</span></label><br>
+            <label>L: <input type="range" id="L1" min="0.5" max="5" value="1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="L1_value">1.00</span></label><br>
+            <label>beta: <input type="range" id="beta1" min="0" max="2" value="0.1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="beta1_value">0.10</span></label><br>
+            <label>F0: <input type="range" id="F01" min="0" max="1" value="0.2" step="0.01" onchange="updateParamsAndSimulate()"> <span id="F01_value">0.20</span></label><br>
+            <label>omegaDrive: <input type="range" id="omegaDrive1" min="0" max="2" value="0.67" step="0.01" onchange="updateParamsAndSimulate()"> <span id="omegaDrive1_value">0.67</span></label><br>
+            <label>dt: <input type="range" id="dt1" min="0.01" max="0.1" value="0.02" step="0.01" onchange="updateParamsAndSimulate()"> <span id="dt1_value">0.02</span></label><br>
+            <label>Total Time: <input type="range" id="totalTime1" min="10" max="120" value="60" step="1" onchange="updateParamsAndSimulate()"> <span id="totalTime1_value">60</span></label><br>
         </div>
         <div id="set2" class="parameter-set">
             <h3 style="color: blue; font-size: 10pt;">Set 2</h3>
-            <label>g: <input type="range" id="g2" min="1" max="20" value="9.81" step="0.01" onchange="updateParamsAndSimulate()"> <span
-                    id="g2_value">9.81</span></label><br>
-            <label>L: <input type="range" id="L2" min="0.5" max="5" value="1" step="0.01" onchange="updateParamsAndSimulate()"> <span
-                    id="L2_value">1.00</span></label><br>
-            <label>beta: <input type="range" id="beta2" min="0" max="2" value="0.1" step="0.01"
-                    onchange="updateParamsAndSimulate()"> <span id="beta2_value">0.10</span></label><br>
-            <label>F0: <input type="range" id="F02" min="0" max="1" value="0.2" step="0.01"
-                    onchange="updateParamsAndSimulate()"> <span id="F02_value">0.20</span></label><br>
-            <label>omegaDrive: <input type="range" id="omegaDrive2" min="0" max="2" value="0.67" step="0.01"
-                    onchange="updateParamsAndSimulate()"> <span id="omegaDrive2_value">0.67</span></label><br>
-            <label>dt: <input type="range" id="dt2" min="0.01" max="0.1" value="0.02" step="0.01"
-                    onchange="updateParamsAndSimulate()"> <span id="dt2_value">0.02</span></label><br>
-            <label>Total Time: <input type="range" id="totalTime2" min="10" max="120" value="60" step="1"
-                    onchange="updateParamsAndSimulate()"> <span id="totalTime2_value">60</span></label><br>
+            <label>g: <input type="range" id="g2" min="1" max="20" value="9.81" step="0.01" onchange="updateParamsAndSimulate()"> <span id="g2_value">9.81</span></label><br>
+            <label>L: <input type="range" id="L2" min="0.5" max="5" value="1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="L2_value">1.00</span></label><br>
+            <label>beta: <input type="range" id="beta2" min="0" max="2" value="0.1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="beta2_value">0.10</span></label><br>
+            <label>F0: <input type="range" id="F02" min="0" max="1" value="0.2" step="0.01" onchange="updateParamsAndSimulate()"> <span id="F02_value">0.20</span></label><br>
+            <label>omegaDrive: <input type="range" id="omegaDrive2" min="0" max="2" value="0.67" step="0.01" onchange="updateParamsAndSimulate()"> <span id="omegaDrive2_value">0.67</span></label><br>
+            <label>dt: <input type="range" id="dt2" min="0.01" max="0.1" value="0.02" step="0.01" onchange="updateParamsAndSimulate()"> <span id="dt2_value">0.02</span></label><br>
+            <label>Total Time: <input type="range" id="totalTime2" min="10" max="120" value="60" step="1" onchange="updateParamsAndSimulate()"> <span id="totalTime2_value">60</span></label><br>
         </div>
         <div id="set3" class="parameter-set">
             <h3 style="color: green; font-size: 10pt;">Set 3</h3>
-            <label>g: <input type="range" id="g3" min="1" max="20" value="9.81" step="0.01" onchange="updateParamsAndSimulate()"> <span
-                    id="g3_value">9.81</span></label><br>
-            <label>L: <input type="range" id="L3" min="0.5" max="5" value="1" step="0.01" onchange="updateParamsAndSimulate()"> <span
-                    id="L3_value">1.00</span></label><br>
-            <label>beta: <input type="range" id="beta3" min="0" max="2" value="0.1" step="0.01"
-                    onchange="updateParamsAndSimulate()"> <span id="beta3_value">0.10</span></label><br>
-            <label>F0: <input type="range" id="F03" min="0" max="1" value="0.2" step="0.01"
-                    onchange="updateParamsAndSimulate()"> <span id="F03_value">0.20</span></label><br>
-            <label>omegaDrive: <input type="range" id="omegaDrive3" min="0" max="2" value="0.67" step="0.01"
-                    onchange="updateParamsAndSimulate()"> <span id="omegaDrive3_value">0.67</span></label><br>
-            <label>dt: <input type="range" id="dt3" min="0.01" max="0.1" value="0.02" step="0.01"
-                    onchange="updateParamsAndSimulate()"> <span id="dt3_value">0.02</span></label><br>
-            <label>Total Time: <input type="range" id="totalTime3" min="10" max="120" value="60" step="1"
-                    onchange="updateParamsAndSimulate()"> <span id="totalTime3_value">60</span></label><br>
+            <label>g: <input type="range" id="g3" min="1" max="20" value="9.81" step="0.01" onchange="updateParamsAndSimulate()"> <span id="g3_value">9.81</span></label><br>
+            <label>L: <input type="range" id="L3" min="0.5" max="5" value="1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="L3_value">1.00</span></label><br>
+            <label>beta: <input type="range" id="beta3" min="0" max="2" value="0.1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="beta3_value">0.10</span></label><br>
+            <label>F0: <input type="range" id="F03" min="0" max="1" value="0.2" step="0.01" onchange="updateParamsAndSimulate()"> <span id="F03_value">0.20</span></label><br>
+            <label>omegaDrive: <input type="range" id="omegaDrive3" min="0" max="2" value="0.67" step="0.01" onchange="updateParamsAndSimulate()"> <span id="omegaDrive3_value">0.67</span></label><br>
+            <label>dt: <input type="range" id="dt3" min="0.01" max="0.1" value="0.02" step="0.01" onchange="updateParamsAndSimulate()"> <span id="dt3_value">0.02</span></label><br>
+            <label>Total Time: <input type="range" id="totalTime3" min="10" max="120" value="60" step="1" onchange="updateParamsAndSimulate()"> <span id="totalTime3_value">60</span></label><br>
         </div>
         <div id="set4" class="parameter-set">
             <h3 style="color: red; font-size: 10pt;">Set 4</h3>
-            <label>g: <input type="range" id="g4" min="1" max="20" value="9.81" step="0.01" onchange="updateParamsAndSimulate()"> <span
-                    id="g4_value">9.81</span></label><br>
-            <label>L: <input type="range" id="L4" min="0.5" max="5" value="1" step="0.01" onchange="updateParamsAndSimulate()"> <span
-                    id="L4_value">1.00</span></label><br>
-            <label>beta: <input type="range" id="beta4" min="0" max="2" value="0.1" step="0.01"
-                    onchange="updateParamsAndSimulate()"> <span id="beta4_value">0.10</span></label><br>
-            <label>F0: <input type="range" id="F04" min="0" max="1" value="0.2" step="0.01"
-                    onchange="updateParamsAndSimulate()"> <span id="F04_value">0.20</span></label><br>
-            <label>omegaDrive: <input type="range" id="omegaDrive4" min="0" max="2" value="0.67" step="0.01"
-                    onchange="updateParamsAndSimulate()"> <span id="omegaDrive4_value">0.67</span></label><br>
-            <label>dt: <input type="range" id="dt4" min="0.01" max="0.1" value="0.02" step="0.01"
-                    onchange="updateParamsAndSimulate()"> <span id="dt4_value">0.02</span></label><br>
-            <label>Total Time: <input type="range" id="totalTime4" min="10" max="120" value="60" step="1"
-                    onchange="updateParamsAndSimulate()"> <span id="totalTime4_value">60</span></label><br>
+            <label>g: <input type="range" id="g4" min="1" max="20" value="9.81" step="0.01" onchange="updateParamsAndSimulate()"> <span id="g4_value">9.81</span></label><br>
+            <label>L: <input type="range" id="L4" min="0.5" max="5" value="1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="L4_value">1.00</span></label><br>
+            <label>beta: <input type="range" id="beta4" min="0" max="2" value="0.1" step="0.01" onchange="updateParamsAndSimulate()"> <span id="beta4_value">0.10</span></label><br>
+            <label>F0: <input type="range" id="F04" min="0" max="1" value="0.2" step="0.01" onchange="updateParamsAndSimulate()"> <span id="F04_value">0.20</span></label><br>
+            <label>omegaDrive: <input type="range" id="omegaDrive4" min="0" max="2" value="0.67" step="0.01" onchange="updateParamsAndSimulate()"> <span id="omegaDrive4_value">0.67</span></label><br>
+            <label>dt: <input type="range" id="dt4" min="0.01" max="0.1" value="0.02" step="0.01" onchange="updateParamsAndSimulate()"> <span id="dt4_value">0.02</span></label><br>
+            <label>Total Time: <input type="range" id="totalTime4" min="10" max="120" value="60" step="1" onchange="updateParamsAndSimulate()"> <span id="totalTime4_value">60</span></label><br>
         </div>
     </div>
 
@@ -199,7 +165,14 @@
             const layout = {
                 width: 500,
                 height: 470,
-                margin: { l: 35, r: 15, t: 100, b: 35 }
+                margin: { l: 0, r: 0, t: 0, b: 35 },
+                legend: {
+                    x: 1,
+                    y: 1,
+                    xanchor: 'left',
+                    yanchor: 'top',
+                    orientation: 'v'
+                }
             };
 
             const titleLayout = { title: { standoff: 15 } };
@@ -214,5 +187,4 @@
         updateParamsAndSimulate();
     </script>
 </body>
-
 </html>
