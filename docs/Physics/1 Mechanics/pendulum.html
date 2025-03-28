@@ -151,36 +151,33 @@
                     const PE = params.g * params.L * (1 - Math.cos(theta));
                     energyData.push({ time: t, kinetic: KE, potential: PE });
                 }
-                
-                const parameterInfo = `g=${params.g}, L=${params.L}, β=${params.beta}, F₀=${params.F0}, ω_d=${params.omegaDrive}, Δt=${params.dt}, T=${params.totalTime}`;
 
-                plotData.phase.push({ x: thetaData, y: omegaData, mode: 'lines', line: { color: colors[index] }, name: `Set ${index + 1} (${parameterInfo})` });
-                plotData.energy.push({ x: timeData, y: energyData.map(e => e.kinetic + e.potential), mode: 'lines', line: { color: colors[index] }, name: `Set ${index + 1} (${parameterInfo})` });
-                plotData.harmonic.push({ x: timeData, y: thetaData, mode: 'lines', line: { color: colors[index] }, name: `Set ${index + 1} (${parameterInfo})` });
-                plotData.amplitude.push({ x: timeData, y: thetaData, mode: 'lines', line: { color: colors[index] }, name: `Set ${index + 1} (${parameterInfo})` });
+                plotData.phase.push({ x: thetaData, y: omegaData, mode: 'lines', line: { color: colors[index] }, name: `Set ${index + 1}` });
+                plotData.energy.push({ x: timeData, y: energyData.map(e => e.kinetic + e.potential), mode: 'lines', line: { color: colors[index] }, name: `Set ${index + 1}` });
+                plotData.harmonic.push({ x: timeData, y: thetaData, mode: 'lines', line: { color: colors[index] }, name: `Set ${index + 1}` });
+                //plotData.amplitude.push({ x: timeData, y: thetaData, mode: 'lines', line: { color: colors[index] }, name: `Set ${index + 1}` });
             });
 
             plotCharts(plotData);
         }
 
         function plotCharts(plotData) {
-            const layout = {
-                width: 500,
-                height: 470,
-                margin: { l: 35, r: 15, t: 0, b: 35 }
+            const layout = { 
+                width: 500, 
+                height: 310,
+                margin: { l: 40, r: 10, t: 0, b: 35 }
             };
 
-            const titleLayout = { title: { standoff: 35 } };
+            const titleLayout = { title: { standoff: 0 } };
 
             Plotly.newPlot('phaseDiagram', plotData.phase, { ...layout, ...titleLayout, xaxis: { title: 'Phase Diagram (θ vs ω)' } });
             Plotly.newPlot('energyPlot', plotData.energy, { ...layout, ...titleLayout, xaxis: { title: 'Energy vs Time' } });
             Plotly.newPlot('harmonicMotion', plotData.harmonic, { ...layout, ...titleLayout, xaxis: { title: 'Harmonic Motion in 1D' } });
-            Plotly.newPlot('amplitudePlot', plotData.amplitude, { ...layout, ...titleLayout, xaxis: { title: 'Time' }, yaxis: { title: 'Amplitude (θ)' } });
+            //Plotly.newPlot('amplitudePlot', plotData.amplitude, { ...layout, ...titleLayout, xaxis: { title: 'Time' }, yaxis: { title: 'Amplitude (θ)' } });
         }
 
         // Initial simulation and plot
         updateParamsAndSimulate();
     </script>
 </body>
-
 </html>
