@@ -40,10 +40,10 @@ $$
 
 Where:
 
-$(m)$ is the mass of the payload.
-$(G)$ is the gravitational constant.
-$(M)$ is the mass of Earth.
-$(r)$ is the distance between the Earth's center and the payload.
+$(m)$ is the mass of the payload<br/>
+$(G)$ is the gravitational constant<br/>
+$(M)$ is the mass of Earth<br/>
+$(r)$ is the distance between the Earth's center and the payload<br/>
 $(\hat{r})$ is the unit vector along the radial direction.
 
 ## Numerical Integration

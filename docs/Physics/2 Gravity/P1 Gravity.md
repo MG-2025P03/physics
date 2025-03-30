@@ -1,4 +1,6 @@
-# Newton's Law of Universal Gravitation
+# Gravity
+
+## Newton's Law of Universal Gravitation
 
 $$
 F = \frac{G \cdot m_1 \cdot m_2}{r^2}
@@ -6,10 +8,10 @@ $$
 
 where:
 
-$( F )$ is the gravitational force,
-$( G )$ is the gravitational constant,
-$( m_1 )$ and $( m_2 )$ are the masses of the two objects,
-$( r )$ is the distance between the centers of the two objects.
+$( F )$ is the gravitational force<br/>
+$( G )$ is the gravitational constant<br/>
+$( m_1 )$ and $( m_2 )$ are the masses of the two objects<br/>
+$( r )$ is the distance between the centers of the two objects
 
 ## Centripetal Force for Circular Orbit
 
@@ -18,11 +20,12 @@ The centripetal force needed to keep a body in circular motion is given by:
 $$
 F = \frac{m \cdot v^2}{r}
 $$
+
 where:
 
-$( m )$ is the mass of the orbiting object,
-$( v )$ is the orbital velocity,
-$( r )$ is the orbital radius.
+$( m )$ is the mass of the orbiting object<br/>
+$( v )$ is the orbital velocity<br/>
+$( r )$ is the orbital radius
 
 ## Equating the Gravitational and Centripetal Forces
 
@@ -34,7 +37,7 @@ Simplifying, we obtain:
 
 $$
 G \cdot M = v^2 \cdot r
-$$]$$
+$$
 
 # Relating Velocity to Orbital Period
 The orbital velocity $( v )$ is related to the period $( T )$ by the circumference of the orbit:
