@@ -1,7 +1,9 @@
 # Background
 
 The concepts of first, second, and third cosmic velocities are fundamental in celestial mechanics and space exploration. They describe the velocities needed for various types of orbital and escape maneuvers around celestial bodies. Let's define them and delve into the mathematical derivations and their importance.
-Definitions
+
+
+## Definitions
 
 First Cosmic Velocity (Orbital Velocity):The minimum velocity an object must have to enter a stable, circular orbit around a celestial body without additional propulsion. For Earth, this is often referred to as "orbital velocity."
 
