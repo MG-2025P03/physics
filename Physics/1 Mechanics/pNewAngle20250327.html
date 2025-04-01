@@ -77,12 +77,12 @@
                 y.push(height);
             }
 
-            return { x, y };
+            return { x, y, maxRange: Math.max(...x), maxHeight: Math.max(...y) };
         }
 
         function updateGraph() {
-            const initialHeight = document.getElementById("heightSlider").value;
-            const initialVelocity = document.getElementById("velocitySlider").value;
+            const initialHeight = parseFloat(document.getElementById("heightSlider").value);
+            const initialVelocity = parseFloat(document.getElementById("velocitySlider").value);
             const gravity = parseFloat(document.getElementById("gravitySlider").value);
 
             document.getElementById("heightValue").innerText = initialHeight + ' m';
@@ -90,10 +90,12 @@
 
             const angles = [15, 30, 45, 60, 75];
             const traces = [];
+            let overallMaxRange = 0;
+            let overallMaxHeight = 0;
 
             angles.forEach(angle => {
                 if (document.getElementById(`angle${angle}`).checked) {
-                    const data = calculateRangeAndMaxHeight(angle, parseFloat(initialHeight), parseFloat(initialVelocity), gravity);
+                    const data = calculateRangeAndMaxHeight(angle, initialHeight, initialVelocity, gravity);
 
                     traces.push({
                         x: data.x,
@@ -101,13 +103,16 @@
                         mode: 'lines+markers',
                         name: `Trajectory ${angle}°`
                     });
+
+                    overallMaxRange = Math.max(overallMaxRange, data.maxRange);
+                    overallMaxHeight = Math.max(overallMaxHeight, data.maxHeight);
                 }
             });
 
             const layout = {
                 title: `Projectile Motion<br>Initial Velocity = ${initialVelocity} m/s, Initial Height = ${initialHeight} m, Gravity = ${gravity} m/s²`,
-                xaxis: { title: 'Range (m)' },
-                yaxis: { title: 'Height (m)', range: [0, 50] }, // You can adjust the y-axis range to suit the scenario
+                xaxis: { title: 'Range (m)', range: [0, overallMaxRange + 10] },  // Add some padding
+                yaxis: { title: 'Height (m)', range: [0, overallMaxHeight + 10] }, // Add some padding
                 height: 600,
                 width: 800
             };
