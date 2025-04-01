@@ -11,6 +11,7 @@
             justify-content: center;
             margin-bottom: 15px;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .control-item {
@@ -25,11 +26,6 @@
 </head>
 <body>
     <div id="controls">
-        <div class="control-item">
-            <label for="angleSlider">Initial Angle:</label><br>
-            <input type="range" id="angleSlider" min="15" max="75" step="15" value="45" oninput="updateGraph()">
-            <span id="angleValue">45°</span>
-        </div>
         <div class="control-item">
             <label for="heightSlider">Initial Height:</label><br>
             <input type="range" id="heightSlider" min="0" max="25" step="5" value="0" oninput="updateGraph()">
@@ -54,6 +50,14 @@
                 <option value="3.7">Mercury (3.7 m/s²)</option>
             </select>
         </div>
+        <div class="control-item">
+            <label>Angles:</label><br>
+            <input type="checkbox" id="angle15" checked onchange="updateGraph()"> 15°
+            <input type="checkbox" id="angle30" checked onchange="updateGraph()"> 30°
+            <input type="checkbox" id="angle45" checked onchange="updateGraph()"> 45°
+            <input type="checkbox" id="angle60" checked onchange="updateGraph()"> 60°
+            <input type="checkbox" id="angle75" checked onchange="updateGraph()"> 75°
+        </div>
     </div>
 
     <div id="graph"></div>
@@ -77,33 +81,38 @@
         }
 
         function updateGraph() {
-            const angle = document.getElementById("angleSlider").value;
             const initialHeight = document.getElementById("heightSlider").value;
             const initialVelocity = document.getElementById("velocitySlider").value;
             const gravity = parseFloat(document.getElementById("gravitySlider").value);
 
-            document.getElementById("angleValue").innerText = angle + '°';
             document.getElementById("heightValue").innerText = initialHeight + ' m';
             document.getElementById("velocityValue").innerText = initialVelocity + ' m/s';
 
-            const data = calculateRangeAndMaxHeight(parseFloat(angle), parseFloat(initialHeight), parseFloat(initialVelocity), gravity);
+            const angles = [15, 30, 45, 60, 75];
+            const traces = [];
 
-            const trace1 = {
-                x: data.x,
-                y: data.y,
-                mode: 'lines+markers',
-                name: 'Trajectory',
-            };
+            angles.forEach(angle => {
+                if (document.getElementById(`angle${angle}`).checked) {
+                    const data = calculateRangeAndMaxHeight(angle, parseFloat(initialHeight), parseFloat(initialVelocity), gravity);
+
+                    traces.push({
+                        x: data.x,
+                        y: data.y,
+                        mode: 'lines+markers',
+                        name: `Trajectory ${angle}°`
+                    });
+                }
+            });
 
             const layout = {
-                title: `Projectile Motion<br>Initial Velocity = ${initialVelocity} m/s, Angle = ${angle}°, Initial Height = ${initialHeight} m, Gravity = ${gravity} m/s²`,
+                title: `Projectile Motion<br>Initial Velocity = ${initialVelocity} m/s, Initial Height = ${initialHeight} m, Gravity = ${gravity} m/s²`,
                 xaxis: { title: 'Range (m)' },
-                yaxis: { title: 'Height (m)', range: [0, Math.max(...data.y) + 5] },
+                yaxis: { title: 'Height (m)', range: [0, 50] }, // You can adjust the y-axis range to suit the scenario
                 height: 600,
                 width: 800
             };
 
-            Plotly.newPlot('graph', [trace1], layout);
+            Plotly.newPlot('graph', traces, layout);
         }
 
         updateGraph();
