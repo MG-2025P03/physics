@@ -6,14 +6,14 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../../../../img/favicon.ico" rel="shortcut icon"/>
-<title>Gravity - MG on 2025</title>
+<title>3.Relating Velocity to Orbital Period - MG on 2025</title>
 <link href="../../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <script>
         // Current page data
-        var mkdocs_page_name = "Gravity";
-        var mkdocs_page_input_path = "Physics/2 Gravity/P1/1.Gravity.md";
+        var mkdocs_page_name = "3.Relating Velocity to Orbital Period";
+        var mkdocs_page_input_path = "Physics/2 Gravity/P1/3.Relating Velocity to Orbital Period.md";
         var mkdocs_page_url = null;
       </script>
 <!--[if lt IE 9]>
@@ -84,15 +84,13 @@
 </li>
 <li class="toctree-l2 current"><a class="reference internal current">P1</a>
 <ul class="current">
-<li class="toctree-l3 current"><a class="reference internal current" href="#">Gravity</a>
-<ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="#newtons-law-of-universal-gravitation">Newton's Law of Universal Gravitation</a>
-</li>
-</ul>
+<li class="toctree-l3"><a class="reference internal" href="../1.Gravity/">Gravity</a>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../2.Gravitational%20and%20Centripetal%20Forces/">2.Gravitational and Centripetal Forces</a>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../3.Relating%20Velocity%20to%20Orbital%20Period/">3.Relating Velocity to Orbital Period</a>
+<li class="toctree-l3 current"><a class="reference internal current" href="#">3.Relating Velocity to Orbital Period</a>
+<ul class="current">
+</ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../4.%20Implementation/">4. Implementation</a>
 </li>
@@ -148,7 +146,7 @@
 <li class="breadcrumb-item">Physics</li>
 <li class="breadcrumb-item">2 Gravity</li>
 <li class="breadcrumb-item">P1</li>
-<li class="breadcrumb-item active">Gravity</li>
+<li class="breadcrumb-item active">3.Relating Velocity to Orbital Period</li>
 <li class="wy-breadcrumbs-aside">
 </li>
 </ul>
@@ -156,38 +154,42 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="gravity">Gravity</h1>
-<h2 id="newtons-law-of-universal-gravitation">Newton's Law of Universal Gravitation</h2>
+<h2 id="relating-velocity-to-orbital-period">Relating Velocity to Orbital Period</h2>
+<p>The orbital velocity <span class="arithmatex">\(( v )\)</span> is related to the period <span class="arithmatex">\(( T )\)</span> by the circumference of the orbit:</p>
 <div class="arithmatex">\[
-F = \frac{G \cdot m_1 \cdot m_2}{r^2}
+v = \frac{2\pi r}{T}
 \]</div>
-<p>where:</p>
-<p><span class="arithmatex">\(( F )\)</span> is the gravitational force<br/>
-<span class="arithmatex">\(( G )\)</span> is the gravitational constant<br/>
-<span class="arithmatex">\(( m_1 )\)</span> and <span class="arithmatex">\(( m_2 )\)</span> are the masses of the two objects<br/>
-<span class="arithmatex">\(( r )\)</span> is the distance between the centers of the two objects</p>
-<p>Centripetal Force for Circular Orbit</p>
-<p>The centripetal force needed to keep a body in circular motion is given by:</p>
+<p>Substituting for <span class="arithmatex">\(( v )\)</span>:</p>
 <div class="arithmatex">\[
-F = \frac{m \cdot v^2}{r}
+G \cdot M = \left(\frac{2\pi r}{T}\right)^2 \cdot r
 \]</div>
-<p>where:</p>
-<p><span class="arithmatex">\(( m )\)</span> is the mass of the orbiting object<br/>
-<span class="arithmatex">\(( v )\)</span> is the orbital velocity<br/>
-<span class="arithmatex">\(( r )\)</span> is the orbital radius</p>
-<p>Equating the Gravitational and Centripetal Forces</p>
+<p>Solving for <span class="arithmatex">\(( T^2 )\)</span>:</p>
 <div class="arithmatex">\[
-\frac{G \cdot M \cdot m}{r^2} = \frac{m \cdot v^2}{r}
+GM = \frac{4\pi^2 r^3}{T^2}
 \]</div>
-<p>Simplifying, we obtain:</p>
 <div class="arithmatex">\[
-G \cdot M = v^2 \cdot r
+T^2 = \frac{4\pi^2}{GM} \cdot r^3
 \]</div>
+<p>This equation is known as Kepler's third law for circular orbits: <span class="arithmatex">\(( T^2 \propto r^3 )\)</span>.</p>
+<h2 id="implications-in-astronomy">Implications in Astronomy</h2>
+<p>Calculating Planetary Masses:
+By observing the orbital period and radius of a moon or satellite around a planet, astronomers can calculate the mass of the planet. This is particularly useful where direct measurement is difficult.</p>
+<p>Determining Distances:
+The relationship helps in determining the distance of celestial bodies. If the mass of the central body is known, and the orbital period can be measured, the orbital radius can be calculated.</p>
+<p>Kepler’s Laws:
+This derivation is essentially a mathematical explanation of Kepler's third law. It tells us that, for a given central body (like the Sun), the ratio <span class="arithmatex">\(( T^2/r^3 )\)</span> is constant for all orbiting bodies.</p>
+<h2 id="real-world-examples">Real-World Examples</h2>
+<p>Moon's Orbit around Earth:</p>
+<p>By measuring the Moon's orbital period and radius, the Earth's mass can be estimated. This is a primary example of applying the derived relationship in practice.</p>
+<h2 id="planets-in-the-solar-system">Planets in the Solar System:</h2>
+<p>The relationship allows scientists to confirm that planets orbit faster when closer to the Sun, obeying ( T^2 \propto r^3 ).
+Observations of Jupiter's moons, for instance, helped calculate Jupiter's mass through these principles, even before modern technology allowed us to visit the planet.</p>
+<p>In summary, this relationship forms a crucial part of celestial mechanics and is fundamental to our understanding of orbital dynamics. It plays a vital role in the field of astronomy for calculating masses and distances, thereby enhancing our understanding of planetary systems, both in our Solar System and beyond.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
-<a class="btn btn-neutral float-left" href="../../P3%20Trajectories%20of%20a%20Freely%20Released%20Payload%20Near%20Earth/" title="Background"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-<a class="btn btn-neutral float-right" href="../2.Gravitational%20and%20Centripetal%20Forces/" title="2.Gravitational and Centripetal Forces">Next <span class="icon icon-circle-arrow-right"></span></a>
+<a class="btn btn-neutral float-left" href="../2.Gravitational%20and%20Centripetal%20Forces/" title="2.Gravitational and Centripetal Forces"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../4.%20Implementation/" title="4. Implementation">Next <span class="icon icon-circle-arrow-right"></span></a>
 </div>
 <hr/>
 <div role="contentinfo">
@@ -202,8 +204,8 @@ G \cdot M = v^2 \cdot r
 </div>
 <div aria-label="Versions" class="rst-versions" role="note">
 <span class="rst-current-version" data-toggle="rst-current-version">
-<span><a href="../../P3%20Trajectories%20of%20a%20Freely%20Released%20Payload%20Near%20Earth/" style="color: #fcfcfc">« Previous</a></span>
-<span><a href="../2.Gravitational%20and%20Centripetal%20Forces/" style="color: #fcfcfc">Next »</a></span>
+<span><a href="../2.Gravitational%20and%20Centripetal%20Forces/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../4.%20Implementation/" style="color: #fcfcfc">Next »</a></span>
 </span>
 </div>
 <script src="../../../../js/jquery-3.6.0.min.js"></script>
