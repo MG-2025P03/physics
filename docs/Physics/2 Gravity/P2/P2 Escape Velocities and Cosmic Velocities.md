@@ -2,7 +2,6 @@
 
 The concepts of first, second, and third cosmic velocities are fundamental in celestial mechanics and space exploration. They describe the velocities needed for various types of orbital and escape maneuvers around celestial bodies. Let's define them and delve into the mathematical derivations and their importance.
 
-
 ## Definitions
 
 First Cosmic Velocity (Orbital Velocity):The minimum velocity an object must have to enter a stable, circular orbit around a celestial body without additional propulsion. For Earth, this is often referred to as "orbital velocity."
@@ -62,7 +61,7 @@ Third Cosmic Velocity: This velocity is needed to leave the gravitational field 
 
 ## Mathematical Derivation and Parameters
 
-The first cosmic velocity, $(v_1)$, is derived using the formula 
+The first cosmic velocity, $(v_1)$, is derived using the formula:
 
 $$(v_1 = \sqrt{\frac{GM}{R}})$$
 
@@ -72,7 +71,7 @@ $(G)$ is the gravitational constant
 $(M)$ is the mass of the celestial body
 $(R)$ is its radius 3
 
-The second cosmic velocity, $(v_2)$, is found by equating the kinetic energy of an object with its potential energy at infinity: 
+The second cosmic velocity, $(v_2)$, is found by equating the kinetic energy of an object with its potential energy at infinity:
 
 $$(v_2 = \sqrt{\frac{2GM}{R}})$$
 
