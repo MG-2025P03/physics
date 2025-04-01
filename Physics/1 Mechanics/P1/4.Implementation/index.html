@@ -6,13 +6,13 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../../../../img/favicon.ico" rel="shortcut icon"/>
-<title>Implementation - MG on 2025</title>
+<title>Observations based on interactive simulations - MG on 2025</title>
 <link href="../../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <script>
         // Current page data
-        var mkdocs_page_name = "Implementation";
+        var mkdocs_page_name = "Observations based on interactive simulations";
         var mkdocs_page_input_path = "Physics/1 Mechanics/P1/4.Implementation.md";
         var mkdocs_page_url = null;
       </script>
@@ -54,7 +54,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../3.PracticalApplications/">Practical Applications</a>
 </li>
-<li class="toctree-l3 current"><a class="reference internal current" href="#">Implementation</a>
+<li class="toctree-l3 current"><a class="reference internal current" href="#">Observations based on interactive simulations</a>
 <ul class="current">
 </ul>
 </li>
@@ -80,10 +80,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal">2 Gravity</a>
 <ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../2%20Gravity/P2%20Escape%20Velocities%20and%20Cosmic%20Velocities/">Background</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../2%20Gravity/P3%20Trajectories%20of%20a%20Freely%20Released%20Payload%20Near%20Earth/">Background</a>
-</li>
 <li class="toctree-l2"><a class="reference internal">P1</a>
 <ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../2%20Gravity/P1/1.Gravity/">Gravity</a>
@@ -93,6 +89,18 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../2%20Gravity/P1/3.Relating%20Velocity%20to%20Orbital%20Period/">3.Relating Velocity to Orbital Period</a>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../2%20Gravity/P1/4.%20Implementation/">4. Implementation</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal">P2</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../2%20Gravity/P2/P2%20Escape%20Velocities%20and%20Cosmic%20Velocities/">Background</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal">P3</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../2%20Gravity/P3/P3%20Trajectories%20of%20a%20Freely%20Released%20Payload%20Near%20Earth/">Background</a>
 </li>
 </ul>
 </li>
@@ -146,7 +154,7 @@
 <li class="breadcrumb-item">Physics</li>
 <li class="breadcrumb-item">1 Mechanics</li>
 <li class="breadcrumb-item">P1</li>
-<li class="breadcrumb-item active">Implementation</li>
+<li class="breadcrumb-item active">Observations based on interactive simulations</li>
 <li class="wy-breadcrumbs-aside">
 </li>
 </ul>
@@ -154,20 +162,23 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="implementation">Implementation</h1>
-<p><img align="right" alt="Projectile Simulation" height="300px" src="https://mg-2025p03.github.io/physics/_pics/ProjectileMotion.png" width="400px"/></p>
+<h1 id="observations-based-on-interactive-simulations">Observations based on interactive simulations</h1>
 <p><a href="https://mg-2025p03.github.io/physics/Physics/1%20Mechanics/pNewAngle20250327.html">Run simulations using for Projectile Motion (8th)</a></p>
-<p> </p>
-<p>When a projectile is launched with an initial velocity <span class="arithmatex">\(( v_0 )\)</span> at an angle <span class="arithmatex">\(( \theta )\)</span> from the horizontal, its motion can be described using the following equations:</p>
-<p> </p>
-<p>Horizontal Range: </p>
-<div class="arithmatex">\[( R = \frac{v_0^2 \sin(2\theta)}{g} )\]</div>
-<p>Maximum Height: </p>
-<div class="arithmatex">\[( H = \frac{v_0^2 \sin^2(\theta)}{2g} )\]</div>
-<p>Time of Flight: </p>
-<div class="arithmatex">\[( T = \frac{2v_0 \sin(\theta)}{g} )\]</div>
-<p>Here, <span class="arithmatex">\(( g )\)</span> is the acceleration due to gravity (approximately <span class="arithmatex">\(( 9.81 , \text{m/s}^2 )\)</span> on Earth).</p>
-<p>Range and Angle of Projection: The range <span class="arithmatex">\(( R )\)</span> is maximized when the angle of projection <span class="arithmatex">\(( \theta )\)</span> is <span class="arithmatex">\(( 45^\circ )\)</span>, assuming no air resistance. This is because the function <span class="arithmatex">\(( \sin(2\theta) )\)</span> is maximized at <span class="arithmatex">\(( 2\theta = 90^\circ )\)</span>.</p>
+<p>a. Distance traveled by a projectile, in both the vertical height and horizontal distance are directly impacted by the initial angle of the velocity.</p>
+<p><img align="right" alt="Projectile Simulation" height="300px" src="https://mg-2025p03.github.io/physics/_pics/ProjectileMotion.png" width="400px"/></p>
+<ul>
+<li>The higher the angle, the higher the vertical distance covered.</li>
+<li>The same parameter will also result with the projectile traveling a shorter distance.</li>
+</ul>
+<p>b. Changing the initial velocity will have the following results:</p>
+<ul>
+<li>
+<p>Increasing the initial velocity will result to greater distance covered both in vertical and horizontal distance.</p>
+</li>
+<li>
+<p>Decreasing the initial velocity will result to the projectile traveling a shorter distance in both height and range. </p>
+</li>
+</ul>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">

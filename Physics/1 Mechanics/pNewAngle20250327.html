@@ -36,6 +36,11 @@
             <span id="heightValue">0 m</span>
         </div>
         <div class="control-item">
+            <label for="velocitySlider">Initial Velocity:</label><br>
+            <input type="range" id="velocitySlider" min="10" max="100" step="5" value="50" oninput="updateGraph()">
+            <span id="velocityValue">50 m/s</span>
+        </div>
+        <div class="control-item">
             <label for="gravitySlider">Gravity:</label><br>
             <select id="gravitySlider" onchange="updateGraph()">
                 <option value="9.81">Earth (9.81 m/s²)</option>
@@ -74,14 +79,14 @@
         function updateGraph() {
             const angle = document.getElementById("angleSlider").value;
             const initialHeight = document.getElementById("heightSlider").value;
+            const initialVelocity = document.getElementById("velocitySlider").value;
             const gravity = parseFloat(document.getElementById("gravitySlider").value);
 
             document.getElementById("angleValue").innerText = angle + '°';
             document.getElementById("heightValue").innerText = initialHeight + ' m';
+            document.getElementById("velocityValue").innerText = initialVelocity + ' m/s';
 
-            const initialVelocity = 50; // This can be adjusted
-
-            const data = calculateRangeAndMaxHeight(parseFloat(angle), parseFloat(initialHeight), initialVelocity, gravity);
+            const data = calculateRangeAndMaxHeight(parseFloat(angle), parseFloat(initialHeight), parseFloat(initialVelocity), gravity);
 
             const trace1 = {
                 x: data.x,
