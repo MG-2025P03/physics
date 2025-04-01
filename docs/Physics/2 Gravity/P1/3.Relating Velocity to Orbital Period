@@ -1,45 +1,4 @@
-# Gravity
-
-## Newton's Law of Universal Gravitation
-
-$$
-F = \frac{G \cdot m_1 \cdot m_2}{r^2}
-$$
-
-where:
-
-$( F )$ is the gravitational force<br/>
-$( G )$ is the gravitational constant<br/>
-$( m_1 )$ and $( m_2 )$ are the masses of the two objects<br/>
-$( r )$ is the distance between the centers of the two objects
-
-## Centripetal Force for Circular Orbit
-
-The centripetal force needed to keep a body in circular motion is given by:
-
-$$
-F = \frac{m \cdot v^2}{r}
-$$
-
-where:
-
-$( m )$ is the mass of the orbiting object<br/>
-$( v )$ is the orbital velocity<br/>
-$( r )$ is the orbital radius
-
-## Equating the Gravitational and Centripetal Forces
-
-$$
-\frac{G \cdot M \cdot m}{r^2} = \frac{m \cdot v^2}{r}
-$$
-
-Simplifying, we obtain:
-
-$$
-G \cdot M = v^2 \cdot r
-$$
-
-# Relating Velocity to Orbital Period
+## Relating Velocity to Orbital Period
 The orbital velocity $( v )$ is related to the period $( T )$ by the circumference of the orbit:
 
 $$
@@ -64,7 +23,7 @@ $$
 
 This equation is known as Kepler's third law for circular orbits: $( T^2 \propto r^3 )$.
 
-# Implications in Astronomy
+## Implications in Astronomy
 
 Calculating Planetary Masses:
 By observing the orbital period and radius of a moon or satellite around a planet, astronomers can calculate the mass of the planet. This is particularly useful where direct measurement is difficult.
@@ -75,13 +34,13 @@ The relationship helps in determining the distance of celestial bodies. If the m
 Kepler’s Laws:
 This derivation is essentially a mathematical explanation of Kepler's third law. It tells us that, for a given central body (like the Sun), the ratio $( T^2/r^3 )$ is constant for all orbiting bodies.
 
-# Real-World Examples
+## Real-World Examples
 
 Moon's Orbit around Earth:
 
 By measuring the Moon's orbital period and radius, the Earth's mass can be estimated. This is a primary example of applying the derived relationship in practice.
 
-# Planets in the Solar System:
+## Planets in the Solar System:
 
 The relationship allows scientists to confirm that planets orbit faster when closer to the Sun, obeying ( T^2 \propto r^3 ).
 Observations of Jupiter's moons, for instance, helped calculate Jupiter's mass through these principles, even before modern technology allowed us to visit the planet.
