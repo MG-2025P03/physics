@@ -6,13 +6,13 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../../../../img/favicon.ico" rel="shortcut icon"/>
-<title>Range Analysis - MG on 2025</title>
+<title>Basic Physics of Projectile Motion - MG on 2025</title>
 <link href="../../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <script>
         // Current page data
-        var mkdocs_page_name = "Range Analysis";
+        var mkdocs_page_name = "Basic Physics of Projectile Motion";
         var mkdocs_page_input_path = "Physics/1 Mechanics/P1/2.RangeAnalysis.md";
         var mkdocs_page_url = null;
       </script>
@@ -50,19 +50,17 @@
 <ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../1.AngleOfProjection/">Angle of Projection</a>
 </li>
-<li class="toctree-l3 current"><a class="reference internal current" href="#">Range Analysis</a>
+<li class="toctree-l3 current"><a class="reference internal current" href="#">Basic Physics of Projectile Motion</a>
 <ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="#basic-physics-of-projectile-motion">Basic Physics of Projectile Motion</a>
+<li class="toctree-l4"><a class="reference internal" href="#optimal-angle-for-maximum-range">Optimal Angle for Maximum Range</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#optimal-angle-for-maximum-range">Optimal Angle for Maximum Range:</a>
+<li class="toctree-l4"><a class="reference internal" href="#symmetric-trajectories">Symmetric Trajectories</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#symmetric-trajectories">Symmetric Trajectories:</a>
+<li class="toctree-l4"><a class="reference internal" href="#time-of-flight">Time of Flight</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#time-of-flight">Time of Flight:</a>
+<li class="toctree-l4"><a class="reference internal" href="#maximum-height">Maximum Height</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#maximum-height">Maximum Height:</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#effect-of-air-resistance">Effect of Air Resistance:</a>
+<li class="toctree-l4"><a class="reference internal" href="#effect-of-air-resistance">Effect of Air Resistance</a>
 </li>
 </ul>
 </li>
@@ -120,19 +118,19 @@
 </li>
 <li class="toctree-l1"><a class="reference internal">3 Waves</a>
 <ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../3%20Waves/Problem_1/">Problem 1</a>
+<li class="toctree-l2"><a class="reference internal" href="../../../3%20Waves/Waves/">Analysis of Wave Interference Patterns Formed by Point Sources at the Vertices of a Square</a>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal">4 Electromagnetism</a>
 <ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../4%20Electromagnetism/Problem_1/">Problem 1</a>
+<li class="toctree-l2"><a class="reference internal" href="../../../4%20Electromagnetism/Electromagnetism/">Electromagnetism</a>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal">5 Circuits</a>
 <ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../5%20Circuits/Problem_1/">Problem 1</a>
+<li class="toctree-l2"><a class="reference internal" href="../../../5%20Circuits/Circuits/"># Simplified Task: Algorithm for Calculating Equivalent Resistance Using Graph Theory</a>
 </li>
 </ul>
 </li>
@@ -166,7 +164,7 @@
 <li class="breadcrumb-item">Physics</li>
 <li class="breadcrumb-item">1 Mechanics</li>
 <li class="breadcrumb-item">P1</li>
-<li class="breadcrumb-item active">Range Analysis</li>
+<li class="breadcrumb-item active">Basic Physics of Projectile Motion</li>
 <li class="wy-breadcrumbs-aside">
 </li>
 </ul>
@@ -174,44 +172,40 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="range-analysis">Range Analysis</h1>
-<h3 id="basic-physics-of-projectile-motion">Basic Physics of Projectile Motion</h3>
-<p>Equations of Motion: When a projectile is launched with an initial velocity 
-<span class="arithmatex">\(( v_0 )\)</span> at an angle <span class="arithmatex">\(( \theta )\)</span> 
-from the horizontal, its motion can be described using the following equations:</p>
-<p>Horizontal Range: </p>
-<div class="arithmatex">\[( R = \frac{v_0^2 \sin(2\theta)}{g} )\]</div>
-<p>Maximum Height: </p>
-<div class="arithmatex">\[( H = \frac{v_0^2 \sin^2(\theta)}{2g} )\]</div>
-<p>Time of Flight: </p>
-<div class="arithmatex">\[( T = \frac{2v_0 \sin(\theta)}{g} )\]</div>
-<p>Here, <span class="arithmatex">\(( g )\)</span> is the acceleration due to gravity (approximately <span class="arithmatex">\(( 9.81 , \text{m/s}^2 )\)</span> on Earth).</p>
-<p>Range and Angle of Projection: The range <span class="arithmatex">\(( R )\)</span> is maximized when the angle of projection <span class="arithmatex">\(( \theta ) is ( 45^\circ )\)</span>, assuming no air resistance. This is because the function <span class="arithmatex">\(( \sin(2\theta) )\)</span> is maximized at <span class="arithmatex">\(( 2\theta = 90^\circ )\)</span></p>
-<h3 id="optimal-angle-for-maximum-range">Optimal Angle for Maximum Range:</h3>
+<h1 id="basic-physics-of-projectile-motion">Basic Physics of Projectile Motion</h1>
+<p>Equations of Motion: When a projectile is launched with an initial velocity <span class="arithmatex">\(v_0\)</span> at an angle <span class="arithmatex">\(\theta\)</span> from the horizontal, its motion can be described using the following equations:</p>
+<p>Horizontal Range:</p>
+<div class="arithmatex">\[R = \frac{v_0^2 \sin(2\theta)}{g}\]</div>
+<p>Maximum Height:</p>
+<div class="arithmatex">\[H = \frac{v_0^2 \sin^2(\theta)}{2g}\]</div>
+<p>Time of Flight:</p>
+<div class="arithmatex">\[T = \frac{2v_0 \sin(\theta)}{g}\]</div>
+<p>Here, <span class="arithmatex">\(g\)</span> is the acceleration due to gravity (approximately <span class="arithmatex">\(9.81 , \text{m/s}^2\)</span> on Earth).</p>
+<p>Range and Angle of Projection: The range <span class="arithmatex">\(R\)</span> is maximized when the angle of projection <span class="arithmatex">\(\theta\)</span> is <span class="arithmatex">\(45^\circ\)</span>, assuming no air resistance. This is because the function <span class="arithmatex">\(\sin(2\theta)\)</span> is maximized at <span class="arithmatex">\(2\theta = 90^\circ\)</span></p>
+<h3 id="optimal-angle-for-maximum-range">Optimal Angle for Maximum Range</h3>
 <p align="justify">
 Theory: For a projectile launched on a flat surface (i.e., launch height = landing height), the optimal angle for maximum range is 45 degrees. This is because the horizontal and vertical components of the initial velocity are equal, maximizing the distance.
 With Launch Height: If the launch height is above the landing height, the angle for maximum range is slightly less than 45 degrees, as the projectile benefits from additional time in the air.
 </p>
-<h3 id="symmetric-trajectories">Symmetric Trajectories:</h3>
+<h3 id="symmetric-trajectories">Symmetric Trajectories</h3>
 <p align="justify">
 Description: When launched from and landing on the same height, the projectile's path is symmetric around the peak.
 Angles: Two angles will yield the same range: </p>
-<div class="arithmatex">\[(\theta) and (90^\circ - \theta)\]</div>
+<div class="arithmatex">\[\theta \ and \ 90^\circ - \theta\]</div>
 <p align="justify">
 For example, angles of 30 degrees and 60 degrees will result in the same range, but different times of flight and maximum heights.
 </p>
-<h3 id="time-of-flight">Time of Flight:</h3>
+<h3 id="time-of-flight">Time of Flight</h3>
 <p align="justify">
 Dependency: Depends on the vertical component of the initial velocity and the height difference between launch and landing.
 Calculation: For non-zero launch height, the time of flight can be found using kinematic equations that incorporate both the initial vertical velocity component and the effect of gravity.
 </p>
-<h3 id="maximum-height">Maximum Height:</h3>
-<p align="justify">
-Calculation: Depends on the vertical component of the initial velocity and gravitational acceleration. For launch height (h), the maximum height (H) is given by:</p>
+<h3 id="maximum-height">Maximum Height</h3>
+<p>Calculation: Depends on the vertical component of the initial velocity and gravitational acceleration. For launch height <span class="arithmatex">\(h\)</span>, the maximum height <span class="arithmatex">\(H\)</span> is given by:</p>
 <div class="arithmatex">\[
 H = h + \frac{(v₀ \sin \theta)^2}{2g}
 \]</div>
-<h3 id="effect-of-air-resistance">Effect of Air Resistance:</h3>
+<h3 id="effect-of-air-resistance">Effect of Air Resistance</h3>
 <p align="justify">
 Real-World Consideration: Although not accounted for in basic projectile motion equations, air resistance can significantly affect the trajectory, reducing both range and height, and altering the optimal angle of projection.
 </p>

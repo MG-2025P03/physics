@@ -6,14 +6,14 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../../../img/favicon.ico" rel="shortcut icon"/>
-<title>Problem 1 - MG on 2025</title>
+<title>Electromagnetism - MG on 2025</title>
 <link href="../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <script>
         // Current page data
-        var mkdocs_page_name = "Problem 1";
-        var mkdocs_page_input_path = "Physics/4 Electromagnetism/Problem_1.md";
+        var mkdocs_page_name = "Electromagnetism";
+        var mkdocs_page_input_path = "Physics/4 Electromagnetism/Electromagnetism.md";
         var mkdocs_page_url = null;
       </script>
 <!--[if lt IE 9]>
@@ -50,7 +50,7 @@
 <ul>
 <li class="toctree-l3"><a class="reference internal" href="../../1%20Mechanics/P1/1.AngleOfProjection/">Angle of Projection</a>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../1%20Mechanics/P1/2.RangeAnalysis/">Range Analysis</a>
+<li class="toctree-l3"><a class="reference internal" href="../../1%20Mechanics/P1/2.RangeAnalysis/">Basic Physics of Projectile Motion</a>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../1%20Mechanics/P1/3.PracticalApplications/">Practical Applications</a>
 </li>
@@ -106,13 +106,13 @@
 </li>
 <li class="toctree-l1"><a class="reference internal">3 Waves</a>
 <ul>
-<li class="toctree-l2"><a class="reference internal" href="../../3%20Waves/Problem_1/">Problem 1</a>
+<li class="toctree-l2"><a class="reference internal" href="../../3%20Waves/Waves/">Analysis of Wave Interference Patterns Formed by Point Sources at the Vertices of a Square</a>
 </li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal current">4 Electromagnetism</a>
 <ul class="current">
-<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1</a>
+<li class="toctree-l2 current"><a class="reference internal current" href="#">Electromagnetism</a>
 <ul class="current">
 </ul>
 </li>
@@ -120,7 +120,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal">5 Circuits</a>
 <ul>
-<li class="toctree-l2"><a class="reference internal" href="../../5%20Circuits/Problem_1/">Problem 1</a>
+<li class="toctree-l2"><a class="reference internal" href="../../5%20Circuits/Circuits/"># Simplified Task: Algorithm for Calculating Equivalent Resistance Using Graph Theory</a>
 </li>
 </ul>
 </li>
@@ -153,7 +153,7 @@
 <li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
 <li class="breadcrumb-item">Physics</li>
 <li class="breadcrumb-item">4 Electromagnetism</li>
-<li class="breadcrumb-item active">Problem 1</li>
+<li class="breadcrumb-item active">Electromagnetism</li>
 <li class="wy-breadcrumbs-aside">
 </li>
 </ul>
@@ -161,12 +161,48 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="problem-1">Problem 1</h1>
+<h1 id="electromagnetism">Electromagnetism</h1>
+<p>Electromagnetism is a fundamental branch of physics that deals with the study of electric and magnetic fields and their interactions with matter, particularly charged particles. Below is a detailed analysis covering various aspects, including applications, simulations, and parameter explorations:
+Applications of Electromagnetism and the Lorentz Force
+Lorentz Force in Systems:</p>
+<p>Particle Accelerators:</p>
+<p>Particle accelerators use electromagnetic fields to accelerate charged particles to high speeds and contain them within a well-defined path. The Lorentz force is crucial in bending and focusing the particle beams using magnetic fields.</p>
+<p>Mass Spectrometers:</p>
+<p>Mass spectrometers use the Lorentz force to separate ions based on their mass-to-charge ratio. When ions pass through magnetic and/or electric fields, they are deflected, allowing their trajectories to be analyzed for identification.</p>
+<p>Plasma Confinement:</p>
+<p>In devices like tokamaks used in nuclear fusion research, magnetic fields are employed to confine plasma, relying on the Lorentz force to maintain stability and control the motion of charged particles within the plasma.</p>
+<p>Control of Charged Particles:</p>
+<p>Electric Fields (( E )): Electric fields exert a force on charged particles, changing their velocity linearly in the direction of the field. This is particularly useful in accelerating particles or deflecting them in devices like cathode ray tubes.
+Magnetic Fields (( B )): Magnetic fields exert a perpendicular force on moving charged particles, affecting their trajectory without changing their speed. This causes particles to move in circular or helical paths.</p>
+<p>Simulating Particle Motion
+To simulate the trajectory of a charged particle under different field configurations, we can consider:</p>
+<p>Uniform Magnetic Field:</p>
+<p>A charged particle moving perpendicular to a uniform magnetic field will undergo circular motion due to the centripetal force provided by the Lorentz force.
+The radius of the circle (( r )) can be determined by the equation: ( r = \frac{mv}{qB} ), where ( m ) is the mass, ( v ) is the velocity, ( q ) is the charge, and ( B ) is the magnetic field strength.</p>
+<p>Combined Uniform Electric and Magnetic Fields:</p>
+<p>When both fields are present, particles experience both linear acceleration (from the electric field) and circular motion or drift motion (from the magnetic field).
+Depending on the orientation and magnitudes, particles may exhibit helical motion or drift in the direction perpendicular to both fields.</p>
+<p>Crossed Electric and Magnetic Fields:</p>
+<p>When electric and magnetic fields are perpendicular, one can observe phenomena like the Hall effect, where particles drift due to the combined effect of (\overrightarrow{E}) and (\overrightarrow{B}).</p>
+<p>Simulation Implementation:</p>
+<p>This can be implemented using numerical computation tools such as Python with libraries like Matplotlib and NumPy, which help visualize trajectories.
+Integrating the Lorentz force equation over time using methods like Euler or Runge-Kutta can provide accurate simulation results.</p>
+<p>Parameter Exploration
+The behavior of charged particles can be varied by modifying several parameters:</p>
+<p>Field Strengths (Electric ( E ), Magnetic ( B )):</p>
+<p>Increasing ( E ) will lead to higher linear acceleration of particles.
+Increasing ( B ) will result in smaller radii of circular paths and increased frequency of circular motion.</p>
+<p>Initial Particle Velocity (( v )):</p>
+<p>Changing the initial velocity can switch the trajectory from circular to helical, depending on the angle between ( v ) and (\overrightarrow{B}).</p>
+<p>Charge and Mass of the Particle (( q, m )):</p>
+<p>A higher charge ( q ) increases the force exerted by both fields, altering acceleration and trajectory sizes.
+A larger mass ( m ) will reduce the acceleration for a given force, affecting how quickly the particle responds to field changes.</p>
+<p>Through both theoretical exploration and practical simulation, one can gain a deeper understanding of how electromagnetism influences particle behavior across different physical systems. These simulations and explorations are vital for advancing applications in technology, engineering, and scientific research.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
-<a class="btn btn-neutral float-left" href="../../3%20Waves/Problem_1/" title="Problem 1"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-<a class="btn btn-neutral float-right" href="../../5%20Circuits/Problem_1/" title="Problem 1">Next <span class="icon icon-circle-arrow-right"></span></a>
+<a class="btn btn-neutral float-left" href="../../3%20Waves/Waves/" title="Analysis of Wave Interference Patterns Formed by Point Sources at the Vertices of a Square"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../../5%20Circuits/Circuits/" title="# Simplified Task: Algorithm for Calculating Equivalent Resistance Using Graph Theory">Next <span class="icon icon-circle-arrow-right"></span></a>
 </div>
 <hr/>
 <div role="contentinfo">
@@ -181,8 +217,8 @@
 </div>
 <div aria-label="Versions" class="rst-versions" role="note">
 <span class="rst-current-version" data-toggle="rst-current-version">
-<span><a href="../../3%20Waves/Problem_1/" style="color: #fcfcfc">« Previous</a></span>
-<span><a href="../../5%20Circuits/Problem_1/" style="color: #fcfcfc">Next »</a></span>
+<span><a href="../../3%20Waves/Waves/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../../5%20Circuits/Circuits/" style="color: #fcfcfc">Next »</a></span>
 </span>
 </div>
 <script src="../../../js/jquery-3.6.0.min.js"></script>

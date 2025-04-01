@@ -50,7 +50,7 @@
 <ul>
 <li class="toctree-l3"><a class="reference internal" href="../../P1/1.AngleOfProjection/">Angle of Projection</a>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../P1/2.RangeAnalysis/">Range Analysis</a>
+<li class="toctree-l3"><a class="reference internal" href="../../P1/2.RangeAnalysis/">Basic Physics of Projectile Motion</a>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../P1/3.PracticalApplications/">Practical Applications</a>
 </li>
@@ -116,19 +116,19 @@
 </li>
 <li class="toctree-l1"><a class="reference internal">3 Waves</a>
 <ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../3%20Waves/Problem_1/">Problem 1</a>
+<li class="toctree-l2"><a class="reference internal" href="../../../3%20Waves/Waves/">Analysis of Wave Interference Patterns Formed by Point Sources at the Vertices of a Square</a>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal">4 Electromagnetism</a>
 <ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../4%20Electromagnetism/Problem_1/">Problem 1</a>
+<li class="toctree-l2"><a class="reference internal" href="../../../4%20Electromagnetism/Electromagnetism/">Electromagnetism</a>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal">5 Circuits</a>
 <ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../5%20Circuits/Problem_1/">Problem 1</a>
+<li class="toctree-l2"><a class="reference internal" href="../../../5%20Circuits/Circuits/"># Simplified Task: Algorithm for Calculating Equivalent Resistance Using Graph Theory</a>
 </li>
 </ul>
 </li>
@@ -184,7 +184,7 @@
 <p><span class="arithmatex">\((\omega)\)</span> is the driving frequency,</p>
 <p><span class="arithmatex">\((t)\)</span> is time.</p>
 <h3 id="small-angle-approximation">Small-Angle Approximation</h3>
-<p>For small-angle oscillations, we can use the approximation <span class="arithmatex">\((\sin(\theta) \approx \theta)\)</span>. This simplifies the equation to:</p>
+<p>For small-angle oscillations, we can use the approximation <span class="arithmatex">\(\sin(\theta) \approx \theta\)</span>. This simplifies the equation to:</p>
 <div class="arithmatex">\[
 \frac{d^2\theta}{dt^2} + 2\beta \frac{d\theta}{dt} + \omega_0^2 \theta = \frac{F_0}{mL} \cos(\omega t)
 \]</div>
@@ -200,12 +200,12 @@ r^2 + 2\beta r + \omega_0^2 = 0
 \]</div>
 <p>Solving for <span class="arithmatex">\((r)\)</span>, we find:</p>
 <div class="arithmatex">\[
-[r = -\beta \pm \sqrt{\beta^2 - \omega_0^2}]
+r = -\beta \pm \sqrt{\beta^2 - \omega_0^2}
 \]</div>
 <p>Depending on the discriminant <span class="arithmatex">\((\beta^2 - \omega_0^2)\)</span>, the system can be:</p>
-<p>Overdamped <span class="arithmatex">\(((\beta^2 &gt; \omega_0^2))\)</span>: Two distinct real roots leading to an exponential decay without oscillations.</p>
-<p>Critically damped <span class="arithmatex">\(((\beta^2 = \omega_0^2))\)</span>: A repeated real root leading to the fastest decay without oscillations.</p>
-<p>Underdamped <span class="arithmatex">\(((\beta^2 &lt; \omega_0^2))\)</span>: Complex roots leading to oscillatory decay:</p>
+<p>Overdamped <span class="arithmatex">\(\beta^2 &gt; \omega_0^2\)</span>: Two distinct real roots leading to an exponential decay without oscillations.</p>
+<p>Critically damped <span class="arithmatex">\(\beta^2 = \omega_0^2\)</span>: A repeated real root leading to the fastest decay without oscillations.</p>
+<p>Underdamped <span class="arithmatex">\(\beta^2 &lt; \omega_0^2\)</span>: Complex roots leading to oscillatory decay:</p>
 <div class="arithmatex">\[
 r = -\beta \pm i\sqrt{\omega_0^2 - \beta^2}
 \]</div>
@@ -213,9 +213,9 @@ r = -\beta \pm i\sqrt{\omega_0^2 - \beta^2}
 <div class="arithmatex">\[
 \theta_h(t) = e^{-\beta t}(A \cos(\omega_d t) + B \sin(\omega_d t))
 \]</div>
-<p>where <span class="arithmatex">\((\omega_d = \sqrt{\omega_0^2 - \beta^2})\)</span> is the damped natural frequency.</p>
+<p>where <span class="arithmatex">\(\omega_d = \sqrt{\omega_0^2 - \beta^2}\)</span> is the damped natural frequency.</p>
 <h3 id="particular-solution-for-the-forced-system">Particular Solution for the Forced System</h3>
-<p>To find a particular solution <span class="arithmatex">\((\theta_p(t))\)</span>, we assume a solution of the form:</p>
+<p>To find a particular solution <span class="arithmatex">\(\theta_p(t)\)</span>, we assume a solution of the form:</p>
 <div class="arithmatex">\[
 \theta_p(t) = C \cos(\omega t) + D \sin(\omega t)
 \]</div>
@@ -231,7 +231,7 @@ D = -\frac{2\beta \omega C}{\omega_0^2 - \omega^2}
 \theta(t) = \theta_h(t) + \theta_p(t)
 \]</div>
 <h3 id="resonance-conditions">Resonance Conditions</h3>
-<p>Resonance occurs when the driving frequency <span class="arithmatex">\((\omega)\)</span> is close to the natural frequency of the system <span class="arithmatex">\((\omega_0)\)</span>. At resonance <span class="arithmatex">\(((\omega \approx \omega_0))\)</span>, the amplitude of oscillations becomes significantly large because the system absorbs energy most efficiently from the driving force.
+<p>Resonance occurs when the driving frequency <span class="arithmatex">\(\omega\)</span> is close to the natural frequency of the system <span class="arithmatex">\(\omega_0\)</span>. At resonance <span class="arithmatex">\(\omega \approx \omega_0\)</span>, the amplitude of oscillations becomes significantly large because the system absorbs energy most efficiently from the driving force.
 The implications for the system's energy are profound:</p>
 <p align="justify">
 Increased Amplitude: The displacement amplitude increases, which means more energy is stored in the system as potential and kinetic energy.

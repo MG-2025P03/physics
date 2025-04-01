@@ -6,14 +6,14 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../../../img/favicon.ico" rel="shortcut icon"/>
-<title>Problem 1 - MG on 2025</title>
+<title># Simplified Task: Algorithm for Calculating Equivalent Resistance Using Graph Theory - MG on 2025</title>
 <link href="../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <script>
         // Current page data
-        var mkdocs_page_name = "Problem 1";
-        var mkdocs_page_input_path = "Physics/3 Waves/Problem_1.md";
+        var mkdocs_page_name = "# Simplified Task: Algorithm for Calculating Equivalent Resistance Using Graph Theory";
+        var mkdocs_page_input_path = "Physics/5 Circuits/Circuits.md";
         var mkdocs_page_url = null;
       </script>
 <!--[if lt IE 9]>
@@ -50,7 +50,7 @@
 <ul>
 <li class="toctree-l3"><a class="reference internal" href="../../1%20Mechanics/P1/1.AngleOfProjection/">Angle of Projection</a>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../1%20Mechanics/P1/2.RangeAnalysis/">Range Analysis</a>
+<li class="toctree-l3"><a class="reference internal" href="../../1%20Mechanics/P1/2.RangeAnalysis/">Basic Physics of Projectile Motion</a>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../1%20Mechanics/P1/3.PracticalApplications/">Practical Applications</a>
 </li>
@@ -104,23 +104,23 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal current">3 Waves</a>
-<ul class="current">
-<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1</a>
-<ul class="current">
-</ul>
+<li class="toctree-l1"><a class="reference internal">3 Waves</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../3%20Waves/Waves/">Analysis of Wave Interference Patterns Formed by Point Sources at the Vertices of a Square</a>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal">4 Electromagnetism</a>
 <ul>
-<li class="toctree-l2"><a class="reference internal" href="../../4%20Electromagnetism/Problem_1/">Problem 1</a>
+<li class="toctree-l2"><a class="reference internal" href="../../4%20Electromagnetism/Electromagnetism/">Electromagnetism</a>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal">5 Circuits</a>
-<ul>
-<li class="toctree-l2"><a class="reference internal" href="../../5%20Circuits/Problem_1/">Problem 1</a>
+<li class="toctree-l1 current"><a class="reference internal current">5 Circuits</a>
+<ul class="current">
+<li class="toctree-l2 current"><a class="reference internal current" href="#"># Simplified Task: Algorithm for Calculating Equivalent Resistance Using Graph Theory</a>
+<ul class="current">
+</ul>
 </li>
 </ul>
 </li>
@@ -152,8 +152,8 @@
 <ul class="wy-breadcrumbs">
 <li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
 <li class="breadcrumb-item">Physics</li>
-<li class="breadcrumb-item">3 Waves</li>
-<li class="breadcrumb-item active">Problem 1</li>
+<li class="breadcrumb-item">5 Circuits</li>
+<li class="breadcrumb-item active"># Simplified Task: Algorithm for Calculating Equivalent Resistance Using Graph Theory</li>
 <li class="wy-breadcrumbs-aside">
 </li>
 </ul>
@@ -161,12 +161,70 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="problem-1">Problem 1</h1>
+<h1 id="simplified-task-algorithm-for-calculating-equivalent-resistance-using-graph-theory"># Simplified Task: Algorithm for Calculating Equivalent Resistance Using Graph Theory</h1>
+<p>Graph Representation:</p>
+<p>Model the circuit as a graph where nodes represent junctions and edges represent resistors.
+Each edge has a weight corresponding to the resistance value.</p>
+<p>Identifying Series and Parallel Connections:</p>
+<p>Series Connection: Two nodes connected by a single path without splitting (i.e., no intermediate nodes are shared with other paths).
+Parallel Connection: Two nodes connected by multiple independent paths.</p>
+<p>Reduction Process:</p>
+<p>Start from a complex graph and iteratively reduce it by replacing series and parallel components with their equivalent resistance.
+Use recursive traversal for nested combinations.</p>
+<p>Algorithm</p>
+<p>plaintext  Copy codefunction calculateEquivalentResistance(circuitGraph):
+    while circuitGraph has more than 2 nodes:
+        for each node N in circuitGraph:
+            if N connects two other nodes only (series):
+                reduceSeriesConnection(N)
+            else if N connects in multiple paths to another node (parallel):
+                reduceParallelConnection(N)
+    return resistance between the two remaining nodes</p>
+<p>function reduceSeriesConnection(node):
+    // Assume node is between node1 and node2
+    let R1 = getResistance(node1, node)
+    let R2 = getResistance(node, node2)
+    let Req = R1 + R2</p>
+<pre><code>// Remove node from the graph and connect node1 to node2
+removeNodeAndEdgeBetween(node1, node)
+removeNodeAndEdgeBetween(node, node2)
+addEdge(node1, node2, Req)
+</code></pre>
+<p>function reduceParallelConnection(node):
+    // Assume node connects parallel pathways to another node
+    let parallelResistances = getAllParallelResistances(node)
+    let parallelEquivalent = reduceParallelResistances(parallelResistances)</p>
+<pre><code>// Remove parallel paths and connect start &amp; end node with parallelEquivalent
+removeParallelEdges(node)
+connectParallelNodesWithEquivalent(node, parallelEquivalent)
+</code></pre>
+<p>function reduceParallelResistances(resistances):
+    let inverseSum = 0
+    for R in resistances:
+        inverseSum += 1/R
+    return 1/inverseSum</p>
+<p>function getAllParallelResistances(node):
+    // Collect resistances for all parallel paths connected to this node
+    return list of resistance values</p>
+<p>function removeNodeAndEdgeBetween(node1, node2):
+    // Remove the specified node and its edge between node1 and node2</p>
+<p>function addEdge(node1, node2, resistance):
+    // Add an edge with specified resistance between node1 and node2</p>
+<p>function removeParallelEdges(node):
+    // Remove all edges representing parallel paths</p>
+<p>function connectParallelNodesWithEquivalent(node, equivalentResistance):
+    // Connect nodes with the reduced equivalent resistance</p>
+<p>How the Algorithm Handles Nested Combinations</p>
+<p>Recursive Reduction: The algorithm inherently handles nested series and parallel combinations through the iterative reduction process.
+Graph Traversal: Each time a series or parallel pattern is identified and reduced, the graph shrinks and is easier to traverse.
+Convergence: By continuously reducing series and parallel components, the graph eventually simplifies to only two nodes connected by a single equivalent resistance.</p>
+<p>This pseudocode outlines the approach for reducing the circuit graph step by step, handling both simple and complex configurations, including nested arrangements. It provides a robust framework for understanding how to algorithmically calculate equivalent resistances using graph theory.
+For the advanced option involving actual implementation in a programming language, a suitable choice would be Python with libraries such as NetworkX for graph handling, allowing for practical testing of real-world circuit configurations.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
-<a class="btn btn-neutral float-left" href="../../2%20Gravity/P3/P3%20Trajectories%20of%20a%20Freely%20Released%20Payload%20Near%20Earth/" title="Background"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-<a class="btn btn-neutral float-right" href="../../4%20Electromagnetism/Problem_1/" title="Problem 1">Next <span class="icon icon-circle-arrow-right"></span></a>
+<a class="btn btn-neutral float-left" href="../../4%20Electromagnetism/Electromagnetism/" title="Electromagnetism"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../../6%20Statistics/Problem_1/" title="Problem 1">Next <span class="icon icon-circle-arrow-right"></span></a>
 </div>
 <hr/>
 <div role="contentinfo">
@@ -181,8 +239,8 @@
 </div>
 <div aria-label="Versions" class="rst-versions" role="note">
 <span class="rst-current-version" data-toggle="rst-current-version">
-<span><a href="../../2%20Gravity/P3/P3%20Trajectories%20of%20a%20Freely%20Released%20Payload%20Near%20Earth/" style="color: #fcfcfc">« Previous</a></span>
-<span><a href="../../4%20Electromagnetism/Problem_1/" style="color: #fcfcfc">Next »</a></span>
+<span><a href="../../4%20Electromagnetism/Electromagnetism/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../../6%20Statistics/Problem_1/" style="color: #fcfcfc">Next »</a></span>
 </span>
 </div>
 <script src="../../../js/jquery-3.6.0.min.js"></script>

@@ -50,7 +50,7 @@
 <ul>
 <li class="toctree-l3"><a class="reference internal" href="../../1%20Mechanics/P1/1.AngleOfProjection/">Angle of Projection</a>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../1%20Mechanics/P1/2.RangeAnalysis/">Range Analysis</a>
+<li class="toctree-l3"><a class="reference internal" href="../../1%20Mechanics/P1/2.RangeAnalysis/">Basic Physics of Projectile Motion</a>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../1%20Mechanics/P1/3.PracticalApplications/">Practical Applications</a>
 </li>
@@ -106,19 +106,19 @@
 </li>
 <li class="toctree-l1"><a class="reference internal">3 Waves</a>
 <ul>
-<li class="toctree-l2"><a class="reference internal" href="../../3%20Waves/Problem_1/">Problem 1</a>
+<li class="toctree-l2"><a class="reference internal" href="../../3%20Waves/Waves/">Analysis of Wave Interference Patterns Formed by Point Sources at the Vertices of a Square</a>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal">4 Electromagnetism</a>
 <ul>
-<li class="toctree-l2"><a class="reference internal" href="../../4%20Electromagnetism/Problem_1/">Problem 1</a>
+<li class="toctree-l2"><a class="reference internal" href="../../4%20Electromagnetism/Electromagnetism/">Electromagnetism</a>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal">5 Circuits</a>
 <ul>
-<li class="toctree-l2"><a class="reference internal" href="../../5%20Circuits/Problem_1/">Problem 1</a>
+<li class="toctree-l2"><a class="reference internal" href="../../5%20Circuits/Circuits/"># Simplified Task: Algorithm for Calculating Equivalent Resistance Using Graph Theory</a>
 </li>
 </ul>
 </li>
@@ -162,6 +162,63 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
+<p>This experiment provides a systematic approach to measuring the acceleration due to gravity (( g )) using a simple pendulum. Here is the detailed explanation of each step, along with how you can analyze uncertainties and other considerations:
+Procedure Details
+1. Materials</p>
+<p>String: A length of 1 to 1.5 meters.
+Small weight: Such as a bag of coins, a small bag of sugar, or a keychain.
+Stopwatch: Or a smartphone timer.
+Ruler or Measuring Tape: For measuring the length of the pendulum.</p>
+<ol>
+<li>Setup</li>
+</ol>
+<p>Pendulum Assembly: Attach the weight to the string and secure the other end to a stable support, allowing it to swing freely.
+Measurement of Length (( L )): Use a ruler or tape to measure the pendulum length from the fixed point to the weight’s center. Record the resolution of your measuring tool, e.g., ±0.1 cm for a tape measure, translating to an uncertainty of half the resolution (±0.05 cm).</p>
+<ol>
+<li>Data Collection</li>
+</ol>
+<p>Displacement and Release: Displace the pendulum by less than 15° to minimize non-linear effects and release it.
+Timing Oscillations: Use the stopwatch to measure the time for 10 complete oscillations. Repeat this measurement 10 times to account for variability. Record all measurements.
+Calculate the Mean Time ((\bar{T}<em>{10})): Find the average time for 10 oscillations.
+Standard Deviation ((\sigma)): Calculate to understand variability in the timing.
+Uncertainty in Mean Time ((\sigma</em>{\bar{T}})): Determined using (\frac{\sigma}{\sqrt{N}}) where ( N = 10 ).</p>
+<p>Calculations
+1. Calculate the Period (( T ))
+[ T = \frac{\bar{T}_{10}}{10} ]</p>
+<p>The period of one oscillation.</p>
+<ol>
+<li>Determine Gravitational Acceleration (( g ))
+[ 
+g = \frac{4\pi^2L}{T^2}
+]</li>
+<li>Propagate Uncertainties</li>
+</ol>
+<p>Use error propagation methods to calculate the uncertainty in ( g ) based on uncertainties in ( L ) and ( T ).</p>
+<p>Analysis
+1. Compare with Standard Value</p>
+<p>Standard gravitational acceleration is approximately ( 9.81 , \text{m/s}^2 ). Compare your calculated ( g ) with this value.</p>
+<ol>
+<li>Discuss:</li>
+</ol>
+<p>Resolution Impact: How the precision of length and time measurements affect ( g ).
+Timing Variability: Examine the standard deviation of time measurements and its effect on results.
+Assumptions and Limitations: Consider factors such as air resistance, assumption of small angles (linear approximation), and potential friction at the pivot.</p>
+<p>Deliverables:
+1. Tabulated Data in Markdown</p>
+<p>Trial
+Time for 10 Oscillations ((T_{10}))
+Mean Time ((\bar{T}_{10}))
+Standard Deviation ((\sigma))</p>
+<p>1</p>
+<p>2</p>
+<p>...</p>
+<p>10</p>
+<p>The table should show measured times and computed statistics.</p>
+<ol>
+<li>Discussion on Uncertainty Sources</li>
+</ol>
+<p>Discuss potential errors and uncertainties, such as those from measurement tools, human reaction time using the stopwatch, and assumptions like negligible air resistance and perfect string inextensibility.</p>
+<p>By following this procedure and incorporating careful analysis of uncertainties, one can derive a reasonably accurate measurement of Earth's gravitational acceleration using a pendulum experiment.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
