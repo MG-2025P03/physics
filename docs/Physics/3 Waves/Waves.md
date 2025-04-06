@@ -70,7 +70,7 @@ This equation represents the interference pattern on the water surface.
 
 Constructive Interference: Occurs at points where the path difference between waves from two or more sources is an integer multiple of the wavelength $ m\lambda $, where $ m $ is an integer. At these points, the waves reinforce each other, resulting in larger amplitudes.
 
-Destructive Interference: Occurs at points where the path difference is an odd multiple of half wavelengths $m + \frac{1}{2})\lambda$. Here, the waves cancel each other, resulting in nodes or points of no displacement.
+Destructive Interference: Occurs at points where the path difference is an odd multiple of half wavelengths $(m + \frac{1}{2})\lambda$. Here, the waves cancel each other, resulting in nodes or points of no displacement.
 
 ## Combined Displacement Function
 
@@ -105,7 +105,7 @@ $$r_i - r_j = n \lambda$$
 
 These points are where the displacement $\Psi$ achieves its maximum, resulting in amplification.
 3. Destructive Interference (Cancellation):
-Destructive interference occurs when waves meet out of phase, i.e., the peak of one wave aligns with the trough of another. This occurs when the path difference is an odd multiple of half the wavelength $n + \frac{1}{2})\lambda$:
+Destructive interference occurs when waves meet out of phase, i.e., the peak of one wave aligns with the trough of another. This occurs when the path difference is an odd multiple of half the wavelength $(n + \frac{1}{2})\lambda$:
 
 $$
 r_i - r_j = (n + \frac{1}{2}) \lambda

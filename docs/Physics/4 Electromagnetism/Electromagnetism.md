@@ -22,8 +22,8 @@ In devices like tokamaks used in nuclear fusion research, magnetic fields are em
 
 Control of Charged Particles:
 
-Electric Fields (( E )): Electric fields exert a force on charged particles, changing their velocity linearly in the direction of the field. This is particularly useful in accelerating particles or deflecting them in devices like cathode ray tubes.
-Magnetic Fields (( B )): Magnetic fields exert a perpendicular force on moving charged particles, affecting their trajectory without changing their speed. This causes particles to move in circular or helical paths.
+Electric Fields $E$: Electric fields exert a force on charged particles, changing their velocity linearly in the direction of the field. This is particularly useful in accelerating particles or deflecting them in devices like cathode ray tubes.
+Magnetic Fields $B$: Magnetic fields exert a perpendicular force on moving charged particles, affecting their trajectory without changing their speed. This causes particles to move in circular or helical paths.
 
 Simulating Particle Motion
 To simulate the trajectory of a charged particle under different field configurations, we can consider:

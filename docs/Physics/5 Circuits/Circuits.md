@@ -15,8 +15,9 @@ Reduction Process:
 Start from a complex graph and iteratively reduce it by replacing series and parallel components with their equivalent resistance.
 Use recursive traversal for nested combinations.
 
-Algorithm plain
-text  
+Algorithm
+
+plaintext  
 Copy codefunction calculateEquivalentResistance(circuitGraph):
     while circuitGraph has more than 2 nodes:
         for each node N in circuitGraph:

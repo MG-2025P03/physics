@@ -5,7 +5,7 @@ The Monte Carlo method for estimating $\pi$ relies on the geometric properties o
 
 Unit Circle and Square:
 
-Consider a unit circle centered at the origin, $0, 0$, with radius 1.
+Consider a unit circle centered at the origin, (0, 0), with radius 1.
 The area of this circle is $\pi r^2 = \pi \cdot 1^2 = \pi$.
 
 
@@ -50,7 +50,7 @@ Analysis
 
 Accuracy Improvement:
 
-Generally, the accuracy of the $\pi$ approximation improves with more points, following a convergence rate of $O(\frac{1}{\sqrt{N}}$.
+Generally, the accuracy of the $\pi$ approximation improves with more points, following a convergence rate of $O(\frac{1}{\sqrt{N}})$.
 The Law of Large Numbers implies the estimated value will converge to the actual value of $\pi$ with more samples.
 
 Computational Considerations:
@@ -69,7 +69,7 @@ The needle is dropped randomly, which means any angle $\theta$ between 0 and $\p
 
 Probability Calculation:
 
-The needle crosses a line if the perpendicular distance from the needle's midpoint to the nearest line is less than or equal to $\frac{L}{2} \sin(\theta$.
+The needle crosses a line if the perpendicular distance from the needle's midpoint to the nearest line is less than or equal to $\frac{L}{2} \sin(\theta)$.
 The probability (P) of the needle crossing a line can be obtained by integrating over all possible positions and angles:
 
 $$
