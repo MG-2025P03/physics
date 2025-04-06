@@ -4,18 +4,18 @@
 
 A square has four equal sides and four vertices. For this analysis, we'll consider a square lying on a plane with vertices positioned at:
 
-Vertex A (0, 0)
-Vertex B (d, 0)
-Vertex C (d, d)
-Vertex D (0, d)
+Vertex A $(0, 0)$<br/>
+Vertex B $(d, 0)$<br/>
+Vertex C $(d, d)$<br/>
+Vertex D $(0, d)$
 
-where (d) is the side length of the square.
+where $(d)$ is the side length of the square.
 
 2. Position the Sources
 Place point wave sources at each of the vertices (A, B, C, and D) of the square. Each source will emit circular wave fronts.
 
 3. Wave Equations
-Assuming a simple harmonic wave emitted from each source with the same frequency and amplitude, the wave equation from a point source located at position ((x_0, y_0)) can be described by:
+Assuming a simple harmonic wave emitted from each source with the same frequency and amplitude, the wave equation from a point source located at position $(x_0, y_0)$ can be described by:
 
 $$
 \psi(x, y, t) = A \cos(kr - \omega t + \phi)
@@ -80,9 +80,9 @@ $$
 \Psi(x, y, t) = \psi_A(x, y, t) + \psi_B(x, y, t) + \psi_C(x, y, t) + \psi_D(x, y, t)
 $$
 
-where each ( \psi ) is the wave equation from an individual source.
+where each $( \psi )$ is the wave equation from an individual source.
 
-$$Interference Pattern Analysis
+## Interference Pattern Analysis
 
 1. Expression in Simplified Terms:
 For simplicity, assume all waves have the same amplitude (A), wave number (k), and frequency (\omega). Let:
@@ -103,22 +103,22 @@ Constructive interference occurs where waves meet in phase, i.e., their peaks an
 
 $$r_i - r_j = n \lambda$$
 
-These points are where the displacement (\Psi) achieves its maximum, resulting in amplification.
+These points are where the displacement $(\Psi)$ achieves its maximum, resulting in amplification.
 3. Destructive Interference (Cancellation):
-Destructive interference occurs when waves meet out of phase, i.e., the peak of one wave aligns with the trough of another. This occurs when the path difference is an odd multiple of half the wavelength ((n + \frac{1}{2})\lambda):
+Destructive interference occurs when waves meet out of phase, i.e., the peak of one wave aligns with the trough of another. This occurs when the path difference is an odd multiple of half the wavelength $(n + \frac{1}{2})\lambda$:
 
 $$
 r_i - r_j = (n + \frac{1}{2}) \lambda
 $$
 
-These points are where the displacement (\Psi) is minimized or nullified.
+These points are where the displacement $(\Psi)$ is minimized or nullified.
 4. Spatial Patterns:
 
 Constructive Zones: Form a lattice of high-amplitude nodes where constructive interference dominates.
 Destructive Zones: Occur as a grid-like pattern of nodal lines between the constructive nodes.
 
 5. Temporal Analysis:
-The time-dependent factor (-\omega t) governs the oscillation of patterns, ensuring that regions of constructive and destructive interference fluctuate over time, causing the interference pattern to move dynamically on the water surface. However, the general stationary pattern remains the same.
+The time-dependent factor $(-\omega t)$ governs the oscillation of patterns, ensuring that regions of constructive and destructive interference fluctuate over time, causing the interference pattern to move dynamically on the water surface. However, the general stationary pattern remains the same.
 
 ## Conclusion
 
