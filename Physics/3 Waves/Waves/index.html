@@ -84,7 +84,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../2%20Gravity/P1/2.Gravitational-Centripetal%20Forces/">2.Gravitational Centripetal Forces</a>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../2%20Gravity/P1/3.Relating%20Velocity%20to%20Orbital%20Period/">3.Relating Velocity to Orbital Period</a>
+<li class="toctree-l3"><a class="reference internal" href="../../2%20Gravity/P1/3.Relating%20Velocity%20to%20Orbital%20Period/">Relating Velocity to Orbital Period</a>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../2%20Gravity/P1/4.%20Implementation/">4. Implementation</a>
 </li>
@@ -172,11 +172,11 @@
 <li>Parameters - Square as a regular polygon</li>
 </ol>
 <p>A square has four equal sides and four vertices. For this analysis, we'll consider a square lying on a plane with vertices positioned at:</p>
-<p>Vertex A <span class="arithmatex">\((0, 0)\)</span><br/>
-Vertex B <span class="arithmatex">\((d, 0)\)</span><br/>
-Vertex C <span class="arithmatex">\((d, d)\)</span><br/>
-Vertex D <span class="arithmatex">\((0, d)\)</span></p>
-<p>where <span class="arithmatex">\((d)\)</span> is the side length of the square.</p>
+<p>Vertex A (0, 0)<br/>
+Vertex B (d, 0)<br/>
+Vertex C (d, d)<br/>
+Vertex D (0, d)</p>
+<p>where <span class="arithmatex">\(d\)</span> is the side length of the square.</p>
 <ol>
 <li>
 <p>Position the Sources
@@ -184,21 +184,21 @@ Place point wave sources at each of the vertices (A, B, C, and D) of the square.
 </li>
 <li>
 <p>Wave Equations
-Assuming a simple harmonic wave emitted from each source with the same frequency and amplitude, the wave equation from a point source located at position <span class="arithmatex">\((x_0, y_0)\)</span> can be described by:</p>
+Assuming a simple harmonic wave emitted from each source with the same frequency and amplitude, the wave equation from a point source located at position <span class="arithmatex">\(x_0, y_0\)</span> can be described by:</p>
 </li>
 </ol>
 <div class="arithmatex">\[
 \psi(x, y, t) = A \cos(kr - \omega t + \phi)
 \]</div>
 <p>where:</p>
-<p><span class="arithmatex">\(( \psi )\)</span> is the wave displacement</p>
-<p><span class="arithmatex">\(( A )\)</span> is the amplitude</p>
-<p><span class="arithmatex">\(( k )\)</span> is the wave number, given by <span class="arithmatex">\(( k = \frac{2\pi}{\lambda} )\)</span></p>
-<p><span class="arithmatex">\(( \omega )\)</span> is the angular frequency, given by <span class="arithmatex">\(( \omega = 2\pi f )\)</span></p>
-<p><span class="arithmatex">\(( r = \sqrt{(x - x_0)^2 + (y - y_0)^2} )\)</span> is the distance from the source to the point <span class="arithmatex">\((x, y)\)</span></p>
-<p><span class="arithmatex">\(( \phi )\)</span> is the phase constant</p>
-<p><span class="arithmatex">\(( \lambda )\)</span> is the wavelength</p>
-<p><span class="arithmatex">\(( f )\)</span> is the frequency</p>
+<p>$ \psi $ is the wave displacement</p>
+<p>$ A $ is the amplitude</p>
+<p>$ k $ is the wave number, given by $ k = \frac{2\pi}{\lambda} $</p>
+<p>$ \omega $ is the angular frequency, given by $ \omega = 2\pi f $</p>
+<p>$ r = \sqrt{(x - x_0)^2 + (y - y_0)^2} $ is the distance from the source to the point <span class="arithmatex">\(x, y\)</span></p>
+<p>$ \phi $ is the phase constant</p>
+<p>$ \lambda $ is the wavelength</p>
+<p>$ f $ is the frequency</p>
 <p>For our four point sources:</p>
 <div class="arithmatex">\[
 \psi_A(x, y, t) = A \cos(k\sqrt{x^2 + y^2} - \omega t)
@@ -214,7 +214,7 @@ Assuming a simple harmonic wave emitted from each source with the same frequency
 \]</div>
 <ol>
 <li>Superposition of Waves
-The principle of superposition states that the resultant wave displacement at any point on the water surface is the sum of the displacements due to each individual wave. Therefore, the total wave displacement <span class="arithmatex">\(\Psi(x, y, t)\)</span> is given by:</li>
+The principle of superposition states that the resultant wave displacement at any point on the water surface is the sum of the displacements due to each individual wave. Therefore, the total wave displacement <span class="arithmatex">\(\Psi(x, y, t\)</span> is given by:</li>
 </ol>
 <div class="arithmatex">\[
 \Psi(x, y, t) = \psi_A(x, y, t) + \psi_B(x, y, t) + \psi_C(x, y, t) + \psi_D(x, y, t)
@@ -223,14 +223,14 @@ The principle of superposition states that the resultant wave displacement at an
 <ol>
 <li>Interference Patterns</li>
 </ol>
-<p>Constructive Interference: Occurs at points where the path difference between waves from two or more sources is an integer multiple of the wavelength <span class="arithmatex">\(( m\lambda )\)</span>, where <span class="arithmatex">\(( m )\)</span> is an integer. At these points, the waves reinforce each other, resulting in larger amplitudes.</p>
+<p>Constructive Interference: Occurs at points where the path difference between waves from two or more sources is an integer multiple of the wavelength $ m\lambda $, where $ m $ is an integer. At these points, the waves reinforce each other, resulting in larger amplitudes.</p>
 <p>Destructive Interference: Occurs at points where the path difference is an odd multiple of half wavelengths <span class="arithmatex">\((m + \frac{1}{2})\lambda\)</span>. Here, the waves cancel each other, resulting in nodes or points of no displacement.</p>
 <h2 id="combined-displacement-function">Combined Displacement Function</h2>
 <p>The resultant wave displacement at a point ((x, y)) at time (t) is given by:</p>
 <div class="arithmatex">\[
 \Psi(x, y, t) = \psi_A(x, y, t) + \psi_B(x, y, t) + \psi_C(x, y, t) + \psi_D(x, y, t)
 \]</div>
-<p>where each <span class="arithmatex">\(( \psi )\)</span> is the wave equation from an individual source.</p>
+<p>where each $ \psi $ is the wave equation from an individual source.</p>
 <h2 id="interference-pattern-analysis">Interference Pattern Analysis</h2>
 <ol>
 <li>Expression in Simplified Terms:
@@ -249,19 +249,19 @@ $$r_D = \sqrt{x^2 + (y - d)^2}\]</div>
 Constructive interference occurs where waves meet in phase, i.e., their peaks and troughs align. This happens when the path difference between any pair of waves is an integral multiple of the wavelength ((n\lambda)):</li>
 </ol>
 <div class="arithmatex">\[r_i - r_j = n \lambda\]</div>
-<p>These points are where the displacement <span class="arithmatex">\((\Psi)\)</span> achieves its maximum, resulting in amplification.
+<p>These points are where the displacement <span class="arithmatex">\(\Psi\)</span> achieves its maximum, resulting in amplification.
 3. Destructive Interference (Cancellation):
 Destructive interference occurs when waves meet out of phase, i.e., the peak of one wave aligns with the trough of another. This occurs when the path difference is an odd multiple of half the wavelength <span class="arithmatex">\((n + \frac{1}{2})\lambda\)</span>:</p>
 <div class="arithmatex">\[
 r_i - r_j = (n + \frac{1}{2}) \lambda
 \]</div>
-<p>These points are where the displacement <span class="arithmatex">\((\Psi)\)</span> is minimized or nullified.
+<p>These points are where the displacement <span class="arithmatex">\(\Psi\)</span> is minimized or nullified.
 4. Spatial Patterns:</p>
 <p>Constructive Zones: Form a lattice of high-amplitude nodes where constructive interference dominates.
 Destructive Zones: Occur as a grid-like pattern of nodal lines between the constructive nodes.</p>
 <ol>
 <li>Temporal Analysis:
-The time-dependent factor <span class="arithmatex">\((-\omega t)\)</span> governs the oscillation of patterns, ensuring that regions of constructive and destructive interference fluctuate over time, causing the interference pattern to move dynamically on the water surface. However, the general stationary pattern remains the same.</li>
+The time-dependent factor <span class="arithmatex">\(-\omega t\)</span> governs the oscillation of patterns, ensuring that regions of constructive and destructive interference fluctuate over time, causing the interference pattern to move dynamically on the water surface. However, the general stationary pattern remains the same.</li>
 </ol>
 <h2 id="conclusion">Conclusion</h2>
 <p>The superposition of waves from the four point sources will create a complex pattern of interference, characterized by alternating areas of constructive and destructive interference, forming a lattice-like pattern on the water surface. The symmetries of the square and the coherent nature of the wave sources determine the regularity of these interference patterns.

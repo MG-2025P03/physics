@@ -94,7 +94,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../2%20Gravity/P1/2.Gravitational-Centripetal%20Forces/">2.Gravitational Centripetal Forces</a>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../../2%20Gravity/P1/3.Relating%20Velocity%20to%20Orbital%20Period/">3.Relating Velocity to Orbital Period</a>
+<li class="toctree-l3"><a class="reference internal" href="../../../2%20Gravity/P1/3.Relating%20Velocity%20to%20Orbital%20Period/">Relating Velocity to Orbital Period</a>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../2%20Gravity/P1/4.%20Implementation/">4. Implementation</a>
 </li>
@@ -175,14 +175,14 @@
 <div class="arithmatex">\[\frac{d^2\theta}{dt^2} + 2\beta \frac{d\theta}{dt} + \omega_0^2 \sin(\theta) = \frac{F_0}{mL} \cos(\omega t)
 \]</div>
 <p>where:</p>
-<p><span class="arithmatex">\((\theta)\)</span> is the angular displacement,</p>
-<p><span class="arithmatex">\((\beta)\)</span> is the damping coefficient,</p>
-<p><span class="arithmatex">\((\omega_0^2 = \frac{g}{L})\)</span> is the natural frequency of the pendulum,</p>
-<p><span class="arithmatex">\((F_0)\)</span> is the amplitude of the driving force,</p>
-<p><span class="arithmatex">\((m)\)</span> is the mass of the pendulum bob,</p>
-<p><span class="arithmatex">\((L)\)</span> is the length of the pendulum,</p>
-<p><span class="arithmatex">\((\omega)\)</span> is the driving frequency,</p>
-<p><span class="arithmatex">\((t)\)</span> is time.</p>
+<p><span class="arithmatex">\(\theta\)</span> is the angular displacement,</p>
+<p><span class="arithmatex">\(\beta\)</span> is the damping coefficient,</p>
+<p><span class="arithmatex">\(\omega_0^2 = \frac{g}{L}\)</span> is the natural frequency of the pendulum,</p>
+<p><span class="arithmatex">\(F_0\)</span> is the amplitude of the driving force,</p>
+<p><span class="arithmatex">\(m\)</span> is the mass of the pendulum bob,</p>
+<p><span class="arithmatex">\(L\)</span> is the length of the pendulum,</p>
+<p><span class="arithmatex">\(\omega\)</span> is the driving frequency,</p>
+<p><span class="arithmatex">\(t\)</span> is time.</p>
 <h3 id="small-angle-approximation">Small-Angle Approximation</h3>
 <p>For small-angle oscillations, we can use the approximation <span class="arithmatex">\(\sin(\theta) \approx \theta\)</span>. This simplifies the equation to:</p>
 <div class="arithmatex">\[
@@ -198,11 +198,11 @@
 <div class="arithmatex">\[
 r^2 + 2\beta r + \omega_0^2 = 0
 \]</div>
-<p>Solving for <span class="arithmatex">\((r)\)</span>, we find:</p>
+<p>Solving for <span class="arithmatex">\(r\)</span>, we find:</p>
 <div class="arithmatex">\[
 r = -\beta \pm \sqrt{\beta^2 - \omega_0^2}
 \]</div>
-<p>Depending on the discriminant <span class="arithmatex">\((\beta^2 - \omega_0^2)\)</span>, the system can be:</p>
+<p>Depending on the discriminant <span class="arithmatex">\(\beta^2 - \omega_0^2\)</span>, the system can be:</p>
 <p>Overdamped <span class="arithmatex">\(\beta^2 &gt; \omega_0^2\)</span>: Two distinct real roots leading to an exponential decay without oscillations.</p>
 <p>Critically damped <span class="arithmatex">\(\beta^2 = \omega_0^2\)</span>: A repeated real root leading to the fastest decay without oscillations.</p>
 <p>Underdamped <span class="arithmatex">\(\beta^2 &lt; \omega_0^2\)</span>: Complex roots leading to oscillatory decay:</p>
@@ -215,11 +215,11 @@ r = -\beta \pm i\sqrt{\omega_0^2 - \beta^2}
 \]</div>
 <p>where <span class="arithmatex">\(\omega_d = \sqrt{\omega_0^2 - \beta^2}\)</span> is the damped natural frequency.</p>
 <h3 id="particular-solution-for-the-forced-system">Particular Solution for the Forced System</h3>
-<p>To find a particular solution <span class="arithmatex">\(\theta_p(t)\)</span>, we assume a solution of the form:</p>
+<p>To find a particular solution <span class="arithmatex">\(\theta_p(t\)</span>, we assume a solution of the form:</p>
 <div class="arithmatex">\[
 \theta_p(t) = C \cos(\omega t) + D \sin(\omega t)
 \]</div>
-<p>Substituting into the non-homogeneous equation and solving for constants <span class="arithmatex">\((C)\)</span> and <span class="arithmatex">\((D)\)</span>, we obtain:</p>
+<p>Substituting into the non-homogeneous equation and solving for constants <span class="arithmatex">\(C\)</span> and <span class="arithmatex">\(D\)</span>, we obtain:</p>
 <div class="arithmatex">\[
 C = \frac{F_0/mL}{\sqrt{(\omega_0^2 - \omega^2)^2 + (2\beta \omega)^2}}
 \]</div>
