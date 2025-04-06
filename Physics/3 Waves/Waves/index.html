@@ -110,6 +110,8 @@
 <ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="#combined-displacement-function">Combined Displacement Function</a>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#interference-pattern-analysis">Interference Pattern Analysis</a>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#conclusion">Conclusion</a>
 </li>
 </ul>
@@ -170,11 +172,11 @@
 <li>Parameters - Square as a regular polygon</li>
 </ol>
 <p>A square has four equal sides and four vertices. For this analysis, we'll consider a square lying on a plane with vertices positioned at:</p>
-<p>Vertex A (0, 0)
-Vertex B (d, 0)
-Vertex C (d, d)
-Vertex D (0, d)</p>
-<p>where (d) is the side length of the square.</p>
+<p>Vertex A <span class="arithmatex">\((0, 0)\)</span><br/>
+Vertex B <span class="arithmatex">\((d, 0)\)</span><br/>
+Vertex C <span class="arithmatex">\((d, d)\)</span><br/>
+Vertex D <span class="arithmatex">\((0, d)\)</span></p>
+<p>where <span class="arithmatex">\((d)\)</span> is the side length of the square.</p>
 <ol>
 <li>
 <p>Position the Sources
@@ -182,7 +184,7 @@ Place point wave sources at each of the vertices (A, B, C, and D) of the square.
 </li>
 <li>
 <p>Wave Equations
-Assuming a simple harmonic wave emitted from each source with the same frequency and amplitude, the wave equation from a point source located at position ((x_0, y_0)) can be described by:</p>
+Assuming a simple harmonic wave emitted from each source with the same frequency and amplitude, the wave equation from a point source located at position <span class="arithmatex">\((x_0, y_0)\)</span> can be described by:</p>
 </li>
 </ol>
 <div class="arithmatex">\[
@@ -228,8 +230,8 @@ The principle of superposition states that the resultant wave displacement at an
 <div class="arithmatex">\[
 \Psi(x, y, t) = \psi_A(x, y, t) + \psi_B(x, y, t) + \psi_C(x, y, t) + \psi_D(x, y, t)
 \]</div>
-<p>where each ( \psi ) is the wave equation from an individual source.</p>
-<p>$$Interference Pattern Analysis</p>
+<p>where each <span class="arithmatex">\(( \psi )\)</span> is the wave equation from an individual source.</p>
+<h2 id="interference-pattern-analysis">Interference Pattern Analysis</h2>
 <ol>
 <li>Expression in Simplified Terms:
 For simplicity, assume all waves have the same amplitude (A), wave number (k), and frequency (\omega). Let:</li>
@@ -247,19 +249,19 @@ $$r_D = \sqrt{x^2 + (y - d)^2}\]</div>
 Constructive interference occurs where waves meet in phase, i.e., their peaks and troughs align. This happens when the path difference between any pair of waves is an integral multiple of the wavelength ((n\lambda)):</li>
 </ol>
 <div class="arithmatex">\[r_i - r_j = n \lambda\]</div>
-<p>These points are where the displacement (\Psi) achieves its maximum, resulting in amplification.
+<p>These points are where the displacement <span class="arithmatex">\((\Psi)\)</span> achieves its maximum, resulting in amplification.
 3. Destructive Interference (Cancellation):
-Destructive interference occurs when waves meet out of phase, i.e., the peak of one wave aligns with the trough of another. This occurs when the path difference is an odd multiple of half the wavelength ((n + \frac{1}{2})\lambda):</p>
+Destructive interference occurs when waves meet out of phase, i.e., the peak of one wave aligns with the trough of another. This occurs when the path difference is an odd multiple of half the wavelength <span class="arithmatex">\((n + \frac{1}{2})\lambda\)</span>:</p>
 <div class="arithmatex">\[
 r_i - r_j = (n + \frac{1}{2}) \lambda
 \]</div>
-<p>These points are where the displacement (\Psi) is minimized or nullified.
+<p>These points are where the displacement <span class="arithmatex">\((\Psi)\)</span> is minimized or nullified.
 4. Spatial Patterns:</p>
 <p>Constructive Zones: Form a lattice of high-amplitude nodes where constructive interference dominates.
 Destructive Zones: Occur as a grid-like pattern of nodal lines between the constructive nodes.</p>
 <ol>
 <li>Temporal Analysis:
-The time-dependent factor (-\omega t) governs the oscillation of patterns, ensuring that regions of constructive and destructive interference fluctuate over time, causing the interference pattern to move dynamically on the water surface. However, the general stationary pattern remains the same.</li>
+The time-dependent factor <span class="arithmatex">\((-\omega t)\)</span> governs the oscillation of patterns, ensuring that regions of constructive and destructive interference fluctuate over time, causing the interference pattern to move dynamically on the water surface. However, the general stationary pattern remains the same.</li>
 </ol>
 <h2 id="conclusion">Conclusion</h2>
 <p>The superposition of waves from the four point sources will create a complex pattern of interference, characterized by alternating areas of constructive and destructive interference, forming a lattice-like pattern on the water surface. The symmetries of the square and the coherent nature of the wave sources determine the regularity of these interference patterns.

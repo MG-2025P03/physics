@@ -171,8 +171,9 @@ Parallel Connection: Two nodes connected by multiple independent paths.</p>
 <p>Reduction Process:</p>
 <p>Start from a complex graph and iteratively reduce it by replacing series and parallel components with their equivalent resistance.
 Use recursive traversal for nested combinations.</p>
-<p>Algorithm</p>
-<p>plaintext  Copy codefunction calculateEquivalentResistance(circuitGraph):
+<p>Algorithm plain
+text<br/>
+Copy codefunction calculateEquivalentResistance(circuitGraph):
     while circuitGraph has more than 2 nodes:
         for each node N in circuitGraph:
             if N connects two other nodes only (series):
