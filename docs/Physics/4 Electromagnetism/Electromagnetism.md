@@ -31,7 +31,7 @@ To simulate the trajectory of a charged particle under different field configura
 Uniform Magnetic Field:
 
 A charged particle moving perpendicular to a uniform magnetic field will undergo circular motion due to the centripetal force provided by the Lorentz force.
-The radius of the circle $( r )$ can be determined by the equation: $r = \frac{mv}{qB}$, where $( m )$ is the mass, $( v )$ is the velocity, $( q )$ is the charge, and $( B )$ is the magnetic field strength.
+The radius of the circle $ r $ can be determined by the equation: $r = \frac{mv}{qB}$, where $ m $ is the mass, $ v $ is the velocity, $ q $ is the charge, and $ B $ is the magnetic field strength.
 
 
 Combined Uniform Electric and Magnetic Fields:
@@ -54,21 +54,21 @@ Integrating the Lorentz force equation over time using methods like Euler or Run
 Parameter Exploration
 The behavior of charged particles can be varied by modifying several parameters:
 
-Field Strengths Electric $( E )$, Magnetic $( B )$:
+Field Strengths Electric $ E $, Magnetic $ B $:
 
-Increasing $( E )$ will lead to higher linear acceleration of particles.
-Increasing $( B )$ will result in smaller radii of circular paths and increased frequency of circular motion.
-
-
-Initial Particle Velocity $( v )$:
-
-Changing the initial velocity can switch the trajectory from circular to helical, depending on the angle between $( v )$ and $\overrightarrow{B}$.
+Increasing $ E $ will lead to higher linear acceleration of particles.
+Increasing $ B $ will result in smaller radii of circular paths and increased frequency of circular motion.
 
 
-Charge and Mass of the Particle $( q, m )$:
+Initial Particle Velocity $ v $:
 
-A higher charge $( q )$ increases the force exerted by both fields, altering acceleration and trajectory sizes.
-A larger mass $( m )$ will reduce the acceleration for a given force, affecting how quickly the particle responds to field changes.
+Changing the initial velocity can switch the trajectory from circular to helical, depending on the angle between $ v $ and $\overrightarrow{B}$.
+
+
+Charge and Mass of the Particle $ q, m $:
+
+A higher charge $ q $ increases the force exerted by both fields, altering acceleration and trajectory sizes.
+A larger mass $ m $ will reduce the acceleration for a given force, affecting how quickly the particle responds to field changes.
 
 
 

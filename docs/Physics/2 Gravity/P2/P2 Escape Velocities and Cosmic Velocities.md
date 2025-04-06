@@ -12,25 +12,25 @@ Third Cosmic Velocity (Parabolic or Hyperbolic Trajectory Velocity):The velocity
 
 ## Mathematical Derivations
 
-First Cosmic Velocity $(v_1)$
+First Cosmic Velocity $v_1$
 
 $$ v_1 = \sqrt{\frac{GM}{r}} $$
 
-$(G)$ is the gravitational constant $(6.674 \times 10^{-11}$ , $\text{m}^3,\text{kg}^{-1},\text{s}^{-2})$
-$(M)$ is the mass of the celestial body
-$(r)$ is the radius (distance from the center of the body to the object)
+$G$ is the gravitational constant $6.674 \times 10^{-11}$ , $\text{m}^3,\text{kg}^{-1},\text{s}^{-2}$
+$M$ is the mass of the celestial body
+$r$ is the radius (distance from the center of the body to the object)
 
-Second Cosmic Velocity $((v_2))$
+Second Cosmic Velocity $(v_2)$
 
 $$ v_2 = \sqrt{2} \times v_1 = \sqrt{\frac{2GM}{r}} $$
 
 This formula comes from setting the kinetic energy equal to the potential energy needed to reach infinity.
 
-Third Cosmic Velocity $((v_3))$
+Third Cosmic Velocity $(v_3)$
 
 $$ v_3 = \sqrt{\frac{2G(M+m)}{r}} $$
 
-$(m)$ is the mass of the additional celestial body to be considered if escaping a system of bodies.
+$m$ is the mass of the additional celestial body to be considered if escaping a system of bodies.
 
 ## Calculation for Different Celestial Bodies
 
@@ -61,17 +61,17 @@ Third Cosmic Velocity: This velocity is needed to leave the gravitational field 
 
 ## Mathematical Derivation and Parameters
 
-The first cosmic velocity, $(v_1)$, is derived using the formula:
+The first cosmic velocity, $v_1$, is derived using the formula:
 
 $$v_1 = \sqrt{\frac{GM}{R}}$$
 
 where:
 
-$(G)$ is the gravitational constant
-$(M)$ is the mass of the celestial body
-$(R)$ is its radius 3
+$G$ is the gravitational constant
+$M$ is the mass of the celestial body
+$R$ is its radius 3
 
-The second cosmic velocity, $(v_2)$, is found by equating the kinetic energy of an object with its potential energy at infinity:
+The second cosmic velocity, $v_2$, is found by equating the kinetic energy of an object with its potential energy at infinity:
 
 $$v_2 = \sqrt{\frac{2GM}{R}}$$
 

@@ -6,19 +6,19 @@ Types of Trajectories
 ## Elliptical Trajectory
 
 Description: An elliptical trajectory implies an orbit where the gravitational force of the Earth acts as the centripetal force keeping the payload in a closed orbit. An ellipse includes circular orbits as a special case where the eccentricity is zero.
-Scenario: If the payload is released with a velocity below escape velocity $(<v_2)$ but above orbital velocity $(v_1)$, it will enter an elliptical orbit.
+Scenario: If the payload is released with a velocity below escape velocity $<v_2$ but above orbital velocity $v_1$, it will enter an elliptical orbit.
 Use in Space Exploration: This is desirable for satellites that need to orbit Earth or other celestial bodies.
 
 ## Parabolic Trajectory
 
 Description: A parabolic trajectory indicates that the payload is on the threshold of escape, having just enough energy to break free from Earth's gravity, but not more.
-Scenario: Occurs at exactly the escape velocity $(v_2)$. This is a theoretical construct as maintaining exactly parabolic conditions is practically challenging.
+Scenario: Occurs at exactly the escape velocity $v_2$. This is a theoretical construct as maintaining exactly parabolic conditions is practically challenging.
 Use in Space Exploration: Useful for trajectory analysis; practically rare due to precise conditions needed.
 
 ## Hyperbolic Trajectory
 
 Description: In a hyperbolic trajectory, the payload has excess energy compared to the parabolic trajectory, indicating that it will escape Earth’s gravitational field.
-Scenario: When the payload's velocity exceeds escape velocity $(>v_2)$.
+Scenario: When the payload's velocity exceeds escape velocity $>v_2$.
 Use in Space Exploration: Required for missions aiming to leave Earth permanently, for interplanetary and interstellar missions.
 
 ## Numerical Analysis of Trajectories
@@ -40,11 +40,11 @@ $$
 
 Where:
 
-$(m)$ is the mass of the payload<br/>
-$(G)$ is the gravitational constant<br/>
-$(M)$ is the mass of Earth<br/>
-$(r)$ is the distance between the Earth's center and the payload<br/>
-$(\hat{r})$ is the unit vector along the radial direction.
+$m$ is the mass of the payload<br/>
+$G$ is the gravitational constant<br/>
+$M$ is the mass of Earth<br/>
+$r$ is the distance between the Earth's center and the payload<br/>
+$\hat{r}$ is the unit vector along the radial direction.
 
 ## Numerical Integration
 

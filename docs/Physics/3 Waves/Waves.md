@@ -4,18 +4,18 @@
 
 A square has four equal sides and four vertices. For this analysis, we'll consider a square lying on a plane with vertices positioned at:
 
-Vertex A $(0, 0)$<br/>
-Vertex B $(d, 0)$<br/>
-Vertex C $(d, d)$<br/>
-Vertex D $(0, d)$
+Vertex A (0, 0)<br/>
+Vertex B (d, 0)<br/>
+Vertex C (d, d)<br/>
+Vertex D (0, d)
 
-where $(d)$ is the side length of the square.
+where $d$ is the side length of the square.
 
 2. Position the Sources
 Place point wave sources at each of the vertices (A, B, C, and D) of the square. Each source will emit circular wave fronts.
 
 3. Wave Equations
-Assuming a simple harmonic wave emitted from each source with the same frequency and amplitude, the wave equation from a point source located at position $(x_0, y_0)$ can be described by:
+Assuming a simple harmonic wave emitted from each source with the same frequency and amplitude, the wave equation from a point source located at position $x_0, y_0$ can be described by:
 
 $$
 \psi(x, y, t) = A \cos(kr - \omega t + \phi)
@@ -23,21 +23,21 @@ $$
 
 where:
 
-$( \psi )$ is the wave displacement
+$ \psi $ is the wave displacement
 
-$( A )$ is the amplitude
+$ A $ is the amplitude
 
-$( k )$ is the wave number, given by $( k = \frac{2\pi}{\lambda} )$
+$ k $ is the wave number, given by $ k = \frac{2\pi}{\lambda} $
 
-$( \omega )$ is the angular frequency, given by $( \omega = 2\pi f )$
+$ \omega $ is the angular frequency, given by $ \omega = 2\pi f $
 
-$( r = \sqrt{(x - x_0)^2 + (y - y_0)^2} )$ is the distance from the source to the point $(x, y)$
+$ r = \sqrt{(x - x_0)^2 + (y - y_0)^2} $ is the distance from the source to the point $x, y$
 
-$( \phi )$ is the phase constant
+$ \phi $ is the phase constant
 
-$( \lambda )$ is the wavelength
+$ \lambda $ is the wavelength
 
-$( f )$ is the frequency
+$ f $ is the frequency
 
 For our four point sources:
 
@@ -58,7 +58,7 @@ $$
 $$
 
 4. Superposition of Waves
-The principle of superposition states that the resultant wave displacement at any point on the water surface is the sum of the displacements due to each individual wave. Therefore, the total wave displacement $\Psi(x, y, t)$ is given by:
+The principle of superposition states that the resultant wave displacement at any point on the water surface is the sum of the displacements due to each individual wave. Therefore, the total wave displacement $\Psi(x, y, t$ is given by:
 
 $$
 \Psi(x, y, t) = \psi_A(x, y, t) + \psi_B(x, y, t) + \psi_C(x, y, t) + \psi_D(x, y, t)
@@ -68,9 +68,9 @@ This equation represents the interference pattern on the water surface.
 
 5. Interference Patterns
 
-Constructive Interference: Occurs at points where the path difference between waves from two or more sources is an integer multiple of the wavelength $( m\lambda )$, where $( m )$ is an integer. At these points, the waves reinforce each other, resulting in larger amplitudes.
+Constructive Interference: Occurs at points where the path difference between waves from two or more sources is an integer multiple of the wavelength $ m\lambda $, where $ m $ is an integer. At these points, the waves reinforce each other, resulting in larger amplitudes.
 
-Destructive Interference: Occurs at points where the path difference is an odd multiple of half wavelengths $(m + \frac{1}{2})\lambda$. Here, the waves cancel each other, resulting in nodes or points of no displacement.
+Destructive Interference: Occurs at points where the path difference is an odd multiple of half wavelengths $m + \frac{1}{2})\lambda$. Here, the waves cancel each other, resulting in nodes or points of no displacement.
 
 ## Combined Displacement Function
 
@@ -80,7 +80,7 @@ $$
 \Psi(x, y, t) = \psi_A(x, y, t) + \psi_B(x, y, t) + \psi_C(x, y, t) + \psi_D(x, y, t)
 $$
 
-where each $( \psi )$ is the wave equation from an individual source.
+where each $ \psi $ is the wave equation from an individual source.
 
 ## Interference Pattern Analysis
 
@@ -103,22 +103,22 @@ Constructive interference occurs where waves meet in phase, i.e., their peaks an
 
 $$r_i - r_j = n \lambda$$
 
-These points are where the displacement $(\Psi)$ achieves its maximum, resulting in amplification.
+These points are where the displacement $\Psi$ achieves its maximum, resulting in amplification.
 3. Destructive Interference (Cancellation):
-Destructive interference occurs when waves meet out of phase, i.e., the peak of one wave aligns with the trough of another. This occurs when the path difference is an odd multiple of half the wavelength $(n + \frac{1}{2})\lambda$:
+Destructive interference occurs when waves meet out of phase, i.e., the peak of one wave aligns with the trough of another. This occurs when the path difference is an odd multiple of half the wavelength $n + \frac{1}{2})\lambda$:
 
 $$
 r_i - r_j = (n + \frac{1}{2}) \lambda
 $$
 
-These points are where the displacement $(\Psi)$ is minimized or nullified.
+These points are where the displacement $\Psi$ is minimized or nullified.
 4. Spatial Patterns:
 
 Constructive Zones: Form a lattice of high-amplitude nodes where constructive interference dominates.
 Destructive Zones: Occur as a grid-like pattern of nodal lines between the constructive nodes.
 
 5. Temporal Analysis:
-The time-dependent factor $(-\omega t)$ governs the oscillation of patterns, ensuring that regions of constructive and destructive interference fluctuate over time, causing the interference pattern to move dynamically on the water surface. However, the general stationary pattern remains the same.
+The time-dependent factor $-\omega t$ governs the oscillation of patterns, ensuring that regions of constructive and destructive interference fluctuate over time, causing the interference pattern to move dynamically on the water surface. However, the general stationary pattern remains the same.
 
 ## Conclusion
 
