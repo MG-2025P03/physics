@@ -6,14 +6,14 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../../../../img/favicon.ico" rel="shortcut icon"/>
-<title>Relating Velocity to Orbital Period - MG on 2025</title>
+<title>Implementation - MG on 2025</title>
 <link href="../../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <script>
         // Current page data
-        var mkdocs_page_name = "Relating Velocity to Orbital Period";
-        var mkdocs_page_input_path = "Physics/2 Gravity/P1/3.Relating Velocity to Orbital Period.md";
+        var mkdocs_page_name = "Implementation";
+        var mkdocs_page_input_path = "Physics/2 Gravity/P1/Implementation.md";
         var mkdocs_page_url = null;
       </script>
 <!--[if lt IE 9]>
@@ -80,21 +80,11 @@
 <ul class="current">
 <li class="toctree-l2 current"><a class="reference internal current">P1</a>
 <ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../1.Gravity/">Gravity</a>
+<li class="toctree-l3"><a class="reference internal" href="../Gravity/">Gravity</a>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../2.Gravitational-Centripetal%20Forces/">Gravitational Force</a>
-</li>
-<li class="toctree-l3 current"><a class="reference internal current" href="#">Relating Velocity to Orbital Period</a>
+<li class="toctree-l3 current"><a class="reference internal current" href="#">Implementation</a>
 <ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="#implications-in-astronomy">Implications in Astronomy</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#real-world-examples">Real-World Examples</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#planets-in-the-solar-system">Planets in the Solar System</a>
-</li>
 </ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../4.%20Implementation/">4. Implementation</a>
 </li>
 </ul>
 </li>
@@ -160,7 +150,7 @@
 <li class="breadcrumb-item">Physics</li>
 <li class="breadcrumb-item">2 Gravity</li>
 <li class="breadcrumb-item">P1</li>
-<li class="breadcrumb-item active">Relating Velocity to Orbital Period</li>
+<li class="breadcrumb-item active">Implementation</li>
 <li class="wy-breadcrumbs-aside">
 </li>
 </ul>
@@ -168,42 +158,41 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="relating-velocity-to-orbital-period">Relating Velocity to Orbital Period</h1>
-<p>The orbital velocity <span class="arithmatex">\(v\)</span> is related to the period <span class="arithmatex">\(T\)</span> by the circumference of the orbit:</p>
-<div class="arithmatex">\[
-v = \frac{2\pi r}{T}
-\]</div>
-<p>Substituting for<span class="arithmatex">\(v\)</span>:</p>
-<div class="arithmatex">\[
-G \cdot M = \left(\frac{2\pi r}{T}\right)^2 \cdot r
-\]</div>
-<p>Solving for<span class="arithmatex">\(T^2\)</span>:</p>
-<div class="arithmatex">\[
-GM = \frac{4\pi^2 r^3}{T^2}
-\]</div>
-<div class="arithmatex">\[
-T^2 = \frac{4\pi^2}{GM} \cdot r^3
-\]</div>
-<p>This equation is known as Kepler's third law for circular orbits: <span class="arithmatex">\(T^2 \propto r^3\)</span>.</p>
-<h2 id="implications-in-astronomy">Implications in Astronomy</h2>
-<p>Calculating Planetary Masses:
-By observing the orbital period and radius of a moon or satellite around a planet, astronomers can calculate the mass of the planet. This is particularly useful where direct measurement is difficult.</p>
-<p>Determining Distances:
-The relationship helps in determining the distance of celestial bodies. If the mass of the central body is known, and the orbital period can be measured, the orbital radius can be calculated.</p>
-<p>Kepler’s Laws:
-This derivation is essentially a mathematical explanation of Kepler's third law. It tells us that, for a given central body (like the Sun), the ratio <span class="arithmatex">\(T^2/r^3\)</span> is constant for all orbiting bodies.</p>
-<h2 id="real-world-examples">Real-World Examples</h2>
-<p>Moon's Orbit around Earth:</p>
-<p>By measuring the Moon's orbital period and radius, the Earth's mass can be estimated. This is a primary example of applying the derived relationship in practice.</p>
-<h2 id="planets-in-the-solar-system">Planets in the Solar System</h2>
-<p>The relationship allows scientists to confirm that planets orbit faster when closer to the Sun, obeying <span class="arithmatex">\(T^2 \propto r^3\)</span>.
-Observations of Jupiter's moons, for instance, helped calculate Jupiter's mass through these principles, even before modern technology allowed us to visit the planet.</p>
-<p>In summary, this relationship forms a crucial part of celestial mechanics and is fundamental to our understanding of orbital dynamics. It plays a vital role in the field of astronomy for calculating masses and distances, thereby enhancing our understanding of planetary systems, both in our Solar System and beyond.</p>
+<p>```{python}
+import plotly.express as px
+import pandas as pd</p>
+<h1 id="data-for-the-planets-in-the-solar-system">Data for the planets in the solar system</h1>
+<p>data = {
+    "Planet": ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"],
+    "Orbital Radius (AU)": [0.39, 0.72, 1.00, 1.52, 5.20, 9.58, 19.20, 30.05],
+    "Orbital Period (years)": [0.24, 0.62, 1.00, 1.88, 11.86, 29.46, 84.01, 164.79]
+}</p>
+<h1 id="convert-data-to-a-dataframe">Convert data to a DataFrame</h1>
+<p>df = pd.DataFrame(data)</p>
+<h1 id="calculate-the-square-of-the-orbital-period-and-the-cube-of-the-orbital-radius">Calculate the square of the orbital period and the cube of the orbital radius</h1>
+<p>df["Orbital Period Squared (years²)"] = df["Orbital Period (years)"]<strong>2
+df["Orbital Radius Cubed (AU³)"] = df["Orbital Radius (AU)"]</strong>3</p>
+<h1 id="plot-using-plotly">Plot using Plotly</h1>
+<p>fig = px.scatter(df, 
+                 x="Orbital Radius Cubed (AU³)", 
+                 y="Orbital Period Squared (years²)",
+                 text="Planet",
+                 title="Kepler's Third Law: T² vs r³",
+                 labels={"Orbital Radius Cubed (AU³)": "Orbital Radius Cubed (AU³)", "Orbital Period Squared (years²)": "Orbital Period Squared (years²)"},
+                 trendline="ols")</p>
+<h1 id="update-the-layout-for-better-readability">Update the layout for better readability</h1>
+<p>fig.update_traces(textposition='top center')
+fig.update_layout(xaxis_title='Orbital Radius Cubed (AU³)',
+                  yaxis_title='Orbital Period Squared (years²)',
+                  showlegend=False)</p>
+<h1 id="show-the-plot">Show the plot</h1>
+<p>fig.show()
+```{/python}</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
-<a class="btn btn-neutral float-left" href="../2.Gravitational-Centripetal%20Forces/" title="Gravitational Force"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-<a class="btn btn-neutral float-right" href="../4.%20Implementation/" title="4. Implementation">Next <span class="icon icon-circle-arrow-right"></span></a>
+<a class="btn btn-neutral float-left" href="../Gravity/" title="Gravity"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../../P2/P2%20Escape%20Velocities%20and%20Cosmic%20Velocities/" title="Background">Next <span class="icon icon-circle-arrow-right"></span></a>
 </div>
 <hr/>
 <div role="contentinfo">
@@ -218,8 +207,8 @@ Observations of Jupiter's moons, for instance, helped calculate Jupiter's mass t
 </div>
 <div aria-label="Versions" class="rst-versions" role="note">
 <span class="rst-current-version" data-toggle="rst-current-version">
-<span><a href="../2.Gravitational-Centripetal%20Forces/" style="color: #fcfcfc">« Previous</a></span>
-<span><a href="../4.%20Implementation/" style="color: #fcfcfc">Next »</a></span>
+<span><a href="../Gravity/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../../P2/P2%20Escape%20Velocities%20and%20Cosmic%20Velocities/" style="color: #fcfcfc">Next »</a></span>
 </span>
 </div>
 <script src="../../../../js/jquery-3.6.0.min.js"></script>
