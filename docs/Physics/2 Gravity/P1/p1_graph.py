@@ -1,4 +1,4 @@
-import plotly.express as px
+import plotly.graph_objects as go
 import pandas as pd
 
 # Data for the planets in the solar system
@@ -15,20 +15,40 @@ df = pd.DataFrame(data)
 df["Orbital Period Squared (years²)"] = df["Orbital Period (years)"]**2
 df["Orbital Radius Cubed (AU³)"] = df["Orbital Radius (AU)"]**3
 
-# Plot using Plotly
-fig = px.scatter(df, 
-                 x="Orbital Radius Cubed (AU³)", 
-                 y="Orbital Period Squared (years²)",
-                 text="Planet",
-                 title="Kepler's Third Law: T² vs r³",
-                 labels={"Orbital Radius Cubed (AU³)": "Orbital Radius Cubed (AU³)", "Orbital Period Squared (years²)": "Orbital Period Squared (years²)"},
-                 trendline="ols")
+# Create the figure
+fig = go.Figure()
 
-# Update the layout for better readability
-fig.update_traces(textposition='top center')
-fig.update_layout(xaxis_title='Orbital Radius Cubed (AU³)',
-                  yaxis_title='Orbital Period Squared (years²)',
-                  showlegend=False)
+# Add a scatter trace for the planets
+fig.add_trace(go.Scatter(
+    x=df["Orbital Radius Cubed (AU³)"],
+    y=df["Orbital Period Squared (years²)"],
+    mode='markers+text',
+    text=df["Planet"],
+    textposition='top center',
+    name='Planets',
+    marker=dict(size=10)
+))
+
+# Add a line trace from the origin to each planet's data point
+for i, row in df.iterrows():
+    fig.add_trace(go.Scatter(
+        x=[0, row["Orbital Radius Cubed (AU³)"]],
+        y=[0, row["Orbital Period Squared (years²)"]],
+        mode='lines',
+        line=dict(dash='dot'),
+        name=f'Line to {row["Planet"]}'
+    ))
+
+# Update layout for logarithmic axes
+fig.update_layout(
+    title="Kepler's Third Law: Lines from Origin to Planets (Logarithmic Scale)",
+    xaxis_title='Orbital Radius Cubed (AU³) [Log Scale]',
+    yaxis_title='Orbital Period Squared (years²) [Log Scale]',
+    xaxis_type="log",
+    yaxis_type="log",
+    showlegend=False,
+    margin=dict(l=20, r=20, t=30, b=20)
+)
 
 # Show the plot
 fig.show()
