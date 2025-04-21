@@ -56,8 +56,4 @@ fig.show()
 
 fig.write_html('p1_gravity.html', include_plotlyjs='cdn')
 ```
-
- <img align="right" src="https://mg-2025p03.github.io/physics/_pics/Keplers.png" alt="Keplers Third Law">
- <br/>
-
- ![Keplers Third Law](https://mg-2025p03.github.io/physics/_pics/Keplers.png "Keplers Third Law")
+ [![Keplers Third Law](https://mg-2025p03.github.io/physics/_pics/Keplers.png "Keplers Third Law")](https://mg-2025p03.github.io/physics/Physics/2%20Gravity/P1/p1_gravity.html)
