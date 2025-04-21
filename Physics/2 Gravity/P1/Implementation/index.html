@@ -83,6 +83,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../Gravity/">Gravity</a>
 </li>
 <li class="toctree-l3 current"><a class="reference internal current" href="#">Implementation</a>
+<ul class="current">
+</ul>
 </li>
 </ul>
 </li>
@@ -156,43 +158,35 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<pre><code>import plotly.express as px
-import pandas as pd
-
-# Data for the planets in the solar system
-data = {
+<p>import plotly.express as px
+import pandas as pd</p>
+<h1 id="data-for-the-planets-in-the-solar-system">Data for the planets in the solar system</h1>
+<p>data = {
     "Planet": ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"],
     "Orbital Radius (AU)": [0.39, 0.72, 1.00, 1.52, 5.20, 9.58, 19.20, 30.05],
     "Orbital Period (years)": [0.24, 0.62, 1.00, 1.88, 11.86, 29.46, 84.01, 164.79]
-}
-
-# Convert data to a DataFrame
-df = pd.DataFrame(data)
-
-# Calculate the square of the orbital period and the cube of the orbital radius
-df["Orbital Period Squared (years²)"] = df["Orbital Period (years)"]**2
-df["Orbital Radius Cubed (AU³)"] = df["Orbital Radius (AU)"]**3
-
-# Plot using Plotly
-fig = px.scatter(df, 
+}</p>
+<h1 id="convert-data-to-a-dataframe">Convert data to a DataFrame</h1>
+<p>df = pd.DataFrame(data)</p>
+<h1 id="calculate-the-square-of-the-orbital-period-and-the-cube-of-the-orbital-radius">Calculate the square of the orbital period and the cube of the orbital radius</h1>
+<p>df["Orbital Period Squared (years²)"] = df["Orbital Period (years)"]<strong>2
+df["Orbital Radius Cubed (AU³)"] = df["Orbital Radius (AU)"]</strong>3</p>
+<h1 id="plot-using-plotly">Plot using Plotly</h1>
+<p>fig = px.scatter(df, 
                  x="Orbital Radius Cubed (AU³)", 
                  y="Orbital Period Squared (years²)",
                  text="Planet",
                  title="Kepler's Third Law: T² vs r³",
                  labels={"Orbital Radius Cubed (AU³)": "Orbital Radius Cubed (AU³)", "Orbital Period Squared (years²)": "Orbital Period Squared (years²)"},
-                 trendline="ols")
-
-# Update the layout for better readability
-fig.update_traces(textposition='top center')
+                 trendline="ols")</p>
+<h1 id="update-the-layout-for-better-readability">Update the layout for better readability</h1>
+<p>fig.update_traces(textposition='top center')
 fig.update_layout(xaxis_title='Orbital Radius Cubed (AU³)',
                   yaxis_title='Orbital Period Squared (years²)',
-                  showlegend=False)
-
-# Show the plot
-fig.show()
-
-fig.write_html('p1_gravity.html', full_html=False, include_plotlyjs='cdn')
-</code></pre>
+                  showlegend=False)</p>
+<h1 id="show-the-plot">Show the plot</h1>
+<p>fig.show()</p>
+<p>fig.write_html('p1_gravity.html')</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
