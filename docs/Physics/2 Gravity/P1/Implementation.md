@@ -1,4 +1,3 @@
-```{python}
 import plotly.express as px
 import pandas as pd
 
@@ -34,5 +33,4 @@ fig.update_layout(xaxis_title='Orbital Radius Cubed (AU³)',
 # Show the plot
 fig.show()
 
-fig.write_html('p1_gravity.html', full_html=False, include_plotlyjs='cdn')
-```
+fig.write_html('p1_gravity.html')
