@@ -1,3 +1,4 @@
+```{python}
 import plotly.express as px
 import pandas as pd
 
@@ -32,3 +33,4 @@ fig.update_layout(xaxis_title='Orbital Radius Cubed (AU³)',
 
 # Show the plot
 fig.show()
+```{/python}
