@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Wave Interference with Plotly</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+
+  <h1>Wave Interference Simulation</h1>
+
+  <label for="numSources">Number of Sources (0-300):</label>
+  <input type="range" id="numSources" min="0" max="300" value="4" oninput="updatePlot()">
+
+  <div id="plot"></div>
+
+  <script>
+    // Constants
+    const A = 1.0; // Amplitude
+    const wavelength = 1.0; // Wavelength
+    const k = 2 * Math.PI / wavelength; // Wave number
+    const omega = 2 * Math.PI; // Angular frequency
+    const xCount = 500;
+    const yCount = 500;
+
+    // Grid for simulation
+    const x = Array.from(Array(xCount), (_, i) => -5 + (10 * i) / (xCount - 1)); // -5 to 5, 500 points
+    const y = Array.from(Array(yCount), (_, i) => -5 + (10 * i) / (yCount - 1)); // -5 to 5, 500 points
+
+    function generateSources(numSources, radius = 3) {
+      if (numSources === 0) {
+        return [];
+      }
+      const angles = Array.from(Array(numSources), (_, i) => (2 * Math.PI * i) / numSources);
+      return angles.map(angle => [radius * Math.cos(angle), radius * Math.sin(angle)]);
+    }
+
+    function waveInterference(X, Y, sources) {
+      const result = new Array(Y.length).fill(null).map(() => new Array(X.length).fill(0));
+
+      for (let i = 0; i < Y.length; i++) {
+        for (let j = 0; j < X.length; j++) {
+          let totalAmplitude = 0;
+          for (const [x0, y0] of sources) {
+            const R = Math.sqrt((X[j] - x0) ** 2 + (Y[i] - y0) ** 2) + 1e-9; // Avoid division by zero
+            totalAmplitude += A * Math.cos(k * R);
+          }
+          result[i][j] = totalAmplitude;
+        }
+      }
+      return result;
+    }
+
+    function updatePlot() {
+      const numSources = parseInt(document.getElementById("numSources").value);
+
+      const sources = generateSources(numSources);
+      const Z = waveInterference(x, y, sources);
+
+      const data = [{
+        z: Z,
+        x: x,
+        y: y,
+        type: 'contour',
+        colorscale: 'Jet' // Choose a color scale
+      }];
+
+      const layout = {
+        title: `Interference Pattern with ${numSources} Sources`,
+        xaxis: { title: 'x (units)' },
+        yaxis: { title: 'y (units)' },
+        margin: { l: 50, r: 50, b: 50, t: 80, pad: 4 },  // Adjust margins to prevent overlapping elements
+
+        annotations: sources.map((source, index) => {
+          return {
+            x: source[0],
+            y: source[1],
+            xref: 'x',
+            yref: 'y',
+            text: '', // Hide text label
+            showarrow: true,
+            arrowhead: 1,
+            arrowcolor: 'white',
+            ax: 0,
+            ay: -20
+          };
+        })
+
+      };
+
+
+      Plotly.newPlot('plot', data, layout, {displayModeBar: false,  responsive: true}); // Remove the modebar, make it responsive
+    }
+
+    // Initial plot
+    updatePlot();
+  </script>
+
+</body>
+</html>
