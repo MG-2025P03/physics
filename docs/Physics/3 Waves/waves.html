@@ -1,4 +1,21 @@
-let slider;
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Wave Interference with Plotly</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+
+  <h1>Wave Interference Simulation</h1>
+
+  <label for="numSources">Number of Sources (0-300):</label>
+  <input type="range" id="numSources" min="0" max="300" value="4" oninput="updatePlot()">
+
+  <div id="plot"></div>
+
+  <script>
+    // Constants
+    let slider;
 
 function setup() {
   createCanvas(600, 600);
@@ -41,3 +58,7 @@ function draw() {
   }
   updatePixels();
 }
+  </script>
+
+</body>
+</html>
