@@ -146,20 +146,38 @@ plot_interference(4)
 
 #### Waves Simulation
 
-[![One Source](../../_pics/Waves01.png] 'sample text')] (https://mg-2025p03.github.io/physics/3 Waves/waves.html)
+#### One Source
 
-![Four Sources](https://mg-2025p03.github.io/physics/_pics/Waves04.png])
+![One Source](https://mg-2025p03.github.io/physics/_pics/Waves01.png)
 
-[![ Six Sources](../physics/_pics/Waves06.png])]( (https://mg-2025p03.github.io/physics/3 Waves/waves.html)
+#### Four Sources
 
-[![ Eight Sources](../physics/_pics/Waves08.png])] (https://mg-2025p03.github.io/physics/3 Waves/waves.html)
+![Four Sources](https://mg-2025p03.github.io/physics/_pics/Waves04.png)
 
-[![ Ten Sources](../physics/_pics/Waves10.png])] (https://mg-2025p03.github.io/physics/3 Waves/waves.html)
+#### Six Sources
 
-[![ Thirteen Sources](../physics/_pics/Waves13.png])] (https://mg-2025p03.github.io/physics/3 Waves/waves.html)
+![Six Sources](https://mg-2025p03.github.io/physics/_pics/Waves06.png)
 
-[![ Twenty Seven Sources](../physics/_pics/Waves27.png])] (https://mg-2025p03.github.io/physics/3 Waves/waves.html)
+#### Eight Sources
 
-[![ Forty Sources](../physics/_pics/Waves40.png])] (https://mg-2025p03.github.io/physics/3 Waves/waves.html)
+![Eight Sources](https://mg-2025p03.github.io/physics/_pics/Waves08.png)
 
-[![ Fifty Sources](../physics/_pics/Waves50.png])] (https://mg-2025p03.github.io/physics/3 Waves/waves.html)
+#### Ten Sources
+
+![Ten Sources](https://mg-2025p03.github.io/physics/_pics/Waves10.png)
+
+#### Thirteen Sources
+
+[![Thirteen Sources](https://mg-2025p03.github.io/physics/_pics/Waves13.png)](https://mg-2025p03.github.io/physics/3 Waves/waves.html)
+
+#### Twenty Seven Sources
+
+![Twenty Seven Sources](https://mg-2025p03.github.io/physics/_pics/Waves27.png)
+
+#### Fourty Sources
+
+![Forty Sources](https://mg-2025p03.github.io/physics/_pics/Waves40.png)
+
+#### Fifty Sources
+
+![Fifty Sources](https://mg-2025p03.github.io/physics/_pics/Waves50.png)
