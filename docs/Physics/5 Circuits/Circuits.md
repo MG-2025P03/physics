@@ -1,4 +1,4 @@
-# # Simplified Task: Algorithm for Calculating Equivalent Resistance Using Graph Theory
+# Simplified Task: Algorithm for Calculating Equivalent Resistance Using Graph Theory
 
 Graph Representation:
 
@@ -17,7 +17,7 @@ Use recursive traversal for nested combinations.
 
 Algorithm
 
-plaintext  
+```
 Copy codefunction calculateEquivalentResistance(circuitGraph):
     while circuitGraph has more than 2 nodes:
         for each node N in circuitGraph:
@@ -68,6 +68,7 @@ function removeParallelEdges(node):
 
 function connectParallelNodesWithEquivalent(node, equivalentResistance):
     // Connect nodes with the reduced equivalent resistance
+```
 
 How the Algorithm Handles Nested Combinations
 

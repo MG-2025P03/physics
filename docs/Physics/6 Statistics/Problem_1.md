@@ -1,6 +1,5 @@
-# Problem 1
+## Simulating Sampling Distributions
 
-Simulating Sampling Distributions
 Step 1: Population Data Generation
 
 Uniform Distribution: Generate a dataset using numpy.random.uniform().
@@ -8,13 +7,17 @@ Exponential Distribution: Generate a dataset using numpy.random.exponential().
 Binomial Distribution: Generate a dataset using numpy.random.binomial().
 
 For each type of distribution, you should generate a large dataset, say with 100,000 observations, to represent the population.
+
 Python Code Example:
+
+```
 python  Copy codeimport numpy as np
 
 # Population sizes
 population_size = 100000
 
 # Generate population data
+
 uniform_population = np.random.uniform(low=0.0, high=1.0, size=population_size)
 exponential_population = np.random.exponential(scale=1.0, size=population_size)
 binomial_population = np.random.binomial(n=10, p=0.5, size=population_size)
@@ -57,6 +60,7 @@ for i, (name, population) in enumerate(distributions.items()):
 
 plt.tight_layout()
 plt.show()
+```
 
 3. Parameter Exploration
 Step 4: Analyzing Convergence and Variance
@@ -71,15 +75,3 @@ Highlight the importance of the Central Limit Theorem in various fields:
 Estimating Population Parameters: Providing more accurate estimates as sample sizes increase.
 Quality Control in Manufacturing: Helps in setting standards and controlling product quality by understanding the underlying population variability.
 Predicting Outcomes in Financial Models: Facilitates the application of normal distribution assumptions in finance through aggregation.
-
-
-
-Deliverables
-
-Markdown Document: Append the code and explanations together, ensuring each step is clearly explained and commented.
-Python Scripts or Notebooks: Include the complete code with outputs.
-Plots: Save plots showing the convergence towards normality as images for inclusion in reports or presentations.
-
-Discussion
-In your Markdown document, include a detailed discussion on the implications of the CLT, supported by the observations from your plots and simulations. Discuss how practical scenarios align or differ from theoretical expectations, and explain any nuances discovered through the simulations.
-This plan provides a comprehensive framework for analyzing and explaining the Central Limit Theorem using practical simulations. Make sure to verify the practicality of your code in your Python environment and tweak parameters as necessary for clearer illustrations.

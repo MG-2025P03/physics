@@ -1,4 +1,4 @@
-# Problem 1
+# Problem definition
 
 This experiment provides a systematic approach to measuring the acceleration due to gravity $ g $ using a simple pendulum. Here is the detailed explanation of each step, along with how you can analyze uncertainties and other considerations:
 Procedure Details
@@ -48,20 +48,3 @@ Standard gravitational acceleration is approximately $9.81 , \text{m/s}^2$. Comp
 Resolution Impact: How the precision of length and time measurements affect $g$.
 Timing Variability: Examine the standard deviation of time measurements and its effect on results.
 Assumptions and Limitations: Consider factors such as air resistance, assumption of small angles (linear approximation), and potential friction at the pivot.
-
-Deliverables:
-1. Tabulated Data in Markdown
-
-Trial
-Time for 10 Oscillations $T_{10}$
-Mean Time $\bar{T}_{10}$
-Standard Deviation $\sigma$
-
-
-The table should show measured times and computed statistics.
-
-2. Discussion on Uncertainty Sources
-
-Discuss potential errors and uncertainties, such as those from measurement tools, human reaction time using the stopwatch, and assumptions like negligible air resistance and perfect string inextensibility.
-
-By following this procedure and incorporating careful analysis of uncertainties, one can derive a reasonably accurate measurement of Earth's gravitational acceleration using a pendulum experiment.
