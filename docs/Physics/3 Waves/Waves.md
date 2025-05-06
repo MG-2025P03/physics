@@ -1,21 +1,6 @@
 # Analysis of Wave Interference Patterns Formed by Point Sources at the Vertices of a Square
 
-### Parameters - Square as a regular polygon
-
-A square has four equal sides and four vertices. For this analysis, we'll consider a square lying on a plane with vertices positioned at:
-
-Vertex A (0, 0)<br/>
-Vertex B (d, 0)<br/>
-Vertex C (d, d)<br/>
-Vertex D (0, d)
-
-where $d$ is the side length of the square.
-
-### Position the Sources
-
-Place point wave sources at each of the vertices (A, B, C, and D) of the square. Each source will emit circular wave fronts.
-
-### Wave Equations
+## Wave Equations
 
 Assuming a simple harmonic wave emitted from each source with the same frequency and amplitude, the wave equation from a point source located at position $x_0, y_0$ can be described by:
 
@@ -41,27 +26,9 @@ $\lambda$ is the wavelength
 
 $f$ is the frequency
 
-For our four point sources:
-
-$$
-\psi_A(x, y, t) = A \cos(k\sqrt{x^2 + y^2} - \omega t)
-$$
-
-$$
-\psi_B(x, y, t) = A \cos(k\sqrt{(x - d)^2 + y^2} - \omega t)
-$$
-
-$$
-\psi_C(x, y, t) = A \cos(k\sqrt{(x - d)^2 + (y - d)^2} - \omega t)
-$$
-
-$$
-\psi_D(x, y, t) = A \cos(k\sqrt{x^2 + (y - d)^2} - \omega t)
-$$
-
 ### Superposition of Waves
 
-The principle of superposition states that the resultant wave displacement at any point on the water surface is the sum of the displacements due to each individual wave. Therefore, the total wave displacement $\Psi(x, y, t)$ is given by:
+The principle of superposition states that the resultant wave displacement at any point on the water surface is the sum of the displacements due to each individual wave. Therefore, the total wave displacement $\Psi(x, y, t)$ is given by (initial 4 vertices):
 
 $$
 \Psi(x, y, t) = \psi_A(x, y, t) + \psi_B(x, y, t) + \psi_C(x, y, t) + \psi_D(x, y, t)
@@ -85,56 +52,98 @@ $$
 
 where each $\psi$ is the wave equation from an individual source.
 
-### Interference Pattern Analysis
+### Simulation on Waves
 
-#### 1. Expression in Simplified Terms
+```
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.widgets import Slider
 
-For simplicity, assume all waves have the same amplitude $A$, wave number $k$, and frequency $\omega$. Let:
+# Parameters
+L = 4.0     # Side length of the square
+c = 0.5     # Wave speed
+f = 0.5     # Frequency of the wave
+A = 0.5     # Amplitude of the wave
+lambda_ = 0.5 # Wavelength
+k = 2 * np.pi / lambda_  # Wave number
+t = 0.3     # Time
 
-$$r_A = \sqrt{x^2 + y^2}$$
+# Function to calculate the wave displacement from a source
+def wave_displacement(x, y, x0, y0, k, t):
+    r = np.sqrt((x - x0)**2 + (y - y0)**2)
+    return (A * np.sin(2 * np.pi * f * t - k * r)) 
 
-$$r_B = \sqrt{(x - d)^2 + y^2}$$
+# Function to calculate and plot the interference pattern
+def plot_interference(num_sources):
+    fig, ax = plt.subplots()
+    plt.subplots_adjust(left=0.15, bottom=0.15, right=0.85, top=0.85, wspace=0.2, hspace=0.2)
+    ax.set_title('Interference Pattern of Waves')
 
-$$r_C = \sqrt{(x - d)^2 + (y - d)^2}$$
+    # Preparing the grid
+    x = np.linspace(-L, L, 1200)
+    y = np.linspace(-L, L, 1200)
+    X, Y = np.meshgrid(x, y)
 
-$$r_D = \sqrt{x^2 + (y - d)^2}$$
+    # Create a regular polygon (circle-like distribution) for more sources
+    angles = np.linspace(0, 3 * np.pi, num_sources, endpoint=False)
+    positions = [(L * np.cos(angle), L * np.sin(angle)) for angle in angles]
 
-The total displacement becomes:
+    # Calculate superposition
+    Z = np.zeros(X.shape)
+    for (x0, y0) in positions:
+        Z += wave_displacement(X, Y, x0, y0, k, t)
 
-$$
-\Psi(x, y, t) = A [\cos(kr_A - \omega t) + \cos(kr_B - \omega t) + \cos(kr_C - \omega t) + \cos(kr_D - \omega t)]
-$$
+    # Find min and max values for consistent color scale
+    vmin = np.min(Z)
+    vmax = np.max(Z)
 
-#### 2. Constructive Interference (Amplification)
+    # Plot
+    contour = ax.contourf(X, Y, Z, 20, cmap='RdBu_r', vmin=vmin, vmax=vmax)  # Set vmin and vmax here
+    cbar = plt.colorbar(contour)
 
-Constructive interference occurs where waves meet in phase, i.e., their peaks and troughs align. This happens when the path difference between any pair of waves is an integral multiple of the wavelength $n\lambda$:
+    # Add the sources to the plot
+    for x0, y0 in positions:
+        ax.plot(x0, y0, 'X', markersize=6, color='yellow')
 
-$$r_i - r_j = n \lambda$$
+    axcolor = 'lightgoldenrodyellow'
+    axSources1 = plt.axes([0.25, 0.1, 0.65, 0.03], facecolor=axcolor)
+    #axSources2 = plt.axes([0.15, 0.1, 0.65, 0.03], facecolor=axcolor)
 
-These points are where the displacement $\Psi$ achieves its maximum, resulting in amplification.
+    sliderSources1 = Slider(axSources1, 'Num Sources', 1, 75, valinit=num_sources, valstep=1)
+    #sliderSources2 = Slider(axSources2, 'Graph size', 1, 4, valinit=L, valstep=0.25)
 
-#### 3. Destructive Interference (Cancellation)
+    def update(val):
+        num_sources = int(sliderSources1.val)
+        # xL = float(sliderSources2.val)
+        xL = L
+        angles = np.linspace(0, xL * np.pi, num_sources, endpoint=False)
+        positions = [(xL * np.cos(angle), xL * np.sin(angle)) for angle in angles]
 
-Destructive interference occurs when waves meet out of phase, i.e., the peak of one wave aligns with the trough of another. This occurs when the path difference is an odd multiple of half the wavelength $(n + \frac{1}{2})\lambda$:
+        Z = np.zeros(X.shape)
+        for (x0, y0) in positions:
+            Z += wave_displacement(X, Y, x0 , y0, k, t)
 
-$$
-r_i - r_j = (n + \frac{1}{2}) \lambda
-$$
+        # Plot with fixed color limits
+        ax.clear()
 
-These points are where the displacement $\Psi$ is minimized or nullified.
+        contour = ax.contourf(X, Y, Z, 20, cmap='RdBu_r', vmin=vmin, vmax=vmax)  # Set vmin and vmax here
+        cbar = plt.colorbar(contour, ax=ax)
 
-#### 4. Spatial Patterns
+         # Add the sources to the plot
+        for x0, y0 in positions:
+            ax.plot(x0, y0, 'x', markersize=6, color='yellow')
 
-Constructive Zones: Form a lattice of high-amplitude nodes where constructive interference dominates.
-Destructive Zones: Occur as a grid-like pattern of nodal lines between the constructive nodes.
+        cbar.remove()
+        plt.draw()
 
-#### 5. Temporal Analysis
+    sliderSources1.on_changed(update)
+    # sliderSources2.on_changed(update)
+    plt.show()
 
-The time-dependent factor $-\omega t$ governs the oscillation of patterns, ensuring that regions of constructive and destructive interference fluctuate over time, causing the interference pattern to move dynamically on the water surface. However, the general stationary pattern remains the same.
+# Initial call to plot the interference pattern
+plot_interference(4)
+```
 
-## Conclusion
+### Waves with 1 Source
 
-The superposition of waves from the four point sources will create a complex pattern of interference, characterized by alternating areas of constructive and destructive interference, forming a lattice-like pattern on the water surface. The symmetries of the square and the coherent nature of the wave sources determine the regularity of these interference patterns.
-To visualize the detailed interference pattern, numerical simulation or graphical representation can be employed to reveal the specific constructive and destructive zones across the water surface.
-
-The interference patterns on the water surface will consist of alternating regions of constructive and destructive interference. These patterns manifest as a regular grid-like structure due to the symmetry of the square arrangement of point sources, with moving wave fronts creating dynamic shifts over time.
+[![ Alt Text](https://mg-2025p03.github.io/physics/_pics/BShip1.jpg])](Link [URL](https://mg-2025p03.github.io/physics/3 Waves/waves.html))
