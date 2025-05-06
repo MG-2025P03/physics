@@ -146,20 +146,20 @@ plot_interference(4)
 
 #### Waves Simulation
 
-[![ One Source](https://mg-2025p03.github.io/physics/_pics/Waves01.png])] (https://mg-2025p03.github.io/physics/3 Waves/waves.html)
+[![ One Source](../physics/_pics/Waves01.png])] (https://mg-2025p03.github.io/physics/3 Waves/waves.html)
 
-[![ Four Sources](https://mg-2025p03.github.io/physics/_pics/Waves04.png])]( (https://mg-2025p03.github.io/physics/3 Waves/waves.html)
+[![ Four Sources](../physics/_pics/Waves04.png])]( (https://mg-2025p03.github.io/physics/3 Waves/waves.html)
 
-[![ Six Sources](https://mg-2025p03.github.io/physics/_pics/Waves06.png])]( (https://mg-2025p03.github.io/physics/3 Waves/waves.html)
+[![ Six Sources](../physics/_pics/Waves06.png])]( (https://mg-2025p03.github.io/physics/3 Waves/waves.html)
 
-[![ Eight Sources](https://mg-2025p03.github.io/physics/_pics/Waves08.png])] (https://mg-2025p03.github.io/physics/3 Waves/waves.html)
+[![ Eight Sources](../physics/_pics/Waves08.png])] (https://mg-2025p03.github.io/physics/3 Waves/waves.html)
 
-[![ Ten Sources](https://mg-2025p03.github.io/physics/_pics/Waves10.png])] (https://mg-2025p03.github.io/physics/3 Waves/waves.html)
+[![ Ten Sources](../physics/_pics/Waves10.png])] (https://mg-2025p03.github.io/physics/3 Waves/waves.html)
 
-[![ Thirteen Sources](https://mg-2025p03.github.io/physics/_pics/Waves13.png])] (https://mg-2025p03.github.io/physics/3 Waves/waves.html)
+[![ Thirteen Sources](../physics/_pics/Waves13.png])] (https://mg-2025p03.github.io/physics/3 Waves/waves.html)
 
-[![ Twenty Seven Sources](https://mg-2025p03.github.io/physics/_pics/Waves27.png])] (https://mg-2025p03.github.io/physics/3 Waves/waves.html)
+[![ Twenty Seven Sources](../physics/_pics/Waves27.png])] (https://mg-2025p03.github.io/physics/3 Waves/waves.html)
 
-[![ Forty Sources](https://mg-2025p03.github.io/physics/_pics/Waves40.png])] (https://mg-2025p03.github.io/physics/3 Waves/waves.html)
+[![ Forty Sources](../physics/_pics/Waves40.png])] (https://mg-2025p03.github.io/physics/3 Waves/waves.html)
 
-[![ Fifty Sources](https://mg-2025p03.github.io/physics/_pics/Waves50.png])] (https://mg-2025p03.github.io/physics/3 Waves/waves.html)
+[![ Fifty Sources](../physics/_pics/Waves50.png])] (https://mg-2025p03.github.io/physics/3 Waves/waves.html)
