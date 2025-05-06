@@ -1,51 +1,68 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import ipywidgets as widgets
-from ipywidgets import interact
+from matplotlib.widgets import Slider
 
-# Constants
-A = 1.0  # Amplitude
-wavelength = 1.0  # Wavelength
-k = 2 * np.pi / wavelength  # Wave number
-omega = 2 * np.pi  # Angular frequency
+# Parameters
+a = 1.0          # Half side length of the polygon
+A = 1.0          # Amplitude of the waves
+wavelength = 1.0 # Wavelength
+omega = 2 * np.pi # Angular frequency
+k = 2 * np.pi / wavelength # Wave number
+t = 0            # Time instance for snapshot
+grid_size = 200  # Resolution of the grid
+domain_size = 3  # Size of the domain for visualization
 
-# Grid for the simulation
-x = np.linspace(-5, 5, 500)
-y = np.linspace(-5, 5, 500)
+# Create a grid of points
+x = np.linspace(-domain_size, domain_size, grid_size)
+y = np.linspace(-domain_size, domain_size, grid_size)
 X, Y = np.meshgrid(x, y)
 
-def generate_sources(num_sources, radius=3):
-    """Generate sources positioned in a circle around the origin."""
-    if num_sources == 100:
-        return []
-    angles = np.linspace(0, 2 * np.pi, num_sources, endpoint=False)
-    return [(radius * np.cos(angle), radius * np.sin(angle)) for angle in angles]
+# Function to calculate positions of sources placed at vertices of a regular polygon
+def get_polygon_sources(num_sources, radius):
+    theta = np.linspace(0, 2 * np.pi, num_sources, endpoint=False)
+    return [(radius * np.cos(angle), radius * np.sin(angle)) for angle in theta]
 
-def wave_interference(X, Y, sources):
-    """Calculate the wave interference pattern."""
-    result = np.zeros_like(X)
+# Initialize plot
+fig, ax = plt.subplots(figsize=(10, 8))
+plt.subplots_adjust(left=0.1, bottom=0.25)  # Adjust layout to make space for slider
+
+# Plot initial data
+num_sources_initial = 4  # Start with a square (4 sources)
+sources = get_polygon_sources(num_sources_initial, np.sqrt(2) * a)
+Psi = np.zeros_like(X)
+
+for (x0, y0) in sources:
+    R = np.sqrt((X - x0)**2 + (Y - y0)**2)
+    Psi += A * np.sin(k * R - omega * t)
+
+contour = plt.contourf(X, Y, Psi, levels=100, cmap='RdYlBu')
+plt.colorbar(contour, label='Wave Intensity')
+ax.set_title('Interference Pattern of Waves from Polygon Vertex Sources')
+ax.set_xlabel('X Position')
+ax.set_ylabel('Y Position')
+ax.set_aspect('equal', adjustable='box')
+
+# Slider for number of sources
+ax_sources = plt.axes([0.15, 0.1, 0.65, 0.03], facecolor='lightgoldenrodyellow')
+slider_sources = Slider(ax_sources, 'Number of Sources', 3, 12, valinit=num_sources_initial, valstep=1)
+
+# Update function for slider interaction
+def update(val):
+    num_sources = int(slider_sources.val)
+    Psi = np.zeros_like(X)
+    sources = get_polygon_sources(num_sources, np.sqrt(2) * a)
     for (x0, y0) in sources:
-        R = np.sqrt((X - x0)**2 + (Y - y0)**2) + 1e-9  # Avoid division by zero
-        result += A * np.cos(k * R - omega * 0)  # Static view with t = 0
-    return result
+        R = np.sqrt((X - x0)**2 + (Y - y0)**2)
+        Psi += A * np.sin(k * R - omega * t)
 
-def plot_wave_pattern(num_sources):
-    """Plot the interference pattern based on the number of sources."""
-    sources = generate_sources(num_sources)
-    Z = wave_interference(X, Y, sources)
-    plt.figure(figsize=(8, 8))
-    plt.contourf(X, Y, Z, levels=100, cmap='jet')
-    plt.title(f"Interference Pattern with {num_sources} Sources")
-    plt.xlabel("x (units)")
-    plt.ylabel("y (units)")
-    plt.colorbar(label='Wave Intensity')
-    if sources:  # Only plot sources if there are any.
-        plt.scatter(*zip(*sources), color='white', label='Wave Sources')
-        plt.legend(loc='upper right')
-    plt.show()
+    ax.clear()
+    contour = ax.contourf(X, Y, Psi, levels=100, cmap='RdYlBu')
+    ax.set_title('Interference Pattern of Waves from Polygon Vertex Sources')
+    ax.set_xlabel('X Position')
+    ax.set_ylabel('Y Position')
+    ax.set_aspect('equal', adjustable='box')
+    plt.colorbar(contour, ax=ax, label='Wave Intensity')
 
-# Interactive slider for the number of sources
-interact(
-    plot_wave_pattern,
-    num_sources=widgets.IntSlider(min=0, max=300, step=1, value=4)
-)
+slider_sources.on_changed(update)
+
+plt.show()

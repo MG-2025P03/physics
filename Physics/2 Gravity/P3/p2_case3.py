@@ -1,64 +1,54 @@
-import numpy as np
-import matplotlib.pyplot as plt
-import ipywidgets as widgets
-from ipywidgets import interact
+import plotly.graph_objects as go
+import pandas as pd
 
-# Constants
-A = 1.0  # Amplitude
-wavelength = 1.0  # Wavelength
-k = 2 * np.pi / wavelength  # Wave number
-omega = 2 * np.pi  # Angular frequency
+# Data for the planets in the solar system
+data = {
+    "Planet": ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"],
+    "Orbital Radius (AU)": [0.39, 0.72, 1.00, 1.52, 5.20, 9.58, 19.20, 30.05],
+    "Orbital Period (years)": [0.24, 0.62, 1.00, 1.88, 11.86, 29.46, 84.01, 164.79]
+}
 
-# Grid for the simulation
-x = np.linspace(-5, 5, 500)
-y = np.linspace(-5, 5, 500)
-X, Y = np.meshgrid(x, y)
+# Convert data to a DataFrame
+df = pd.DataFrame(data)
 
-def generate_sources(num_sources, radius=3):
-    """Generate sources positioned in a circle around the origin."""
-    if num_sources == 0:
-        return []
-    angles = np.linspace(0, 2 * np.pi, num_sources, endpoint=False)
-    return [(radius * np.cos(angle), radius * np.sin(angle)) for angle in angles]
+# Calculate the square of the orbital period and the cube of the orbital radius
+df["Orbital Period Squared (years²)"] = df["Orbital Period (years)"]**2
+df["Orbital Radius Cubed (AU³)"] = df["Orbital Radius (AU)"]**3
 
-def wave_interference(X, Y, sources):
-    """Calculate the wave interference pattern."""
-    result = np.zeros_like(X)
-    for (x0, y0) in sources:
-        R = np.sqrt((X - x0)**2 + (Y - y0)**2) + 1e-9  # Avoid division by zero
-        result += A * np.cos(k * R)  # Static view with t = 0
-    return result
+# Create the figure
+fig = go.Figure()
 
-def plot_wave_pattern(num_sources):
-    """Plot the interference pattern based on the number of sources."""
-    plt.close('all')  # Close any existing figures
+# Add a scatter trace for the planets
+fig.add_trace(go.Scatter(
+    x=df["Orbital Radius Cubed (AU³)"],
+    y=df["Orbital Period Squared (years²)"],
+    mode='markers+text',
+    text=df["Planet"],
+    textposition='top center',
+    name='Planets',
+    marker=dict(size=10)
+))
 
-    sources = generate_sources(num_sources)
-    Z = wave_interference(X, Y, sources)
-    fig, ax = plt.subplots(figsize=(8, 8))
-    contour = ax.contourf(X, Y, Z, levels=100, cmap='jet')
-    ax.set_title(f"Interference Pattern with {num_sources} Sources")
-    ax.set_xlabel("x (units)")
-    ax.set_ylabel("y (units)")
-    fig.colorbar(contour, ax=ax, label='Wave Intensity')
+# Add a line trace from the origin to each planet's data point
+for i, row in df.iterrows():
+    fig.add_trace(go.Scatter(
+        x=[0, row["Orbital Radius Cubed (AU³)"]],
+        y=[0, row["Orbital Period Squared (years²)"]],
+        mode='lines',
+        line=dict(dash='dot'),
+        name=f'Line to {row["Planet"]}'
+    ))
 
-    if sources:
-        ax.scatter(*zip(*sources), color='white', label='Wave Sources')
-        ax.legend(loc='upper right')
-
-    plt.tight_layout()  # Adjust subplot parameters for a tight layout
-    plt.show()
-
-
-# Slider for the number of sources
-num_sources_slider = widgets.IntSlider(
-    min=0,
-    max=300,
-    step=1,
-    value=1,
-    description='Sources: ',
-    continuous_update=True
+# Update layout for logarithmic axes
+fig.update_layout(
+    title="Kepler's Third Law: Lines from Origin to Planets (Logarithmic Scale)",
+    xaxis_title='Orbital Radius Cubed (AU³) [Log Scale]',
+    yaxis_title='Orbital Period Squared (years²) [Log Scale]',
+    xaxis_type="log",
+    yaxis_type="log",
+    showlegend=False,
+    margin=dict(l=20, r=20, t=30, b=20)
 )
 
-# Interactive plot
-interact(plot_wave_pattern, num_sources=num_sources_slider)
+# Show the plot
+fig.show()

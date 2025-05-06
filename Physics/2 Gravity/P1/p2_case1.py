@@ -1,7 +1,5 @@
-import io
 import numpy as np
 import matplotlib.pyplot as plt
-import base64
 
 # Constant Parameters
 G = 6.674e-11  # Gravitational constant (m^3/kg/s^2)
@@ -50,35 +48,8 @@ plt.plot(x, y, label="Trajectory")
 plt.plot(0, 0, 'ro', label="Central body (e.g. Earth)")
 plt.xlabel("x (m)")
 plt.ylabel("y (m)")
-plt.title("First cosmic velocity - Trajectory of a satellite/small body in a parabolic orbit")
+plt.title("Trajectory of a satellite/small body in a parabolic orbit")
 plt.legend(loc='lower right')
 plt.grid()
 plt.axis('equal')
 plt.show()
-
-# Save the plot to a BytesIO object
-buffer = io.BytesIO()
-plt.savefig(buffer, format='png')
-buffer.seek(0)
-plt.close() # Close the plot to free memory
-
-# Embed the image in HTML
-image_base64 = base64.b64encode(buffer.read()).decode('utf-8')
-html_content = f"""
-<!DOCTYPE html>
-<html>
-<head>
-<title>Satellite Trajectory</title>
-</head>
-<body>
-<h1>Satellite Trajectory Simulation</h1>
-<img src="data:image/png;base64,{image_base64}" alt="Satellite Trajectory">
-</body>
-</html>
-"""
-
-# Save the HTML to a file
-with open("satellite_trajectory.html", "w") as f:
-    f.write(html_content)
-
-print("HTML file 'satellite_trajectory.html' created successfully.")
