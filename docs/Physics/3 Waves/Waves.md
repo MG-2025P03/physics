@@ -25,21 +25,21 @@ $$
 
 where:
 
-$ \psi $ is the wave displacement
+$\psi$ is the wave displacement
 
-$ A $ is the amplitude
+$A$ is the amplitude
 
-$ k $ is the wave number, given by $ k = \frac{2\pi}{\lambda} $
+$k$ is the wave number, given by $k = \frac{2\pi}{\lambda}$
 
-$ \omega $ is the angular frequency, given by $ \omega = 2\pi f $
+$\omega$ is the angular frequency, given by $\omega = 2\pi f$
 
-$ r = \sqrt{(x - x_0)^2 + (y - y_0)^2} $ is the distance from the source to the point $x, y$
+$r = \sqrt{(x - x_0)^2 + (y - y_0)^2}$ is the distance from the source to the point $x, y$
 
-$ \phi $ is the phase constant
+$\phi$ is the phase constant
 
-$ \lambda $ is the wavelength
+$\lambda$ is the wavelength
 
-$ f $ is the frequency
+$f$ is the frequency
 
 For our four point sources:
 
@@ -71,7 +71,7 @@ This equation represents the interference pattern on the water surface.
 
 ### Interference Patterns
 
-Constructive Interference: Occurs at points where the path difference between waves from two or more sources is an integer multiple of the wavelength $ m\lambda $, where $ m $ is an integer. At these points, the waves reinforce each other, resulting in larger amplitudes.
+Constructive Interference: Occurs at points where the path difference between waves from two or more sources is an integer multiple of the wavelength $m\lambda$, where $m$ is an integer. At these points, the waves reinforce each other, resulting in larger amplitudes.
 
 Destructive Interference: Occurs at points where the path difference is an odd multiple of half wavelengths $(m + \frac{1}{2})\lambda$. Here, the waves cancel each other, resulting in nodes or points of no displacement.
 
@@ -83,7 +83,7 @@ $$
 \Psi(x, y, t) = \psi_A(x, y, t) + \psi_B(x, y, t) + \psi_C(x, y, t) + \psi_D(x, y, t)
 $$
 
-where each $ \psi $ is the wave equation from an individual source.
+where each $\psi$ is the wave equation from an individual source.
 
 ### Interference Pattern Analysis
 
@@ -92,8 +92,11 @@ where each $ \psi $ is the wave equation from an individual source.
 For simplicity, assume all waves have the same amplitude $A$, wave number $k$, and frequency $\omega$. Let:
 
 $$r_A = \sqrt{x^2 + y^2}$$
+
 $$r_B = \sqrt{(x - d)^2 + y^2}$$
+
 $$r_C = \sqrt{(x - d)^2 + (y - d)^2}$$
+
 $$r_D = \sqrt{x^2 + (y - d)^2}$$
 
 The total displacement becomes:
