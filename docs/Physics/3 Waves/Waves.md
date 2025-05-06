@@ -146,9 +146,9 @@ plot_interference(4)
 
 #### Waves Simulation
 
-[![ One Source](../../_pics/Waves01.png] 'sample text')] (https://mg-2025p03.github.io/physics/3 Waves/waves.html)
+[![One Source](../../_pics/Waves01.png] 'sample text')] (https://mg-2025p03.github.io/physics/3 Waves/waves.html)
 
-[![ Four Sources](../physics/_pics/Waves04.png])]( (https://mg-2025p03.github.io/physics/3 Waves/waves.html)
+![Four Sources](https://mg-2025p03.github.io/physics/_pics/Waves04.png])
 
 [![ Six Sources](../physics/_pics/Waves06.png])]( (https://mg-2025p03.github.io/physics/3 Waves/waves.html)
 
