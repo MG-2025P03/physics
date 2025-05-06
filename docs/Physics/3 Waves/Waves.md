@@ -144,7 +144,7 @@ def plot_interference(num_sources):
 plot_interference(4)
 ```
 
-#### Waves Simulation
+### Waves Simulation
 
 #### One Source
 
