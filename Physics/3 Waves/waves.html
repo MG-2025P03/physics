@@ -1,4 +1,4 @@
-e<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
   <title>Interference Pattern</title>
@@ -6,20 +6,20 @@ e<!DOCTYPE html>
 <body>
   <h1>Interference Pattern Simulation</h1>
 
-  <canvas id="myCanvas" width="400" height="400"></canvas>
+  <canvas id="myCanvas" width="800" height="800"></canvas>
   <br>
-  Number of Sources: <input type="range" min="1" max="75" value="4" id="numSourcesSlider">
+  Number of Sources: <input type="range" min="1" max="75" value="1" id="numSourcesSlider">
   <p>Largest Number in Text Fragment: <span id="largestNumber"></span></p>
 
   <script>
      // Parameters
-const L = 1.0;     // Side length of the square
-const c = 1.0;     // Wave speed (not used in this time-independent version)
-const f = 1.0;     // Frequency of the wave
-const A = 1.0;     // Amplitude of the wave
-const lambda_ = 1.0; // Wavelength
+const L = 4.0;     // Side length of the square
+const c = 0.5;     // Wave speed (not used in this time-independent version)
+const f = 0.5;     // Frequency of the wave
+const A = 0.5;     // Amplitude of the wave
+const lambda_ = 0.5; // Wavelength
 const k = 2 * Math.PI / lambda_;  // Wave number
-const t = 0.0;     // Time (snapshot)
+const t = 0.3;     // Time (snapshot)
 
 // Function to calculate the wave displacement from a source
 function waveDisplacement(x, y, x0, y0, k, t) {
