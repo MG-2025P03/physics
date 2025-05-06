@@ -13,7 +13,7 @@
 <script>
         // Current page data
         var mkdocs_page_name = "Analysis of Wave Interference Patterns Formed by Point Sources at the Vertices of a Square";
-        var mkdocs_page_input_path = "Physics/3 Waves/Waves.md";
+        var mkdocs_page_input_path = "Physics/3 Waves/Waves_bu.md";
         var mkdocs_page_url = null;
       </script>
 <!--[if lt IE 9]>
@@ -104,23 +104,29 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal current">3 Waves</a>
 <ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Waves/">Analysis of Wave Interference Patterns Formed by Point Sources at the Vertices of a Square</a>
+</li>
 <li class="toctree-l2 current"><a class="reference internal current" href="#">Analysis of Wave Interference Patterns Formed by Point Sources at the Vertices of a Square</a>
 <ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="#wave-equations">Wave Equations</a>
+<li class="toctree-l3"><a class="reference internal" href="#position-the-sources">Position the Sources</a>
 <ul>
-<li class="toctree-l4"><a class="reference internal" href="#superposition-of-waves">Superposition of Waves</a>
+<li class="toctree-l4"><a class="reference internal" href="#wave-equations">Wave Equations</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#interference-patterns">Interference Patterns</a>
+</ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#superposition-of-waves">Superposition of Waves</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#interference-patterns">Interference Patterns</a>
+<ul>
 <li class="toctree-l4"><a class="reference internal" href="#combined-displacement-function">Combined Displacement Function</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#simulation-on-waves">Simulation on Waves</a>
+<li class="toctree-l4"><a class="reference internal" href="#interference-pattern-analysis">Interference Pattern Analysis</a>
 </li>
 </ul>
 </li>
-</ul>
+<li class="toctree-l3"><a class="reference internal" href="#conclusion">Conclusion</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../Waves_bu/">Analysis of Wave Interference Patterns Formed by Point Sources at the Vertices of a Square</a>
+</ul>
 </li>
 </ul>
 </li>
@@ -174,7 +180,9 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="analysis-of-wave-interference-patterns-formed-by-point-sources-at-the-vertices-of-a-square">Analysis of Wave Interference Patterns Formed by Point Sources at the Vertices of a Square</h1>
-<h2 id="wave-equations">Wave Equations</h2>
+<h2 id="position-the-sources">Position the Sources</h2>
+<p>Place point wave sources at each of the vertices (initial A, B, C, and D). Each source will emit circular wave fronts.</p>
+<h3 id="wave-equations">Wave Equations</h3>
 <p>Assuming a simple harmonic wave emitted from each source with the same frequency and amplitude, the wave equation from a point source located at position <span class="arithmatex">\(x_0, y_0\)</span> can be described by:</p>
 <div class="arithmatex">\[
 \psi(x, y, t) = A \cos(kr - \omega t + \phi)
@@ -188,13 +196,13 @@
 <p><span class="arithmatex">\(\phi\)</span> is the phase constant</p>
 <p><span class="arithmatex">\(\lambda\)</span> is the wavelength</p>
 <p><span class="arithmatex">\(f\)</span> is the frequency</p>
-<h3 id="superposition-of-waves">Superposition of Waves</h3>
+<h2 id="superposition-of-waves">Superposition of Waves</h2>
 <p>The principle of superposition states that the resultant wave displacement at any point on the water surface is the sum of the displacements due to each individual wave. Therefore, the total wave displacement <span class="arithmatex">\(\Psi(x, y, t)\)</span> is given by (initial 4 vertices):</p>
 <div class="arithmatex">\[
 \Psi(x, y, t) = \psi_A(x, y, t) + \psi_B(x, y, t) + \psi_C(x, y, t) + \psi_D(x, y, t)
 \]</div>
 <p>This equation represents the interference pattern on the water surface.</p>
-<h3 id="interference-patterns">Interference Patterns</h3>
+<h2 id="interference-patterns">Interference Patterns</h2>
 <p>Constructive Interference: Occurs at points where the path difference between waves from two or more sources is an integer multiple of the wavelength <span class="arithmatex">\(m\lambda\)</span>, where <span class="arithmatex">\(m\)</span> is an integer. At these points, the waves reinforce each other, resulting in larger amplitudes.</p>
 <p>Destructive Interference: Occurs at points where the path difference is an odd multiple of half wavelengths <span class="arithmatex">\((m + \frac{1}{2})\lambda\)</span>. Here, the waves cancel each other, resulting in nodes or points of no displacement.</p>
 <h3 id="combined-displacement-function">Combined Displacement Function</h3>
@@ -203,118 +211,41 @@
 \Psi(x, y, t) = \psi_A(x, y, t) + \psi_B(x, y, t) + \psi_C(x, y, t) + \psi_D(x, y, t)
 \]</div>
 <p>where each <span class="arithmatex">\(\psi\)</span> is the wave equation from an individual source.</p>
-<h3 id="simulation-on-waves">Simulation on Waves</h3>
-<pre><code>import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib.widgets import Slider
-
-# Parameters
-L = 4.0     # Side length of the square
-c = 0.5     # Wave speed
-f = 0.5     # Frequency of the wave
-A = 0.5     # Amplitude of the wave
-lambda_ = 0.5 # Wavelength
-k = 2 * np.pi / lambda_  # Wave number
-t = 0.3     # Time
-
-# Function to calculate the wave displacement from a source
-def wave_displacement(x, y, x0, y0, k, t):
-    r = np.sqrt((x - x0)**2 + (y - y0)**2)
-    return (A * np.sin(2 * np.pi * f * t - k * r)) 
-
-# Function to calculate and plot the interference pattern
-def plot_interference(num_sources):
-    fig, ax = plt.subplots()
-    plt.subplots_adjust(left=0.15, bottom=0.15, right=0.85, top=0.85, wspace=0.2, hspace=0.2)
-    ax.set_title('Interference Pattern of Waves')
-
-    # Preparing the grid
-    x = np.linspace(-L, L, 1200)
-    y = np.linspace(-L, L, 1200)
-    X, Y = np.meshgrid(x, y)
-
-    # Create a regular polygon (circle-like distribution) for more sources
-    angles = np.linspace(0, 3 * np.pi, num_sources, endpoint=False)
-    positions = [(L * np.cos(angle), L * np.sin(angle)) for angle in angles]
-
-    # Calculate superposition
-    Z = np.zeros(X.shape)
-    for (x0, y0) in positions:
-        Z += wave_displacement(X, Y, x0, y0, k, t)
-
-    # Find min and max values for consistent color scale
-    vmin = np.min(Z)
-    vmax = np.max(Z)
-
-    # Plot
-    contour = ax.contourf(X, Y, Z, 20, cmap='RdBu_r', vmin=vmin, vmax=vmax)  # Set vmin and vmax here
-    cbar = plt.colorbar(contour)
-
-    # Add the sources to the plot
-    for x0, y0 in positions:
-        ax.plot(x0, y0, 'X', markersize=6, color='yellow')
-
-    axcolor = 'lightgoldenrodyellow'
-    axSources1 = plt.axes([0.25, 0.1, 0.65, 0.03], facecolor=axcolor)
-    #axSources2 = plt.axes([0.15, 0.1, 0.65, 0.03], facecolor=axcolor)
-
-    sliderSources1 = Slider(axSources1, 'Num Sources', 1, 75, valinit=num_sources, valstep=1)
-    #sliderSources2 = Slider(axSources2, 'Graph size', 1, 4, valinit=L, valstep=0.25)
-
-    def update(val):
-        num_sources = int(sliderSources1.val)
-        # xL = float(sliderSources2.val)
-        xL = L
-        angles = np.linspace(0, xL * np.pi, num_sources, endpoint=False)
-        positions = [(xL * np.cos(angle), xL * np.sin(angle)) for angle in angles]
-
-        Z = np.zeros(X.shape)
-        for (x0, y0) in positions:
-            Z += wave_displacement(X, Y, x0 , y0, k, t)
-
-        # Plot with fixed color limits
-        ax.clear()
-
-        contour = ax.contourf(X, Y, Z, 20, cmap='RdBu_r', vmin=vmin, vmax=vmax)  # Set vmin and vmax here
-        cbar = plt.colorbar(contour, ax=ax)
-
-         # Add the sources to the plot
-        for x0, y0 in positions:
-            ax.plot(x0, y0, 'x', markersize=6, color='yellow')
-
-        cbar.remove()
-        plt.draw()
-
-    sliderSources1.on_changed(update)
-    # sliderSources2.on_changed(update)
-    plt.show()
-
-# Initial call to plot the interference pattern
-plot_interference(4)
-</code></pre>
-<h4 id="waves-with-1-source">Waves with 1 Source</h4>
-<p>[<img alt=" Alt Text" src="https://mg-2025p03.github.io/physics/_pics/Waves01.png]"/>](Link <a href="https://mg-2025p03.github.io/physics/3 Waves/waves.html">URL</a>)</p>
-<h4 id="waves-with-4-sources">Waves with 4 Sources</h4>
-<p>[<img alt=" Alt Text" src="https://mg-2025p03.github.io/physics/_pics/Waves04.png]"/>](Link <a href="https://mg-2025p03.github.io/physics/3 Waves/waves.html">URL</a>)</p>
-<h4 id="waves-with-6-sources">Waves with 6 Sources</h4>
-<p>[<img alt=" Alt Text" src="https://mg-2025p03.github.io/physics/_pics/Waves06.png]"/>](Link <a href="https://mg-2025p03.github.io/physics/3 Waves/waves.html">URL</a>)</p>
-<h4 id="waves-with-8-sources">Waves with 8 Sources</h4>
-<p>[<img alt=" Alt Text" src="https://mg-2025p03.github.io/physics/_pics/Waves08.png]"/>](Link <a href="https://mg-2025p03.github.io/physics/3 Waves/waves.html">URL</a>)</p>
-<h4 id="waves-with-10-sources">Waves with 10 Sources</h4>
-<p>[<img alt=" Alt Text" src="https://mg-2025p03.github.io/physics/_pics/Waves10.png]"/>](Link <a href="https://mg-2025p03.github.io/physics/3 Waves/waves.html">URL</a>)</p>
-<h4 id="waves-with-13-sources">Waves with 13 Sources</h4>
-<p>[<img alt=" Alt Text" src="https://mg-2025p03.github.io/physics/_pics/Waves13.png]"/>](Link <a href="https://mg-2025p03.github.io/physics/3 Waves/waves.html">URL</a>)</p>
-<h4 id="waves-with-27-sources">Waves with 27 Sources</h4>
-<p>[<img alt=" Alt Text" src="https://mg-2025p03.github.io/physics/_pics/Waves27.png]"/>](Link <a href="https://mg-2025p03.github.io/physics/3 Waves/waves.html">URL</a>)</p>
-<h4 id="waves-with-40-sources">Waves with 40 Sources</h4>
-<p>[<img alt=" Alt Text" src="https://mg-2025p03.github.io/physics/_pics/Waves40.png]"/>](Link <a href="https://mg-2025p03.github.io/physics/3 Waves/waves.html">URL</a>)</p>
-<h4 id="waves-with-50-sources">Waves with 50 Sources</h4>
-<p>[<img alt=" Alt Text" src="https://mg-2025p03.github.io/physics/_pics/Waves50.png]"/>](Link <a href="https://mg-2025p03.github.io/physics/3 Waves/waves.html">URL</a>)</p>
+<h3 id="interference-pattern-analysis">Interference Pattern Analysis</h3>
+<h4 id="1-expression-in-simplified-terms">1. Expression in Simplified Terms</h4>
+<p>For simplicity, assume all waves have the same amplitude <span class="arithmatex">\(A\)</span>, wave number <span class="arithmatex">\(k\)</span>, and frequency <span class="arithmatex">\(\omega\)</span>. Let:</p>
+<div class="arithmatex">\[r_A = \sqrt{x^2 + y^2}\]</div>
+<div class="arithmatex">\[r_B = \sqrt{(x - d)^2 + y^2}\]</div>
+<div class="arithmatex">\[r_C = \sqrt{(x - d)^2 + (y - d)^2}\]</div>
+<div class="arithmatex">\[r_D = \sqrt{x^2 + (y - d)^2}\]</div>
+<p>The total displacement becomes:</p>
+<div class="arithmatex">\[
+\Psi(x, y, t) = A [\cos(kr_A - \omega t) + \cos(kr_B - \omega t) + \cos(kr_C - \omega t) + \cos(kr_D - \omega t)]
+\]</div>
+<h4 id="2-constructive-interference-amplification">2. Constructive Interference (Amplification)</h4>
+<p>Constructive interference occurs where waves meet in phase, i.e., their peaks and troughs align. This happens when the path difference between any pair of waves is an integral multiple of the wavelength <span class="arithmatex">\(n\lambda\)</span>:</p>
+<div class="arithmatex">\[r_i - r_j = n \lambda\]</div>
+<p>These points are where the displacement <span class="arithmatex">\(\Psi\)</span> achieves its maximum, resulting in amplification.</p>
+<h4 id="3-destructive-interference-cancellation">3. Destructive Interference (Cancellation)</h4>
+<p>Destructive interference occurs when waves meet out of phase, i.e., the peak of one wave aligns with the trough of another. This occurs when the path difference is an odd multiple of half the wavelength <span class="arithmatex">\((n + \frac{1}{2})\lambda\)</span>:</p>
+<div class="arithmatex">\[
+r_i - r_j = (n + \frac{1}{2}) \lambda
+\]</div>
+<p>These points are where the displacement <span class="arithmatex">\(\Psi\)</span> is minimized or nullified.</p>
+<h4 id="4-spatial-patterns">4. Spatial Patterns</h4>
+<p>Constructive Zones: Form a lattice of high-amplitude nodes where constructive interference dominates.
+Destructive Zones: Occur as a grid-like pattern of nodal lines between the constructive nodes.</p>
+<h4 id="5-temporal-analysis">5. Temporal Analysis</h4>
+<p>The time-dependent factor <span class="arithmatex">\(-\omega t\)</span> governs the oscillation of patterns, ensuring that regions of constructive and destructive interference fluctuate over time, causing the interference pattern to move dynamically on the water surface. However, the general stationary pattern remains the same.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>The superposition of waves from the four point sources will create a complex pattern of interference, characterized by alternating areas of constructive and destructive interference, forming a lattice-like pattern on the water surface. The symmetries of the square and the coherent nature of the wave sources determine the regularity of these interference patterns.
+To visualize the detailed interference pattern, numerical simulation or graphical representation can be employed to reveal the specific constructive and destructive zones across the water surface.</p>
+<p>The interference patterns on the water surface will consist of alternating regions of constructive and destructive interference. These patterns manifest as a regular grid-like structure due to the symmetry of the square arrangement of point sources, with moving wave fronts creating dynamic shifts over time.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
-<a class="btn btn-neutral float-left" href="../../2%20Gravity/P3/P3%20Trajectories%20of%20a%20Freely%20Released%20Payload%20Near%20Earth/" title="Background"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-<a class="btn btn-neutral float-right" href="../Waves_bu/" title="Analysis of Wave Interference Patterns Formed by Point Sources at the Vertices of a Square">Next <span class="icon icon-circle-arrow-right"></span></a>
+<a class="btn btn-neutral float-left" href="../Waves/" title="Analysis of Wave Interference Patterns Formed by Point Sources at the Vertices of a Square"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../../4%20Electromagnetism/Electromagnetism/" title="Electromagnetism">Next <span class="icon icon-circle-arrow-right"></span></a>
 </div>
 <hr/>
 <div role="contentinfo">
@@ -329,8 +260,8 @@ plot_interference(4)
 </div>
 <div aria-label="Versions" class="rst-versions" role="note">
 <span class="rst-current-version" data-toggle="rst-current-version">
-<span><a href="../../2%20Gravity/P3/P3%20Trajectories%20of%20a%20Freely%20Released%20Payload%20Near%20Earth/" style="color: #fcfcfc">« Previous</a></span>
-<span><a href="../Waves_bu/" style="color: #fcfcfc">Next »</a></span>
+<span><a href="../Waves/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../../4%20Electromagnetism/Electromagnetism/" style="color: #fcfcfc">Next »</a></span>
 </span>
 </div>
 <script src="../../../js/jquery-3.6.0.min.js"></script>
