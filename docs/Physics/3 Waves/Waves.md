@@ -1,4 +1,4 @@
-# Analysis of Wave Interference Patterns Formed by Point Sources at the Vertices of a Square
+# Analysis of Wave Interference Patterns Formed by Point Sources
 
 ## Wave Equations
 
@@ -148,23 +148,23 @@ plot_interference(4)
 
 #### One Source
 
-![One Source](https://mg-2025p03.github.io/physics/_pics/Waves01.png)
+[![One Source](https://mg-2025p03.github.io/physics/_pics/Waves01.png)](https://mg-2025p03.github.io/physics/Physics/3%20Waves/waves.html)
 
 #### Four Sources
 
-![Four Sources](https://mg-2025p03.github.io/physics/_pics/Waves04.png)
+[![Four Sources](https://mg-2025p03.github.io/physics/_pics/Waves04.png)](https://mg-2025p03.github.io/physics/Physics/3%20Waves/waves.html)
 
 #### Six Sources
 
-![Six Sources](https://mg-2025p03.github.io/physics/_pics/Waves06.png)
+[![Six Sources](https://mg-2025p03.github.io/physics/_pics/Waves06.png)](https://mg-2025p03.github.io/physics/Physics/3%20Waves/waves.html)
 
 #### Eight Sources
 
-![Eight Sources](https://mg-2025p03.github.io/physics/_pics/Waves08.png)
+[![Eight Sources](https://mg-2025p03.github.io/physics/_pics/Waves08.png)](https://mg-2025p03.github.io/physics/Physics/3%20Waves/waves.html)
 
 #### Ten Sources
 
-![Ten Sources](https://mg-2025p03.github.io/physics/_pics/Waves10.png)
+[![Ten Sources](https://mg-2025p03.github.io/physics/_pics/Waves10.png)](https://mg-2025p03.github.io/physics/Physics/3%20Waves/waves.html)
 
 #### Thirteen Sources
 
@@ -172,12 +172,12 @@ plot_interference(4)
 
 #### Twenty Seven Sources
 
-![Twenty Seven Sources](https://mg-2025p03.github.io/physics/_pics/Waves27.png)
+[![Twenty Seven Sources](https://mg-2025p03.github.io/physics/_pics/Waves27.png)](https://mg-2025p03.github.io/physics/Physics/3%20Waves/waves.html)
 
 #### Fourty Sources
 
-![Forty Sources](https://mg-2025p03.github.io/physics/_pics/Waves40.png)
+[![Forty Sources](https://mg-2025p03.github.io/physics/_pics/Waves40.png)](https://mg-2025p03.github.io/physics/Physics/3%20Waves/waves.html)
 
 #### Fifty Sources
 
-![Fifty Sources](https://mg-2025p03.github.io/physics/_pics/Waves50.png)
+[![Fifty Sources](https://mg-2025p03.github.io/physics/_pics/Waves50.png)](https://mg-2025p03.github.io/physics/Physics/3%20Waves/waves.html)
