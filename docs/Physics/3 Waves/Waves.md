@@ -144,6 +144,38 @@ def plot_interference(num_sources):
 plot_interference(4)
 ```
 
-### Waves with 1 Source
+#### Waves with 1 Source
 
-[![ Alt Text](https://mg-2025p03.github.io/physics/_pics/BShip1.jpg])](Link [URL](https://mg-2025p03.github.io/physics/3 Waves/waves.html))
+[![ Alt Text](https://mg-2025p03.github.io/physics/_pics/Waves01.png])](Link [URL](https://mg-2025p03.github.io/physics/3 Waves/waves.html))
+
+#### Waves with 4 Sources
+
+[![ Alt Text](https://mg-2025p03.github.io/physics/_pics/Waves04.png])](Link [URL](https://mg-2025p03.github.io/physics/3 Waves/waves.html))
+
+#### Waves with 6 Sources
+
+[![ Alt Text](https://mg-2025p03.github.io/physics/_pics/Waves06.png])](Link [URL](https://mg-2025p03.github.io/physics/3 Waves/waves.html))
+
+#### Waves with 8 Sources
+
+[![ Alt Text](https://mg-2025p03.github.io/physics/_pics/Waves08.png])](Link [URL](https://mg-2025p03.github.io/physics/3 Waves/waves.html))
+
+#### Waves with 10 Sources
+
+[![ Alt Text](https://mg-2025p03.github.io/physics/_pics/Waves10.png])](Link [URL](https://mg-2025p03.github.io/physics/3 Waves/waves.html))
+
+#### Waves with 13 Sources
+
+[![ Alt Text](https://mg-2025p03.github.io/physics/_pics/Waves13.png])](Link [URL](https://mg-2025p03.github.io/physics/3 Waves/waves.html))
+
+#### Waves with 27 Sources
+
+[![ Alt Text](https://mg-2025p03.github.io/physics/_pics/Waves27.png])](Link [URL](https://mg-2025p03.github.io/physics/3 Waves/waves.html))
+
+#### Waves with 40 Sources
+
+[![ Alt Text](https://mg-2025p03.github.io/physics/_pics/Waves40.png])](Link [URL](https://mg-2025p03.github.io/physics/3 Waves/waves.html))
+
+#### Waves with 50 Sources
+
+[![ Alt Text](https://mg-2025p03.github.io/physics/_pics/Waves50.png])](Link [URL](https://mg-2025p03.github.io/physics/3 Waves/waves.html))
