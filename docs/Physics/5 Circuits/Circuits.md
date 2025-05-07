@@ -26,9 +26,11 @@ Reduction Process:
 Start from a complex graph and iteratively reduce it by replacing series and parallel components with their equivalent resistance.
 Use recursive traversal for nested combinations.
 
-![Serices Connection](https://mg-2025p03.github.io/physics/_pics/circuits4.S.png)
+Initial state
+![Initial state](https://mg-2025p03.github.io/physics/_pics/circuits4.S.png)
 
-![Serices Connection](https://mg-2025p03.github.io/physics/_pics/circuits4.S02.png)
+Final (and reduced) state
+![Final State](https://mg-2025p03.github.io/physics/_pics/circuits4.S02.png)
 
 How the Algorithm Handles Nested Combinations
 
