@@ -8,8 +8,7 @@
 
   <canvas id="myCanvas" width="800" height="600"></canvas>
   <br>
-  Number of Sources: <input type="range" min="1" max="75" value="1" id="numSourcesSlider">
-  <p>Largest Number in Text Fragment: <span id="largestNumber"></span></p>
+  Number of Sources: <input type="range" min="1" max="75" value="1" id="numSourcesSlider"> - <span id="largestNumber"></span> sources
 
   <script>
      // Parameters
@@ -128,6 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     slider.addEventListener('input', () => {
         numSources = parseInt(slider.value);
+        document.getElementById("largestNumber").innerText = numSources;
         plotInterference(numSources, canvasId);
     });
 });
