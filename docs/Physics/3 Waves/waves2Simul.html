@@ -87,18 +87,18 @@
 
     <script>
         // Simulation parameters
-        let numBalls = 50;
+        let numBalls = 25;
         let springConstant = 350.0;
-        let damping = 0.3;
-        let timeStep = 0.03;
-        let initYPosition = 3.0;
+        let damping = 0.4;
+        let timeStep = 0.01;
+        let initYPosition = 4.0;
 
         // Canvas and context
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
 
         // Ball properties
-        let ballRadius = 8;
+        let ballRadius = 4;
         let restLength = 20; // Scaled version of rest_length = 1; adjust this for the canvas
         let xPositions = [];
         let yPositions = [];
