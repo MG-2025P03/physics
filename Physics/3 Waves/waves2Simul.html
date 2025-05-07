@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interactive Wave Simulation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #simulationContainer {
+            display: flex;
+            flex-direction: row; /* Arrange canvas and sliders horizontally */
+            align-items: center;
+        }
+
+        #slidersContainer {
+            display: flex;
+            flex-direction: column; /* Arrange sliders vertically */
+            margin-left: 20px; /* Add some space between the canvas and sliders */
+        }
+
+        /* Style the sliders */
+        .slider-container {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="range"] {
+            width: 200px;
+        }
+
+        #canvas {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Interactive Wave Simulation</h1>
+
+    <div id="simulationContainer">
+        <canvas id="canvas" width="600" height="400"></canvas>
+
+        <div id="slidersContainer">
+            <div class="slider-container">
+                <label for="numBallsSlider">Number of Balls:</label>
+                <input type="range" id="numBallsSlider" min="2" max="50" value="25">
+                <span id="numBallsValue">25</span>
+            </div>
+
+            <div class="slider-container">
+                <label for="springConstantSlider">Spring Constant:</label>
+                <input type="range" id="springConstantSlider" min="10" max="500" value="150">
+                <span id="springConstantValue">150</span>
+            </div>
+
+            <div class="slider-container">
+                <label for="dampingSlider">Damping:</label>
+                <input type="range" id="dampingSlider" min="0.01" max="2.0" step="0.01" value="0.5">
+                <span id="dampingValue">0.5</span>
+            </div>
+
+            <div class="slider-container">
+                <label for="timeStepSlider">Time Step:</label>
+                <input type="range" id="timeStepSlider" min="0.001" max="0.02" step="0.001" value="0.01">
+                <span id="timeStepValue">0.01</span>
+            </div>
+
+            <div class="slider-container">
+                <label for="yPositionSlider">Y Position:</label>
+                <input type="range" id="yPositionSlider" min="0.1" max="2.0" step="0.1" value="1.0">
+                <span id="yPositionValue">1.0</span>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <p>What is the product of the distinct positive values that are integers in the text fragment?</p>
+        <p>Answer: <span id="answer"></span></p>
+    </div>
+
+    <script>
+        // Text Fragment
+        const textFragment = `1.00
+36
+36
+18
+5.4
+4.5
+0.75 -
+0.50
+0.25 -
+9
+6.4
+6
+5.44.8
+3.6
+13.63.4
+3.2
+3
+1.81.6
+2
+0.00.0 0
+3.6
+12
+3.6
+9.0
+3.0
+2.7
+A
+- 6
+1.8
+4.5
+8
+- 9
+1.5
+0.0 - O
+1.8
+0
+- 0
+0
+0
+0.0
+0.0
+0.00
+-0.25
+-0.50
+-0.75 -
+-1.6
+-1-3 -3.2
+2252:2-4.6 3.2
+-4.5 |12 F -12
+4.8.6 1-6
+-4.8
+-5.4
+- - 6.4
+1.2
+-16
+-8
+-9
+-6
+- - 12
+- - 18
+-1.8
+-1.5
+-3.0
+-3.6
+-4.5
+-5.4
+0.9
+0.0
+-0.9
+-1.8
+-1.00
+-6.0
+-D1
+urces
+17`;
+
+        function extractNumbers(text) {
+            const numbers = [];
+            const lines = text.split('\n');
+            for (const line of lines) {
+                const words = line.split(/\s+/);
+                for (const word of words) {
+                    const num = parseFloat(word);
+                    if (!isNaN(num)) {
+                        numbers.push(num);
+                    }
+                }
+            }
+            return numbers;
+        }
+
+    function calculateDistinctIntegersProduct(numbers) {
+        const positiveIntegers = new Set();  // Use a Set to store distinct values
+        for (const num of numbers) {
+            if (Number.isInteger(num) && num > 0) {
+                positiveIntegers.add(num);
+            }
+        }
+
+        let product = 1;
+        for (const num of positiveIntegers) {
+            product *= num;
+        }
+        return product;
+    }
+
+    const extractedNumbers = extractNumbers(textFragment);
+    const product = calculateDistinctIntegersProduct(extractedNumbers);
+    document.getElementById("answer").textContent = product;
+
+        // Simulation parameters
+        let numBalls = 25;
+        let springConstant = 150.0;
+        let damping = 0.5;
+        let timeStep = 0.01;
+        let initYPosition = 1.0;
+
+        // Canvas and context
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Ball properties
+        let ballRadius = 8;
+        let restLength = 20; // Scaled version of rest_length = 1; adjust this for the canvas
+        let xPositions = [];
+        let yPositions = [];
+        let yVelocities = [];
+
+        function initializeBalls() {
+            xPositions = [];
+            yPositions = [];
+            yVelocities = [];
+
+            for (let i = 0; i < numBalls; i++) {
+                xPositions.push(50 + i * restLength); //Distribute horizontally on the canvas
+                yPositions.push(canvas.height / 2); //Center vertically
+                yVelocities.push(0);
+            }
+
+            const middleIndex = Math.floor(numBalls / 2);
+            yPositions[middleIndex] = canvas.height / 2 - initYPosition * 50; //Scale this offset
+        }
+
+        function calculateForces() {
+            const forces = new Array(numBalls).fill(0);
+
+            for (let i = 0; i < numBalls; i++) {
+                // Spring force from the left
+                if (i > 0) {
+                    const extensionLeft = yPositions[i] - yPositions[i - 1];
+                    forces[i] -= springConstant * extensionLeft;
+                }
+                // Spring force from the right
+                if (i < numBalls - 1) {
+                    const extensionRight = yPositions[i] - yPositions[i + 1];
+                    forces[i] -= springConstant * extensionRight;
+                }
+
+                // Damping force
+                forces[i] -= damping * yVelocities[i];
+            }
+
+            return forces;
+        }
+
+        function updateSimulation() {
+            const forces = calculateForces();
+
+            // Update velocities and positions
+            for (let i = 0; i < numBalls; i++) {
+                yVelocities[i] += forces[i] * timeStep;
+                yPositions[i] += yVelocities[i] * timeStep;
+            }
+        }
+
+        function drawSimulation() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height); //Clear the canvas
+
+            ctx.beginPath();
+            for (let i = 0; i < numBalls; i++) {
+                ctx.moveTo(xPositions[i], yPositions[i]);
+                ctx.arc(xPositions[i], yPositions[i], ballRadius, 0, 2 * Math.PI); //Draw each ball
+            }
+            ctx.fillStyle = 'blue';
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        //Animation loop
+        function animate() {
+            updateSimulation();
+            drawSimulation();
+            requestAnimationFrame(animate); //Loop
+        }
+
+        // Function to update simulation based on slider values
+        function updateParameters() {
+            numBalls = parseInt(document.getElementById('numBallsSlider').value);
+            springConstant = parseFloat(document.getElementById('springConstantSlider').value);
+            damping = parseFloat(document.getElementById('dampingSlider').value);
+            timeStep = parseFloat(document.getElementById('timeStepSlider').value);
+            initYPosition = parseFloat(document.getElementById('yPositionSlider').value);
+
+            //Update the displayed values
+            document.getElementById('numBallsValue').textContent = numBalls;
+            document.getElementById('springConstantValue').textContent = springConstant;
+            document.getElementById('dampingValue').textContent = damping;
+            document.getElementById('timeStepValue').textContent = timeStep;
+            document.getElementById('yPositionValue').textContent = initYPosition;
+
+            initializeBalls(); // Re-initialize positions based on new numBalls
+
+        }
+
+
+        // Event listeners for sliders
+        document.getElementById('numBallsSlider').addEventListener('input', updateParameters);
+        document.getElementById('springConstantSlider').addEventListener('input', updateParameters);
+        document.getElementById('dampingSlider').addEventListener('input', updateParameters);
+        document.getElementById('timeStepSlider').addEventListener('input', updateParameters);
+        document.getElementById('yPositionSlider').addEventListener('input', updateParameters);
+
+        // Initialization
+        initializeBalls();
+        updateParameters(); //Set the values
+        animate();
+    </script>
+</body>
+</html>
