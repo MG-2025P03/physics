@@ -144,7 +144,11 @@ def plot_interference(num_sources):
 plot_interference(4)
 ```
 
-## Waves Simulation
+## Waves Simulations
+
+### Using balls/objects on a string
+
+[![One Source](https://mg-2025p03.github.io/physics/_pics/wavesSimul2.pngg)](https://mg-2025p03.github.io/physics/Physics/3%20Waves/waves2Simul.html)
 
 ### One Source
 
