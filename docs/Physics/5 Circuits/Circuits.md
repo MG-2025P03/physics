@@ -26,6 +26,16 @@ Reduction Process:
 Start from a complex graph and iteratively reduce it by replacing series and parallel components with their equivalent resistance.
 Use recursive traversal for nested combinations.
 
+```
+Graph edges with resistance values:
+A -- B with resistance 5Ω
+A -- C with resistance 2Ω
+B -- C with resistance 10Ω
+B -- E with resistance 4Ω
+C -- D with resistance 15Ω
+C -- E with resistance 3Ω
+```
+
 Initial state
 ![Initial state](https://mg-2025p03.github.io/physics/_pics/circuits4.S.png)
 
