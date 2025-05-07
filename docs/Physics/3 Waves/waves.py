@@ -28,7 +28,7 @@ def plot_interference(num_sources):
     X, Y = np.meshgrid(x, y)
 
     # Create a regular polygon (circle-like distribution) for more sources
-    angles = np.linspace(0, 3 * np.pi, num_sources, endpoint=False)
+    angles = np.linspace(0, 2 * np.pi, num_sources, endpoint=False)
     positions = [(L * np.cos(angle), L * np.sin(angle)) for angle in angles]
 
     # Calculate superposition
@@ -59,7 +59,7 @@ def plot_interference(num_sources):
         num_sources = int(sliderSources1.val)
         # xL = float(sliderSources2.val)
         xL = L
-        angles = np.linspace(0, xL * np.pi, num_sources, endpoint=False)
+        angles = np.linspace(0,2 * np.pi, num_sources, endpoint=False)
         positions = [(xL * np.cos(angle), xL * np.sin(angle)) for angle in angles]
 
         Z = np.zeros(X.shape)
