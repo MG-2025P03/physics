@@ -50,31 +50,31 @@
         <div id="slidersContainer">
             <div class="slider-container">
                 <label for="numBallsSlider">Number of Balls:</label>
-                <input type="range" id="numBallsSlider" min="2" max="50" value="25">
+                <input type="range" id="numBallsSlider" min="2" max="100" value="50">
                 <span id="numBallsValue">25</span>
             </div>
 
             <div class="slider-container">
                 <label for="springConstantSlider">Spring Constant:</label>
-                <input type="range" id="springConstantSlider" min="10" max="500" value="150">
+                <input type="range" id="springConstantSlider" min="10" max="500" value="350">
                 <span id="springConstantValue">150</span>
             </div>
 
             <div class="slider-container">
                 <label for="dampingSlider">Damping:</label>
-                <input type="range" id="dampingSlider" min="0.01" max="2.0" step="0.01" value="0.5">
+                <input type="range" id="dampingSlider" min="0.01" max="2.0" step="0.01" value="0.3">
                 <span id="dampingValue">0.5</span>
             </div>
 
             <div class="slider-container">
                 <label for="timeStepSlider">Time Step:</label>
-                <input type="range" id="timeStepSlider" min="0.001" max="0.02" step="0.001" value="0.01">
+                <input type="range" id="timeStepSlider" min="0.001" max="0.02" step="0.001" value="0.03">
                 <span id="timeStepValue">0.01</span>
             </div>
 
             <div class="slider-container">
                 <label for="yPositionSlider">Y Position:</label>
-                <input type="range" id="yPositionSlider" min="0.1" max="2.0" step="0.1" value="1.0">
+                <input type="range" id="yPositionSlider" min="0.1" max="4.0" step="0.1" value="3.0">
                 <span id="yPositionValue">1.0</span>
             </div>
         </div>
@@ -86,123 +86,12 @@
     </div>
 
     <script>
-        // Text Fragment
-        const textFragment = `1.00
-36
-36
-18
-5.4
-4.5
-0.75 -
-0.50
-0.25 -
-9
-6.4
-6
-5.44.8
-3.6
-13.63.4
-3.2
-3
-1.81.6
-2
-0.00.0 0
-3.6
-12
-3.6
-9.0
-3.0
-2.7
-A
-- 6
-1.8
-4.5
-8
-- 9
-1.5
-0.0 - O
-1.8
-0
-- 0
-0
-0
-0.0
-0.0
-0.00
--0.25
--0.50
--0.75 -
--1.6
--1-3 -3.2
-2252:2-4.6 3.2
--4.5 |12 F -12
-4.8.6 1-6
--4.8
--5.4
-- - 6.4
-1.2
--16
--8
--9
--6
-- - 12
-- - 18
--1.8
--1.5
--3.0
--3.6
--4.5
--5.4
-0.9
-0.0
--0.9
--1.8
--1.00
--6.0
--D1
-urces
-17`;
-
-        function extractNumbers(text) {
-            const numbers = [];
-            const lines = text.split('\n');
-            for (const line of lines) {
-                const words = line.split(/\s+/);
-                for (const word of words) {
-                    const num = parseFloat(word);
-                    if (!isNaN(num)) {
-                        numbers.push(num);
-                    }
-                }
-            }
-            return numbers;
-        }
-
-    function calculateDistinctIntegersProduct(numbers) {
-        const positiveIntegers = new Set();  // Use a Set to store distinct values
-        for (const num of numbers) {
-            if (Number.isInteger(num) && num > 0) {
-                positiveIntegers.add(num);
-            }
-        }
-
-        let product = 1;
-        for (const num of positiveIntegers) {
-            product *= num;
-        }
-        return product;
-    }
-
-    const extractedNumbers = extractNumbers(textFragment);
-    const product = calculateDistinctIntegersProduct(extractedNumbers);
-    document.getElementById("answer").textContent = product;
-
         // Simulation parameters
-        let numBalls = 25;
-        let springConstant = 150.0;
-        let damping = 0.5;
-        let timeStep = 0.01;
-        let initYPosition = 1.0;
+        let numBalls = 50;
+        let springConstant = 350.0;
+        let damping = 0.3;
+        let timeStep = 0.03;
+        let initYPosition = 3.0;
 
         // Canvas and context
         const canvas = document.getElementById('canvas');
