@@ -123,6 +123,12 @@
 <li class="toctree-l2 current"><a class="reference internal current" href="#">List of Codes</a>
 <ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="#sample-circuit">Sample Circuit</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#parallel-connection">Parallel Connection</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#recursive">Recursive</a>
+</li>
+</ul>
 </li>
 </ul>
 </li>
@@ -170,42 +176,50 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="list-of-codes">List of Codes</h1>
-<h3 id="sample-circuit">Sample Circuit</h3>
-<p>```python
-import networkx as nx
-import matplotlib.pyplot as plt</p>
-<h1 id="create-an-undirected-graph-for-the-circuit">Create an undirected graph for the circuit</h1>
-<p>G = nx.Graph()</p>
-<h1 id="define-nodes-to-represent-junctions">Define nodes to represent junctions</h1>
-<p>G.add_nodes_from(["A", "B", "C", "D"])</p>
-<h1 id="define-edges-with-weights-to-represent-resistors-and-their-resistance-values">Define edges with weights to represent resistors and their resistance values</h1>
-<h1 id="edges-between-nodes-represent-resistors-with-weights-as-resistance-values-in-ohms">Edges between nodes represent resistors, with weights as resistance values in ohms</h1>
-<p>resistors = {
+<h2 id="sample-circuit">Sample Circuit</h2>
+<pre><code class="language-text">import networkx as nx
+import matplotlib.pyplot as plt
+
+# Create an undirected graph for the circuit
+G = nx.Graph()
+
+# Define nodes to represent junctions
+G.add_nodes_from(["A", "B", "C", "D"])
+
+# Define edges with weights to represent resistors and their resistance values
+# Edges between nodes represent resistors, with weights as resistance values in ohms
+resistors = {
     ("A", "B"): 5,   # Resistor between A and B with 5 ohms
     ("B", "C"): 10,  # Resistor between B and C with 10 ohms
     ("C", "D"): 15,  # Resistor between C and D with 15 ohms
     ("A", "D"): 20   # Resistor between A and D with 20 ohms
-}</p>
-<h1 id="add-edges-to-the-graph-with-the-respective-resistance-weights">Add edges to the graph with the respective resistance weights</h1>
-<p>for (node1, node2), resistance in resistors.items():
-    G.add_edge(node1, node2, weight=resistance)</p>
-<h1 id="define-positions-for-a-clear-layout">Define positions for a clear layout</h1>
-<p>pos = {
+}
+
+# Add edges to the graph with the respective resistance weights
+for (node1, node2), resistance in resistors.items():
+    G.add_edge(node1, node2, weight=resistance)
+
+# Define positions for a clear layout
+pos = {
     "A": (0, 1),
     "B": (1, 2),
     "C": (2, 1),
     "D": (3, 0),
-}</p>
-<h1 id="draw-the-graph">Draw the graph</h1>
-<p>plt.figure(figsize=(8, 6))
-nx.draw(G, pos, with_labels=True, node_size=2000, node_color="lightblue", font_size=12, font_weight='bold')</p>
-<h1 id="draw-edge-labels-to-indicate-resistance-values">Draw edge labels to indicate resistance values</h1>
-<p>edge_labels = nx.get_edge_attributes(G, 'weight')
-nx.draw_networkx_edge_labels(G, pos, edge_labels={(u, v): f'{w}Ω' for u, v, w in G.edges(data='weight')})</p>
-<p>plt.title("Graph Representation of Circuit with Resistances")
+}
+
+# Draw the graph
+plt.figure(figsize=(8, 6))
+nx.draw(G, pos, with_labels=True, node_size=2000, node_color="lightblue", font_size=12, font_weight='bold')
+
+# Draw edge labels to indicate resistance values
+edge_labels = nx.get_edge_attributes(G, 'weight')
+nx.draw_networkx_edge_labels(G, pos, edge_labels={(u, v): f'{w}Ω' for u, v, w in G.edges(data='weight')})
+
+plt.title("Graph Representation of Circuit with Resistances")
 plt.axis('off')
-plt.show()</p>
-<pre><code>
+plt.show()
+````
+
 ### Series Connection
 
 ````python
@@ -251,7 +265,7 @@ plt.axis('off')
 plt.show()
 </code></pre>
 <h3 id="parallel-connection">Parallel Connection</h3>
-<pre><code class="language-python">import networkx as nx
+<pre><code class="language-text">import networkx as nx
 import matplotlib.pyplot as plt
 
 # Create an undirected graph for the parallel circuit
