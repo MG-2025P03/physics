@@ -1,4 +1,4 @@
-# Simulating Sampling Distributions
+# 1. Simulating Sampling Distributions
 
 The Central Limit Theorem (CLT) is a fundamental concept in statistics that states that the sampling distribution of the sample mean (or sum) of a sufficiently large number of independent, identically distributed variables approaches a normal distribution, regardless of the original distribution of the population. This property makes CLT an essential tool in various real-world scenarios for the following reasons:
 

@@ -1,4 +1,4 @@
-# Monte Carlo Simulations
+# 1. Monte Carlo Simulations
 
 Monte Carlo simulations are a computational technique used to estimate mathematical expressions and solve problems that might be deterministic in principle. In this context, we'll use Monte Carlo simulations to estimate the value of π by simulating random points in a square and determining how many fall inside a quarter circle.
 
