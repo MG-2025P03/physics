@@ -21,12 +21,12 @@ Summary
 
 The CLT provides a powerful framework that simplifies complex data analysis by allowing researchers and practitioners in various fields to use the properties of the normal distribution to make statistical inferences. This simplification is essential across disciplines, leading to more effective decision-making processes, from setting production standards in manufacturing to making informed financial investment decisions. The CLT thus underpins much of the practical work in fields where robust statistical analysis is required.
 
-![Sampling - 5](https://mg-2025p03.github.io/physics/_pics/p1.1.1.png)
+![Sampling - 5](https://mg-2025p03.github.io/physics/_pics/P1.1.1.png)
 
-![Sampling - 10](https://mg-2025p03.github.io/physics/_pics/p1.1.2.png)
+![Sampling - 10](https://mg-2025p03.github.io/physics/_pics/P1.1.2.png)
 
-![Sampling - 20](https://mg-2025p03.github.io/physics/_pics/p1.1.3.png)
+![Sampling - 20](https://mg-2025p03.github.io/physics/_pics/P1.1.3.png)
 
-![Sampling - 35](https://mg-2025p03.github.io/physics/_pics/p1.1.4.png)
+![Sampling - 35](https://mg-2025p03.github.io/physics/_pics/P1.1.4.png)
 
-![Sampling - 50](https://mg-2025p03.github.io/physics/_pics/p1.1.5.png)
+![Sampling - 50](https://mg-2025p03.github.io/physics/_pics/P1.1.5.png)
