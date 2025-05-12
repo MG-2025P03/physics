@@ -123,14 +123,12 @@
 <li class="toctree-l2 current"><a class="reference internal current" href="#">List of Codes</a>
 <ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="#sample-circuit">Sample Circuit</a>
-<ul>
-<li class="toctree-l4"><a class="reference internal" href="#series-connection">Series Connection</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#parallel-connection">Parallel Connection</a>
+<li class="toctree-l3"><a class="reference internal" href="#series-connection">Series Connection</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#recursive">Recursive</a>
+<li class="toctree-l3"><a class="reference internal" href="#parallel-connection">Parallel Connection</a>
 </li>
-</ul>
+<li class="toctree-l3"><a class="reference internal" href="#recursive">Recursive</a>
 </li>
 </ul>
 </li>
@@ -221,7 +219,7 @@ plt.title("Graph Representation of Circuit with Resistances")
 plt.axis('off')
 plt.show()
 </code></pre>
-<h3 id="series-connection">Series Connection</h3>
+<h2 id="series-connection">Series Connection</h2>
 <pre><code class="language-text">import networkx as nx
 import matplotlib.pyplot as plt
 
@@ -263,7 +261,7 @@ plt.title("Graph Representation of Series Circuit")
 plt.axis('off')
 plt.show()
 </code></pre>
-<h3 id="parallel-connection">Parallel Connection</h3>
+<h2 id="parallel-connection">Parallel Connection</h2>
 <pre><code class="language-text">import networkx as nx
 import matplotlib.pyplot as plt
 
@@ -305,8 +303,8 @@ plt.title("Graph Representation of Parallel Circuit")
 plt.axis('off')
 plt.show()
 </code></pre>
-<h3 id="recursive">Recursive</h3>
-<pre><code class="language-python">import networkx as nx
+<h2 id="recursive">Recursive</h2>
+<pre><code class="language-text">import networkx as nx
 import matplotlib.pyplot as plt
 
 def equivalent_resistance_series(resistances):
