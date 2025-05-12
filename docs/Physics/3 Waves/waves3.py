@@ -60,8 +60,8 @@ def plot_interference(num_sources, ax):
     ax.set_ylabel("Y")
 
 
-def create_gif(filename="interference.gif", duration=2, fps=10): #Defaults to 2 seconds
-    num_sources_list = np.linspace(0, 75, int(duration * fps), endpoint=True, dtype=int) #Number of frames for smoother animation
+def create_gif(filename="interference.gif", duration=3, fps=15): #Defaults to 2 seconds
+    num_sources_list = np.linspace(0, 50, int(duration * fps), endpoint=True, dtype=int) #Number of frames for smoother animation
     images = []
 
     fig, ax = plt.subplots()
@@ -84,106 +84,6 @@ def create_gif(filename="interference.gif", duration=2, fps=10): #Defaults to 2 
         print(f"Error creating GIF: {e}")
     finally:
         plt.close(fig)  # Close the figure to release memory
-
-# Text fragment analysis
-text_fragment = """1.00
-36
-36
-18
-5.4
-4.5
-0.75 -
-0.50
-0.25 -
-9
-6.4
-6
-5.44.8
-3.6
-13.63.4
-3.2
-3
-1.81.6
-2
-0.00.0 0
-3.6
-12
-3.6
-9.0
-3.0
-2.7
-A
-- 6
-1.8
-4.5
-8
-- 9
-1.5
-0.0 - O
-1.8
-0
-- 0
-0
-0
-0.0
-0.0
-0.00
--0.25
--0.50
--0.75 -
--1.6
--1-3 -3.2
-2252:2-4.6 3.2
--4.5 |12 F -12
-4.8.6 1-6
--4.8
--5.4
-- - 6.4
-1.2
--16
--8
--9
--6
-- - 12
-- - 18
--1.8
--1.5
--3.0
--3.6
--4.5
--5.4
-0.9
-0.0
--0.9
--1.8
--1.00
--6.0
--D1
-urces
-17"""
-
-def extract_numbers(text):
-    numbers = []
-    for line in text.splitlines():
-        for word in line.split():
-            try:
-                number = float(word)
-                numbers.append(number)
-            except ValueError:
-                pass
-    return numbers
-
-numbers = extract_numbers(text_fragment)
-
-# Question: How many distinct values are greater than 5 but less than 15 in the text fragment?
-distinct_values = set()
-for number in numbers:
-    if 5 < number < 15:
-        distinct_values.add(number)
-
-num_distinct_values = len(distinct_values)
-answer = f"There are {num_distinct_values} distinct values greater than 5 and less than 15."
-print(answer)
 
 # Main execution
 create_gif(duration=30)  # Create a GIF that cycles through source numbers
