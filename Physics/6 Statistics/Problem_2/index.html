@@ -6,13 +6,13 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../../../img/favicon.ico" rel="shortcut icon"/>
-<title>Problem 2 - MG on 2025</title>
+<title>Monte Carlo Simulations - MG on 2025</title>
 <link href="../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <script>
         // Current page data
-        var mkdocs_page_name = "Problem 2";
+        var mkdocs_page_name = "Monte Carlo Simulations";
         var mkdocs_page_input_path = "Physics/6 Statistics/Problem_2.md";
         var mkdocs_page_url = null;
       </script>
@@ -126,7 +126,7 @@
 <ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../Problem_1/">Simulating Sampling Distributions</a>
 </li>
-<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 2</a>
+<li class="toctree-l2 current"><a class="reference internal current" href="#">Monte Carlo Simulations</a>
 <ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="#concept">Concept</a>
 <ul>
@@ -137,6 +137,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#monte-carlo-simulation">Monte Carlo Simulation</a>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="#convergence-rate">Convergence Rate</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#other-simulation">Other simulation</a>
 </li>
 </ul>
 </li>
@@ -165,7 +167,7 @@
 <li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
 <li class="breadcrumb-item">Physics</li>
 <li class="breadcrumb-item">6 Statistics</li>
-<li class="breadcrumb-item active">Problem 2</li>
+<li class="breadcrumb-item active">Monte Carlo Simulations</li>
 <li class="wy-breadcrumbs-aside">
 </li>
 </ul>
@@ -173,11 +175,12 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="problem-2">Problem 2</h1>
+<h1 id="monte-carlo-simulations">Monte Carlo Simulations</h1>
 <p>Monte Carlo simulations are a computational technique used to estimate mathematical expressions and solve problems that might be deterministic in principle. In this context, we'll use Monte Carlo simulations to estimate the value of π by simulating random points in a square and determining how many fall inside a quarter circle.</p>
 <h2 id="concept">Concept</h2>
 <h3 id="formula-derivation">Formula Derivation</h3>
 <p>A unit circle is defined by the equation <span class="arithmatex">\(x^2 + y^2 = 1\)</span>, which describes a circle with radius 1 centered at the origin (0, 0).To estimate π using Monte Carlo simulation, consider a quarter circle (since our computations will be easier with positive x and y).</p>
+<p><img alt="Estimating Pi" src="https://mg-2025p03.github.io/physics/_pics/P2.1.png"/></p>
 <h3 id="geometric-insight">Geometric Insight</h3>
 <p>Inside a square of side length 2, draw a quarter of a unit circle with radius 1.The area of the square is <span class="arithmatex">\(1 \times 1 = 1\)</span>.The area of the quarter circle is <span class="arithmatex">\(\frac{1}{4}\pi\)</span>.</p>
 <h3 id="monte-carlo-simulation">Monte Carlo Simulation</h3>
@@ -188,6 +191,10 @@
 <p>The Monte Carlo method converges at a rate proportional to <span class="arithmatex">\(\frac{1}{\sqrt{N}}\)</span>, where <span class="arithmatex">\(N\)</span> is the number of points. This means that to improve accuracy by a factor of 10, you need 100 times more points.Efficiency: Although Monte Carlo methods are relatively simple and versatile, they can require a large number of points for high accuracy due to their slow convergence rate.Computational Considerations</p>
 <h4 id="trade-off">Trade-off</h4>
 <p>There is a trade-off between computational time and accuracy. More points yield better estimates but require more computational resources and time.Performance: Modern computers can handle millions of points quickly, but efficient implementations and optimizations (e.g., vectorized operations in NumPy) are crucial for performance.</p>
+<h3 id="other-simulation">Other simulation</h3>
+<p><img alt="2021 Enrollees vs 2026 Graduates (Approx)" src="https://mg-2025p03.github.io/physics/_pics/P2.7.png"/></p>
+<p><img alt="2050 Poland Population by Region (Forecast)" src="https://mg-2025p03.github.io/physics/_pics/P2.3.png"/></p>
+<p><img alt="2025 Masovian Region Population by Age group (Forecast)" src="https://mg-2025p03.github.io/physics/_pics/P2.6.png"/></p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
