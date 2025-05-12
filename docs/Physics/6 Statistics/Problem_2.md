@@ -1,4 +1,4 @@
-# Problem 2
+# Monte Carlo Simulations
 
 Monte Carlo simulations are a computational technique used to estimate mathematical expressions and solve problems that might be deterministic in principle. In this context, we'll use Monte Carlo simulations to estimate the value of π by simulating random points in a square and determining how many fall inside a quarter circle.
 
@@ -7,6 +7,8 @@ Monte Carlo simulations are a computational technique used to estimate mathemati
 ### Formula Derivation
 
 A unit circle is defined by the equation $x^2 + y^2 = 1$, which describes a circle with radius 1 centered at the origin (0, 0).To estimate π using Monte Carlo simulation, consider a quarter circle (since our computations will be easier with positive x and y).
+
+![Estimating Pi](https://mg-2025p03.github.io/physics/_pics/P2.1.png)
 
 ### Geometric Insight
 
@@ -27,3 +29,11 @@ The Monte Carlo method converges at a rate proportional to $\frac{1}{\sqrt{N}}$,
 #### Trade-off
 
 There is a trade-off between computational time and accuracy. More points yield better estimates but require more computational resources and time.Performance: Modern computers can handle millions of points quickly, but efficient implementations and optimizations (e.g., vectorized operations in NumPy) are crucial for performance.
+
+### Other simulation
+
+![2021 Enrollees vs 2026 Graduates (Approx)](https://mg-2025p03.github.io/physics/_pics/P2.7.png)
+
+![2050 Poland Population by Region (Forecast)](https://mg-2025p03.github.io/physics/_pics/P2.3.png)
+
+![2025 Masovian Region Population by Age group (Forecast)](https://mg-2025p03.github.io/physics/_pics/P2.6.png)
