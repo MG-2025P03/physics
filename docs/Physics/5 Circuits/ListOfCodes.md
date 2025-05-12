@@ -46,7 +46,7 @@ plt.axis('off')
 plt.show()
 ```
 
-### Series Connection
+## Series Connection
 
 ```text
 import networkx as nx
@@ -91,9 +91,9 @@ plt.axis('off')
 plt.show()
 ```
 
-### Parallel Connection
+## Parallel Connection
 
-````text
+```text
 import networkx as nx
 import matplotlib.pyplot as plt
 
@@ -134,11 +134,11 @@ nx.draw_networkx_edge_labels(G, pos, edge_labels={(u, v): f'{w}Ω' for u, v, w i
 plt.title("Graph Representation of Parallel Circuit")
 plt.axis('off')
 plt.show()
-````
+```
 
-### Recursive
+## Recursive
 
-````python
+```text
 import networkx as nx
 import matplotlib.pyplot as plt
 
@@ -247,4 +247,4 @@ reduce_graph(G)
 # Reduced graph printout
 print("\nReduced Graph:")
 print_graph(G)
-````
+```
