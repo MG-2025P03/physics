@@ -186,4 +186,4 @@ answer = f"There are {num_distinct_values} distinct values greater than 5 and le
 print(answer)
 
 # Main execution
-create_gif(duration=2)  # Create a GIF that cycles through source numbers
+create_gif(duration=30)  # Create a GIF that cycles through source numbers
