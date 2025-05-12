@@ -188,4 +188,4 @@ plot_interference(4)
 
 ### GIF animation cycling thru the number of sources
 
-![Fifty Sources](https://mg-2025p03.github.io/physics/_pics/interference.gif)]
+![Fifty Sources](https://mg-2025p03.github.io/physics/_pics/interference.gif)
