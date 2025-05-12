@@ -44,11 +44,11 @@ nx.draw_networkx_edge_labels(G, pos, edge_labels={(u, v): f'{w}Ω' for u, v, w i
 plt.title("Graph Representation of Circuit with Resistances")
 plt.axis('off')
 plt.show()
-````
+```
 
 ### Series Connection
 
-````python
+```text
 import networkx as nx
 import matplotlib.pyplot as plt
 
