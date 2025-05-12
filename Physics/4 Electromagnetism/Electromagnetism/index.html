@@ -114,6 +114,8 @@
 <ul class="current">
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../ListOfCodes/">List of Codes</a>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal">5 Circuits</a>
@@ -160,15 +162,23 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="electromagnetism">Electromagnetism</h1>
-<p>Electromagnetism is a fundamental branch of physics that deals with the study of electric and magnetic fields and their interactions with matter, particularly charged particles. Below is a detailed analysis covering various aspects, including applications, simulations, and parameter explorations:
-Applications of Electromagnetism and the Lorentz Force
+<p>Electromagnetism is a fundamental branch of physics that deals with the study of electric and magnetic fields and their interactions with matter, particularly charged particles. Below is a detailed analysis covering various aspects, including applications, simulations, and parameter explorations:</p>
+<p>Applications of Electromagnetism and the Lorentz Force
 Lorentz Force in Systems:</p>
+<p><img alt="Figure 1 - Circular Motion of a Charged Particle in a Magnetic Field" src="https://mg-2025p03.github.io/physics/_pics/ele01.png"/></p>
 <p>Particle Accelerators:</p>
 <p>Particle accelerators use electromagnetic fields to accelerate charged particles to high speeds and contain them within a well-defined path. The Lorentz force is crucial in bending and focusing the particle beams using magnetic fields.</p>
+<p>Circular motion simulation of a charged particle under a magnetic field into a 3D visualization</p>
+<p><img alt="Figure 2 - Circular Motion of a Charged Particle in a Magnetic Field (3D)" src="https://mg-2025p03.github.io/physics/_pics/ele03.png"/></p>
+<p>To further illustrate a helical path of a charged particle in a magnetic field, we can simulate its motion when the initial velocity has components both parallel and perpendicular to the magnetic field direction. This example will focus solely on the helical trajectory caused by a magnetic field.
+Here is a Python script that demonstrates this motion using 3D visualization</p>
+<p><img alt="Figure 3 -  Helical Motion of a Charged Particle in Crossed E and B Fields" src="https://mg-2025p03.github.io/physics/_pics/ele02.png"/></p>
 <p>Mass Spectrometers:</p>
 <p>Mass spectrometers use the Lorentz force to separate ions based on their mass-to-charge ratio. When ions pass through magnetic and/or electric fields, they are deflected, allowing their trajectories to be analyzed for identification.</p>
+<p><img alt="Figure 4 - Mass Spectrometer: Ion Trajectories Based on Mass-to-Charge Ratio" src="https://mg-2025p03.github.io/physics/_pics/ele05.png"/></p>
 <p>Plasma Confinement:</p>
 <p>In devices like tokamaks used in nuclear fusion research, magnetic fields are employed to confine plasma, relying on the Lorentz force to maintain stability and control the motion of charged particles within the plasma.</p>
+<p><img alt="Figure 5 - 3D Representation of Plasma Confinement in a Toroidal Field" src="https://mg-2025p03.github.io/physics/_pics/ele07.png"/></p>
 <p>Control of Charged Particles:</p>
 <p>Electric Fields <span class="arithmatex">\(E\)</span>: Electric fields exert a force on charged particles, changing their velocity linearly in the direction of the field. This is particularly useful in accelerating particles or deflecting them in devices like cathode ray tubes.
 Magnetic Fields <span class="arithmatex">\(B\)</span>: Magnetic fields exert a perpendicular force on moving charged particles, affecting their trajectory without changing their speed. This causes particles to move in circular or helical paths.</p>
@@ -176,31 +186,19 @@ Magnetic Fields <span class="arithmatex">\(B\)</span>: Magnetic fields exert a p
 To simulate the trajectory of a charged particle under different field configurations, we can consider:</p>
 <p>Uniform Magnetic Field:</p>
 <p>A charged particle moving perpendicular to a uniform magnetic field will undergo circular motion due to the centripetal force provided by the Lorentz force.
-The radius of the circle $ r $ can be determined by the equation: <span class="arithmatex">\(r = \frac{mv}{qB}\)</span>, where $ m $ is the mass, $ v $ is the velocity, $ q $ is the charge, and $ B $ is the magnetic field strength.</p>
+The radius of the circle $ r $ can be determined by the equation: <span class="arithmatex">\(r = \frac{mv}{qB}\)</span>, where <span class="arithmatex">\(m\)</span> is the mass, <span class="arithmatex">\(v\)</span> is the velocity, <span class="arithmatex">\(q\)</span> is the charge, and <span class="arithmatex">\(B\)</span> is the magnetic field strength.</p>
+<p><img alt="Figure 6 - Circular Motion in a Uniform Magnetic Field" src="https://mg-2025p03.github.io/physics/_pics/ele08.png"/></p>
 <p>Combined Uniform Electric and Magnetic Fields:</p>
 <p>When both fields are present, particles experience both linear acceleration (from the electric field) and circular motion or drift motion (from the magnetic field).
 Depending on the orientation and magnitudes, particles may exhibit helical motion or drift in the direction perpendicular to both fields.</p>
 <p>Crossed Electric and Magnetic Fields:</p>
 <p>When electric and magnetic fields are perpendicular, one can observe phenomena like the Hall effect, where particles drift due to the combined effect of <span class="arithmatex">\(\overrightarrow{E}\)</span> and <span class="arithmatex">\(\overrightarrow{B}\)</span>.</p>
-<p>Simulation Implementation:</p>
-<p>This can be implemented using numerical computation tools such as Python with libraries like Matplotlib and NumPy, which help visualize trajectories.
-Integrating the Lorentz force equation over time using methods like Euler or Runge-Kutta can provide accurate simulation results.</p>
-<p>Parameter Exploration
-The behavior of charged particles can be varied by modifying several parameters:</p>
-<p>Field Strengths Electric $ E $, Magnetic $ B $:</p>
-<p>Increasing $ E $ will lead to higher linear acceleration of particles.
-Increasing $ B $ will result in smaller radii of circular paths and increased frequency of circular motion.</p>
-<p>Initial Particle Velocity $ v $:</p>
-<p>Changing the initial velocity can switch the trajectory from circular to helical, depending on the angle between $ v $ and <span class="arithmatex">\(\overrightarrow{B}\)</span>.</p>
-<p>Charge and Mass of the Particle $ q, m $:</p>
-<p>A higher charge $ q $ increases the force exerted by both fields, altering acceleration and trajectory sizes.
-A larger mass $ m $ will reduce the acceleration for a given force, affecting how quickly the particle responds to field changes.</p>
-<p>Through both theoretical exploration and practical simulation, one can gain a deeper understanding of how electromagnetism influences particle behavior across different physical systems. These simulations and explorations are vital for advancing applications in technology, engineering, and scientific research.</p>
+<p><img alt="Figure 7 - Particle in Electric and Magnetic Fields" src="https://mg-2025p03.github.io/physics/_pics/ele08.png"/></p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
 <a class="btn btn-neutral float-left" href="../../3%20Waves/Waves/" title="Analysis of Wave Interference Patterns Formed by Point Sources"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-<a class="btn btn-neutral float-right" href="../../5%20Circuits/Circuits/" title="Circuits with Graph Theory">Next <span class="icon icon-circle-arrow-right"></span></a>
+<a class="btn btn-neutral float-right" href="../ListOfCodes/" title="List of Codes">Next <span class="icon icon-circle-arrow-right"></span></a>
 </div>
 <hr/>
 <div role="contentinfo">
@@ -216,7 +214,7 @@ A larger mass $ m $ will reduce the acceleration for a given force, affecting ho
 <div aria-label="Versions" class="rst-versions" role="note">
 <span class="rst-current-version" data-toggle="rst-current-version">
 <span><a href="../../3%20Waves/Waves/" style="color: #fcfcfc">« Previous</a></span>
-<span><a href="../../5%20Circuits/Circuits/" style="color: #fcfcfc">Next »</a></span>
+<span><a href="../ListOfCodes/" style="color: #fcfcfc">Next »</a></span>
 </span>
 </div>
 <script src="../../../js/jquery-3.6.0.min.js"></script>
