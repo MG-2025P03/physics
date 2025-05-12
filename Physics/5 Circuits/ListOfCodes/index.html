@@ -124,6 +124,8 @@
 <ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="#sample-circuit">Sample Circuit</a>
 <ul>
+<li class="toctree-l4"><a class="reference internal" href="#series-connection">Series Connection</a>
+</li>
 <li class="toctree-l4"><a class="reference internal" href="#parallel-connection">Parallel Connection</a>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="#recursive">Recursive</a>
@@ -218,12 +220,9 @@ nx.draw_networkx_edge_labels(G, pos, edge_labels={(u, v): f'{w}Ω' for u, v, w i
 plt.title("Graph Representation of Circuit with Resistances")
 plt.axis('off')
 plt.show()
-````
-
-### Series Connection
-
-````python
-import networkx as nx
+</code></pre>
+<h3 id="series-connection">Series Connection</h3>
+<pre><code class="language-text">import networkx as nx
 import matplotlib.pyplot as plt
 
 # Create an undirected graph for the series circuit
