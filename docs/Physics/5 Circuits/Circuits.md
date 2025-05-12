@@ -13,13 +13,13 @@ Identifying Series and Parallel Connections:
 
 Two nodes connected by a single path without splitting (i.e., no intermediate nodes are shared with other paths).
 
-![Serices Connection](https://mg-2025p03.github.io/physics/_pics/circuits02.png)
+![Series Connection](https://mg-2025p03.github.io/physics/_pics/circuits02.png)
 
 ### Parallel Connection
 
 Two nodes connected by multiple independent paths.
 
-![Serices Connection](https://mg-2025p03.github.io/physics/_pics/circuits03.png)
+![Parallel Connection](https://mg-2025p03.github.io/physics/_pics/circuits03.png)
 
 Reduction Process:
 
