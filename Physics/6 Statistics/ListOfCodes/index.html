@@ -6,14 +6,14 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../../../img/favicon.ico" rel="shortcut icon"/>
-<title>Circuits with Graph Theory - MG on 2025</title>
+<title>ListOfCodes - MG on 2025</title>
 <link href="../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <script>
         // Current page data
-        var mkdocs_page_name = "Circuits with Graph Theory";
-        var mkdocs_page_input_path = "Physics/5 Circuits/Circuits.md";
+        var mkdocs_page_name = "ListOfCodes";
+        var mkdocs_page_input_path = "Physics/6 Statistics/ListOfCodes.md";
         var mkdocs_page_url = null;
       </script>
 <!--[if lt IE 9]>
@@ -116,33 +116,23 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal current">5 Circuits</a>
-<ul class="current">
-<li class="toctree-l2 current"><a class="reference internal current" href="#">Circuits with Graph Theory</a>
-<ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="#graph-representation">Graph Representation</a>
+<li class="toctree-l1"><a class="reference internal">5 Circuits</a>
 <ul>
-<li class="toctree-l4"><a class="reference internal" href="#series-connection">Series Connection</a>
+<li class="toctree-l2"><a class="reference internal" href="../../5%20Circuits/Circuits/">Circuits with Graph Theory</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#parallel-connection">Parallel Connection</a>
-</li>
-</ul>
+<li class="toctree-l2"><a class="reference internal" href="../../5%20Circuits/ListOfCodes/">List of Codes</a>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../ListOfCodes/">List of Codes</a>
+<li class="toctree-l1 current"><a class="reference internal current">6 Statistics</a>
+<ul class="current">
+<li class="toctree-l2 current"><a class="reference internal current" href="#">ListOfCodes</a>
 </li>
-</ul>
+<li class="toctree-l2"><a class="reference internal" href="../Problem_1/">1. Simulating Sampling Distributions</a>
 </li>
-<li class="toctree-l1"><a class="reference internal">6 Statistics</a>
-<ul>
-<li class="toctree-l2"><a class="reference internal" href="../../6%20Statistics/ListOfCodes/">ListOfCodes</a>
+<li class="toctree-l2"><a class="reference internal" href="../Problem_2/">2. Monte Carlo Simulations</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../6%20Statistics/Problem_1/">1. Simulating Sampling Distributions</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../6%20Statistics/Problem_2/">2. Monte Carlo Simulations</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../6%20Statistics/zListOfCodes/">3. List of Codes</a>
+<li class="toctree-l2"><a class="reference internal" href="../zListOfCodes/">3. List of Codes</a>
 </li>
 </ul>
 </li>
@@ -166,8 +156,8 @@
 <ul class="wy-breadcrumbs">
 <li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
 <li class="breadcrumb-item">Physics</li>
-<li class="breadcrumb-item">5 Circuits</li>
-<li class="breadcrumb-item active">Circuits with Graph Theory</li>
+<li class="breadcrumb-item">6 Statistics</li>
+<li class="breadcrumb-item active">ListOfCodes</li>
 <li class="wy-breadcrumbs-aside">
 </li>
 </ul>
@@ -175,46 +165,11 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="circuits-with-graph-theory">Circuits with Graph Theory</h1>
-<h2 id="graph-representation">Graph Representation</h2>
-<p>Model the circuit as a graph where nodes represent junctions and edges represent resistors.
-Each edge has a weight corresponding to the resistance value.</p>
-<p><img alt="Sample circuit" src="https://mg-2025p03.github.io/physics/_pics/circuits01.png"/></p>
-<p>Identifying Series and Parallel Connections:</p>
-<h3 id="series-connection">Series Connection</h3>
-<p>Two nodes connected by a single path without splitting (i.e., no intermediate nodes are shared with other paths).</p>
-<p><img alt="Series Connection" src="https://mg-2025p03.github.io/physics/_pics/circuits02.png"/></p>
-<h3 id="parallel-connection">Parallel Connection</h3>
-<p>Two nodes connected by multiple independent paths.</p>
-<p><img alt="Parallel Connection" src="https://mg-2025p03.github.io/physics/_pics/circuits03.png"/></p>
-<p>Reduction Process:</p>
-<p>Start from a complex graph and iteratively reduce it by replacing series and parallel components with their equivalent resistance.
-Use recursive traversal for nested combinations.</p>
-<pre><code>Graph edges with resistance values:
-A -- B with resistance 5Ω
-A -- C with resistance 2Ω
-B -- C with resistance 10Ω
-B -- E with resistance 4Ω
-C -- D with resistance 15Ω
-C -- E with resistance 3Ω
-</code></pre>
-<p>Initial state
-<img alt="Initial state" src="https://mg-2025p03.github.io/physics/_pics/circuits4.S.png"/></p>
-<p>Final (and reduced) state
-<img alt="Final State" src="https://mg-2025p03.github.io/physics/_pics/circuits4.S02.png"/></p>
-<p>How the Algorithm Handles Nested Combinations</p>
-<ul>
-<li>Recursive Reduction: The algorithm inherently handles nested series and parallel combinations through the iterative reduction process.</li>
-<li>Graph Traversal: Each time a series or parallel pattern is identified and reduced, the graph shrinks and is easier to traverse.</li>
-<li>Convergence: By continuously reducing series and parallel components, the graph eventually simplifies to only two nodes connected by a single equivalent resistance.</li>
-</ul>
-<p>This pseudocode outlines the approach for reducing the circuit graph step by step, handling both simple and complex configurations, including nested arrangements. It provides a robust framework for understanding how to algorithmically calculate equivalent resistances using graph theory.
-For the advanced option involving actual implementation in a programming language, a suitable choice would be Python with libraries such as NetworkX for graph handling, allowing for practical testing of real-world circuit configurations.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
-<a class="btn btn-neutral float-left" href="../../4%20Electromagnetism/ListOfCodes/" title="List of Codes"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-<a class="btn btn-neutral float-right" href="../ListOfCodes/" title="List of Codes">Next <span class="icon icon-circle-arrow-right"></span></a>
+<a class="btn btn-neutral float-left" href="../../5%20Circuits/ListOfCodes/" title="List of Codes"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../Problem_1/" title="1. Simulating Sampling Distributions">Next <span class="icon icon-circle-arrow-right"></span></a>
 </div>
 <hr/>
 <div role="contentinfo">
@@ -229,8 +184,8 @@ For the advanced option involving actual implementation in a programming languag
 </div>
 <div aria-label="Versions" class="rst-versions" role="note">
 <span class="rst-current-version" data-toggle="rst-current-version">
-<span><a href="../../4%20Electromagnetism/ListOfCodes/" style="color: #fcfcfc">« Previous</a></span>
-<span><a href="../ListOfCodes/" style="color: #fcfcfc">Next »</a></span>
+<span><a href="../../5%20Circuits/ListOfCodes/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../Problem_1/" style="color: #fcfcfc">Next »</a></span>
 </span>
 </div>
 <script src="../../../js/jquery-3.6.0.min.js"></script>
