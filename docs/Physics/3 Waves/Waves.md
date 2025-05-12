@@ -185,3 +185,7 @@ plot_interference(4)
 ### Fifty Sources
 
 [![Fifty Sources](https://mg-2025p03.github.io/physics/_pics/Waves50.png)](https://mg-2025p03.github.io/physics/Physics/3%20Waves/waves.html)
+
+### GIF animation cycling thru the number of sources
+
+[![Fifty Sources](https://mg-2025p03.github.io/physics/_pics/Waves50.png)](https://mg-2025p03.github.io/physics/Physics/3%20Waves/waves.html)
