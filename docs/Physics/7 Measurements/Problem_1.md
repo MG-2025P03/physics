@@ -1,4 +1,4 @@
-# Problem definition
+# A practical simulation
 
 This experiment provides a systematic approach to measuring the acceleration due to gravity $g$ using a simple pendulum. Here is the detailed explanation of each step, along with how you can analyze uncertainties and other considerations:
 
