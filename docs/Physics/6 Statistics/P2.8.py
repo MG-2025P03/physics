@@ -30,7 +30,11 @@ age_distribution_percentages = {
 }
 
 # Total population for ages 13-18
-current_population_masovian = 5421823
+current_population_masovian = 5421823 * 0.1 # Assuming 10% of the population is between 13-18 years old, based on previous data
+# Calculate the total population for ages 13-18 based on the distribution percentages
+# Adjust the total percentage if neededed to match the actual population
+# This is a placeholder; the actual percentage should be based on real demographic data
+print("1 Data point = ", round(current_population_masovian / 1000,0), ", Total population for the age grooup 13-18 = ", round(current_population_masovian,0), "people")
 population_ages_13_to_18 = current_population_masovian * sum(age_distribution_percentages.values())  # Adjust to total percentage if needed
 
 # Simulate data points for each individual age in the Masovian region
