@@ -2,10 +2,6 @@
 
 This experiment provides a systematic approach to measuring the acceleration due to gravity $g$ using a simple pendulum. Here is the detailed explanation of each step, along with how you can analyze uncertainties and other considerations:
 
-### Analysis
-
-- Compare with Standard Value
-
 Standard gravitational acceleration is approximately $9.81 , \text{m/s}^2$. Compare your calculated $g$ with this value.
 
 [![Data captured during simulation](https://mg-2025p03.github.io/physics/_pics/m2.png)](https://mg-2025p03.github.io/physics/_pics/m2.png)
@@ -20,6 +16,8 @@ String: A length of 1 to 1.5 meters.
 Small weight: Such as a bag of coins, a small bag of sugar, or a keychain.
 Stopwatch: Or a smartphone timer.
 Ruler or Measuring Tape: For measuring the length of the pendulum.
+
+[![Data captured during simulation](https://mg-2025p03.github.io/physics/_pics/materials.jpg)](https://mg-2025p03.github.io/physics/_pics/materials.jpg)
 
 #### 2. Setup
 
