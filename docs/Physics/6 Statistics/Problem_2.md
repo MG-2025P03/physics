@@ -32,8 +32,12 @@ There is a trade-off between computational time and accuracy. More points yield 
 
 ### Other simulation
 
-![2021 Enrollees vs 2026 Graduates (Approx)](https://mg-2025p03.github.io/physics/_pics/P2.7.png)
+[![2021 Enrollees vs 2026 Graduates (Approx)](https://mg-2025p03.github.io/physics/_pics/P2.7.png)](https://mg-2025p03.github.io/physics/_pics/P2.7.png)
 
-![2050 Poland Population by Region (Forecast)](https://mg-2025p03.github.io/physics/_pics/P2.3.png)
+[![2050 Poland Population by Region (Forecast)](https://mg-2025p03.github.io/physics/_pics/P2.3.png)](https://mg-2025p03.github.io/physics/_pics/P2.3.png)
 
-![2026 Masovian Region Population by Age group (Forecast)](https://mg-2025p03.github.io/physics/_pics/P2.6.png)
+[![2026 Masovian Region Population by Age group (Forecast)](https://mg-2025p03.github.io/physics/_pics/P2.6.png)](https://mg-2025p03.github.io/physics/_pics/P2.6.png)
+
+[![Masovian Region Population by Age 13-18 (Forecast)](https://mg-2025p03.github.io/physics/_pics/P2.8.png)](https://mg-2025p03.github.io/physics/_pics/P2.8.png)
+
+[![Probability breakdown](https://mg-2025p03.github.io/physics/_pics/P2.8.1.png)](https://mg-2025p03.github.io/physics/_pics/P2.8.1.png)
