@@ -215,7 +215,6 @@
 <p>Randomly generate points within the square.Count the number of points that fall within the quarter circle using <span class="arithmatex">\(x^2 + y^2 \leq 1\)</span>.The ratio of points inside the circle to the total number of points approximates the area of the quarter circle. Thus, the formula for π is derived as <span class="arithmatex">\(\pi \approx 4 \times (\text{points inside the circle} / \text{total points})\)</span>.</p>
 <p>To analyze how the accuracy of the π estimate improves with an increasing number of points, we can perform multiple Monte Carlo simulations with different numbers of points and observe the convergence of the estimated π value. The more points used, the closer the estimate should approach the true value of π due to the law of large numbers.</p>
 <h3 id="convergence-rate">Convergence Rate</h3>
-<h4 id="convergence">Convergence</h4>
 <p>The Monte Carlo method converges at a rate proportional to <span class="arithmatex">\(\frac{1}{\sqrt{N}}\)</span>, where <span class="arithmatex">\(N\)</span> is the number of points. This means that to improve accuracy by a factor of 10, you need 100 times more points.Efficiency: Although Monte Carlo methods are relatively simple and versatile, they can require a large number of points for high accuracy due to their slow convergence rate.</p>
 <h3 id="computational-considerations">Computational Considerations</h3>
 <h4 id="trade-off">Trade-off</h4>
