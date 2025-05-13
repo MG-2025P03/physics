@@ -72,7 +72,7 @@ Objective: Estimate variability in agricultural output due to changing weather p
 
 Objective: Predict educational achievements and demands based on demographic trends, investment levels, and policy changes.Data Needed: Current educational data, population trends, policy parameters.Analysis: Develop policies to improve educational outcomes and resource distribution.
 
-### Other simulation
+### Specific Simulation (a) Education, (b) Population Forecast
 
 [![2021 Enrollees vs 2026 Graduates (Approx)](https://mg-2025p03.github.io/physics/_pics/P2.7.png)](https://mg-2025p03.github.io/physics/_pics/P2.7.png)
 
