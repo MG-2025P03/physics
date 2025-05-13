@@ -26,11 +26,13 @@ To analyze how the accuracy of the π estimate improves with an increasing numbe
 
 The Monte Carlo method converges at a rate proportional to $\frac{1}{\sqrt{N}}$, where $N$ is the number of points. This means that to improve accuracy by a factor of 10, you need 100 times more points.Efficiency: Although Monte Carlo methods are relatively simple and versatile, they can require a large number of points for high accuracy due to their slow convergence rate.
 
-### Computational Considerations, Trade-off
+### Computational Considerations
+
+#### Trade-off
 
 There is a trade-off between computational time and accuracy. More points yield better estimates but require more computational resources and time.
 
-### Computational Considerations, Performance
+#### Performance
 
 Modern computers can handle millions of points quickly, but efficient implementations and optimizations (e.g., vectorized operations in NumPy) are crucial for performance.
 
@@ -66,7 +68,7 @@ Objective: Simulate traffic patterns and regional transportation demand to aid i
 
 Objective: Estimate variability in agricultural output due to changing weather patterns, input costs, and market conditions.Data Needed: Historical yield data, weather forecasts, market trends.Analysis: Plan supply chains and pricing to optimize profitability under uncertain conditions.
 
-#### . Educational Outcomes Estimation
+#### 8. Educational Outcomes Estimation
 
 Objective: Predict educational achievements and demands based on demographic trends, investment levels, and policy changes.Data Needed: Current educational data, population trends, policy parameters.Analysis: Develop policies to improve educational outcomes and resource distribution.
 
