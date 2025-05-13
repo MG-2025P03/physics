@@ -44,3 +44,7 @@ Analysis
 - Compare with Standard Value
 
 Standard gravitational acceleration is approximately $9.81 , \text{m/s}^2$. Compare your calculated $g$ with this value.
+
+[![Data captured during simulation](https://mg-2025p03.github.io/physics/_pics/m2.png)](https://mg-2025p03.github.io/physics/_pics/m2.png)
+
+[![Data captured during simulation](https://mg-2025p03.github.io/physics/_pics/m1.png)](https://mg-2025p03.github.io/physics/_pics/m1.png)
