@@ -22,8 +22,6 @@ To analyze how the accuracy of the π estimate improves with an increasing numbe
 
 ### Convergence Rate
 
-#### Convergence
-
 The Monte Carlo method converges at a rate proportional to $\frac{1}{\sqrt{N}}$, where $N$ is the number of points. This means that to improve accuracy by a factor of 10, you need 100 times more points.Efficiency: Although Monte Carlo methods are relatively simple and versatile, they can require a large number of points for high accuracy due to their slow convergence rate.
 
 ### Computational Considerations
