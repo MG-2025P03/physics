@@ -43,7 +43,7 @@ minx, miny, maxx, maxy = masovian_gdf.total_bounds
 for age in ages:
     num_points = int(num_simulations * age_distribution_percentages[age])  # Proportional split
     # Print regions with NaN values
-    print("Age Population Probability", age, ":", ((age_distribution_percentages[age] * current_population_masovian) / population_ages_13_to_18) * 100)
+    print("Age Population Probability", age, ":", f'{(((age_distribution_percentages[age] * current_population_masovian) / population_ages_13_to_18) * 100):.2f}')
     for _ in range(num_points):
         while True:
             x = np.random.uniform(minx, maxx)
