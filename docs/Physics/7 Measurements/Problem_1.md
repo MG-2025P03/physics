@@ -2,6 +2,16 @@
 
 This experiment provides a systematic approach to measuring the acceleration due to gravity $g$ using a simple pendulum. Here is the detailed explanation of each step, along with how you can analyze uncertainties and other considerations:
 
+### Analysis
+
+- Compare with Standard Value
+
+Standard gravitational acceleration is approximately $9.81 , \text{m/s}^2$. Compare your calculated $g$ with this value.
+
+[![Data captured during simulation](https://mg-2025p03.github.io/physics/_pics/m2.png)](https://mg-2025p03.github.io/physics/_pics/m2.png)
+
+[![Data captured during simulation](https://mg-2025p03.github.io/physics/_pics/m1.png)](https://mg-2025p03.github.io/physics/_pics/m1.png)
+
 ### Procedure Details
 
 #### 1. Materials
@@ -22,7 +32,7 @@ Displacement and Release: Displace the pendulum by less than 15° to minimize no
 Timing Oscillations: Use the stopwatch to measure the time for 10 complete oscillations. Repeat this measurement 10 times to account for variability. Record all measurements.
 Calculate the Mean Time $\bar{T}_{10}$: Find the average time for 10 oscillations.
 Standard Deviation $\sigma$: Calculate to understand variability in the timing.
-Uncertainty in Mean Time $\sigma_{\bar{T}}$: Determined using $\frac{\sigma}{\sqrt{N}}$ where $( N = 10 )$.
+Uncertainty in Mean Time $\sigma_{\bar{T}}$: Determined using $\frac{\sigma}{\sqrt{N}}$ where $N = 10$.
 
 ### Calculations
 
@@ -39,12 +49,3 @@ $$g = \frac{4\pi^2L}{T^2}$$
 - Propagate Uncertainties
 
 Use error propagation methods to calculate the uncertainty in $g$ based on uncertainties in $L$ and $T$.
-
-Analysis
-- Compare with Standard Value
-
-Standard gravitational acceleration is approximately $9.81 , \text{m/s}^2$. Compare your calculated $g$ with this value.
-
-[![Data captured during simulation](https://mg-2025p03.github.io/physics/_pics/m2.png)](https://mg-2025p03.github.io/physics/_pics/m2.png)
-
-[![Data captured during simulation](https://mg-2025p03.github.io/physics/_pics/m1.png)](https://mg-2025p03.github.io/physics/_pics/m1.png)
