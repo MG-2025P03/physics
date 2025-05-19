@@ -1,4 +1,4 @@
-# Simulations
+# Kepler's Third Law Simulation
 
 <details>
 <summary> <- Click to view the codes</summary>
