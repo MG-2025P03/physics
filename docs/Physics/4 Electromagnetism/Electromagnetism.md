@@ -53,8 +53,4 @@ The radius of the circle $ r $ can be determined by the equation: $r = \frac{mv}
 When both fields are present, particles experience both linear acceleration (from the electric field) and circular motion or drift motion (from the magnetic field).
 Depending on the orientation and magnitudes, particles may exhibit helical motion or drift in the direction perpendicular to both fields.
 
-### Crossed Electric and Magnetic Fields
-
-When electric and magnetic fields are perpendicular, one can observe phenomena like the Hall effect, where particles drift due to the combined effect of $\overrightarrow{E}$ and $\overrightarrow{B}$.
-
-![Figure 7 - Particle in Electric and Magnetic Fields](https://mg-2025p03.github.io/physics/_pics/ele08.png)
+![Figure 7 - Combined Uniform Electric and Magnetic Fields](https://mg-2025p03.github.io/physics/_pics/ele09.png)

@@ -3,12 +3,12 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
 # Constants
-q = 1.6e-19  # Charge of the particle (Coulombs)
-m = 9.11e-31  # Mass of the particle (kg)
-E = 1e5  # Electric field magnitude (V/m)
+q = 2.0  # Charge of the particle (Coulombs)
+m = 3.0  # Mass of the particle (kg)
+E = 10  # Electric field magnitude (V/m)
 B = 1.0  # Magnetic field strength (T)
 v0 = 0  # Initial velocity (m/s), assume starting from rest for simplicity
-t_max = 1e-6  # Maximum simulation time (s)
+t_max = 10  # Maximum simulation time (s)
 num_points = 1000  # Number of points in the simulation
 
 # Time array

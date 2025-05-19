@@ -53,35 +53,56 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
 # Constants
-q = 1.6e-19  # Charge of the particle (Coulombs)
-m = 9.11e-31  # Mass of the particle (kg)
-B = 1.0  # Magnetic field strength (Tesla)
-v0 = 1e6  # Initial velocity of the particle (m/s)
-t_max = 1e-7  # Simulation time (s)
-num_points = 1000  # Number of points in the simulation
+q = 16  # Charge of the particle (Coulombs)
+m = 9  # Mass of the particle (kg)
+B = 3.0  # Magnetic field strength (Tesla)
+v_perpendicular = 1  # Initial velocity perpendicular to B (m/s)
+v_parallel = 1  # Initial velocity parallel to B (m/s)
+t_max = 2  # Maximum time for the simulation (s)
+num_points = 1000  # Number of simulation points
 
-# Time array
+# Constants
+#   q = 16  # Charge of the particle (Coulombs)
+#   m = 9  # Mass of the particle (kg)
+#   B = 10.0  # Magnetic field strength (Tesla)
+#   E = 1000  # Electric field strength (V/m)
+#   v0 = 20  # Initial velocity of the particle (m/s)
+#   t_max = 10  # Maximum time for the simulation (s)
+#   num_points = 1000  # Number of points in the simulation
+
+# Time discretization
 time = np.linspace(0, t_max, num_points)
 
-# Calculate the radius and angular frequency
-r = m * v0 / (q * B)
+# Initialize position and velocity arrays
+position = np.zeros((num_points, 3))
+velocity = np.zeros((num_points, 3))
+
+# Initial conditions
+velocity[0] = [v_perpendicular, 0, v_parallel]  # Initial velocity
+
+# Cyclotron frequency and radius
 omega = q * B / m
+r = m * v_perpendicular / (q * B)
 
-# Parametric equations for circular motion in 3D
-x = r * np.cos(omega * time)
-y = r * np.sin(omega * time)
-z = time  # Representing time along the z-axis
+# Compute positions and velocities
+for i in range(1, num_points):
+    v = velocity[i - 1]
+    F_magnetic = q * np.cross(v, [0, 0, B])  # Magnetic force
+    a = F_magnetic / m                       # Acceleration
 
-# Create the 3D plot
+    # Update velocity and position
+    velocity[i] = velocity[i - 1] + a * (t_max / num_points)
+    position[i] = position[i - 1] + velocity[i] * (t_max / num_points)
+
+# Plotting the results
 fig = plt.figure(figsize=(10, 7))
 ax = fig.add_subplot(111, projection='3d')
 
-ax.plot(x, y, z, label='Particle trajectory')
-ax.set_title('Circular Motion of a Charged Particle in a Magnetic Field (3D)')
+ax.plot(position[:, 0], position[:, 1], position[:, 2], label='Particle trajectory')
+ax.set_title('Helical Motion of a Charged Particle in a Magnetic Field')
 ax.set_xlabel('x-position (m)')
 ax.set_ylabel('y-position (m)')
-ax.set_zlabel('Time (s)')
-ax.scatter([0], [0], [0], color='r', label='Center of motion', zorder=5)  # Center point
+ax.set_zlabel('z-position (m)')
 
 plt.legend()
 plt.show()
@@ -102,12 +123,12 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
 # Constants
-q = 1.6e-19  # Charge of the particle (Coulombs)
-m = 9.11e-31  # Mass of the particle (kg)
-B = 1.0  # Magnetic field strength (Tesla)
-E = 1e3  # Electric field strength (V/m)
-v0 = 2e6  # Initial velocity of the particle (m/s)
-t_max = 1e-7  # Maximum time for the simulation (s)
+q = 16  # Charge of the particle (Coulombs)
+m = 9  # Mass of the particle (kg)
+B = 10.0  # Magnetic field strength (Tesla)
+E = 1000  # Electric field strength (V/m)
+v0 = 20  # Initial velocity of the particle (m/s)
+t_max = 10  # Maximum time for the simulation (s)
 num_points = 1000  # Number of points in the simulation
 
 # Time discretization
@@ -163,18 +184,18 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Constants
-E = 1e5  # Electric field strength (V/m)
-B = 1.0  # Magnetic field strength (T)
-d = 0.1  # Distance over which the electric field accelerates the ions (m)
-v0 = np.sqrt(2 * E * 1.6e-19 / 1.67e-27)  # Initial velocity for reference ion with m/q = 1
+E = 0.3  # Electric field strength (V/m)
+B = 0.4  # Magnetic field strength (T)
+d = 0.8  # Distance over which the electric field accelerates the ions (m)
+v0 = np.sqrt(2 * E * 16.7 / 10)  # Initial velocity for reference ion with m/q = 1
 
 # Mass-to-charge ratios for three different ions
-m_q_ratios = [1, 2, 0.5]  # m/q relative to the reference ion
+m_q_ratios = [0.5, 1, 0.25]  # m/q relative to the reference ion
 colors = ['r', 'g', 'b']
-labels = ['m/q = 1', 'm/q = 2', 'm/q = 0.5']
+labels = ['m/q = 0.5', 'm/q = 1', 'm/q = 0.25']
 
 # Time array
-time = np.linspace(0, 1e-5, 1000)
+time = np.linspace(0, 3, 6)
 
 # Create the plot
 plt.figure(figsize=(12, 6))
@@ -184,15 +205,15 @@ for m_q, color, label in zip(m_q_ratios, colors, labels):
     v = v0 / np.sqrt(m_q)
     
     # Radius of the trajectory
-    radius = v / (B * 1.6e-19 / (m_q * 1.67e-27))
+    radius = v / (B * 1.67 / (m_q * 16.7))
     
     # Calculate trajectory
-    x = radius * np.sin(v * B * time / (m_q * 1.67e-27))
-    y = radius * np.cos(v * B * time / (m_q * 1.67e-27)) - radius
+    x = radius * np.sin(v * B * time / (m_q * 1.67))
+    y = radius * np.cos(v * B * time / (m_q * 1.67)) - radius
 
     plt.plot(x, y, color=color, label=label)
 
-plt.title('Mass Spectrometer: Ion Trajectories Based on Mass-to-Charge Ratio')
+plt.title('Mass Spectrometer: Ion Trajectories Based on Mass-to-Charge RatioXX')
 plt.xlabel('x-position (m)')
 plt.ylabel('y-position (m)')
 plt.axhline(0, color='k', linestyle='--', linewidth=0.8)
@@ -214,12 +235,12 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
 # Parameters for toroidal field
-radius_major = 1.0  # Major radius of the torus (distance from center of tube to center of torus)
-radius_minor = 0.2  # Minor radius of the torus (radius of the tube)
+radius_major = 0.5  # Major radius of the torus (distance from center of tube to center of torus)
+radius_minor = 0.5  # Minor radius of the torus (radius of the tube)
 
 # Create data for a torus
-theta = np.linspace(0, 2 * np.pi, 100)  # Angle around the torus
-phi = np.linspace(0, 2 * np.pi, 100)  # Angle along the torus' tube
+theta = np.linspace(0, 2 * np.pi, 5)  # Angle around the torus
+phi = np.linspace(0, 2 * np.pi, 5)  # Angle along the torus' tube
 theta, phi = np.meshgrid(theta, phi)
 
 # Parametric equations for the torus
@@ -235,7 +256,7 @@ ax = fig.add_subplot(111, projection='3d')
 ax.plot_surface(x, y, z, color='c', alpha=0.5, rstride=5, cstride=5, edgecolor='none')
 
 # Plot magnetic field lines
-num_lines = 8
+num_lines = 3
 for i in range(num_lines):
     angle_offset = (i / num_lines) * 2 * np.pi
     x_line = (radius_major + radius_minor * np.cos(phi)) * np.cos(theta + angle_offset)
@@ -248,7 +269,7 @@ ax.set_title('3D Representation of Plasma Confinement in a Toroidal Field')
 ax.set_xlabel('X Axis')
 ax.set_ylabel('Y Axis')
 ax.set_zlabel('Z Axis')
-ax.view_init(elev=30, azim=60)  # Better viewing angle
+ax.view_init(elev=1, azim=2)  # Better viewing angle
 
 plt.show()
 ````
@@ -278,12 +299,12 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
 # Constants
-q = 1.6e-19  # Charge of the particle (Coulombs)
-m = 9.11e-31  # Mass of the particle (kg)
-B = 1.0  # Magnetic field strength (Tesla)
-v0 = 1e6  # Initial velocity magnitude of the particle (m/s)
-t_max = 1e-7  # Maximum simulation time (s)
-num_points = 1000  # Number of points in the simulation
+q = 0.6  # Charge of the particle (Coulombs)
+m = 1.11  # Mass of the particle (kg)
+B = 5.0  # Magnetic field strength (Tesla)
+v0 = 3  # Initial velocity magnitude of the particle (m/s)
+t_max = 3  # Maximum simulation time (s)
+num_points = 100  # Number of points in the simulation
 
 # Time array
 time = np.linspace(0, t_max, num_points)
@@ -309,8 +330,6 @@ ax.scatter([0], [0], [0], color='r', label='Center of motion', zorder=5)
 bz = np.linspace(-1, 1, num_points)
 bx = np.zeros_like(bz) + r  # Offset field lines
 by = np.zeros_like(bz)
-for bx_offset in np.linspace(-r, r, 5):
-    ax.plot(bx + bx_offset, by, bz, color='g', alpha=0.3)
 
 # Set labels and title
 ax.set_title('Circular Motion in a Uniform Magnetic Field')
@@ -323,19 +342,7 @@ ax.legend()
 plt.show()
 ````
 
-## Figure 7 - Particle in Electric and Magnetic Fields
-
-- This code simulates the motion of a charged particle in a uniform electric field and a uniform magnetic field.
-- The particle experiences a Lorentz force due to the electric and magnetic fields, and its trajectory is plotted in 3D.
-- The simulation uses numerical integration to update the particle's position and velocity over time.
-- The electric field is assumed to be in the x-direction, while the magnetic field is in the z-direction.
-- The initial velocity of the particle is set to zero for simplicity, but can be modified as needed.
-- The simulation parameters can be adjusted to explore different scenarios, such as varying the strength of the fields or the mass of the particle.
-- The resulting plot shows the trajectory of the particle in 3D space, illustrating the combined effects of the electric and magnetic fields on its motion.
-- The code uses NumPy for numerical calculations and Matplotlib for plotting the trajectory.
-- The trajectory is visualized in a 3D plot, with the x-axis representing the electric field direction, the y-axis as a free axis, and the z-axis representing the magnetic field direction.
-- The plot includes labels for the axes and a legend indicating the particle's trajectory.
-- The viewing angle of the plot is adjusted for better visualization.
+## Figure 7 - Motion in Combined Uniform Electric and Magnetic Fields
 
 ````
 import numpy as np
@@ -343,12 +350,12 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
 # Constants
-q = 1.6e-19  # Charge of the particle (Coulombs)
-m = 9.11e-31  # Mass of the particle (kg)
-E = 1e5  # Electric field magnitude (V/m)
+q = 2.0  # Charge of the particle (Coulombs)
+m = 3.0  # Mass of the particle (kg)
+E = 10  # Electric field magnitude (V/m)
 B = 1.0  # Magnetic field strength (T)
 v0 = 0  # Initial velocity (m/s), assume starting from rest for simplicity
-t_max = 1e-6  # Maximum simulation time (s)
+t_max = 10  # Maximum simulation time (s)
 num_points = 1000  # Number of points in the simulation
 
 # Time array
@@ -394,3 +401,19 @@ ax.legend()
 
 plt.show()
 ````
+
+## Figure 8 - Particle in Electric and Magnetic Fields
+
+- This code simulates the motion of a charged particle in a uniform electric field and a uniform magnetic field.
+- The particle experiences a Lorentz force due to the electric and magnetic fields, and its trajectory is plotted in 3D.
+- The simulation uses numerical integration to update the particle's position and velocity over time.
+- The electric field is assumed to be in the x-direction, while the magnetic field is in the z-direction.
+- The initial velocity of the particle is set to zero for simplicity, but can be modified as needed.
+- The simulation parameters can be adjusted to explore different scenarios, such as varying the strength of the fields or the mass of the particle.
+- The resulting plot shows the trajectory of the particle in 3D space, illustrating the combined effects of the electric and magnetic fields on its motion.
+- The code uses NumPy for numerical calculations and Matplotlib for plotting the trajectory.
+- The trajectory is visualized in a 3D plot, with the x-axis representing the electric field direction, the y-axis as a free axis, and the z-axis representing the magnetic field direction.
+- The plot includes labels for the axes and a legend indicating the particle's trajectory.
+- The viewing angle of the plot is adjusted for better visualization.
+
+

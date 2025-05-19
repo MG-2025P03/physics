@@ -3,13 +3,22 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
 # Constants
-q = 1.6e-19  # Charge of the particle (Coulombs)
-m = 9.11e-31  # Mass of the particle (kg)
-B = 1.0  # Magnetic field strength (Tesla)
-v_perpendicular = 1e6  # Initial velocity perpendicular to B (m/s)
-v_parallel = 0.5e6  # Initial velocity parallel to B (m/s)
-t_max = 1e-7  # Maximum time for the simulation (s)
+q = 16  # Charge of the particle (Coulombs)
+m = 9  # Mass of the particle (kg)
+B = 3.0  # Magnetic field strength (Tesla)
+v_perpendicular = 1  # Initial velocity perpendicular to B (m/s)
+v_parallel = 1  # Initial velocity parallel to B (m/s)
+t_max = 2  # Maximum time for the simulation (s)
 num_points = 1000  # Number of simulation points
+
+# Constants
+#   q = 16  # Charge of the particle (Coulombs)
+#   m = 9  # Mass of the particle (kg)
+#   B = 10.0  # Magnetic field strength (Tesla)
+#   E = 1000  # Electric field strength (V/m)
+#   v0 = 20  # Initial velocity of the particle (m/s)
+#   t_max = 10  # Maximum time for the simulation (s)
+#   num_points = 1000  # Number of points in the simulation
 
 # Time discretization
 time = np.linspace(0, t_max, num_points)
