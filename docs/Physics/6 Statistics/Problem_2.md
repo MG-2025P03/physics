@@ -58,6 +58,6 @@ $$
 \pi \approx \frac{2L \cdot n}{x \cdot D}
 $$
 
-
+#### Buffon's Needle Example
 
 ![Buffon's Needle Simulation](https://mg-2025p03.github.io/physics/_pics/PB2.png)
