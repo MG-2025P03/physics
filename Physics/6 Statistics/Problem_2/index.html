@@ -146,25 +146,9 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#other-aplications">Other Aplications</a>
+<li class="toctree-l3"><a class="reference internal" href="#buffons-needle">Buffon's Needle</a>
 <ul>
-<li class="toctree-l4"><a class="reference internal" href="#1-economic-activity-simulation">1. Economic Activity Simulation</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#2-population-growth-forecast">2. Population Growth Forecast</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#3-healthcare-resource-allocation">3. Healthcare Resource Allocation</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#4-infrastructure-development-risk-assessment">4. Infrastructure Development Risk Assessment</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#5-environmental-and-climate-impact-projections">5. Environmental and Climate Impact Projections</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#6-transportation-and-traffic-flow-modelling">6. Transportation and Traffic Flow Modelling</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#7-agricultural-yield-prediction">7. Agricultural Yield Prediction</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#8-educational-outcomes-estimation">8. Educational Outcomes Estimation</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#specific-simulation-a-education-b-population-forecast">Specific Simulation (a) Education, (b) Population Forecast</a>
+<li class="toctree-l4"><a class="reference internal" href="#derivation-of-the-formula">Derivation of the Formula</a>
 </li>
 </ul>
 </li>
@@ -221,30 +205,22 @@
 <p>There is a trade-off between computational time and accuracy. More points yield better estimates but require more computational resources and time.</p>
 <h4 id="performance">Performance</h4>
 <p>Modern computers can handle millions of points quickly, but efficient implementations and optimizations (e.g., vectorized operations in NumPy) are crucial for performance.</p>
-<h2 id="other-aplications">Other Aplications</h2>
-<p>Monte Carlo simulations can be applied to a wide range of problems involving uncertainty and variability. Here are several examples of simulations that could be conducted using Monte Carlo methods alongside a regional map of Poland:</p>
-<h4 id="1-economic-activity-simulation">1. Economic Activity Simulation</h4>
-<p>Objective: Simulate the variation in economic output, such as GDP per capita or total GDP by region.Data Needed: Historical economic data, growth rates, inflation rates.Analysis: Visualize potential economic outcomes for different regions based on varying growth assumptions.</p>
-<h4 id="2-population-growth-forecast">2. Population Growth Forecast</h4>
-<p>Objective: Model the population growth trends for each region up to a future year (e.g., 2030), taking into account factors such as birth rates, death rates, and migration.Data Needed: Current population, birth/death rates, migration trends.Analysis: Assess the impacts on infrastructure, housing needs, and service demands.</p>
-<h4 id="3-healthcare-resource-allocation">3. Healthcare Resource Allocation</h4>
-<p>Objective: Evaluate the distribution of healthcare resources under varying demand scenarios, influenced by factors like disease outbreak or an aging population.Data Needed: Current healthcare resources, historical usage data, demographic trends.Analysis: Optimize resource allocation strategies to cope with uncertain demand peaks.</p>
-<h4 id="4-infrastructure-development-risk-assessment">4. Infrastructure Development Risk Assessment</h4>
-<p>Objective: Assess the potential financial and scheduling risks involved in large infrastructure projects across regions.Data Needed: Projected costs, timelines, and historical risk factors impacting infrastructure projects.Analysis: Identify high-risk areas and strategize mitigation efforts.</p>
-<h4 id="5-environmental-and-climate-impact-projections">5. Environmental and Climate Impact Projections</h4>
-<p>Objective: Predict environmental impacts, such as pollution or climate change effects, under different scenarios.Data Needed: Historical environmental data, emission rates, and climate model predictions.Analysis: Use scenarios to develop regional climate action plans or pollution control measures.</p>
-<h4 id="6-transportation-and-traffic-flow-modelling">6. Transportation and Traffic Flow Modelling</h4>
-<p>Objective: Simulate traffic patterns and regional transportation demand to aid in planning and resource allocation.Data Needed: Traffic data, road network information, public transport usage.Analysis: Improve infrastructure planning and prioritize future transport projects.</p>
-<h4 id="7-agricultural-yield-prediction">7. Agricultural Yield Prediction</h4>
-<p>Objective: Estimate variability in agricultural output due to changing weather patterns, input costs, and market conditions.Data Needed: Historical yield data, weather forecasts, market trends.Analysis: Plan supply chains and pricing to optimize profitability under uncertain conditions.</p>
-<h4 id="8-educational-outcomes-estimation">8. Educational Outcomes Estimation</h4>
-<p>Objective: Predict educational achievements and demands based on demographic trends, investment levels, and policy changes.Data Needed: Current educational data, population trends, policy parameters.Analysis: Develop policies to improve educational outcomes and resource distribution.</p>
-<h3 id="specific-simulation-a-education-b-population-forecast">Specific Simulation (a) Education, (b) Population Forecast</h3>
-<p><a href="https://mg-2025p03.github.io/physics/_pics/P2.7.png"><img alt="2021 Enrollees vs 2026 Graduates (Approx)" src="https://mg-2025p03.github.io/physics/_pics/P2.7.png"/></a></p>
-<p><a href="https://mg-2025p03.github.io/physics/_pics/P2.3.png"><img alt="2050 Poland Population by Region (Forecast)" src="https://mg-2025p03.github.io/physics/_pics/P2.3.png"/></a></p>
-<p><a href="https://mg-2025p03.github.io/physics/_pics/P2.6.png"><img alt="2026 Masovian Region Population by Age group (Forecast)" src="https://mg-2025p03.github.io/physics/_pics/P2.6.png"/></a></p>
-<p><a href="https://mg-2025p03.github.io/physics/_pics/P2.8.png"><img alt="Masovian Region Population by Age 13-18 (Forecast)" src="https://mg-2025p03.github.io/physics/_pics/P2.8.png"/></a></p>
-<p><a href="https://mg-2025p03.github.io/physics/_pics/P2.8.1.png"><img alt="Probability breakdown" src="https://mg-2025p03.github.io/physics/_pics/P2.8.1.png"/></a></p>
+<h2 id="buffons-needle">Buffon's Needle</h2>
+<p>Buffon's Needle is a classic probability problem that estimates the value of <span class="arithmatex">\(\pi\)</span> based on a simple geometric experiment. The problem involves dropping a needle of length <span class="arithmatex">\(L\)</span> onto a plane that has parallel lines drawn on it at a distance <span class="arithmatex">\(D\)</span> apart. The goal is to find the probability that the needle crosses one of the lines. Through this, an estimate for <span class="arithmatex">\(\pi\)</span> can be obtained.</p>
+<h3 id="derivation-of-the-formula">Derivation of the Formula</h3>
+<p>Assumptions:</p>
+<p>The length of the needle, <span class="arithmatex">\(L\)</span>, is less than or equal to the distance <span class="arithmatex">\(D\)</span> between the parallel lines.The needle is dropped randomly, which means any angle <span class="arithmatex">\(\theta\)</span> between 0 and <span class="arithmatex">\(\pi\)</span> is equally likely.</p>
+<p>Probability Calculation:
+The needle crosses a line if the perpendicular distance from the needle's midpoint to the nearest line is less than or equal to <span class="arithmatex">\(\frac{L}{2} \sin(\theta)\)</span>.The probability <span class="arithmatex">\(P\)</span> of the needle crossing a line can be obtained by integrating over all possible positions and angles:</p>
+<div class="arithmatex">\[
+P = \frac{2L}{\pi D} \int_0^{\pi/2} \sin(\theta) , d\theta = \frac{2L}{\pi D}
+\]</div>
+<p>Estimating (\pi):
+By conducting this experiment multiple times, if we let <span class="arithmatex">\(n\)</span> be the total number of times the needle is dropped and <span class="arithmatex">\(x\)</span> be the number of times it crosses a line, we can estimate <span class="arithmatex">\(\pi\)</span> using the relationship:</p>
+<div class="arithmatex">\[
+\pi \approx \frac{2L \cdot n}{x \cdot D}
+\]</div>
+<p><img alt="Buffon's Needle Simulation" src="https://mg-2025p03.github.io/physics/_pics/PB2.png"/></p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
