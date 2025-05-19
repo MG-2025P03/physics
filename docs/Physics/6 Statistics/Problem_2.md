@@ -34,50 +34,28 @@ There is a trade-off between computational time and accuracy. More points yield 
 
 Modern computers can handle millions of points quickly, but efficient implementations and optimizations (e.g., vectorized operations in NumPy) are crucial for performance.
 
-## Other Aplications
+## Buffon's Needle
 
-Monte Carlo simulations can be applied to a wide range of problems involving uncertainty and variability. Here are several examples of simulations that could be conducted using Monte Carlo methods alongside a regional map of Poland:
+Buffon's Needle is a classic probability problem that estimates the value of $\pi$ based on a simple geometric experiment. The problem involves dropping a needle of length $L$ onto a plane that has parallel lines drawn on it at a distance $D$ apart. The goal is to find the probability that the needle crosses one of the lines. Through this, an estimate for $\pi$ can be obtained.
 
-#### 1. Economic Activity Simulation
+### Derivation of the Formula
 
-Objective: Simulate the variation in economic output, such as GDP per capita or total GDP by region.Data Needed: Historical economic data, growth rates, inflation rates.Analysis: Visualize potential economic outcomes for different regions based on varying growth assumptions.
+Assumptions:
 
-#### 2. Population Growth Forecast
+The length of the needle, $L$, is less than or equal to the distance $D$ between the parallel lines.The needle is dropped randomly, which means any angle $\theta$ between 0 and $\pi$ is equally likely.
 
-Objective: Model the population growth trends for each region up to a future year (e.g., 2030), taking into account factors such as birth rates, death rates, and migration.Data Needed: Current population, birth/death rates, migration trends.Analysis: Assess the impacts on infrastructure, housing needs, and service demands.
+Probability Calculation:
+The needle crosses a line if the perpendicular distance from the needle's midpoint to the nearest line is less than or equal to $\frac{L}{2} \sin(\theta)$.The probability $P$ of the needle crossing a line can be obtained by integrating over all possible positions and angles:
 
-#### 3. Healthcare Resource Allocation
+$$
+P = \frac{2L}{\pi D} \int_0^{\pi/2} \sin(\theta) , d\theta = \frac{2L}{\pi D}
+$$
 
-Objective: Evaluate the distribution of healthcare resources under varying demand scenarios, influenced by factors like disease outbreak or an aging population.Data Needed: Current healthcare resources, historical usage data, demographic trends.Analysis: Optimize resource allocation strategies to cope with uncertain demand peaks.
+Estimating (\pi):
+By conducting this experiment multiple times, if we let $n$ be the total number of times the needle is dropped and $x$ be the number of times it crosses a line, we can estimate $\pi$ using the relationship:
 
-#### 4. Infrastructure Development Risk Assessment
+$$
+\pi \approx \frac{2L \cdot n}{x \cdot D}
+$$
 
-Objective: Assess the potential financial and scheduling risks involved in large infrastructure projects across regions.Data Needed: Projected costs, timelines, and historical risk factors impacting infrastructure projects.Analysis: Identify high-risk areas and strategize mitigation efforts.
-
-#### 5. Environmental and Climate Impact Projections
-
-Objective: Predict environmental impacts, such as pollution or climate change effects, under different scenarios.Data Needed: Historical environmental data, emission rates, and climate model predictions.Analysis: Use scenarios to develop regional climate action plans or pollution control measures.
-
-#### 6. Transportation and Traffic Flow Modelling
-
-Objective: Simulate traffic patterns and regional transportation demand to aid in planning and resource allocation.Data Needed: Traffic data, road network information, public transport usage.Analysis: Improve infrastructure planning and prioritize future transport projects.
-
-#### 7. Agricultural Yield Prediction
-
-Objective: Estimate variability in agricultural output due to changing weather patterns, input costs, and market conditions.Data Needed: Historical yield data, weather forecasts, market trends.Analysis: Plan supply chains and pricing to optimize profitability under uncertain conditions.
-
-#### 8. Educational Outcomes Estimation
-
-Objective: Predict educational achievements and demands based on demographic trends, investment levels, and policy changes.Data Needed: Current educational data, population trends, policy parameters.Analysis: Develop policies to improve educational outcomes and resource distribution.
-
-### Specific Simulation (a) Education, (b) Population Forecast
-
-[![2021 Enrollees vs 2026 Graduates (Approx)](https://mg-2025p03.github.io/physics/_pics/P2.7.png)](https://mg-2025p03.github.io/physics/_pics/P2.7.png)
-
-[![2050 Poland Population by Region (Forecast)](https://mg-2025p03.github.io/physics/_pics/P2.3.png)](https://mg-2025p03.github.io/physics/_pics/P2.3.png)
-
-[![2026 Masovian Region Population by Age group (Forecast)](https://mg-2025p03.github.io/physics/_pics/P2.6.png)](https://mg-2025p03.github.io/physics/_pics/P2.6.png)
-
-[![Masovian Region Population by Age 13-18 (Forecast)](https://mg-2025p03.github.io/physics/_pics/P2.8.png)](https://mg-2025p03.github.io/physics/_pics/P2.8.png)
-
-[![Probability breakdown](https://mg-2025p03.github.io/physics/_pics/P2.8.1.png)](https://mg-2025p03.github.io/physics/_pics/P2.8.1.png)
+![Buffon's Needle Simulation](https://mg-2025p03.github.io/physics/_pics/PB2.png)
