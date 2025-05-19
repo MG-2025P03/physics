@@ -3,12 +3,12 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
 # Constants
-q = 1.6e-19  # Charge of the particle (Coulombs)
-m = 9.11e-31  # Mass of the particle (kg)
-B = 1.0  # Magnetic field strength (Tesla)
-v0 = 1e6  # Initial velocity magnitude of the particle (m/s)
-t_max = 1e-7  # Maximum simulation time (s)
-num_points = 1000  # Number of points in the simulation
+q = 0.6  # Charge of the particle (Coulombs)
+m = 1.11  # Mass of the particle (kg)
+B = 5.0  # Magnetic field strength (Tesla)
+v0 = 3  # Initial velocity magnitude of the particle (m/s)
+t_max = 3  # Maximum simulation time (s)
+num_points = 100  # Number of points in the simulation
 
 # Time array
 time = np.linspace(0, t_max, num_points)
@@ -34,8 +34,6 @@ ax.scatter([0], [0], [0], color='r', label='Center of motion', zorder=5)
 bz = np.linspace(-1, 1, num_points)
 bx = np.zeros_like(bz) + r  # Offset field lines
 by = np.zeros_like(bz)
-for bx_offset in np.linspace(-r, r, 5):
-    ax.plot(bx + bx_offset, by, bz, color='g', alpha=0.3)
 
 # Set labels and title
 ax.set_title('Circular Motion in a Uniform Magnetic Field')

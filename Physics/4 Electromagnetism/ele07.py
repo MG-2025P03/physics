@@ -3,12 +3,12 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
 # Parameters for toroidal field
-radius_major = 1.0  # Major radius of the torus (distance from center of tube to center of torus)
-radius_minor = 0.2  # Minor radius of the torus (radius of the tube)
+radius_major = 0.5  # Major radius of the torus (distance from center of tube to center of torus)
+radius_minor = 0.5  # Minor radius of the torus (radius of the tube)
 
 # Create data for a torus
-theta = np.linspace(0, 2 * np.pi, 100)  # Angle around the torus
-phi = np.linspace(0, 2 * np.pi, 100)  # Angle along the torus' tube
+theta = np.linspace(0, 2 * np.pi, 5)  # Angle around the torus
+phi = np.linspace(0, 2 * np.pi, 5)  # Angle along the torus' tube
 theta, phi = np.meshgrid(theta, phi)
 
 # Parametric equations for the torus
@@ -24,7 +24,7 @@ ax = fig.add_subplot(111, projection='3d')
 ax.plot_surface(x, y, z, color='c', alpha=0.5, rstride=5, cstride=5, edgecolor='none')
 
 # Plot magnetic field lines
-num_lines = 8
+num_lines = 3
 for i in range(num_lines):
     angle_offset = (i / num_lines) * 2 * np.pi
     x_line = (radius_major + radius_minor * np.cos(phi)) * np.cos(theta + angle_offset)
@@ -37,6 +37,6 @@ ax.set_title('3D Representation of Plasma Confinement in a Toroidal Field')
 ax.set_xlabel('X Axis')
 ax.set_ylabel('Y Axis')
 ax.set_zlabel('Z Axis')
-ax.view_init(elev=30, azim=60)  # Better viewing angle
+ax.view_init(elev=1, azim=2)  # Better viewing angle
 
 plt.show()
