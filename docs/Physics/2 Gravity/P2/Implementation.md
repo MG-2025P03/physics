@@ -18,4 +18,3 @@
 
 [![Escape Trajectory](https://mg-2025p03.github.io/physics/_pics/GP2.7.png)](https://mg-2025p03.github.io/physics/_pics/GP2.7.png)
 
-

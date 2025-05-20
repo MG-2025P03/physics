@@ -48,20 +48,120 @@ $\hat{r}$ is the unit vector along the radial direction.
 
 ## Numerical Integration
 
-Apply numerical methods like Euler's method or the Runge-Kutta method to solve the differential equations iteratively over small time steps.
+To compute the trajectory of a payload released from a certain altitude with specific initial conditions, we can apply numerical methods to solve the equations of motion under the influence of gravity and atmospheric drag. Below is a step-by-step process including the necessary equations and numerical approach.
 
-## Simulation
+Example Scenario
 
-Plot the position and velocity vectors as functions of time to observe the trajectory path.
+Let’s consider a payload released from a height of 10 km (10,000 meters) with an initial horizontal velocity of 300 m/s. 
 
-Trajectory Analysis and Scenarios
+Given Parameters
 
-Orbital Insertion: Achieving the precise initial velocity for an elliptical orbit allows the payload to enter orbit, essential for satellite deployments.
+Initial Position: 
 
-Reentry: If the trajectory remains elliptical but intersects Earth's atmosphere, the payload will re-enter, suitable for returning spacecraft or decommissioning satellites.
+$y_0 = 10,000 , \text{m}$ (altitude)
 
-Escape Trajectory: Exceeding escape velocity leads to a hyperbolic path, ensuring the payload leaves Earth's gravitational influence, a key for missions beyond Earth.
+$x_0 = 0 , \text{m}$ (horizontal position)
 
-## Conclusion
+Initial Velocity:  
 
-Understanding and calculating these trajectories provides crucial knowledge for mission design, satellite operations, reentry planning, and interplanetary travel. Numerical simulations assist in mission planning by predicting how varying initial conditions affect the path and outcome, allowing for optimized launch and mission trajectories based on specific objectives.
+$v_{y0} = 0 , \text{m/s}$ (vertical velocity at release)
+
+$v_{x0} = 300 , \text{m/s}$ (horizontal velocity)
+
+Mass of Payload: $m = 10 , \text{kg}$ (assumed for drag calculations)
+
+Drag Coefficient: $C_d = 0.8$ (assumed for a streamlined object)
+
+Cross-sectional Area: $A = 0.1 , \text{m}^2$ (assumed)
+
+Air Density $\rho$: 
+$\rho = 0.4135 , \text{kg/m}^3$ (approximate value at 10 km altitude)
+
+Gravitational Acceleration: $g = 9.81 , \text{m/s}^2$
+
+Equations of Motion Forces Acting on the Payload:
+
+Gravitational Force:
+
+$$
+F_g = m \cdot g
+$$
+
+Drag Force:
+
+$$
+F_d = \frac{1}{2} \cdot C_d \cdot A \cdot \rho \cdot v^2
+$$
+
+Where $v$ is the speed of the payload, calculated as:
+
+$$
+v = \sqrt{v_x^2 + v_y^2}
+$$
+
+Equations of Motion:
+
+Horizontal Motion:
+$$
+\frac{d^2x}{dt^2} = -\frac{F_d \cdot v_x}{m} \quad \text{(drag only)}
+$$
+
+Vertical Motion:
+$$
+\frac{d^2y}{dt^2} = -g - \frac{F_d \cdot v_y}{m} \quad \text{(gravity + drag)}
+$$
+
+Numerical Integration
+To compute the trajectory, we will use a numerical integration method, such as Euler’s method or the Runge-Kutta method. For simplicity, we'll use Euler’s method here.
+
+Time Step and Initialization
+Time Step: $dt = 0.1 , \text{s}$
+
+Total Time: $T = 100 , \text{s}$ (simulation time)
+
+Trajectory Calculation Steps
+Initialize Variables:
+
+$$
+t = 0, \quad x = 0, \quad y = 10,000, \quad v_x = 300, \quad v_y = 0
+$$
+
+Loop Until Payload Hits the Ground:
+
+In each iteration while (y > 0):
+
+Calculate the speed:
+
+$$
+v = \sqrt{v_x^2 + v_y^2}
+$$
+
+Calculate drag force:
+$$
+F_d = 0.5 \cdot C_d \cdot A \cdot \rho \cdot v^2
+$$  
+
+Update acceleration:
+$$
+a_x = -\frac{F_d \cdot v_x}{m}, \quad a_y = -g - \frac{F_d \cdot v_y}{m}
+$$
+
+Update velocities:
+$$
+v_x = v_x + a_x \cdot dt, \quad v_y = v_y + a_y \cdot dt
+$$
+
+Update positions:
+$$
+x = x + v_x \cdot dt, \quad y = y + v_y \cdot dt
+$$
+
+Update time:
+$$
+t = t + dt
+$$
+
+### Trajectory of Freely Released Payload
+
+[![Escape Trajectory](https://mg-2025p03.github.io/physics/_pics/GP3.png)](https://mg-2025p03.github.io/physics/_pics/GP3.png)
+
