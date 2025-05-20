@@ -77,25 +77,12 @@ $$v_2 = \sqrt{\frac{2GM}{R}}$$
 
 The third cosmic velocity involves considering the velocity needed to escape the gravitational potential of a larger system, such as the Sun, and can be calculated using similar energy conservation principles 3.
 
-## Calculations for Different Celestial Bodies
+$$
+v_3 = \sqrt{ \frac{2GM_{\text{sun}}}{R} + v_{\text{orb}}^2 }
+$$
 
-To calculate these velocities for different planets:
-
-For Mars, the first cosmic velocity is about 3.55 km/s due to Mars' smaller mass and radius compared to Earth.
-For Jupiter, the first cosmic velocity is approximately 42.1 km/s, reflecting Jupiter's much larger mass and radius.
-For the Sun (to escape from its gravitational field), the second cosmic velocity is about 618 km/s.
-
-Importance in Space Exploration
-
-These velocities are crucial for several space-related activities:
-
-Satellite Launches: The first cosmic velocity ensures satellites maintain orbit around Earth or other planets.
-Interplanetary Missions: The second cosmic velocity is vital for spacecraft to escape Earth's gravitational pull and travel to other planets.
-Potential Interstellar Travel: Achieving escape velocities high enough to leave a planetary system (third cosmic velocity) is a significant challenge for interstellar missions.
-
-## Visualization
-
-Visualizing these velocities involves depicting the trajectory of objects as they achieve these critical speeds:
-
-Orbiting Satellites: For Earth orbit, objects follow curved paths around the planet.
-Escape Trajectories: Objects leaving planetary systems follow hyperbolic trajectories, escaping the gravitational influence.
+where: 
+$M_{\text{sun}}$ = mass of the Sun (kg)
+$R$ = distance from the Sun to the object (m)
+$v_{\text{orb}}$ = velocity at which the object is leaving the orbit around the Sun 
+- this is usually approximated as Earth’s orbital velocity around the Sun.
