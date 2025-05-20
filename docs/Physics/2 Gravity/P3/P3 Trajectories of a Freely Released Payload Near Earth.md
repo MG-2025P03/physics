@@ -163,5 +163,5 @@ $$
 
 ### Trajectory of Freely Released Payload
 
-[![Escape Trajectory](https://mg-2025p03.github.io/physics/_pics/GP3.png)](https://mg-2025p03.github.io/physics/_pics/GP3.png)
+[![Escape Trajectory](https://mg-2025p03.github.io/physics/_pics/G3.png)](https://mg-2025p03.github.io/physics/_pics/G3.png)
 
